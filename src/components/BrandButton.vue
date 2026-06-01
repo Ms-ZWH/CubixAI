@@ -1,0 +1,47 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import { RouterLink } from 'vue-router'
+import { Icon } from '@iconify/vue'
+
+interface Props {
+  variant?: 'primary' | 'ghost'
+  size?: 'sm' | 'md'
+  to?: string
+  href?: string
+  target?: string
+  arrow?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  variant: 'primary',
+  size: 'md',
+  arrow: false,
+})
+
+const classes = computed(() => {
+  const base =
+    'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-full'
+  const sizing =
+    props.size === 'sm' ? 'h-9 px-4 text-sm' : 'h-12 px-6 text-base'
+  const theme =
+    props.variant === 'primary'
+      ? 'bg-brand-gradient text-white shadow-card hover:shadow-lg hover:opacity-90'
+      : 'border border-line bg-surface-card text-ink-primary hover:border-brand hover:text-brand'
+  return [base, sizing, theme].join(' ')
+})
+</script>
+
+<template>
+  <RouterLink v-if="to" :to="to" :class="classes">
+    <slot />
+    <Icon v-if="arrow" icon="lucide:arrow-right" class="ml-2 w-4 h-4" />
+  </RouterLink>
+  <a v-else-if="href" :href="href" :target="target" :class="classes">
+    <slot />
+    <Icon v-if="arrow" icon="lucide:arrow-right" class="ml-2 w-4 h-4" />
+  </a>
+  <button v-else :class="classes">
+    <slot />
+    <Icon v-if="arrow" icon="lucide:arrow-right" class="ml-2 w-4 h-4" />
+  </button>
+</template>

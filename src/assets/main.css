@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand: #55AD73;
+    --color-brand-deep: #2E8B57;
+    --color-brand-soft: #E8F5EE;
+    --color-brand-ink: #0F1F17;
+    --color-surface-base: #FAFAF7;
+    --color-surface-card: #FFFFFF;
+    --color-surface-muted: #F3F5F2;
+    --color-ink-primary: #0F1F17;
+    --color-ink-secondary: #5C6B63;
+    --color-ink-tertiary: #8A958F;
+    --color-line: #E5EBE7;
+    --color-gold: #C9A961;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-base text-ink-primary font-sans antialiased;
+    font-feature-settings: 'tnum';
+  }
+}
