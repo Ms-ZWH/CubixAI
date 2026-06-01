@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 
@@ -30,8 +30,49 @@ function observeFadeIn() {
   sections.forEach((s) => observer.observe(s))
 }
 
+const agentCount = ref(1483)
+const agentKey = ref(0)
+const AGENT_BASE = 1483
+const AGENT_INTERVAL = 2000
+const AGENT_CYCLE = 30000
+
+let agentTimer: ReturnType<typeof setInterval> | null = null
+let agentResetTimer: ReturnType<typeof setTimeout> | null = null
+
+watch(agentCount, () => {
+  agentKey.value++
+})
+
+function startAgentCountAnimation() {
+  agentCount.value = AGENT_BASE
+
+  agentTimer = setInterval(() => {
+    agentCount.value += Math.floor(Math.random() * 9) + 1
+  }, AGENT_INTERVAL)
+
+  agentResetTimer = setTimeout(() => {
+    if (agentTimer) {
+      clearInterval(agentTimer)
+      agentTimer = null
+    }
+    startAgentCountAnimation()
+  }, AGENT_CYCLE)
+}
+
 onMounted(() => {
   observeFadeIn()
+  startAgentCountAnimation()
+})
+
+onUnmounted(() => {
+  if (agentTimer) {
+    clearInterval(agentTimer)
+    agentTimer = null
+  }
+  if (agentResetTimer) {
+    clearTimeout(agentResetTimer)
+    agentResetTimer = null
+  }
 })
 
 const statItems = [
@@ -80,12 +121,12 @@ const solutions = [
 ]
 
 const services = [
-  { title: 'OPC Hub 支撑平台', items: ['园区级 OPC Hub 系统', '授权企业账号（不超过约定数量）', '园区企业统一 AI 能力底座'] },
-  { title: '高端 AI 课程体系', items: ['最新一线 AI 应用课程', 'OPC 标准化培训体系', 'OPC 初级认证证书'] },
-  { title: '本地高端线下活动', items: ['园区 AI 主题沙龙', '企业专场 / 行业专场', '路演 + 对接 + 转化'] },
-  { title: '算力调度平台', items: ['多算力源统一调度', '企业低门槛用算力', '为 AI 应用落地兜底'] },
-  { title: 'OPC 创业 & 产业导师', items: ['AI 创业导师', '行业落地导师', '企业数字化转型实战派'] },
-  { title: 'AI 运营支撑服务', items: ['社群 & 企业运营方法论', '内容、品牌、招商协同', '（可选）国际化 PEC 大会'] },
+  { title: 'OPC Hub 支撑平台', icon: 'lucide:layout-dashboard', items: ['园区级 OPC Hub 系统', '授权企业账号（不超过约定数量）', '园区企业统一 AI 能力底座'] },
+  { title: '高端 AI 课程体系', icon: 'lucide:graduation-cap', items: ['最新一线 AI 应用课程', 'OPC 标准化培训体系', 'OPC 初级认证证书'] },
+  { title: '本地高端线下活动', icon: 'lucide:calendar-days', items: ['园区 AI 主题沙龙', '企业专场 / 行业专场', '路演 + 对接 + 转化'] },
+  { title: '算力调度平台', icon: 'lucide:cpu', items: ['多算力源统一调度', '企业低门槛用算力', '为 AI 应用落地兜底'] },
+  { title: 'OPC 创业 & 产业导师', icon: 'lucide:user-check', items: ['AI 创业导师', '行业落地导师', '企业数字化转型实战派'] },
+  { title: 'AI 运营支撑服务', icon: 'lucide:settings-2', items: ['社群 & 企业运营方法论', '内容、品牌、招商协同', '（可选）国际化 PEC 大会'] },
 ]
 
 const conditions = [
@@ -107,6 +148,11 @@ const securities = [
   { title: '数据安全', desc: '采用高强度加密与访问控制，全方位守护核心数据资产。' },
 ]
 
+const caseImgBwsq1 = new URL('@/assets/al/bwsq1.png', import.meta.url).href
+const caseImgBwsq = new URL('@/assets/al/bwsq.png', import.meta.url).href
+const caseImgCycyy1 = new URL('@/assets/al/cycyy1.png', import.meta.url).href
+const caseImgCycyy = new URL('@/assets/al/cycyy.png', import.meta.url).href
+
 const cases = [
   {
     tag: '中关村 AI 北纬社区（北京·海淀）',
@@ -114,6 +160,7 @@ const cases = [
     slogan: '"海淀友" 豪力 AI 的千万种可能；北京首个人工智能 OPC 服务计划',
     results: ['实现园区企业统一 AI 能力入口', '支撑多场 AI 主题沙龙与技术交流活动', '形成 "社区 + 平台 + 企业" 的轻量化 OPC 生态模型'],
     feature: '验证了 OPC 在社区级载体中的可落地性',
+    images: [caseImgBwsq1, caseImgBwsq],
   },
   {
     tag: '中关村（朝阳）AI Space 产业园（北京·朝阳）',
@@ -121,6 +168,7 @@ const cases = [
     slogan: '软积木助力、ChatU 首批人工智能 OPC 友好社区生态伙伴',
     results: ['支撑园区企业 AI 应用落地与能力提升', '打通 "算力 + 平台 + 培训 + 活动" 的完整闭环', '显著提升园区在 AI 产业方向的承载能力'],
     feature: '验证了 OPC 在产业园级别的规模化可行性',
+    images: [caseImgCycyy, caseImgCycyy1],
   },
 ]
 </script>
@@ -430,8 +478,20 @@ const cases = [
         <p class="text-center text-[#666666] mb-10">OPC 智能服务平台</p>
 
         <div class="text-center mb-12">
-          <p class="text-4xl md:text-5xl font-bold text-[#F04045]">
-            1483 个 AI Agent 运行中
+          <p class="text-4xl md:text-5xl font-bold text-[#F04045] flex items-center justify-center">
+            <span class="inline-flex items-baseline">
+              <span
+                v-for="(digit, i) in String(agentCount)"
+                :key="`pos-${i}`"
+                class="inline-block overflow-hidden relative text-center"
+                style="height: 1em; width: 0.65em; line-height: 1em;"
+              >
+                <Transition name="scroll-up" mode="out-in">
+                  <span :key="digit" class="inline-block w-full">{{ digit }}</span>
+                </Transition>
+              </span>
+            </span>
+            <span>&nbsp;个 AI Agent 运行中</span>
           </p>
         </div>
 
@@ -467,12 +527,12 @@ const cases = [
 
 
         <!-- Screenshots -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="rounded-xl border border-[#E5E5E5] overflow-hidden">
-            <img src="@/assets/OPCHub.png" class="w-full" alt="OPC Hub" />
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-fr items-stretch">
+          <div class="rounded-xl border border-[#E5E5E5] overflow-hidden aspect-[16/9]">
+            <img src="@/assets/OPCHub.png" class="w-full h-full object-cover" alt="OPC Hub" />
           </div>
-          <div class="rounded-xl border border-[#E5E5E5] overflow-hidden">
-            <img src="@/assets/OPCHub1.png" class="w-full" alt="AIGC 中控后台" />
+          <div class="rounded-xl border border-[#E5E5E5] overflow-hidden aspect-[16/9]">
+            <img src="@/assets/OPCHub1.png" class="w-full h-full object-cover" alt="AIGC 中控后台" />
           </div>
         </div>
 
@@ -541,9 +601,9 @@ const cases = [
             class="p-6 rounded-xl bg-[#F5F5F7] hover:-translate-y-1 transition-transform duration-300"
           >
             <div class="flex items-center gap-3 mb-4">
-              <span class="w-8 h-8 rounded-lg bg-[#F04045] text-white flex items-center justify-center text-sm font-bold">
-                {{ i + 1 }}
-              </span>
+              <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
+                <Icon :icon="s.icon" class="w-5 h-5 text-[#F04045]" />
+              </div>
               <h3 class="text-lg font-bold">{{ s.title }}</h3>
             </div>
             <ul class="space-y-2 text-sm text-[#666666]">
@@ -569,18 +629,36 @@ const cases = [
             v-for="c in cases"
             :key="c.tag"
             class="p-8 rounded-xl bg-white border border-[#E5E5E5]"
+            :class="c.images ? 'grid grid-cols-1 lg:grid-cols-2 gap-8 items-center' : ''"
           >
-            <div class="flex flex-wrap items-center gap-3 mb-4">
-              <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#F04045]/10 text-[#F04045]">
-                {{ c.label }}
-              </span>
+            <!-- 左侧文字 -->
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-[#F04045]/10 text-[#F04045]">
+                  {{ c.label }}
+                </span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">{{ c.tag }}</h3>
+              <p class="text-[#F04045] font-medium mb-4">{{ c.slogan }}</p>
+              <ul class="space-y-2 text-[#666666] mb-4">
+                <li v-for="r in c.results" :key="r">· {{ r }}</li>
+              </ul>
+              <p class="text-sm font-semibold text-[#1A1A1A]">主要特点：{{ c.feature }}</p>
             </div>
-            <h3 class="text-xl font-bold mb-2">{{ c.tag }}</h3>
-            <p class="text-[#F04045] font-medium mb-4">{{ c.slogan }}</p>
-            <ul class="space-y-2 text-[#666666] mb-4">
-              <li v-for="r in c.results" :key="r">· {{ r }}</li>
-            </ul>
-            <p class="text-sm font-semibold text-[#1A1A1A]">主要特点：{{ c.feature }}</p>
+
+            <!-- 右侧图片 -->
+            <div v-if="c.images" class="relative hidden lg:block h-80">
+              <img
+                :src="c.images[0]"
+                alt=""
+                class="absolute top-0 left-0 w-64 h-48 rounded-xl shadow-lg z-10 object-cover"
+              />
+              <img
+                :src="c.images[1]"
+                alt=""
+                class="absolute top-28 left-36 w-64 h-48 rounded-xl shadow-lg z-20 object-cover"
+              />
+            </div>
           </div>
         </div>
 
@@ -674,52 +752,78 @@ const cases = [
 
         </p>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <!-- Left: Courses -->
-          <div class="p-8 rounded-xl bg-white border border-[#E5E5E5]">
-            <div class="space-y-6">
-              <div>
-                <h4 class="text-base font-bold text-[#F04045] mb-2">活动</h4>
-                <p class="text-sm text-[#666666]">AI主题沙龙 · 企业/行业专场</p>
-                <p class="text-sm text-[#666666]">路演对接 · 国际化大会</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-fr items-stretch">
+          <!-- 活动 -->
+          <div class="p-6 rounded-xl bg-white border border-[#E5E5E5] h-full flex flex-col">
+            <h4 class="text-base font-bold text-[#F04045] mb-3">活动</h4>
+            <p class="text-sm text-[#666666] mb-3">举办峰会、论坛、沙龙等系列行业活动，搭建全球化 AI 交流合作平台。</p>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="rounded-lg overflow-hidden aspect-[11/5]">
+                <img src="@/assets/st/hd/fh.png" class="w-full h-full object-cover" alt="" />
               </div>
-              <div>
-                <h4 class="text-base font-bold text-[#F04045] mb-2">咨询</h4>
-                <p class="text-sm text-[#666666]">AI创业/产业导师 · 法务财务服务</p>
-                <p class="text-sm text-[#666666]">社群运营与企业方法论</p>
+              <div class="rounded-lg overflow-hidden aspect-[11/5]">
+                <img src="@/assets/st/hd/lt.png" class="w-full h-full object-cover" alt="" />
               </div>
-              <div>
-                <h4 class="text-base font-bold text-[#F04045] mb-2">培训</h4>
-                <p class="text-sm text-[#666666]">一线AI应用课程</p>
-                <p class="text-sm text-[#666666]">OPC标准化培训与初级认证</p>
+              <div class="rounded-lg overflow-hidden aspect-[11/5]">
+                <img src="@/assets/st/hd/sl.png" class="w-full h-full object-cover" alt="" />
               </div>
-              <div>
-                <h4 class="text-base font-bold text-[#F04045] mb-2">课程</h4>
-                <p class="text-sm text-[#666666]">人工智能通识 · AI Agent实战</p>
-                <p class="text-sm text-[#666666]">配套学习书籍</p>
+              <div class="rounded-lg overflow-hidden aspect-[11/5]">
+                <img src="@/assets/st/hd/zt.png" class="w-full h-full object-cover" alt="" />
               </div>
             </div>
-          </div><!-- Right: Books -->
-          <div class="p-8 rounded-xl bg-white border border-[#E5E5E5]">
-            <h3 class="text-lg font-bold mb-6">推荐学习书籍</h3>
-            <div class="space-y-6">
-              <div class="flex gap-4">
-                <div class="w-24 h-32 rounded-lg bg-[#F5F5F7] flex-shrink-0 flex items-center justify-center">
-                  <span class="text-xs text-[#999999]">书籍封面</span>
+          </div>
+          <!-- 咨询与培训 -->
+          <div class="p-6 rounded-xl bg-white border border-[#E5E5E5] h-full flex flex-col">
+            <h4 class="text-base font-bold text-[#F04045] mb-3">咨询培训</h4>
+            <p class="text-sm text-[#666666] mb-3">定制化 AI 咨询服务 + 实战化培训，打造企业专属 AI 应用能力。</p>
+            <div class="grid grid-cols-2 gap-3 items-stretch">
+              <!-- 左侧：3 张竖向排列 -->
+              <div class="flex flex-col gap-2">
+                <div class="rounded-lg overflow-hidden h-24">
+                  <img src="@/assets/st/zxpx/px.png" class="w-full h-full object-cover" alt="" />
                 </div>
-                <div class="flex items-center">
-                  <p class="font-semibold">《24 小时精通 AI Agent》</p>
+                <div class="rounded-lg overflow-hidden h-24">
+                  <img src="@/assets/st/zxpx/px1.png" class="w-full h-full object-cover" alt="" />
+                </div>
+                <div class="rounded-lg overflow-hidden h-24">
+                  <img src="@/assets/st/zxpx/px2.png" class="w-full h-full object-cover" alt="" />
                 </div>
               </div>
-              <div class="flex gap-4">
-                <div class="w-24 h-32 rounded-lg bg-[#F5F5F7] flex-shrink-0 flex items-center justify-center">
-                  <span class="text-xs text-[#999999]">书籍封面</span>
-
+              <!-- 右侧：3.png -->
+              <div class="rounded-lg overflow-hidden relative">
+                <img src="@/assets/st/zxpx/3.png" class="absolute inset-0 w-full h-full object-cover" alt="" />
+              </div>
+            </div>
+          </div>
+          <!-- 课程 -->
+          <div class="p-6 rounded-xl bg-white border border-[#E5E5E5] h-full flex flex-col">
+            <h4 class="text-base font-bold text-[#F04045] mb-3">课程</h4>
+            <p class="text-sm text-[#666666] mb-3">打造从基础到实战的系统化 AI 课程，赋能学员快速掌握前沿 AI 技能。</p>
+            <div class="grid grid-cols-2 gap-3 flex-1 items-center">
+              <div class="rounded-lg overflow-hidden h-32">
+                <img src="@/assets/st/kc/2.jpeg" class="w-full h-full object-cover" alt="" />
+              </div>
+              <div class="rounded-lg overflow-hidden h-32">
+                <img src="@/assets/st/kc/3.jpg" class="w-full h-full object-cover" alt="" />
+              </div>
+            </div>
+          </div>
+          <!-- 书籍 -->
+          <div class="p-6 rounded-xl bg-white border border-[#E5E5E5] h-full flex flex-col">
+            <h4 class="text-base font-bold text-[#F04045] mb-4">书籍</h4>
+            <p class="text-sm text-[#666666]">撰写并发行多本 AI 实战书籍，助力从业者快速掌握 AI 技术与落地技巧。</p>
+            <div class="grid grid-cols-2 gap-4 flex-1 items-center">
+              <div class="text-center">
+                <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-44 mb-2">
+                  <img src="@/assets/st/sj/24xs.png" class="w-full h-full object-contain" alt="24 小时精通 AI Agent" />
                 </div>
-                <div class="flex items-center">
-                  <p class="font-semibold">《解锁 AI 力量》</p>
-
+                <p class="text-xs font-semibold text-[#1A1A1A]">《24 小时精通 AI Agent》</p>
+              </div>
+              <div class="text-center">
+                <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-44 mb-2">
+                  <img src="@/assets/st/sj/jsAI.png" class="w-full h-full object-contain" alt="解锁 AI 力量" />
                 </div>
+                <p class="text-xs font-semibold text-[#1A1A1A]">《解锁 AI 力量》</p>
               </div>
             </div>
           </div>
@@ -765,8 +869,13 @@ const cases = [
         </p>
 
         <div class="text-center">
-          <p class="text-[#999999] text-sm mb-2">OPC Hub：园区级 AI 能力生产与交易平台</p>
-          <p class="text-[#999999] text-sm">了解更多 OPC Hub，关注软积木公众号</p>
+          <!-- <p class="text-[#999999] text-sm mb-2">OPC Hub：园区级 AI 能力生产与交易平台</p> -->
+          <p class="text-[#1A1A1A] text-lg font-bold">想要了解更多，请联系我们</p>
+          <div class="mt-6 flex justify-center">
+            <div class="w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
+              <img src="@/assets/lxwm.png" alt="联系我们" class="w-full h-full object-contain" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -790,5 +899,18 @@ const cases = [
 .stat-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(240, 64, 69, 0.12);
+}
+
+.scroll-up-enter-active,
+.scroll-up-leave-active {
+  transition: all 0.4s ease;
+}
+.scroll-up-enter-from {
+  transform: translateY(100%);
+  opacity: 0;
+}
+.scroll-up-leave-to {
+  transform: translateY(-100%);
+  opacity: 0;
 }
 </style>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 
 const titleRef = ref<HTMLElement | null>(null)
@@ -9,22 +10,22 @@ useScrollReveal(titleRef, { y: 30 })
 useScrollReveal(gridRef, { y: 30, delay: 0.15 })
 
 const engines = [
-  'AOAI GPT',
-  'Claude',
-  'Gemini',
-  'Meta Llama',
-  '腾讯混元',
-  '阿里通义',
-  '百度文心',
-  '字节豆包',
-  'KIMI',
-  'MiniMax',
-  'DeepSeek',
-  'GLM',
-  '火山引擎',
-  'ChatLM3',
-  '紫东太初',
-  'More...',
+  { name: 'AOAI GPT', icon: 'simple-icons:openai', color: '#412991' },
+  { name: 'Claude', icon: 'simple-icons:anthropic', color: '#D4A574' },
+  { name: 'Gemini', icon: 'simple-icons:google', color: '#4285F4' },
+  { name: 'Meta Llama', icon: 'simple-icons:meta', color: '#0668E1' },
+  { name: '腾讯混元', icon: 'simple-icons:tencentqq', color: '#12B7F5' },
+  { name: '阿里通义', icon: 'simple-icons:alibabadotcom', color: '#FF6A00' },
+  { name: '百度文心', icon: 'simple-icons:baidu', color: '#2932E1' },
+  { name: '字节豆包', icon: 'simple-icons:bytedance', color: '#3C8CFF' },
+  { name: 'KIMI', icon: 'lucide:sparkles', color: '#FF6B35' },
+  { name: 'MiniMax', icon: 'lucide:bot', color: '#8B5CF6' },
+  { name: 'DeepSeek', icon: 'simple-icons:deepseek', color: '#4D6BFA' },
+  { name: 'GLM', icon: 'lucide:brain', color: '#10B981' },
+  { name: '火山引擎', icon: 'lucide:flame', color: '#FF4500' },
+  { name: 'ChatLM3', icon: 'lucide:message-square', color: '#6366F1' },
+  { name: '紫东太初', icon: 'lucide:star', color: '#F59E0B' },
+  { name: 'More...', icon: 'lucide:plus', color: '#9CA3AF' },
 ]
 </script>
 
@@ -49,11 +50,12 @@ const engines = [
         class="grid grid-cols-4 md:grid-cols-8 gap-3 md:gap-4"
       >
         <div
-          v-for="name in engines"
-          :key="name"
-          class="flex items-center justify-center h-16 md:h-20 rounded-xl bg-white border border-line/50 text-xs md:text-sm font-medium text-ink-tertiary grayscale hover:grayscale-0 hover:text-ink-primary hover:border-[#433487]/30 hover:-translate-y-0.5 transition-all duration-300"
+          v-for="e in engines"
+          :key="e.name"
+          class="flex flex-col items-center justify-center gap-1.5 h-20 md:h-24 rounded-xl bg-white border border-line/50 text-xs md:text-sm font-medium text-ink-tertiary hover:text-ink-primary hover:border-[#433487]/30 hover:-translate-y-0.5 transition-all duration-300"
         >
-          {{ name }}
+          <Icon :icon="e.icon" class="w-6 h-6" :style="{ color: e.color }" />
+          <span>{{ e.name }}</span>
         </div>
       </div>
 

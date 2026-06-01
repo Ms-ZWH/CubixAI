@@ -170,7 +170,7 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
             </div>
             <h4 class="text-xl font-semibold text-ink-primary">{{ f.title }}</h4>
             <p class="text-sm text-ink-tertiary mt-1">{{ f.subtitle }}</p>
-            <p class="text-sm text-ink-tertiary mt-1">时间：{{f.time}}</p>
+            <p class="text-sm text-ink-tertiary mt-1">时间周期：{{f.time}}</p>
             <p class="text-sm text-ink-tertiary mt-1">规模：{{f.gm}}</p>
             <p class="text-sm text-ink-secondary mt-3 leading-relaxed">{{ f.desc }}</p>
           </div>
@@ -205,41 +205,35 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
         </div>
 
         <!-- 关注公众号 + CTA -->
-        <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-4xl mx-auto">
-          <!-- Left: QR + Title + Subtitle -->
-          <div class="flex flex-col items-center lg:items-end text-center lg:text-right">
-            <div class="w-[160px] h-[160px] rounded-2xl bg-white border-2 border-brand/20 shadow-card overflow-hidden">
-              <img
-                src="../assets/PEC.jpg"
-                alt="PEC 公众号二维码"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <h3 class="mt-5 text-xl md:text-2xl font-semibold text-ink-primary tracking-tight">
-              关注 PEC提示工程 公众号
-            </h3>
-            <p class="mt-2 text-sm text-ink-secondary max-w-xs">
-              获取最新活动资讯、行业洞察与社区动态
-            </p>
+        <div class="mt-20 flex flex-col items-center text-center max-w-4xl mx-auto">
+          <div class="w-[160px] h-[160px] rounded-2xl bg-white border-2 border-brand/20 shadow-card overflow-hidden">
+            <img
+              src="../assets/PEC.jpg"
+              alt="PEC 公众号二维码"
+              class="w-full h-full object-cover"
+            />
           </div>
-          <!-- Right: CTA -->
-          <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <p class="text-lg md:text-xl text-ink-primary font-semibold">
-              想了解更多关于PEC的内容？
-            </p>
-            <div class="mt-5">
-              <a
-                href="https://www.pec.asia"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand text-white font-semibold hover:bg-brand-deep transition-colors shadow-lg"
-              >
-                前往 PEC 官网查看详情
-                <Icon icon="lucide:arrow-up-right" class="w-4 h-4" />
-              </a>
-            </div>
-            <p class="mt-3 text-sm font-semibold text-brand">www.pec.asia</p>
+          <h3 class="mt-5 text-xl md:text-2xl font-semibold text-ink-primary tracking-tight">
+            关注 PEC提示工程 公众号
+          </h3>
+          <p class="mt-2 text-sm text-ink-secondary max-w-xs">
+            获取最新活动资讯、行业洞察与社区动态
+          </p>
+          <p class="mt-6 text-lg md:text-xl text-ink-primary font-semibold">
+            想了解更多关于PEC的内容？
+          </p>
+          <div class="mt-5">
+            <a
+              href="https://www.pec.asia"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand text-white font-semibold hover:bg-brand-deep transition-colors shadow-lg"
+            >
+              前往 PEC 官网查看详情
+              <Icon icon="lucide:arrow-up-right" class="w-4 h-4" />
+            </a>
           </div>
+          <p class="mt-3 text-sm font-semibold text-brand">www.pec.asia</p>
         </div>
       </div>
     </section>
@@ -259,35 +253,29 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
           </p>
         </div>
 
-        <div class="max-w-4xl mx-auto space-y-10">
-          <div class="flex gap-5">
-            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold shrink-0 mt-0.5">1</span>
-            <div>
-              <h3 class="text-xl font-bold text-ink-primary mb-3">百万级开发者技术基础</h3>
-              <p class="text-base text-ink-secondary leading-relaxed">
-                依托多年技术社区积累，软积木关联技术平台拥有超过 108万开发者用户，覆盖企业开发、软件工程、AI应用、系统架构等多个技术领域，具备强大的开发者连接能力与技术传播能力。
-              </p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
+            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">1</div>
+            <h3 class="text-lg font-bold text-ink-primary mb-3">百万级开发者技术基础</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              依托多年技术社区积累，软积木关联技术平台拥有超过 108万开发者用户，覆盖企业开发、软件工程、AI应用、系统架构等多个技术领域，具备强大的开发者连接能力与技术传播能力。
+            </p>
           </div>
 
-          <div class="flex gap-5">
-            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold shrink-0 mt-0.5">2</span>
-            <div>
-              <h3 class="text-xl font-bold text-ink-primary mb-3">领先的AI技术社区与行业影响力</h3>
-              <p class="text-base text-ink-secondary leading-relaxed">
-                早在 2023 年，软积木便率先发起 AI 技术交流社群，持续聚集国内活跃的 AI 技术 KOL、开发者、布道者与行业实践者，围绕大模型、AI Agent、企业智能化等方向展开深度交流与实践，共同推动AI技术普及与产业落地。
-              </p>
-            </div>
+          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
+            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">2</div>
+            <h3 class="text-lg font-bold text-ink-primary mb-3">领先的AI技术社区与行业影响力</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              早在 2023 年，软积木便率先发起 AI 技术交流社群，持续聚集国内活跃的 AI 技术 KOL、开发者、布道者与行业实践者，围绕大模型、AI Agent、企业智能化等方向展开深度交流与实践，共同推动AI技术普及与产业落地。
+            </p>
           </div>
 
-          <div class="flex gap-5">
-            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold shrink-0 mt-0.5">3</span>
-            <div>
-              <h3 class="text-xl font-bold text-ink-primary mb-3">完整的产业技术生态合作</h3>
-              <p class="text-base text-ink-secondary leading-relaxed">
-                软积木已与多家国内领先AI与云计算厂商建立技术合作关系，包括：微软、亚马逊、火山引擎、百度智能云等，围绕大模型能力、云基础设施、智能应用与企业服务等方向展开协同，共同打造开放、稳定、可持续发展的AI技术生态体系。
-              </p>
-            </div>
+          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
+            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">3</div>
+            <h3 class="text-lg font-bold text-ink-primary mb-3">完整的产业技术生态合作</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              软积木已与多家国内领先AI与云计算厂商建立技术合作关系，包括：微软、亚马逊、火山引擎、百度智能云等，围绕大模型能力、云基础设施、智能应用与企业服务等方向展开协同，共同打造开放、稳定、可持续发展的AI技术生态体系。
+            </p>
           </div>
         </div>
       </div>
@@ -308,35 +296,29 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
           </p>
         </div>
 
-        <div class="max-w-4xl mx-auto space-y-10">
-          <div class="flex gap-5">
-            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold shrink-0 mt-0.5">1</span>
-            <div>
-              <h3 class="text-xl font-bold text-ink-primary mb-3">广泛的投融资资源连接能力</h3>
-              <p class="text-base text-ink-secondary leading-relaxed">
-                软积木与众多银行、投资机构、产业资本及创新平台保持长期交流与合作，能够帮助优质项目快速对接资本资源，提升项目成长与产业化效率。
-              </p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
+            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">1</div>
+            <h3 class="text-lg font-bold text-ink-primary mb-3">广泛的投融资资源连接能力</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              软积木与众多银行、投资机构、产业资本及创新平台保持长期交流与合作，能够帮助优质项目快速对接资本资源，提升项目成长与产业化效率。
+            </p>
           </div>
 
-          <div class="flex gap-5">
-            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold shrink-0 mt-0.5">2</span>
-            <div>
-              <h3 class="text-xl font-bold text-ink-primary mb-3">丰富的金融生态合作伙伴体系</h3>
-              <p class="text-base text-ink-secondary leading-relaxed">
-                围绕人工智能、大模型、产业数字化等方向，软积木已建立覆盖投资机构、产业伙伴、技术平台与创新服务机构的生态合作网络，形成多维度协同发展的产业生态。
-              </p>
-            </div>
+          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
+            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">2</div>
+            <h3 class="text-lg font-bold text-ink-primary mb-3">丰富的金融生态合作伙伴体系</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              围绕人工智能、大模型、产业数字化等方向，软积木已建立覆盖投资机构、产业伙伴、技术平台与创新服务机构的生态合作网络，形成多维度协同发展的产业生态。
+            </p>
           </div>
 
-          <div class="flex gap-5">
-            <span class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold shrink-0 mt-0.5">3</span>
-            <div>
-              <h3 class="text-xl font-bold text-ink-primary mb-3">地方产业基金与政府资源联动</h3>
-              <p class="text-base text-ink-secondary leading-relaxed">
-                具备对接地方政府产业基金、产业园区及区域创新平台的能力，可协助项目链接地方产业政策、专项资金与落地资源，推动AI项目与区域产业深度融合，实现技术、产业与资本的协同发展。
-              </p>
-            </div>
+          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
+            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">3</div>
+            <h3 class="text-lg font-bold text-ink-primary mb-3">地方产业基金与政府资源联动</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              具备对接地方政府产业基金、产业园区及区域创新平台的能力，可协助项目链接地方产业政策、专项资金与落地资源，推动AI项目与区域产业深度融合，实现技术、产业与资本的协同发展。
+            </p>
           </div>
         </div>
       </div>

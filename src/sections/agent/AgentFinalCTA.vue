@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import { RouterLink } from 'vue-router'
 import jszcImg from '@/assets/jszc.jpg'
+import lxhsqImg from '@/assets/lxhsq.png'
 
 const contentRef = ref<HTMLElement | null>(null)
 const cardsRef = ref<HTMLElement | null>(null)
@@ -15,6 +16,7 @@ const items = [
     title: '社区',
     desc: '加入智方体用户社区，获取最新产品动态、实战教程与同行经验交流',
     link: '/ecosystem',
+    image: lxhsqImg,
   },
   {
     title: '技术支持',

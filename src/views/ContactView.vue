@@ -84,23 +84,33 @@ const events = [
 const honorsRef = ref<HTMLElement | null>(null)
 useScrollReveal(honorsRef, { y: 30 })
 
+const marqueeRef = ref<HTMLElement | null>(null)
+
+function pauseMarquee() {
+  marqueeRef.value?.classList.add('paused')
+}
+
+function resumeMarquee() {
+  marqueeRef.value?.classList.remove('paused')
+}
+
 const honors = [
-  { image: '2.png', title: '微软 Founder Hub 成员' },
-  { image: '3.png', title: '微软人工智能合作伙伴' },
-  { image: '4.png', title: '微软首批全球大客户' },
-  { image: '5.png', title: '微软 Tier5 级别合作伙伴' },
-  { image: '6.png', title: 'NVIDIA Inception Program' },
-  { image: '7.png', title: 'AWS Bedrock 首批接入' },
-  { image: '8.png', title: '华为云首批初始计划成员' },
-  { image: '9.png', title: '百度 AI 应用市场合作伙伴' },
-  { image: '10.png', title: '' },
-  { image: '11.png', title: '' },
-  { image: '12.png', title: '' },
-  { image: '13.png', title: '' },
-  { image: '14.png', title: '' },
-  { image: '15.png', title: '' },
-  { image: '16.png', title: '' },
-  { image: '图片.png', title: '' },
+  { image: '111.png', title: '' },
+  { image: '222.png', title: '' },
+  { image: '333.png', title: '' },
+  { image: '444.png', title: '' },
+  { image: '555.png', title: '' },
+  { image: '666.png', title: '' },
+  { image: '777.png', title: '' },
+  { image: '888.png', title: '' },
+  { image: '999.png', title: '' },
+  { image: '101.png', title: '' },
+  { image: '102.png', title: '' },
+  { image: '103.png', title: '' },
+  { image: '104.png', title: '' },
+  { image: '105.png', title: '' },
+  { image: '106.png', title: '' },
+  { image: '107.png', title: '' },
 ]
 
 function getHonorUrl(name: string) {
@@ -301,36 +311,87 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
             </p>
           </div>
 
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
+          <div
+            ref="marqueeRef"
+            class="relative overflow-hidden"
+            @mouseenter="pauseMarquee"
+            @mouseleave="resumeMarquee"
+          >
+            <!-- 渐变遮罩 -->
             <div
-              v-for="(h, i) in honors"
-              :key="h.image"
-              class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col"
-            >
-              <!-- 图片区 -->
-              <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-6 flex items-center justify-center">
-                <img
-                  :src="getHonorUrl(h.image)"
-                  :alt="h.title || `荣誉资质 ${String(i + 1).padStart(2, '0')}`"
-                  class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-              </div>
+              class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10"
+              style="background: linear-gradient(to right, #FAFAF7, transparent);"
+            />
+            <div
+              class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10"
+              style="background: linear-gradient(to left, #FAFAF7, transparent);"
+            />
 
-              <!-- 底部文案区 -->
-              <div class="px-4 py-3 border-t border-line/50 flex items-center justify-center min-h-[48px]">
-                <p
-                  v-if="h.title"
-                  class="text-xs md:text-sm font-medium text-ink-secondary text-center leading-snug"
-                >
-                  {{ h.title }}
-                </p>
-                <span
-                  v-else
-                  class="text-xs font-medium text-ink-tertiary text-center"
-                >
-                  荣誉资质 {{ String(i + 1).padStart(2, '0') }}
-                </span>
+            <!-- 第一行 -->
+            <div class="flex honor-track">
+              <div
+                v-for="h in honors.slice(0, 8)"
+                :key="'a-' + h.image"
+                class="flex-shrink-0 w-44 md:w-56 px-2"
+              >
+                <div class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
+                  <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-5 flex items-center justify-center">
+                    <img
+                      :src="getHonorUrl(h.image)"
+                      class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                v-for="h in honors.slice(0, 8)"
+                :key="'b-' + h.image"
+                class="flex-shrink-0 w-44 md:w-56 px-2"
+              >
+                <div class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
+                  <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-5 flex items-center justify-center">
+                    <img
+                      :src="getHonorUrl(h.image)"
+                      class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二行（反向） -->
+            <div class="flex honor-track-reverse mt-4">
+              <div
+                v-for="h in honors.slice(8)"
+                :key="'c-' + h.image"
+                class="flex-shrink-0 w-44 md:w-56 px-2"
+              >
+                <div class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
+                  <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-5 flex items-center justify-center">
+                    <img
+                      :src="getHonorUrl(h.image)"
+                      class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                v-for="h in honors.slice(8)"
+                :key="'d-' + h.image"
+                class="flex-shrink-0 w-44 md:w-56 px-2"
+              >
+                <div class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
+                  <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-5 flex items-center justify-center">
+                    <img
+                      :src="getHonorUrl(h.image)"
+                      class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -456,3 +517,38 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
     </section>
   </div>
 </template>
+
+<style scoped>
+@keyframes honor-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes honor-scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.honor-track {
+  animation: honor-scroll 40s linear infinite;
+  width: max-content;
+}
+
+.honor-track-reverse {
+  animation: honor-scroll-reverse 40s linear infinite;
+  width: max-content;
+}
+
+.paused .honor-track,
+.paused .honor-track-reverse {
+  animation-play-state: paused;
+}
+</style>

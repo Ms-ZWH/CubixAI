@@ -65,7 +65,7 @@ const cases: CaseItem[] = [
     ],
     "result": "构建面向个人来访者的心理智能体，提升心理咨询服务效率",
     "tag": "心理健康",
-    "category": "education",
+    "category": "enterprise",
     "icon": "lucide:brain",
     "metrics": [
       { "label": "服务对象", "value": "机构/非专业" },
@@ -88,7 +88,7 @@ const cases: CaseItem[] = [
     ],
     "result": "验证了OPC在社区级载体中的可落地性",
     "tag": "产业园区",
-    "category": "enterprise",
+    "category": "opc",
     "icon": "lucide:building2",
     "metrics": [
       { "label": "核心模式", "value": "社区+平台+企业" },
@@ -109,7 +109,7 @@ const cases: CaseItem[] = [
     ],
     "result": "显著提升园区在AI产业方向的承载能力，验证了OPC在产业园级别的规模化可行性",
     "tag": "产业园区",
-    "category": "enterprise",
+    "category": "opc",
     "icon": "lucide:factory",
     "metrics": [
       { "label": "闭环要素", "value": "算力/平台/培训/活动" },
@@ -129,7 +129,7 @@ const cases: CaseItem[] = [
     ],
     "result": "提供全面、准确、有趣的语言学习体验，提升教学响应效率",
     "tag": "教育",
-    "category": "education",
+    "category": "enterprise",
     "icon": "lucide:languages",
     "metrics": [
       { "label": "服务渠道", "value": "微信" },
@@ -148,7 +148,7 @@ const cases: CaseItem[] = [
     ],
     "result": "全面提升影响力与传播效果",
     "tag": "内容创作",
-    "category": "media",
+    "category": "enterprise",
     "icon": "lucide:sparkles",
     "metrics": [
       { "label": "赋能环节", "value": "全流程赋能" },
@@ -215,7 +215,7 @@ const cases: CaseItem[] = [
     ],
     "result": "已在上海虹桥6个街镇、北京大兴20个街镇等地落地",
     "tag": "政务服务",
-    "category": "government",
+    "category": "enterprise",
     "icon": "lucide:landmark",
     "metrics": [
       { "label": "部署时间", "value": "10分钟" },
@@ -223,7 +223,7 @@ const cases: CaseItem[] = [
     ]
   },
    {
-    "id": "c8",
+    "id": "c9",
     "title": "政务社群+AI智能体",
     "client": "亦庄企业",
     "pain": [
@@ -238,7 +238,54 @@ const cases: CaseItem[] = [
     ],
     "result": "已在上海虹桥6个街镇、北京大兴20个街镇等地落地",
     "tag": "政务服务",
-    "category": "government",
+    "category": "training",
+    "icon": "lucide:landmark",
+    "metrics": [
+      { "label": "部署时间", "value": "10分钟" },
+      { "label": "覆盖街镇", "value": "虹桥6个" }
+    ]
+  },
+   {
+    "id": "c9",
+    "title": "政务社群+AI智能体",
+    "client": "云南大学",
+    "pain": [
+      "统一大市场后禁止税收返还招商，需转向营商环境与政策性服务",
+      "政务服务触达路径长、用户学习成本高"
+    ],
+    "solution": [
+      "基于微信与ChatU平台开发，AI智能体测试完成后10分钟部署上线",
+      "入口置于微信首页，用户零学习成本使用",
+      "获企微官方接口授权，安全稳定",
+      "根据用户画像自动匹配智能体和社群，实现千人千面"
+    ],
+    "result": "已在上海虹桥6个街镇、北京大兴20个街镇等地落地",
+    "tag": "政务服务",
+    "category": "training",
+    "icon": "lucide:landmark",
+    "metrics": [
+      { "label": "部署时间", "value": "10分钟" },
+      { "label": "覆盖街镇", "value": "虹桥6个" }
+    ]
+  },
+  
+   {
+    "id": "c9",
+    "title": "政务社群+AI智能体",
+    "client": "路幅特",
+    "pain": [
+      "统一大市场后禁止税收返还招商，需转向营商环境与政策性服务",
+      "政务服务触达路径长、用户学习成本高"
+    ],
+    "solution": [
+      "基于微信与ChatU平台开发，AI智能体测试完成后10分钟部署上线",
+      "入口置于微信首页，用户零学习成本使用",
+      "获企微官方接口授权，安全稳定",
+      "根据用户画像自动匹配智能体和社群，实现千人千面"
+    ],
+    "result": "已在上海虹桥6个街镇、北京大兴20个街镇等地落地",
+    "tag": "政务服务",
+    "category": "training",
     "icon": "lucide:landmark",
     "metrics": [
       { "label": "部署时间", "value": "10分钟" },
@@ -350,14 +397,13 @@ nextTick(() => {
           >
             <!-- Left: Text (60%) -->
             <div class="w-full lg:w-[60%] p-6 md:p-10 flex flex-col justify-center">
-              <!-- Tag + Client -->
-              <div class="flex items-center gap-3 mb-3">
+              <!-- Category Label -->
+              <div class="mb-3">
                 <span
-                  class="px-2.5 py-0.5 rounded-md text-[11px] font-semibold bg-brand-soft text-brand"
+                  class="px-3 py-1 rounded-md text-sm font-semibold bg-brand-soft text-brand"
                 >
-                  {{ c.tag }}
+                  {{ categories.find(cat => cat.id === c.category)?.label }}
                 </span>
-                <span class="text-sm text-ink-tertiary">{{ c.title }}</span>
               </div>
 
               <!-- Title -->
@@ -442,9 +488,9 @@ nextTick(() => {
             <div>
               <div class="flex items-center gap-2 mb-2">
                 <span
-                  class="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-brand-soft text-brand"
+                  class="px-3 py-1 rounded-md text-sm font-semibold bg-brand-soft text-brand"
                 >
-                  {{ selectedCase?.tag }}
+                  {{ categories.find(cat => cat.id === selectedCase?.category)?.label }}
                 </span>
                 <span class="text-xs text-ink-tertiary">
                   {{ selectedCase?.client }}

@@ -31,11 +31,13 @@ const tags = ['构建智能对话', '文字互动问答', '语音互动问答']
         <!-- 左：形象占位 + 切换 -->
         <div ref="leftRef">
           <div
-            class="aspect-[3/4] max-w-sm mx-auto rounded-2xl bg-surface-muted border border-line shadow-card overflow-hidden flex items-center justify-center relative"
+            class="rounded-2xl border border-line shadow-card overflow-hidden"
           >
-            <span class="text-ink-tertiary text-sm">
-              TODO: {{ roles[activeRole] }}数字人形象占位
-            </span>
+            <img
+              src="@/assets/szr.png"
+              alt="虚拟数字人"
+              class="w-full"
+            />
           </div>
           <!-- <div class="flex justify-center gap-2 mt-4">
             <button

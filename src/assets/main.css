@@ -22,10 +22,12 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-surface-base text-ink-primary font-sans antialiased;
     font-feature-settings: 'tnum';
+    overflow-x: hidden;
   }
 }

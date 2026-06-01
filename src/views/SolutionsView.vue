@@ -22,6 +22,17 @@ interface Solution {
   url?: string
 }
 
+const jjfaImages: Record<string, string> = {
+  yq: new URL('@/assets/jjfa/yq.png', import.meta.url).href,
+  opc: new URL('@/assets/jjfa/opc.png', import.meta.url).href,
+  gx: new URL('@/assets/jjfa/gx.png', import.meta.url).href,
+  px: new URL('@/assets/jjfa/px.png', import.meta.url).href,
+  nr: new URL('@/assets/jjfa/nr.png', import.meta.url).href,
+  jr: new URL('@/assets/jjfa/jr.png', import.meta.url).href,
+  yl: new URL('@/assets/jjfa/yl.png', import.meta.url).href,
+  ds: new URL('@/assets/jjfa/ds.png', import.meta.url).href,
+}
+
 const solutions: Solution[] = [
   {
     id: 'gov',
@@ -31,7 +42,7 @@ const solutions: Solution[] = [
     scenes: ['公文起草', '会议纪要生成', '跨部门文档翻译', '数据报表自动化', '内网知识库检索'],
     pain: '政务及大型企业对数据安全与合规性要求极高，跨部门协同效率低、重复性文书工作繁重。',
     icon: 'lucide:landmark',
-    url:'@/assets/jjfa/yq.png',
+    url: jjfaImages.yq,
   },
   {
     id: 'park',
@@ -41,7 +52,7 @@ const solutions: Solution[] = [
     scenes: ['AI 基础设施建设', '入驻企业 AI 赋能', '创业者产品孵化', '行业场景共建'],
     pain: '初创企业想用 AI 但没算力、没技术、没场景，园区产业集群化升级周期长。',
     icon: 'lucide:building-2',
-    url:'@/assets/jjfa/opc.png',
+    url: jjfaImages.opc,
   },
   {
     id: 'edu',
@@ -51,7 +62,7 @@ const solutions: Solution[] = [
     scenes: ['学术资料检索', '科研论文润色', '校园生活咨询', '心理咨询初筛'],
     pain: '科研人员在资料搜集与初级分析上耗时巨大，高校咨询服务无法全天候覆盖、人力成本高。',
     icon: 'lucide:graduation-cap',
-    url:'@/assets/jjfa/gx.png',
+    url: jjfaImages.gx,
   },
   {
     id: 'training',
@@ -61,7 +72,7 @@ const solutions: Solution[] = [
     scenes: ['智能排课', 'AI 助教口语对练', '教案自动化编写', '少儿双语互动教学'],
     pain: '教务排课繁琐、教案更新迭代慢，在线教育场景下学员互动感与个性化学习体验不足。',
     icon: 'lucide:book-open',
-    url:'@/assets/jjfa/px.png',
+    url: jjfaImages.px,
   },
   {
     id: 'media',
@@ -71,7 +82,7 @@ const solutions: Solution[] = [
     scenes: ['爆点选题筛选', '文章与脚本创作', '粉丝互动自动回复', '创作数据看板'],
     pain: '创作者灵感枯竭、内容产出频率低，多平台运营的人工分发与互动成本高昂。',
     icon: 'lucide:video',
-    url:'@/assets/jjfa/nr.png',
+    url: jjfaImages.nr,
   },
   {
     id: 'finance',
@@ -81,7 +92,7 @@ const solutions: Solution[] = [
     scenes: ['票据与定损识别', '理赔风险评估', '金融数据实时预警', '个性化续保方案'],
     pain: '理赔流程中人工审核周期长、易出错，反欺诈能力与客户服务精准度有待提升。',
     icon: 'lucide:shield-check',
-    url:'@/assets/jjfa/jr.png',
+    url: jjfaImages.jr,
   },
   {
     id: 'health',
@@ -91,7 +102,7 @@ const solutions: Solution[] = [
     scenes: ['检验单信息提取', '疑似病灶辅助标注', '住院/出院报告生成', '导诊机器人'],
     pain: '临床医生病历文书压力大，人为疏忽导致的漏诊风险与患者等待报告时间长。',
     icon: 'lucide:heart-pulse',
-    url:'@/assets/jjfa/yl.png',
+    url: jjfaImages.yl,
   },
   {
     id: 'ecommerce',
@@ -101,7 +112,7 @@ const solutions: Solution[] = [
     scenes: ['智能售前咨询', '物流/退换货自动化', '负面情绪实时监测', '个性化补偿触发'],
     pain: '高峰期人工客服响应不及时、准确率低，人力运营成本居高不下。',
     icon: 'lucide:shopping-cart',
-    url:'@/assets/jjfa/ds.png',
+    url: jjfaImages.ds,
   },
 ]
 
@@ -171,9 +182,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="containerRef" class="relative">
+  <div ref="containerRef" class="relative overflow-x-hidden">
     <!-- Hero -->
-    <section id="solutions-hero" class="relative overflow-hidden bg-surface-base pt-32 md:pt-40 pb-8 md:pb-10">
+    <section id="solutions-hero" class="relative overflow-hidden bg-surface-base pt-32 md:pt-40 pb-8 md:pb-10" style="contain: paint;">
       <div
         class="absolute -top-40 -right-40 w-[500px] h-[500px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none"
         style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(60px);"
@@ -221,7 +232,7 @@ onUnmounted(() => {
         @click="scrollToSection(i)"
       >
         <span
-          class="mr-3 text-xs font-medium text-ink-secondary opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+          class="mr-3 text-xs font-medium text-ink-secondary opacity-0 group-hover:opacity-100 transition-opacity"
         >
           {{ s.title }}
         </span>
@@ -241,8 +252,9 @@ onUnmounted(() => {
       v-for="(s, i) in solutions"
       :id="s.id"
       :key="s.id"
-      class="solution-screen relative min-h-[100dvh] flex items-center snap-start"
+      class="solution-screen relative min-h-[100dvh] flex items-center snap-start overflow-hidden"
       :class="i % 2 === 0 ? 'bg-surface-base' : 'bg-white'"
+      style="contain: paint;"
     >
       <!-- 装饰光晕 -->
       <div
@@ -310,24 +322,29 @@ onUnmounted(() => {
           </div>
 
           <!-- Image / Mockup -->
-          <div class="anim-img w-full lg:w-1/2 flex items-center justify-center">
+          <div class="anim-img w-full lg:w-1/2 flex items-center justify-center overflow-hidden">
             <div
               class="w-full max-w-md aspect-[4/3] rounded-3xl flex items-center justify-center relative overflow-hidden"
               :class="i % 2 === 0 ? 'bg-surface-muted' : 'bg-white'"
             >
-              <div
-                class="absolute inset-0 opacity-30"
-                style="background: radial-gradient(circle at 30% 30%, rgba(85, 173, 115, 0.15), transparent 60%);"
-              />
-              <div class="relative text-center p-8">
+              <template v-if="s.url">
+                <img :src="s.url" :alt="s.title" class="w-full h-full object-cover" />
+              </template>
+              <template v-else>
                 <div
-                  class="w-20 h-20 rounded-2xl bg-brand-gradient flex items-center justify-center mx-auto mb-4"
-                >
-                  <Icon :icon="s.icon" class="w-10 h-10 text-white" />
+                  class="absolute inset-0 opacity-30"
+                  style="background: radial-gradient(circle at 30% 30%, rgba(85, 173, 115, 0.15), transparent 60%);"
+                />
+                <div class="relative text-center p-8">
+                  <div
+                    class="w-20 h-20 rounded-2xl bg-brand-gradient flex items-center justify-center mx-auto mb-4"
+                  >
+                    <Icon :icon="s.icon" class="w-10 h-10 text-white" />
+                  </div>
+                  <p class="text-lg font-semibold text-ink-primary">{{ s.title }}</p>
+                  <p class="mt-2 text-sm text-ink-tertiary">产品 Mockup 占位</p>
                 </div>
-                <p class="text-lg font-semibold text-ink-primary">{{ s.title }}</p>
-                <p class="mt-2 text-sm text-ink-tertiary">产品 Mockup 占位</p>
-              </div>
+              </template>
             </div>
           </div>
         </div>
@@ -335,13 +352,13 @@ onUnmounted(() => {
     </section>
 
     <!-- Final CTA -->
-    <section class="relative overflow-hidden py-20 md:py-[120px] bg-white">
+    <section class="relative py-20 md:py-[120px] bg-white overflow-hidden" style="contain: paint;">
       <div
         class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full pointer-events-none"
         style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(80px);"
       />
       <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold text-ink-primary tracking-tight leading-tight whitespace-nowrap">
+        <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold text-ink-primary tracking-tight leading-tight">
           咨询你的专属行业方案，获取一对一支持
         </h2>
         <p class="mt-6 text-lg text-ink-secondary leading-relaxed max-w-2xl mx-auto">
