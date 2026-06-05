@@ -12,8 +12,8 @@ useScrollReveal(rightRef, { y: 30 })
 
 const coreSpecs = [
   { name: '处理器', value: 'Intel® Celeron® N5105/N5100', highlight: '最高 2.9GHz', suffix: '' },
-  { name: '内存', value: '8GB / ', highlight: '16GB', suffix: ' LPDDR5' },
-  { name: '存储', value: '128GB / ', highlight: '256GB', suffix: ' SSD' },
+  { name: '内存', value: '8GB / 16GB', highlight: '', suffix: ' LPDDR5' },
+  { name: '存储', value: '128GB / 256GB', highlight: '', suffix: ' SSD' },
   { name: '显卡', value: 'Intel® UHD Graphics', highlight: '', suffix: '' },
   { name: '屏幕', value: '5.5" IPS 720×1280  G+G5 多点触控', highlight: '', suffix: '' },
   { name: '电池', value: '2500mAh  续航约 ', highlight: '5', suffix: ' 小时' },

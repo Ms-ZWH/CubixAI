@@ -34,12 +34,12 @@ useScrollReveal(rightRef, { y: 30, delay: 0.15 })
       >
         <!-- 左侧 -->
         <div ref="leftRef">
-          <Chip class="!bg-[#433487]/10 !text-[#433487]">SOFTWARE · AI AGENT OS</Chip>
+          <!-- <Chip class="!bg-[#433487]/10 !text-[#433487]">SOFTWARE · AI AGENT OS</Chip> -->
 
           <h1
             class="mt-6 text-[48px] md:text-[64px] lg:text-[72px] font-semibold text-ink-primary leading-[1.08] tracking-[-0.03em]"
           >
-            ChatU · 才兔<br />
+            ChatU（才兔）<br />
             <span
               class="text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-primary"
             >

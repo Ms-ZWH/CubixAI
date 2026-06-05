@@ -56,8 +56,8 @@ const platformList = [
                 <img v-else-if="p.svgId === 'feishu'" src="@/assets/icon/fs.png" class="w-8 h-8 object-contain" alt="飞书" />
                 <img v-else-if="p.svgId === 'dingtalk'" src="@/assets/icon/dd.png" class="w-8 h-8 object-contain" alt="钉钉" />
                 <img v-else-if="p.svgId === 'weixin'" src="@/assets/icon/wx.png" class="w-8 h-8 object-contain" alt="微信" />
-                <img v-else-if="p.svgId === 'weibo'" src="@/assets/icon/wb.png" class="w-8 h-8 object-contain" alt="微博" />
-                <img v-else-if="p.svgId === 'douyin'" src="@/assets/icon/dy.png" class="w-8 h-8 object-contain" alt="抖音" />
+                <img v-else-if="p.svgId === 'weibo'" src="@/assets/icon/xhs.png" class="w-8 h-8 object-contain" alt="微博" />
+                <img v-else-if="p.svgId === 'douyin'" src="@/assets/icon/qywx.png" class="w-8 h-8 object-contain" alt="抖音" />
                 <span class="text-xs font-medium text-ink-secondary text-center">{{ p.name }}</span>
               </div>
           </div>

@@ -3,6 +3,8 @@ import { ref, onMounted } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 import { Icon } from '@iconify/vue'
 import PartnersSection from '../sections/PartnersSection.vue'
+import cctvImg1 from '@/assets/st/cctv/c1.png'
+import cctvImg2 from '@/assets/st/cctv/c2.png'
 
 onMounted(() => {
   const hash = window.location.hash
@@ -71,11 +73,11 @@ useScrollReveal(cctvRef, { y: 20, delay: 0.3 })
 
 const events = [
   { name: '韩国 SOUTH SUMMIT', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg.png' },
-  { name: '香港贸发局活动', location: '香港', desc: 'TODO: 活动说明占位', image: 'xg.png' },
+  { name: '中国 香港贸发局活动', location: '香港', desc: 'TODO: 活动说明占位', image: 'xg.png' },
   { name: 'SpaceX 活动', location: '哈灵顿', desc: 'TODO: 活动说明占位', image: 'hld.png' },
-  { name: 'Microsoft 总部', location: '西雅图', desc: 'TODO: 活动说明占位', image: 'xyt.png' },
-  { name: 'NVIDIA GTC', location: '硅谷', desc: 'TODO: 活动说明占位', image: 'ywd.png' },
-  { name: '伦敦 PEC 国际', location: 'Everyman Canary Wharf', desc: 'TODO: 活动说明占位', image: 'ld.png' },
+  { name: '美国 Microsoft MVP Global Summit', location: '西雅图', desc: 'TODO: 活动说明占位', image: 'xyt.png' },
+  { name: '美国 NVIDIA GTC 2026', location: '硅谷', desc: 'TODO: 活动说明占位', image: 'ywd.png' },
+  { name: '英国 PEC 国际', location: '伦敦', desc: 'TODO: 活动说明占位', image: 'ld.png' },
 ]
 
 /* ========================
@@ -184,10 +186,10 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
       />
       <div ref="heroRef" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl md:text-5xl lg:text-[64px] font-semibold text-ink-primary leading-tight tracking-tight">
-          一家 AI 原生公司
+          一家原生的通用人工智能公司
         </h1>
         <p class="mt-6 text-xl md:text-2xl text-ink-secondary">
-          为企业 AI 落地，搭好最后三公里
+          专为推动企业AI应用而生，解决企业AI落地最后三公里
         </p>
       </div>
     </section>
@@ -265,7 +267,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
             class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all duration-300"
           >
             <div class="aspect-video rounded-xl bg-surface-muted border border-line/50 overflow-hidden mb-4">
-              <img v-if="e.image" :src="getQqUrl(e.image)" class="w-full h-full object-cover" alt="" />
+              <img v-if="e.image" :src="getQqUrl(e.image)" class="w-full h-full" :class="e.image === 'ywd.png' ? 'object-top' : 'object-cover'" alt="" />
               <span v-else class="flex items-center justify-center h-full text-xs text-ink-tertiary">场地图占位</span>
             </div>
             <h3 class="text-base font-semibold text-ink-primary">{{ e.name }}</h3>
@@ -277,7 +279,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
         <!-- CCTV 背书 -->
         <div
           ref="cctvRef"
-          class="max-w-2xl mx-auto p-6 rounded-2xl bg-surface-base border border-line/50 text-center"
+          class="max-w-7xl mx-auto p-6 rounded-2xl bg-surface-base border border-line/50 text-center"
         >
           <div class="flex items-center justify-center gap-3 mb-2">
             <Icon icon="lucide:tv" class="w-5 h-5 text-gold" />
@@ -285,9 +287,25 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
               CCTV-2《赢在 AI+》栏目
             </span>
           </div>
-          <p class="text-sm text-ink-secondary">
+          <p class="text-sm text-ink-secondary mb-5">
             软积木 CTO 邹健 & ChatU 登上央视财经频道
           </p>
+          <div class="grid grid-cols-2 gap-4 md:gap-6">
+            <div class="rounded-xl overflow-hidden h-56 md:h-80">
+              <img
+                :src="cctvImg1"
+                alt="CCTV-2 赢在 AI+ 栏目截图 1"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden h-56 md:h-80">
+              <img
+                :src="cctvImg2"
+                alt="CCTV-2 赢在 AI+ 栏目截图 2"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </div>
 
         <p class="mt-8 text-center text-xs text-ink-tertiary">

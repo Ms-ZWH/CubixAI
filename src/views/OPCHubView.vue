@@ -8,6 +8,8 @@ import { useCountUp } from '../composables/useCountUp'
 import Chip from '../components/Chip.vue'
 import BrandButton from '../components/BrandButton.vue'
 
+const opc1Img = new URL('@/assets/opc1.png', import.meta.url).href
+
 const leftRef = ref(null)
 const rightRef = ref(null)
 
@@ -118,6 +120,13 @@ const solutions = [
   { title: 'AI 工具链', desc: '集成一站式 AI 开发与营销工具，提升效率。' },
   { title: '政策护航', desc: '引入法律和财务服务，降低运营风险。' },
   { title: '生态互联', desc: '构建创新网络，促进合作与价值孵化。' },
+]
+
+const kcImages = [
+  new URL('@/assets/kc/微信图片_20260602122120_485_111.png', import.meta.url).href,
+  new URL('@/assets/kc/微信图片_20260602122135_486_111.png', import.meta.url).href,
+  new URL('@/assets/kc/微信图片_20260602122148_487_111.png', import.meta.url).href,
+  new URL('@/assets/kc/微信图片_20260602122353_488_111.png', import.meta.url).href,
 ]
 
 const services = [
@@ -236,236 +245,63 @@ const cases = [
       </div>
     </section>
 
-    <!-- ==================== Section: OPC Value Proposition ==================== -->
-    <section class="py-20 md:py-[120px] bg-white">
+    <!-- ==================== Section: 三大服务方向 ==================== -->
+    <section class="py-20 md:py-[120px] bg-white fade-in-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section title -->
-        <div ref="vpTitleRef" class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-[#1A1A1A] tracking-tight">
-            OPC Hub 价值体系
-          </h2>
-          <p class="mt-4 text-lg text-[#666666]">
-            赋能产业园区，成就超级个体
-          </p>
-        </div>
-
-        <!-- Left + Right columns -->
-        <div ref="vpColumnsRef" class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-
-          <!-- Left: 面向产业园区 -->
-          <div class="p-8 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] hover:shadow-lg transition-all duration-300">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
-                <Icon icon="lucide:building-2" class="w-5 h-5 text-[#F04045]" />
-              </div>
-              <h3 class="text-xl font-bold text-[#1A1A1A]">面向产业园区</h3>
-            </div>
-            <ul class="space-y-4">
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">模式升级：</span>
-                  <span class="text-[#666666]">从房东变价值孵化器，多元盈利</span>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">AI 底座：</span>
-                  <span class="text-[#666666]">交付OPC Hub 平台，统一 AI 能力、算力调度</span>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">算力管理：</span>
-                  <span class="text-[#666666]">建园区算力池，算力券发放监管</span>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">生态运营：</span>
-                  <span class="text-[#666666]">垂直招商、数字运营，聚超级个体</span>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">政策对接：</span>
-                  <span class="text-[#666666]">匹配 AI / 数字经济政策，降运营成本</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Right: 面向创业者（OPC） -->
-          <div class="p-8 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] hover:shadow-lg transition-all duration-300">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
-                <Icon icon="lucide:users" class="w-5 h-5 text-[#F04045]" />
-              </div>
-              <h3 class="text-xl font-bold text-[#1A1A1A]">面向创业者（OPC）</h3>
-            </div>
-            <ul class="space-y-4">
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">破枷锁：</span>
-                  <span class="text-[#666666]">共享算力、AI 工具链、生态互联</span>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">空间：</span>
-                  <span class="text-[#666666]">私人工作站 + 共享专业场地</span>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">赋能：</span>
-                  <span class="text-[#666666]">AI 课程、认证、创业导师</span>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">资源：</span>
-                  <span class="text-[#666666]">政策 / 法务 / 财务服务，对接资本</span>
-                </div>
-              </li>
-              <li class="flex gap-3">
-                <span class="w-5 h-5 rounded-full bg-[#F04045]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Icon icon="lucide:arrow-right" class="w-3 h-3 text-[#F04045]" />
-                </span>
-                <div>
-                  <span class="font-semibold text-[#1A1A1A]">提效：</span>
-                  <span class="text-[#666666]">低成本用 AI，效率升 10 倍、成本降 30%-50%</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        <!-- Bottom: OPC Hub 核心支撑 -->
-        <!-- <div ref="vpBottomRef" class="mt-12 p-8 md:p-10 rounded-2xl bg-gradient-to-br from-[#F04045]/5 to-white border border-[#F04045]/10">
-          <h3 class="text-xl md:text-2xl font-bold text-[#1A1A1A] text-center mb-8">
-            OPC Hub 核心支撑
-          </h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="text-center p-6 rounded-xl bg-white/80">
-              <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center mx-auto mb-3">
-                <Icon icon="lucide:building" class="w-5 h-5 text-[#F04045]" />
-              </div>
-              <h4 class="font-bold text-[#1A1A1A] mb-2">对园区</h4>
-              <p class="text-sm text-[#666666] leading-relaxed">AI 中枢，管算力、统 AI、助运营升级</p>
-            </div>
-            <div class="text-center p-6 rounded-xl bg-white/80">
-              <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center mx-auto mb-3">
-                <Icon icon="lucide:zap" class="w-5 h-5 text-[#F04045]" />
-              </div>
-              <h4 class="font-bold text-[#1A1A1A] mb-2">对创业者</h4>
-              <p class="text-sm text-[#666666] leading-relaxed">生产力底座，降 AI 门槛、提创业效率</p>
-            </div>
-            <div class="text-center p-6 rounded-xl bg-white/80">
-              <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center mx-auto mb-3">
-                <Icon icon="lucide:git-branch" class="w-5 h-5 text-[#F04045]" />
-              </div>
-              <h4 class="font-bold text-[#1A1A1A] mb-2">对生态</h4>
-              <p class="text-sm text-[#666666] leading-relaxed">串联枢纽，打通园区、创业者、资本，促协同</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
+          <!-- 左侧：图片 -->
+          <div class="flex items-center justify-center">
+            <div class="w-full rounded-2xl overflow-hidden border border-[#E5E5E5] shadow-sm">
+              <img
+                :src="opc1Img"
+                alt="OPC Hub 场景"
+                class="w-full h-auto object-contain"
+              />
             </div>
           </div>
-        </div> -->
-      </div>
-    </section>
 
-    <!-- ==================== Section: Three Pain Points ==================== -->
-    <section class="py-20 md:py-[120px] bg-[#F5F5F7]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Title -->
-        <div ref="pTitleRef" class="text-center mb-14">
-          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-[#1A1A1A] tracking-tight">
-            OPC 的三大枷锁
-          </h2>
-          <p class="mt-4 text-lg text-[#666666]">
-            这些障碍，正在束缚最有创造力的人
-          </p>
-        </div>
-
-        <!-- Problem Cards -->
-        <div ref="pCardsRef" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div
-            v-for="(c, i) in chains"
-            :key="c.title"
-            class="group p-8 rounded-2xl bg-white border border-[#E5E5E5] hover:border-[#F04045]/20 hover:shadow-lg transition-all duration-300"
-          >
-            <div class="w-12 h-12 rounded-xl bg-[#F04045]/10 flex items-center justify-center mb-5 group-hover:bg-[#F04045]/20 transition-colors">
-              <Icon v-if="i === 0" icon="lucide:shield-alert" class="w-6 h-6 text-[#F04045]" />
-              <Icon v-else-if="i === 1" icon="lucide:gauge" class="w-6 h-6 text-[#F04045]" />
-              <Icon v-else icon="lucide:wifi-off" class="w-6 h-6 text-[#F04045]" />
+          <!-- 右侧：三个卡片 -->
+          <div class="flex flex-col gap-4">
+            <!-- 为企业 -->
+            <div class="flex-1 p-6 md:p-8 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] hover:shadow-lg transition-all duration-300">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
+                  <Icon icon="lucide:user" class="w-5 h-5 text-[#F04045]" />
+                </div>
+                <h3 class="text-xl font-bold text-[#1A1A1A]">为企业（一人公司）</h3>
+              </div>
+              <p class="text-sm text-[#666666] leading-relaxed">
+                提供普惠算力、一站式AI工具链、法律与政策护航、社群生态及导师培训，通过OPC Hub平台降低大模型使用门槛，助力"超级个体"高效创业。
+              </p>
             </div>
-            <h3 class="text-xl font-semibold text-[#1A1A1A] mb-3">{{ c.title }}</h3>
-            <p class="text-[#666666] leading-relaxed">{{ c.desc }}</p>
+
+            <!-- 为园区 -->
+            <div class="flex-1 p-6 md:p-8 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] hover:shadow-lg transition-all duration-300">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
+                  <Icon icon="lucide:building-2" class="w-5 h-5 text-[#F04045]" />
+                </div>
+                <h3 class="text-xl font-bold text-[#1A1A1A]">为园区</h3>
+              </div>
+              <p class="text-sm text-[#666666] leading-relaxed">
+                部署园区级AI能力底座（OPC Hub系统），实现算力统筹、算力券监管、多模型调度，配套培训、活动与投资模式转型，推动园区从空间出租升级为AI产业协同平台。
+              </p>
+            </div>
+
+            <!-- 为学校 -->
+            <div class="flex-1 p-6 md:p-8 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] hover:shadow-lg transition-all duration-300">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
+                  <Icon icon="lucide:graduation-cap" class="w-5 h-5 text-[#F04045]" />
+                </div>
+                <h3 class="text-xl font-bold text-[#1A1A1A]">对学校</h3>
+              </div>
+              <p class="text-sm text-[#666666] leading-relaxed">
+                <!-- 内容待补充 -->
+              </p>
+            </div>
           </div>
         </div>
-
-        <!-- Bottom CTA -->
-        <div ref="pBottomRef" class="mt-14 text-center">
-          <p class="text-lg md:text-xl font-semibold text-[#F04045]">
-            这些枷锁，束缚着最有创造力的人。
-          </p>
-          <p class="mt-2 text-sm text-[#999999]">
-            OPC Hub 为你打破一切
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== Section 4: Solution + Platform ==================== -->
-    <section class="py-20 md:py-[120px] bg-[#F5F5F7] fade-in-section">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-center mb-12">
-          OPC Hub：全要素赋能解决方案
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          <div
-            v-for="(s, i) in solutions"
-            :key="s.title"
-            class="p-6 rounded-xl bg-white border border-[#E5E5E5] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-          >
-            <div class="flex items-center gap-3 mb-3">
-              <span class="w-8 h-8 rounded-lg bg-[#F04045] text-white flex items-center justify-center text-sm font-bold">
-                {{ i + 1 }}
-              </span>
-              <h3 class="text-lg font-bold">{{ s.title }}</h3>
-            </div>
-            <p class="text-[#666666]">{{ s.desc }}</p>
-          </div>
-        </div>
-        <p class="text-center text-sm font-medium text-[#666666]">
-          政策支持：从房东到价值孵化器
-        </p>
       </div>
     </section>
 
@@ -800,11 +636,12 @@ const cases = [
             <h4 class="text-base font-bold text-[#F04045] mb-3">课程</h4>
             <p class="text-sm text-[#666666] mb-3">打造从基础到实战的系统化 AI 课程，赋能学员快速掌握前沿 AI 技能。</p>
             <div class="grid grid-cols-2 gap-3 flex-1 items-center">
-              <div class="rounded-lg overflow-hidden h-32">
-                <img src="@/assets/st/kc/2.jpeg" class="w-full h-full object-cover" alt="" />
-              </div>
-              <div class="rounded-lg overflow-hidden h-32">
-                <img src="@/assets/st/kc/3.jpg" class="w-full h-full object-cover" alt="" />
+              <div
+                v-for="img in kcImages"
+                :key="img"
+                class="rounded-lg overflow-hidden bg-[#F5F5F7] h-24 md:h-28 flex items-center justify-center"
+              >
+                <img :src="img" alt="课程" class="w-full h-full object-contain" />
               </div>
             </div>
           </div>
@@ -817,13 +654,15 @@ const cases = [
                 <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-44 mb-2">
                   <img src="@/assets/st/sj/24xs.png" class="w-full h-full object-contain" alt="24 小时精通 AI Agent" />
                 </div>
-                <p class="text-xs font-semibold text-[#1A1A1A]">《24 小时精通 AI Agent》</p>
+                <p class="text-xs font-semibold text-[#1A1A1A]">《二十四小时 AI Agent》</p>
+                <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">可快速上手实操AI的畅销书。</p>
               </div>
               <div class="text-center">
                 <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-44 mb-2">
                   <img src="@/assets/st/sj/jsAI.png" class="w-full h-full object-contain" alt="解锁 AI 力量" />
                 </div>
                 <p class="text-xs font-semibold text-[#1A1A1A]">《解锁 AI 力量》</p>
+                <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">（中央党校出版社）：AI行业全景发展的权威读本。</p>
               </div>
             </div>
           </div>
@@ -843,29 +682,29 @@ const cases = [
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <div class="p-6 rounded-xl bg-[#F5F5F7] border border-[#E5E5E5]">
-            <span class="text-[#F04045] font-bold text-sm">01</span>
+            <!-- <span class="text-[#F04045] font-bold text-sm">01</span> -->
             <h4 class="font-bold mt-2 mb-2">OPC 体系持续成长</h4>
-            <p class="text-sm text-[#666666]">从方法论到平台化，从工具能力到系统能力，让 OPC 形成可复制、可扩展的产业操作体系。</p>
+            <p class="text-sm text-[#666666]">从方法论到平台化，从工具能力到系统能力，让OPC 形成可复制、可扩展的产业操作体系。</p>
           </div>
           <div class="p-6 rounded-xl bg-[#F5F5F7] border border-[#E5E5E5]">
-            <span class="text-[#F04045] font-bold text-sm">02</span>
+            <!-- <span class="text-[#F04045] font-bold text-sm">02</span> -->
             <h4 class="font-bold mt-2 mb-2">园区能力不断进化</h4>
             <p class="text-sm text-[#666666]">园区不再是空间载体，而是集算力、人才、企业与服务于一体的智能协同平台。</p>
           </div>
           <div class="p-6 rounded-xl bg-[#F5F5F7] border border-[#E5E5E5]">
-            <span class="text-[#F04045] font-bold text-sm">03</span>
+            <!-- <span class="text-[#F04045] font-bold text-sm">03</span> -->
             <h4 class="font-bold mt-2 mb-2">产业规模持续扩大</h4>
             <p class="text-sm text-[#666666]">随着企业接入、应用落地与生态聚集，OPC 产业生态呈现出可持续放大的网络效应。</p>
           </div>
           <div class="p-6 rounded-xl bg-[#F5F5F7] border border-[#E5E5E5]">
-            <span class="text-[#F04045] font-bold text-sm">04</span>
+            <!-- <span class="text-[#F04045] font-bold text-sm">04</span> -->
             <h4 class="font-bold mt-2 mb-2">服务能力同步增强</h4>
             <p class="text-sm text-[#666666]">我们在平台、课程、算力、导师与运营体系上的能力持续升级，为园区提供长期、稳定、可演进的支撑。</p>
           </div>
         </div>
 
         <p class="text-center text-2xl md:text-3xl font-bold text-[#F04045] mb-12">
-          同频进化，与 AI 发展共同成长
+          OPC Hub：园区级 AI 能力生产与交易平台
         </p>
 
         <div class="text-center">

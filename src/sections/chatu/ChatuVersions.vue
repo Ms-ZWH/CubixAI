@@ -127,7 +127,7 @@ const versions = [
         </div>
       </div>
 
-      <p class="mt-10 text-center text-sm text-ink-secondary">
+      <p class="mt-10 text-center text-base md:text-lg font-bold text-ink-primary">
         全部版本均支持私有化部署
       </p>
     </div>

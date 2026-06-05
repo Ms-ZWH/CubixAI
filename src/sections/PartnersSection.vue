@@ -5,28 +5,20 @@ import { useScrollReveal } from '../composables/useScrollReveal'
 import microsoftLogo from '@/assets/Microsoft.png'
 
 const titleRef = ref<HTMLElement | null>(null)
-const marqueeRef = ref<HTMLElement | null>(null)
 
 useScrollReveal(titleRef, { y: 30 })
-
-function pauseMarquee() {
-  marqueeRef.value?.classList.add('paused')
-}
-
-function resumeMarquee() {
-  marqueeRef.value?.classList.remove('paused')
-}
 
 interface Partner {
   name: string
   icon: string
   color: string
   image?: string
+  bg?: string
 }
 
 const partners: Partner[] = [
   { name: 'Microsoft', icon: 'simple-icons:microsoft', color: '#737373', image: microsoftLogo },
-  { name: 'OpenAI', icon: 'simple-icons:openai', color: '#412991' },
+  { name: 'OpenAI', icon: 'simple-icons:openai', color: '#FFFFFF', bg: '#000000' },
   { name: 'NVIDIA', icon: 'simple-icons:nvidia', color: '#76B900' },
   { name: 'Amazon', icon: 'simple-icons:amazon', color: '#FF9900' },
   { name: 'Oracle', icon: 'simple-icons:oracle', color: '#F80000' },
@@ -45,104 +37,71 @@ const partners: Partner[] = [
           合作伙伴
         </h2>
       </div>
-    </div>
 
-    <!-- Marquee -->
-    <div
-      ref="marqueeRef"
-      class="relative w-full"
-      @mouseenter="pauseMarquee"
-      @mouseleave="resumeMarquee"
-    >
-      <!-- Gradient masks -->
-      <div
-        class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10"
-        style="background: linear-gradient(to right, #FAFAF7, transparent);"
-      />
-      <div
-        class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10"
-        style="background: linear-gradient(to left, #FAFAF7, transparent);"
-      />
-
-      <div class="flex marquee-track">
-        <!-- First set -->
-        <div
-          v-for="p in partners"
-          :key="p.name"
-          class="flex-shrink-0 flex items-center gap-3 px-6 md:px-8"
-        >
+      <!-- 两行静态展示 -->
+      <div class="space-y-4 md:space-y-6">
+        <!-- 第一行 -->
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6">
           <div
-            class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-xl bg-surface-muted border border-line/50 transition-colors duration-300 hover:bg-white hover:shadow-sm group"
+            v-for="p in partners.slice(0, 4)"
+            :key="p.name"
+            class="w-[calc(50%-0.5rem)] md:w-52 flex flex-col items-center gap-3 px-4 py-5 md:py-6 rounded-2xl bg-white border border-line/50 shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1"
           >
-            <img
-              v-if="p.image"
-              :src="p.image"
-              :alt="p.name"
-              class="w-5 h-5 md:w-6 md:h-6 object-contain"
-            />
-            <Icon
-              v-else
-              :icon="p.icon"
-              class="w-5 h-5 md:w-6 md:h-6 transition-colors duration-300"
-              :style="{ color: p.color }"
-            />
+            <div
+              class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-xl border border-line/50 transition-colors duration-300"
+              :class="p.bg ? '' : 'bg-surface-muted'"
+              :style="p.bg ? { backgroundColor: p.bg } : {}"
+            >
+              <img
+                v-if="p.image"
+                :src="p.image"
+                :alt="p.name"
+                class="w-7 h-7 md:w-8 md:h-8 object-contain"
+              />
+              <Icon
+                v-else
+                :icon="p.icon"
+                class="w-7 h-7 md:w-8 md:h-8"
+                :style="{ color: p.color }"
+              />
+            </div>
+            <span class="text-base md:text-lg font-medium text-ink-secondary">
+              {{ p.name }}
+            </span>
           </div>
-          <span
-            class="text-sm md:text-base font-medium text-ink-secondary whitespace-nowrap transition-colors duration-300 hover:text-ink-primary cursor-default"
-          >
-            {{ p.name }}
-          </span>
         </div>
 
-        <!-- Duplicate set for seamless loop -->
-        <div
-          v-for="p in partners"
-          :key="`${p.name}-dup`"
-          class="flex-shrink-0 flex items-center gap-3 px-6 md:px-8"
-        >
+        <!-- 第二行 -->
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6">
           <div
-            class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-xl bg-surface-muted border border-line/50 transition-colors duration-300 hover:bg-white hover:shadow-sm group"
+            v-for="p in partners.slice(4)"
+            :key="p.name"
+            class="w-[calc(33.333%-0.75rem)] md:w-52 flex flex-col items-center gap-3 px-4 py-5 md:py-6 rounded-2xl bg-white border border-line/50 shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1"
           >
-            <img
-              v-if="p.image"
-              :src="p.image"
-              :alt="p.name"
-              class="w-5 h-5 md:w-6 md:h-6 object-contain"
-            />
-            <Icon
-              v-else
-              :icon="p.icon"
-              class="w-5 h-5 md:w-6 md:h-6 transition-colors duration-300"
-              :style="{ color: p.color }"
-            />
+            <div
+              class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-xl border border-line/50 transition-colors duration-300"
+              :class="p.bg ? '' : 'bg-surface-muted'"
+              :style="p.bg ? { backgroundColor: p.bg } : {}"
+            >
+              <img
+                v-if="p.image"
+                :src="p.image"
+                :alt="p.name"
+                class="w-7 h-7 md:w-8 md:h-8 object-contain"
+              />
+              <Icon
+                v-else
+                :icon="p.icon"
+                class="w-7 h-7 md:w-8 md:h-8"
+                :style="{ color: p.color }"
+              />
+            </div>
+            <span class="text-base md:text-lg font-medium text-ink-secondary">
+              {{ p.name }}
+            </span>
           </div>
-          <span
-            class="text-sm md:text-base font-medium text-ink-secondary whitespace-nowrap transition-colors duration-300 hover:text-ink-primary cursor-default"
-          >
-            {{ p.name }}
-          </span>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.marquee-track {
-  animation: marquee-scroll 30s linear infinite;
-  width: max-content;
-}
-
-.paused .marquee-track {
-  animation-play-state: paused;
-}
-</style>

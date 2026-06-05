@@ -72,7 +72,7 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
                 to="/contact"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                课程培训
+                咨询培训
               </RouterLink>
             </li>
           </ul>

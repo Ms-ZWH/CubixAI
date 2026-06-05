@@ -1,7 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import chatuMateImg from '@/assets/ChatUMate.png'
+
+const platformIcons = [
+  { name: '微信', src: new URL('@/assets/icon/wx.png', import.meta.url).href },
+  { name: '飞书', src: new URL('@/assets/icon/fs.png', import.meta.url).href },
+  { name: '钉钉', src: new URL('@/assets/icon/dd.png', import.meta.url).href },
+  { name: '企业微信', src: new URL('@/assets/icon/qywx.png', import.meta.url).href },
+  { name: 'QQ', src: new URL('@/assets/icon/QQ.png', import.meta.url).href },
+  { name: 'ChatU', src: new URL('@/assets/icon/chatu2.png', import.meta.url).href },
+  { name: '更多...', icon: 'lucide:plus', color: '#9CA3AF' },
+]
 
 const contentRef = ref<HTMLElement | null>(null)
 
@@ -22,7 +33,7 @@ useScrollReveal(contentRef, { y: 30, delay: 0.2 })
               专属操作系统
             </span>
             <h2 class="text-2xl md:text-3xl font-semibold text-ink-primary">
-              ChatU Mate &middot; Agent 指挥中心
+              ChatU Mate
             </h2>
             <p class="mt-3 text-ink-secondary">
               一个人 + 一台设备 + 一套系统 = 完整工作闭环
@@ -32,7 +43,7 @@ useScrollReveal(contentRef, { y: 30, delay: 0.2 })
             <img
               :src="chatuMateImg"
               alt="ChatU Mate 系统界面"
-              class="w-full h-full object-cover rounded-2xl border border-line/50"
+              class="w-full h-full object-contain rounded-2xl border border-line/50"
             />
           </div>
         </div>
@@ -42,29 +53,54 @@ useScrollReveal(contentRef, { y: 30, delay: 0.2 })
           <div
             class="flex-1 p-6 rounded-2xl bg-white border border-line/50 shadow-sm hover:shadow-card hover:border-[#2DB4E6]/20 transition-all duration-300 flex flex-col justify-center"
           >
-            <h3 class="text-lg font-semibold text-ink-primary">Agent 双引擎</h3>
+            <h3 class="text-lg font-semibold text-ink-primary">多智能体管控</h3>
             <p class="mt-2 text-sm text-ink-secondary">
-              OpenClaw + Hermes Agent 原生内置
+               OpenClaw + Hermes Agent 原生内置，可执行聊天、搜索、定时任务等操作，覆盖多智能体调度。
             </p>
-            <p class="mt-1 text-sm text-ink-tertiary">一键启动，无需配置</p>
+            <p class="mt-1 text-sm text-ink-tertiary">内置丰富的智能体，一键调用</p>
           </div>
           <div
             class="flex-1 p-6 rounded-2xl bg-white border border-line/50 shadow-sm hover:shadow-card hover:border-[#2DB4E6]/20 transition-all duration-300 flex flex-col justify-center"
           >
-            <h3 class="text-lg font-semibold text-ink-primary">Skills 生态</h3>
+            <h3 class="text-lg font-semibold text-ink-primary">全能 Skills</h3>
             <p class="mt-2 text-sm text-ink-secondary">
-              自研 Skills 平台，杜绝外部技能入侵
+              内置多场景技能统一调度模块，支持快速调用与灵活编排，持续扩展第三方能力，且统一计费。
             </p>
-            <p class="mt-1 text-sm text-ink-tertiary">多模态技能统一调度</p>
+            <p class="mt-1 text-sm text-ink-tertiary">多模态、多技能统一调度中心</p>
           </div>
           <div
             class="flex-1 p-6 rounded-2xl bg-white border border-line/50 shadow-sm hover:shadow-card hover:border-[#2DB4E6]/20 transition-all duration-300 flex flex-col justify-center"
           >
-            <h3 class="text-lg font-semibold text-ink-primary">平台互联</h3>
+            <h3 class="text-lg font-semibold text-ink-primary">主流社交平台接入</h3>
             <p class="mt-2 text-sm text-ink-secondary">
-              微信 &middot; 飞书 &middot; 钉钉 &middot; QQ 全打通
+              <!-- 微信 &middot; 飞书 &middot; 钉钉 &middot; QQ 全打通 -->
+              快速打通微信、飞书、钉钉、QQ，实现多端对话与任务下发。
+
             </p>
-            <p class="mt-1 text-sm text-ink-tertiary">移动端远程操作</p>
+            <div class="mt-3 flex items-center gap-2 flex-wrap">
+              <div
+                v-for="p in platformIcons"
+                :key="p.name"
+                class="rounded-lg bg-white flex items-center justify-center"
+                :class="p.name === 'ChatU' ? 'w-14 h-14 md:w-16 md:h-16' : 'w-9 h-9 md:w-10 md:h-10'"
+                :title="p.name"
+              >
+                <img
+                  v-if="p.src"
+                  :src="p.src"
+                  :alt="p.name"
+                  class="object-contain"
+                  :class="p.name === 'ChatU' ? 'w-10 h-10 md:w-12 md:h-12' : 'w-5 h-5 md:w-6 md:h-6'"
+                />
+                <span
+                  v-else
+                  class="text-[10px] md:text-xs font-medium text-ink-tertiary"
+                >
+                  {{ p.name }}
+                </span>
+              </div>
+            </div>
+            <p class="mt-2 text-sm text-ink-tertiary">移动端远程操作</p>
           </div>
         </div>
       </div>

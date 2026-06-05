@@ -34,10 +34,10 @@ useScrollReveal(rightRef, { y: 30, delay: 0.15 })
       >
         <!-- 左侧 -->
         <div ref="leftRef">
-          <div class="flex flex-wrap gap-2">
+          <!-- <div class="flex flex-wrap gap-2">
             <Chip variant="gold">HARDWARE</Chip>
             <Chip class="!bg-[#E6F5FB] !text-[#1A8BC4]">AI WORKSTATION</Chip>
-          </div>
+          </div> -->
 
           <h1
             class="mt-6 text-[40px] md:text-[56px] lg:text-[72px] font-semibold text-ink-primary leading-[1.08] tracking-[-0.03em] whitespace-nowrap"
@@ -68,9 +68,9 @@ useScrollReveal(rightRef, { y: 30, delay: 0.15 })
             <span class="w-1 h-1 rounded-full bg-ink-tertiary" />
             <span>本地安全</span>
             <span class="w-1 h-1 rounded-full bg-ink-tertiary" />
-            <span>双引擎架构</span>
+            <span>预置智能体</span>
             <span class="w-1 h-1 rounded-full bg-ink-tertiary" />
-            <span>全程可视</span>
+            <span>高清触控可视屏</span>
           </div>
 
           <div class="mt-8 flex flex-wrap items-center gap-4">

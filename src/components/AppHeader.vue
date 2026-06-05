@@ -76,7 +76,7 @@ const navItems = [
                   <Icon icon="lucide:message-square" class="w-5 h-5 text-brand" />
                 </div>
                 <div>
-                  <div class="font-semibold text-ink-primary">ChatU</div>
+                  <div class="font-semibold text-ink-primary">ChatU（才兔）</div>
                   <div class="text-sm text-ink-secondary mt-0.5">
                     企业级 AI 对话平台
                   </div>
@@ -246,7 +246,7 @@ const navItems = [
         class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
         @click="mobileOpen = false"
       >
-        课程培训
+        咨询培训
       </RouterLink>
       <div class="border-t border-line/50 my-2" />
       <RouterLink

@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
-import IndustryNav from '../components/IndustryNav.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -20,6 +19,7 @@ interface Solution {
   pain: string
   icon: string
   url?: string
+  cpsm: string
 }
 
 const jjfaImages: Record<string, string> = {
@@ -35,90 +35,198 @@ const jjfaImages: Record<string, string> = {
 
 const solutions: Solution[] = [
   {
-    id: 'gov',
-    title: '央企/国企/政务办公',
-    subtitle: 'Government & Enterprise',
-    tags: ['私有化部署', '三级权限管理', '多模型切换', 'Token 管控'],
-    scenes: ['公文起草', '会议纪要生成', '跨部门文档翻译', '数据报表自动化', '内网知识库检索'],
-    pain: '政务及大型企业对数据安全与合规性要求极高，跨部门协同效率低、重复性文书工作繁重。',
-    icon: 'lucide:landmark',
+    id: 'telecom',
+    title: '通信 / IT服务',
+    subtitle: 'Telecom & IT Services',
+    tags: ['技术密集', '文档繁杂', '标书众多', '流程规范', '高合规要求'],
+    scenes: ['技术标书与方案文档快速撰写', '日常办公自动化（任务分配、会议纪要）', '客户技术问答支持', '项目文档版本管理与校对'],
+    pain: '缩短标书撰写周期，统一文档规范，释放技术人员行政事务压力。',
+    icon: 'lucide:server',
     url: jjfaImages.yq,
+    cpsm: '基于ChatU快速生成技术标书、方案建议书和故障处理报告；与内部OA、项目管理工具打通，实现文档自动归集、版本比对和任务分发；为一线技术工程师提供知识库问答助手。',
   },
   {
-    id: 'park',
-    title: 'OPC科技园区/OPC 生态',
-    subtitle: 'Tech Park & OPC',
-    tags: ['算力中台', '模型管理平台', '全流程陪跑', '产业共建'],
-    scenes: ['AI 基础设施建设', '入驻企业 AI 赋能', '创业者产品孵化', '行业场景共建'],
-    pain: '初创企业想用 AI 但没算力、没技术、没场景，园区产业集群化升级周期长。',
-    icon: 'lucide:building-2',
+    id: 'itdev',
+    title: 'IT / 软件开发',
+    subtitle: 'IT & Software Development',
+    tags: ['代码量大', '版本迭代快', '质量要求高', '文档同步难'],
+    scenes: ['代码自动生成与补全（支持多种语言）', '代码审核、规范检查与漏洞提示', '单元测试用例自动生成', '技术文档与注释自动撰写'],
+    pain: '提升编码与代码审查速度，减少文档滞后，降低缺陷漏检风险。',
+    icon: 'lucide:code-2',
     url: jjfaImages.opc,
-  },
-  {
-    id: 'edu',
-    title: '高校与科研机构',
-    subtitle: 'Education & Research',
-    tags: ['多模态推理', '学术知识库', '论文润色', '24h 咨询'],
-    scenes: ['学术资料检索', '科研论文润色', '校园生活咨询', '心理咨询初筛'],
-    pain: '科研人员在资料搜集与初级分析上耗时巨大，高校咨询服务无法全天候覆盖、人力成本高。',
-    icon: 'lucide:graduation-cap',
-    url: jjfaImages.gx,
-  },
-  {
-    id: 'training',
-    title: '教育培训/在线教育',
-    subtitle: 'Online Education',
-    tags: ['教务智能管理', 'AI 语音助手', '多模态教案', '口语对练'],
-    scenes: ['智能排课', 'AI 助教口语对练', '教案自动化编写', '少儿双语互动教学'],
-    pain: '教务排课繁琐、教案更新迭代慢，在线教育场景下学员互动感与个性化学习体验不足。',
-    icon: 'lucide:book-open',
-    url: jjfaImages.px,
+    cpsm: '依靠ChatU根据注释或需求描述自动生成函数、类及单元测试代码，执行代码规范检查和潜在bug提示；生成API文档、数据库注释及变更日志；支持代码重构建议与遗留系统注释补全。',
   },
   {
     id: 'media',
-    title: '内容创作/自媒体',
-    subtitle: 'Content Creation',
-    tags: ['热点监控', '内容矩阵', '一键分发', '自动互动'],
-    scenes: ['爆点选题筛选', '文章与脚本创作', '粉丝互动自动回复', '创作数据看板'],
-    pain: '创作者灵感枯竭、内容产出频率低，多平台运营的人工分发与互动成本高昂。',
-    icon: 'lucide:video',
+    title: '科技媒体 / 自媒体',
+    subtitle: 'Tech Media & Self-Media',
+    tags: ['内容创作高频', '时效性强', '多渠道分发', '用户互动需求大'],
+    scenes: ['科技资讯实时采编与摘要生成', '多平台（公众号、微博、抖音）内容一键适配', '粉丝评论智能回复与话题分析', '视频脚本、直播提纲自动生成'],
+    pain: '提升内容产出与分发效率，实现7×24小时粉丝互动，降低运营人力成本。',
+    icon: 'lucide:radio',
     url: jjfaImages.nr,
+    cpsm: '运用ChatU实时抓取科技资讯并生成深度解读长文，自动拆解为适合多平台的短文案和标题；设置智能体自动回复评论区常见问题、分析粉丝话题趋势，辅助选题策划。',
+  },
+  {
+    id: 'design',
+    title: '广告 / 设计',
+    subtitle: 'Advertising & Design',
+    tags: ['创意驱动', '高频改稿', '风格多样', '交付周期紧'],
+    scenes: ['营销海报、社交媒体配图生成', '图片风格迁移（如产品图转插画风）', '广告文案与Slogan批量创意', '客户方案视觉草图快速迭代'],
+    pain: ' 加速创意迭代与改稿速度，提升设计效率，降低重复劳动。',
+    icon: 'lucide:palette',
+    url: jjfaImages.nr,
+    cpsm: '通过ChatU进行文生图、图生图及风格迁移，快速生成插画、海报、3D概念等多个风格方案；支持批量输出不同尺寸布局的素材，以及智能扩图、背景移除、高清修复等操作。',
+  },
+  {
+    id: 'edu',
+    title: '教育培训',
+    subtitle: 'Education & Training',
+    tags: ['知识密集', '高频互动', '个性化教学', '语言服务', '效率提升'],
+    scenes: ['学员课后辅导与答疑', '翻译、纠错、口语练习', '教学内容自动生成（教案、习题）', '学员学习进度跟踪与智能提醒'],
+    pain: '减少教师重复性答疑与备课耗时，为学员提供全天候个性化辅导。',
+    icon: 'lucide:graduation-cap',
+    url: jjfaImages.px,
+    cpsm: '借助ChatU搭建全天候智能助教，为学员提供翻译、纠错、知识点问答等实时辅导服务；自动生成课件、习题、考试卷及教案；辅助教师完成作业批改与学情分析。',
+  },
+  {
+    id: 'psych',
+    title: '教育 / 心理咨询',
+    subtitle: 'Education & Psychological Counseling',
+    tags: ['情感交互', '隐私保护', '非专业人力不足', '标准化与个性化平衡'],
+    scenes: ['高校心理咨询中心助理服务', '心理机构来访者初步筛选与情绪陪伴', '咨询师工作流辅助（记录、评估、提醒）', '心理健康知识科普与自助训练'],
+    pain: ' 缓解心理咨询师人力不足，减少文书工作，帮助非专业咨询师提升服务质量。',
+    icon: 'lucide:brain',
+    url: jjfaImages.gx,
+    cpsm: '采用ChatU打造认知增强心理智能体，提供24小时情绪陪伴与心理知识问答；自动完成心理量表评分、风险分级预警及会话摘要生成；为新手咨询师提供标准化干预建议和案例参考。',
   },
   {
     id: 'finance',
-    title: '金融/保险/资产管理',
-    subtitle: 'Finance & Insurance',
-    tags: ['高精度 OCR', '风控建模', '单据自动化', '智能推荐'],
-    scenes: ['票据与定损识别', '理赔风险评估', '金融数据实时预警', '个性化续保方案'],
-    pain: '理赔流程中人工审核周期长、易出错，反欺诈能力与客户服务精准度有待提升。',
-    icon: 'lucide:shield-check',
+    title: '金融 / 资产评估',
+    subtitle: 'Finance & Asset Assessment',
+    tags: ['数据敏感', '评估模型复杂', '报告格式规范', '合规要求高'],
+    scenes: ['资产评估报告自动化生成', '财务报表智能解析与异常检测', '行业数据对比分析与估值建议', '监管报送文档辅助生成'],
+    pain: '避免人工计算与格式错误，将报告撰写周期从数天缩短至数小时。',
+    icon: 'lucide:landmark',
     url: jjfaImages.jr,
+    cpsm: '依托ChatU自动读取企业财报、市场数据，按照监管要求完成模型运算，一键生成包含文字分析、图表和风险提示的评估报告；支持历史报告逻辑一致性校验与合规性审查。',
+  },
+  {
+    id: 'finance2',
+    title: '财务 / 企业服务',
+    subtitle: 'Finance & Enterprise Service',
+    tags: ['票据繁多', '合规严格', '数据录入量大', '周期性工作重复'],
+    scenes: ['发票关键信息自动识别与录入', '财务凭证与报销单智能审核', '银行对账、费用分类自动化', '税务申报表辅助生成'],
+    pain: '减少90%以上手工录入与校对工作，降低人工差错，加速报销流程。',
+    icon: 'lucide:file-text',
+    url: jjfaImages.ds,
+    cpsm: '通过ChatU结合OCR自动识别发票代码、金额、税额等字段并录入系统，智能比对费用标准判断合规性；自动生成记账凭证摘要与科目建议；按月输出费用分析报告与异常预警。',
+  },
+  {
+    id: 'enterprise',
+    title: '企业服务 / 科技管理',
+    subtitle: 'Enterprise Service & Tech Management',
+    tags: ['内部运营支撑', '多系统协同', '数据分析', '效率优化'],
+    scenes: ['办公PPT、周报、会议纪要自动生成', '运营数据智能分析及可视化报告', '项目管理任务自动拆解与提醒', '内部规章制度智能问答'],
+    pain: '自动化处理日常文档与数据整理，加速管理决策，提升跨部门协作效率。',
+    icon: 'lucide:building-2',
+    url: jjfaImages.yq,
+    cpsm: '使用ChatU一键生成PPT演示文稿、会议纪要和周报；连接CRM、ERP、数据库等数据源，支持自然语言查询并自动输出可视化图表和解读；提供规章制度智能问答。',
+  },
+  {
+    id: 'agri',
+    title: '农业 / 种业',
+    subtitle: 'Agriculture & Seed Industry',
+    tags: ['数据驱动育种', '长周期研发', '基因型-表型关联', '科研属性强'],
+    scenes: ['水稻、玉米等品种表型数据查询与分析', '基因型与表型关联智能问答', '育种材料筛选建议', '农业科研成果自动生成报告'],
+    pain: ' 提升育种数据查询与分析效率，加速新品种研发周期。',
+    icon: 'lucide:leaf',
+    url: jjfaImages.opc,
+    cpsm: '利用ChatU构建行业智能体，支持自然语言查询品种性状、基因型、环境数据并生成可视化对比报告；辅助品种审定材料撰写、试验方案设计，将数据资产转化为可对话的知识库。',
   },
   {
     id: 'health',
     title: '医疗健康',
     subtitle: 'Healthcare',
-    tags: ['影像辅助分析', '病历摘要提取', '隐私脱敏', '导诊机器人'],
-    scenes: ['检验单信息提取', '疑似病灶辅助标注', '住院/出院报告生成', '导诊机器人'],
-    pain: '临床医生病历文书压力大，人为疏忽导致的漏诊风险与患者等待报告时间长。',
+    tags: ['高专业壁垒', '文档严谨', '诊断辅助', '数据隐私敏感'],
+    scenes: ['病历与诊断报告自动撰写', '医学文献检索与摘要', '辅助影像报告初步解读', '医生科研论文润色与格式校对'],
+    pain: '大幅减少医生文书书写时间，提高病历规范性与知识获取效率。',
     icon: 'lucide:heart-pulse',
     url: jjfaImages.yl,
+    cpsm: '借助ChatU智能生成入院记录、出院小结、手术记录等结构化病历，支持语音输入转写；基于院内知识库提供用药指导、诊疗指南查询及文献摘要提取；辅助科研论文撰写与数据统计描述。',
   },
   {
     id: 'ecommerce',
-    title: '电商与零售',
+    title: '电商 / 零售',
     subtitle: 'E-commerce & Retail',
-    tags: ['多轮对话', '情绪感知', '自动化售后', '智能导购'],
-    scenes: ['智能售前咨询', '物流/退换货自动化', '负面情绪实时监测', '个性化补偿触发'],
-    pain: '高峰期人工客服响应不及时、准确率低，人力运营成本居高不下。',
+    tags: ['客户咨询量大', '促销节奏快', '售后问题繁杂', '多平台管理'],
+    scenes: ['售前咨询（产品参数、优惠活动）', '售后常见问题自动解答（退换货、物流）', '客户情绪识别与升级人工策略', '商品评价摘要与竞品分析'],
+    pain: '降低客服成本，提升高峰期响应速度，保障客户服务一致性。',
     icon: 'lucide:shopping-cart',
     url: jjfaImages.ds,
+    cpsm: '部署基于ChatU的多渠道智能客服，统一接入淘宝、京东、微信小程序、抖音等平台，实现售前导购、售后自助退换货、物流查询；自动识别客户情绪并转人工，生成未解决问题工单，输出高频客诉分析报告。',
+  },
+  {
+    id: 'insurance',
+    title: '保险业',
+    subtitle: 'Insurance',
+    tags: ['流程长', '单证多', '风控要求高', '客户服务标准化'],
+    scenes: ['车险报案、定损、理赔自动化', '保单信息智能问答', '欺诈风险初步识别', '客户续保提醒与个性化方案推荐'],
+    pain: '缩短理赔处理时间，减少定损争议，提升反欺诈识别能力。',
+    icon: 'lucide:shield-check',
+    url: jjfaImages.jr,
+    cpsm: '基于ChatU实现语音/文字报案信息自动录入，对接定损系统辅助损伤评估；分析历史数据识别异常行为辅助反欺诈；为投保人生成个性化方案推荐、续保提醒及常见问题自助解答。',
+  },
+  {
+    id: 'park',
+    title: '产业园区 / 科创孵化',
+    subtitle: 'Industrial Park & Innovation Incubation',
+    tags: ['空间载体依赖', '招商引资驱动', '政策资源整合', '企业服务密集', 'AI技术赋能需求强烈'],
+    scenes: ['园区数字化转型', '孵化器智能化升级', '政府AI主题产业园建设', '园区内企业AI应用落地'],
+    pain: '帮助园区摆脱单一收租模式，降低算力成本，构建差异化AI生态。',
+    icon: 'lucide:building-2',
+    url: jjfaImages.opc,
+    cpsm: 'OPC Hub为园区统一部署AI底座与算力调度，降低企业使用门槛，支持私有化部署与社群运营。',
+  },
+  {
+    id: 'solo',
+    title: '一人公司 / 超级个体',
+    subtitle: 'Solo Company & Super Individual',
+    tags: ['单人创业', '轻资产运营', 'AI工具依赖', '算力成本敏感', '信息获取滞后'],
+    scenes: ['独立开发者与内容创作者', '自由职业者与小微创业者', 'AI原生个人创业项目', '远程协作的技术创作者'],
+    pain: '解决算力成本高、AI工具获取难、单兵信息孤岛与孤独感问题。',
+    icon: 'lucide:user',
+    url: jjfaImages.yq,
+    cpsm: 'OPC Hub为个人提供低成本共享算力、一站式AI工具链及社群协作网络，降低创业门槛。',
   },
 ]
 
+const categoryTabs = [
+  { id: 'all', label: '全部' },
+  { id: 'tech', label: '信息技术' },
+  { id: 'creative', label: '创意' },
+  { id: 'service', label: '企业服务' },
+  { id: 'industry', label: '实体产业' },
+  { id: 'solo', label: '个体创业' },
+]
+
+const catMap: Record<string, string[]> = {
+  all: ['telecom', 'itdev', 'media', 'design', 'edu', 'psych', 'finance', 'finance2', 'enterprise', 'agri', 'health', 'ecommerce', 'insurance', 'park', 'solo'],
+  tech: ['telecom', 'itdev'],
+  creative: ['media', 'design'],
+  service: ['edu', 'psych', 'finance', 'finance2', 'enterprise'],
+  industry: ['agri', 'health', 'ecommerce', 'insurance', 'park'],
+  solo: ['solo'],
+}
+
+const activeCategory = ref('all')
 const activeIndex = ref(0)
 const containerRef = ref<HTMLElement | null>(null)
 let triggers: ScrollTrigger[] = []
+
+const filteredSolutions = computed(() => {
+  return solutions.filter((s) => catMap[activeCategory.value]?.includes(s.id))
+})
 
 function scrollToSection(index: number) {
   const sections = containerRef.value?.querySelectorAll('.solution-screen')
@@ -127,11 +235,29 @@ function scrollToSection(index: number) {
   }
 }
 
-onMounted(() => {
+function initScrollTriggers() {
+  triggers.forEach((st) => st.kill())
+  triggers = []
+  ScrollTrigger.getAll().forEach((st) => st.kill())
+
   const sections = containerRef.value?.querySelectorAll('.solution-screen')
   if (!sections) return
 
   sections.forEach((section, i) => {
+    const textEl = section.querySelector('.anim-text')
+    const imgEl = section.querySelector('.anim-img')
+
+    // 清理旧动画、重置元素状态
+    if (textEl) {
+      gsap.killTweensOf(textEl)
+      gsap.set(textEl, { clearProps: 'all' })
+    }
+    if (imgEl) {
+      gsap.killTweensOf(imgEl)
+      gsap.set(imgEl, { clearProps: 'all' })
+    }
+
+    // ScrollTrigger 仅用于更新 activeIndex
     const st = ScrollTrigger.create({
       trigger: section,
       start: 'top center',
@@ -141,20 +267,14 @@ onMounted(() => {
     })
     triggers.push(st)
 
-    const textEl = section.querySelector('.anim-text')
-    const imgEl = section.querySelector('.anim-img')
-
+    // 直接播放入场动画，不依赖 scrollTrigger 触发时机，避免切换分类后元素不可见
     if (textEl) {
       gsap.from(textEl, {
         y: 60,
         opacity: 0,
         duration: 0.8,
         ease: 'power2.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
+        delay: i * 0.12,
       })
     }
 
@@ -165,19 +285,36 @@ onMounted(() => {
         opacity: 0,
         duration: 1,
         ease: 'power2.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 70%',
-          toggleActions: 'play none none reverse',
-        },
+        delay: i * 0.12 + 0.05,
       })
     }
   })
+}
+
+function switchCategory(id: string) {
+  activeCategory.value = id
+  activeIndex.value = 0
+  nextTick(() => {
+    // 先瞬间滚动到第一个可见 section，避免平滑滚动期间 DOM/ScrollTrigger 位置计算错乱
+    const firstSection = containerRef.value?.querySelector('.solution-screen')
+    if (firstSection) {
+      firstSection.scrollIntoView({ behavior: 'auto', block: 'start' })
+    }
+    // 延迟初始化，确保滚动完成且 DOM 完全稳定
+    setTimeout(() => {
+      initScrollTriggers()
+    }, 50)
+  })
+}
+
+onMounted(() => {
+  initScrollTriggers()
 })
 
 onUnmounted(() => {
   triggers.forEach((st) => st.kill())
   triggers = []
+  ScrollTrigger.getAll().forEach((st) => st.kill())
 })
 </script>
 
@@ -206,27 +343,27 @@ onUnmounted(() => {
       </div>
     </section>
 
-    <!-- Industry Nav -->
-    <IndustryNav
-      :items="[
-        { id: 'gov', label: '政务办公' },
-        { id: 'park', label: 'OPC科技园区' },
-        { id: 'edu', label: '高校科研' },
-        { id: 'training', label: '教育培训' },
-        { id: 'media', label: '内容创作' },
-        { id: 'finance', label: '金融保险' },
-        { id: 'health', label: '医疗健康' },
-        { id: 'ecommerce', label: '电商零售' },
-      ]"
-      :active-index="activeIndex"
-      :sticky="true"
-      @select="scrollToSection"
-    />
+    <!-- Category Nav -->
+    <div class="z-40 sticky top-16 md:top-20 bg-surface-base/95 backdrop-blur-xl border-b border-line/30 py-3">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center gap-2 md:gap-3 overflow-x-auto" style="scrollbar-width: none;">
+          <button
+            v-for="tab in categoryTabs"
+            :key="tab.id"
+            class="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all shrink-0"
+            :class="activeCategory === tab.id ? 'bg-brand text-white shadow-sm' : 'bg-[#F3F5F2] text-ink-secondary hover:text-ink-primary'"
+            @click="switchCategory(tab.id)"
+          >
+            {{ tab.label }}
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- Dot Navigation -->
     <div class="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-3">
       <button
-        v-for="(s, i) in solutions"
+        v-for="(s, i) in filteredSolutions"
         :key="s.id"
         class="group relative flex items-center justify-end"
         @click="scrollToSection(i)"
@@ -249,7 +386,7 @@ onUnmounted(() => {
 
     <!-- Sections -->
     <section
-      v-for="(s, i) in solutions"
+      v-for="(s, i) in filteredSolutions"
       :id="s.id"
       :key="s.id"
       class="solution-screen relative min-h-[100dvh] flex items-center snap-start overflow-hidden"
@@ -270,14 +407,6 @@ onUnmounted(() => {
         >
           <!-- Text Content -->
           <div class="anim-text w-full lg:w-1/2">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-12 h-12 rounded-xl bg-brand-soft flex items-center justify-center">
-                <Icon :icon="s.icon" class="w-6 h-6 text-brand" />
-              </div>
-              <span class="text-sm font-medium text-ink-tertiary tracking-wider uppercase">
-                {{ s.subtitle }}
-              </span>
-            </div>
 
             <h2 class="text-4xl md:text-5xl lg:text-[56px] font-semibold text-ink-primary tracking-tight leading-tight">
               {{ s.title }}
@@ -308,6 +437,16 @@ onUnmounted(() => {
                 </span>
               </div>
             </div>
+            <!-- 产品方案 -->
+            <div class="mt-8 p-5 rounded-2xl bg-brand-soft/30 border border-brand/10">
+              <div class="flex items-start gap-3">
+                <Icon icon="lucide:briefcase" class="w-5 h-5 text-brand shrink-0 mt-0.5" />
+                <div>
+                  <h3 class="text-sm font-semibold text-ink-primary mb-1">产品方案</h3>
+                  <p class="text-sm text-ink-secondary leading-relaxed">{{ s.cpsm }}</p>
+                </div>
+              </div>
+            </div>
 
             <!-- Pain Point -->
             <div class="mt-8 p-5 rounded-2xl bg-surface-muted/50 border border-line/50">
@@ -324,7 +463,7 @@ onUnmounted(() => {
           <!-- Image / Mockup -->
           <div class="anim-img w-full lg:w-1/2 flex items-center justify-center overflow-hidden">
             <div
-              class="w-full max-w-md aspect-[4/3] rounded-3xl flex items-center justify-center relative overflow-hidden"
+              class="w-full max-w-lg aspect-[16/10] rounded-3xl flex items-center justify-center relative overflow-hidden"
               :class="i % 2 === 0 ? 'bg-surface-muted' : 'bg-white'"
             >
               <template v-if="s.url">
