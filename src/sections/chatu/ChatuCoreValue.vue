@@ -31,10 +31,12 @@ useScrollReveal(card3Ref, { y: 30, delay: 0.3 })
           ref="card1Ref"
           class="p-8 rounded-3xl bg-surface-card border border-line shadow-card"
         >
-          <div
-            class="w-14 h-14 rounded-2xl bg-[#433487]/10 flex items-center justify-center mb-6"
-          >
-            <Icon icon="lucide:cpu" class="w-7 h-7 text-[#433487]" />
+          <div class="aspect-video rounded-2xl overflow-hidden mb-6">
+            <img
+              src="@/assets/ChatU/1.png"
+              alt="多引擎 · 不绑架"
+              class="w-full h-full object-cover"
+            />
           </div>
           <h3 class="text-xl font-semibold text-ink-primary mb-4">
             多引擎 · 不绑架
@@ -60,10 +62,12 @@ useScrollReveal(card3Ref, { y: 30, delay: 0.3 })
           ref="card2Ref"
           class="p-8 rounded-3xl bg-surface-card border border-line shadow-card"
         >
-          <div
-            class="w-14 h-14 rounded-2xl bg-[#433487]/10 flex items-center justify-center mb-6"
-          >
-            <Icon icon="lucide:scan" class="w-7 h-7 text-[#433487]" />
+          <div class="aspect-video rounded-2xl overflow-hidden mb-6">
+            <img
+              src="@/assets/ChatU/2.png"
+              alt="多模态 · 全能力"
+              class="w-full h-full object-cover"
+            />
           </div>
           <h3 class="text-xl font-semibold text-ink-primary mb-4">
             多模态 · 全能力
@@ -89,10 +93,12 @@ useScrollReveal(card3Ref, { y: 30, delay: 0.3 })
           ref="card3Ref"
           class="p-8 rounded-3xl bg-surface-card border border-line shadow-card"
         >
-          <div
-            class="w-14 h-14 rounded-2xl bg-[#433487]/10 flex items-center justify-center mb-6"
-          >
-            <Icon icon="lucide:workflow" class="w-7 h-7 text-[#433487]" />
+          <div class="aspect-video rounded-2xl overflow-hidden mb-6">
+            <img
+              src="@/assets/ChatU/3.png"
+              alt="多智能体 · 可编排"
+              class="w-full h-full object-cover"
+            />
           </div>
           <h3 class="text-xl font-semibold text-ink-primary mb-4">
             多智能体 · 可编排

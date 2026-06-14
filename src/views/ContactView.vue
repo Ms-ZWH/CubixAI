@@ -32,17 +32,17 @@ useScrollReveal(missionRef, { y: 30, delay: 0.1 })
 
 const missions = [
   {
-    icon: 'lucide:target',
+    image: new URL('@/assets/gywm/1.png', import.meta.url).href,
     title: '使命 Mission',
     desc: '致力于成为全球企业信赖的 AI 服务伙伴，通过技术创新与专业化解决方案，赋能企业数智化转型',
   },
   {
-    icon: 'lucide:eye',
+    image: new URL('@/assets/gywm/2.png', import.meta.url).href,
     title: '愿景 Vision',
     desc: '憧憬一个由 AI 智能驱动的全球商业生态，为企业提供更优质的生产力工具，推动高效、可持续发展',
   },
   {
-    icon: 'lucide:heart',
+    image: new URL('@/assets/gywm/3.png', import.meta.url).href,
     title: '价值观 Values',
     desc: '客户至上 · 创新驱动 · 全球视野 · 合作共赢 · 诚信责任',
   },
@@ -55,7 +55,7 @@ const timelineRef = ref<HTMLElement | null>(null)
 useScrollReveal(timelineRef, { y: 30, delay: 0.1 })
 
 const milestones = [
-  { year: '2023.03', title: 'ChatU 上线', desc: '企业级 AI Agent 操作系统' },
+  { year: '2023.03', title: 'ChatU 上线', desc: '企业 AI 操作系统' },
   { year: '2023.06', title: '公司成立', desc: '软积木（北京）科技有限公司正式成立' },
   { year: '2023.08', title: '签约客户达到 3000+', desc: '开拓日、韩、欧、美市场' },
   { year: '2025.01', title: '开拓国际业务', desc: 'PEC China 区引入「提示工程大会」国际品牌，启动亚洲市场运营' },
@@ -74,10 +74,10 @@ useScrollReveal(cctvRef, { y: 20, delay: 0.3 })
 const events = [
   { name: '韩国 SOUTH SUMMIT', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg.png' },
   { name: '中国 香港贸发局活动', location: '香港', desc: 'TODO: 活动说明占位', image: 'xg.png' },
-  { name: 'SpaceX 活动', location: '哈灵顿', desc: 'TODO: 活动说明占位', image: 'hld.png' },
   { name: '美国 Microsoft MVP Global Summit', location: '西雅图', desc: 'TODO: 活动说明占位', image: 'xyt.png' },
-  { name: '美国 NVIDIA GTC 2026', location: '硅谷', desc: 'TODO: 活动说明占位', image: 'ywd.png' },
+  { name: '美国 NVIDIA GTC 2026', location: '硅谷', desc: 'TODO: 活动说明占位', image: 'ywd.png', extraImage: 'ywd3.png' },
   { name: '英国 PEC 国际', location: '伦敦', desc: 'TODO: 活动说明占位', image: 'ld.png' },
+  { name: '日本', location: '', desc: 'TODO: 活动说明占位', image: '' },
 ]
 
 /* ========================
@@ -113,6 +113,9 @@ const honors = [
   { image: '105.png', title: '' },
   { image: '106.png', title: '' },
   { image: '107.png', title: '' },
+  { image: 'a1.jpg', title: '' },
+  { image: 'a2.png', title: '' },
+  { image: 'a3.png', title: '' },
 ]
 
 function getHonorUrl(name: string) {
@@ -208,8 +211,12 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
             :key="item.title"
             class="flex flex-col p-8 rounded-3xl bg-surface-card border border-line shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
           >
-            <div class="w-12 h-12 rounded-xl bg-brand-soft flex items-center justify-center mb-5">
-              <Icon :icon="item.icon" class="w-6 h-6 text-brand" />
+            <div class="aspect-video rounded-xl overflow-hidden mb-5">
+              <img
+                :src="item.image"
+                :alt="item.title"
+                class="w-full h-full object-cover"
+              />
             </div>
             <h3 class="text-xl font-semibold text-ink-primary">{{ item.title }}</h3>
             <p class="mt-3 text-ink-secondary leading-relaxed flex-1">{{ item.desc }}</p>
@@ -260,19 +267,39 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
           </p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
           <div
             v-for="e in events"
             :key="e.name"
-            class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all duration-300"
+            class="group w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] p-5 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card hover:-translate-y-1 hover:border-brand/30 transition-all duration-300"
           >
-            <div class="aspect-video rounded-xl bg-surface-muted border border-line/50 overflow-hidden mb-4">
-              <img v-if="e.image" :src="getQqUrl(e.image)" class="w-full h-full" :class="e.image === 'ywd.png' ? 'object-top' : 'object-cover'" alt="" />
-              <span v-else class="flex items-center justify-center h-full text-xs text-ink-tertiary">场地图占位</span>
+            <div
+              class="rounded-xl bg-surface-muted border border-line/50 overflow-hidden mb-4"
+              :class="e.extraImage ? 'flex flex-col aspect-video' : 'aspect-video'"
+            >
+              <template v-if="e.image">
+                <div :class="e.extraImage ? 'w-full h-1/2' : 'w-full h-full'">
+                  <img
+                    :src="getQqUrl(e.image)"
+                    class="group-hover:scale-105 transition-transform duration-500"
+                    :class="[e.image === 'ywd.png' ? 'object-cover object-top' : 'object-cover', e.extraImage ? 'w-full h-full' : 'w-full h-full']"
+                    alt=""
+                  />
+                </div>
+              </template>
+              <template v-if="e.extraImage">
+                <div class="w-full h-1/2">
+                  <img
+                    :src="getQqUrl(e.extraImage)"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    alt=""
+                  />
+                </div>
+              </template>
+              <span v-if="!e.image && !e.extraImage" class="flex items-center justify-center h-full text-xs text-ink-tertiary">场地图占位</span>
             </div>
             <h3 class="text-base font-semibold text-ink-primary">{{ e.name }}</h3>
             <p class="text-xs text-brand mt-1">{{ e.location }}</p>
-            <!-- <p class="text-xs text-ink-tertiary mt-2">{{ e.desc }}</p> -->
           </div>
         </div>
 
@@ -308,7 +335,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
           </div>
         </div>
 
-        <p class="mt-8 text-center text-xs text-ink-tertiary">
+        <p class="mt-8 text-center text-base text-ink-tertiary">
           与多家海外企业构建牢固合作伙伴关系
         </p>
       </div>
@@ -510,17 +537,12 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
               class="flex flex-col items-center p-8 rounded-2xl text-center bg-white border border-[#E5E5E5] shadow-sm"
             >
               <h3 class="text-lg font-semibold text-ink-primary">商务洽谈</h3>
-              <div class="mt-6 w-[160px] h-[160px] rounded-xl flex items-center justify-center">
-                <div class="w-20 h-20 rounded-2xl bg-brand-gradient flex items-center justify-center">
-                  <Icon icon="lucide:mail" class="w-10 h-10 text-white" />
+              <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex flex-col items-center justify-center gap-2">
+                <div class="w-14 h-14 rounded-2xl bg-brand-gradient flex items-center justify-center">
+                  <Icon icon="lucide:mail" class="w-7 h-7 text-white" />
                 </div>
+                <span class="text-xs text-ink-secondary">bd@cubixai.com</span>
               </div>
-              <a
-                href="mailto:bd@cubixai.com"
-                class="mt-5 text-xl md:text-2xl font-medium text-ink-primary font-[Inter] hover:text-brand transition-colors"
-              >
-                bd@cubixai.com
-              </a>
               <a
                 href="mailto:bd@cubixai.com"
                 class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-[#55AD73] text-white hover:bg-[#2E8B57] transition-colors"

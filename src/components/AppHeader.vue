@@ -124,7 +124,7 @@ const navItems = [
                   <Icon icon="lucide:book-open" class="w-5 h-5 text-brand" />
                 </div>
                 <div>
-                  <div class="font-semibold text-ink-primary">课程培训</div>
+                  <div class="font-semibold text-ink-primary">咨询培训</div>
                   <div class="text-sm text-ink-secondary mt-0.5">
                     软积木 AI 课程体系
                   </div>

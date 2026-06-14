@@ -85,7 +85,7 @@ useScrollReveal(card4Ref, { y: 30, delay: 0.25 })
         <div ref="card3Ref" class="h-full">
           <GlassCard padding="lg" hover class="h-full">
             <div class="flex flex-col h-full">
-              <Chip class="!bg-[#F04045]/10 !text-[#F04045]">园区</Chip>
+              <Chip class="!bg-[#F04045]/10 !text-[#F04045]">生态</Chip>
               <h3 class="mt-5 text-2xl font-semibold text-ink-primary">
                 OPC Hub
               </h3>
@@ -109,7 +109,7 @@ useScrollReveal(card4Ref, { y: 30, delay: 0.25 })
         <div ref="card4Ref" class="h-full">
           <GlassCard padding="lg" hover class="h-full">
             <div class="flex flex-col h-full">
-              <Chip class="!bg-[#F4AB38]/10 !text-[#F4AB38]">咨询培训</Chip>
+              <Chip class="!bg-[#F4AB38]/10 !text-[#F4AB38]">服务</Chip>
               <h3 class="mt-5 text-2xl font-semibold text-ink-primary">
                 软积木 · 咨询培训
               </h3>

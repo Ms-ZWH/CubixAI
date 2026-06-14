@@ -74,7 +74,7 @@ useScrollReveal(contentRef, { y: 30, delay: 0.2 })
             <h3 class="text-lg font-semibold text-ink-primary">主流社交平台接入</h3>
             <p class="mt-2 text-sm text-ink-secondary">
               <!-- 微信 &middot; 飞书 &middot; 钉钉 &middot; QQ 全打通 -->
-              快速打通微信、飞书、钉钉、QQ，实现多端对话与任务下发。
+              快速打通微信、飞书、钉钉、企业微信、QQ、Chatu...实现多端对话与任务下发。
 
             </p>
             <div class="mt-3 flex items-center gap-2 flex-wrap">

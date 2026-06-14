@@ -10,19 +10,19 @@ useScrollReveal(titleRef, { y: 30 })
 useScrollReveal(gridRef, { y: 30, delay: 0.15 })
 
 const engines = [
-  { name: 'Anthropic', url: new URL('@/assets/icon/claude.png', import.meta.url).href, color: '#412991' },
-  { name: 'Azure', url: new URL('@/assets/icon/Azure.png', import.meta.url).href, color: '#D4A574' },
+  { name: 'claude', url: new URL('@/assets/icon/claude.png', import.meta.url).href, color: '#412991' },
+  { name: 'Pin', url: new URL('@/assets/icon/Azure.png', import.meta.url).href, color: '#D4A574' },
   { name: 'Gemini', url: new URL('@/assets/icon/Gemini.png', import.meta.url).href, color: '#4285F4' },
   { name: '通义千问', url: new URL('@/assets/icon/alty.png', import.meta.url).href, color: '#12B7F5' },
   { name: 'Deepseek', url: new URL('@/assets/icon/deepseek.png', import.meta.url).href, color: '#FF6A00' },
   { name: 'Kimi', url: new URL('@/assets/icon/kimi.png', import.meta.url).href, color: '#2932E1' },
   { name: 'Minimax', url: new URL('@/assets/icon/minimax.png', import.meta.url).href, color: '#3C8CFF' },
-  { name: 'GLM智普', url: new URL('@/assets/icon/GLM.png', import.meta.url).href, color: '#FF6B35' },
-  { name: 'Tencent', url: new URL('@/assets/icon/tencent.png', import.meta.url).href, color: '#8B5CF6' },
+  { name: '智谱-GLM', url: new URL('@/assets/icon/GLM.png', import.meta.url).href, color: '#FF6B35' },
+  { name: 'Step', url: new URL('@/assets/icon/jyxc.png', import.meta.url).href, color: '#8B5CF6' },
   { name: 'Baichuan', url: new URL('@/assets/icon/Baichuan.png', import.meta.url).href, color: '#4D6BFA' },
   { name: 'Taichu', url: new URL('@/assets/icon/Taichu.png', import.meta.url).href, color: '#10B981' },
-  { name: '火山引擎', url: new URL('@/assets/icon/hsyq.png', import.meta.url).href, color: '#FF4500' },
-  { name: 'Meta', url: new URL('@/assets/icon/fs.png', import.meta.url).href, color: '#0668E1' },
+  { name: 'Doubao', url: new URL('@/assets/icon/hsyq.png', import.meta.url).href, color: '#FF4500' },
+  { name: 'Llama', url: new URL('@/assets/icon/meta.png', import.meta.url).href, color: '#0668E1' },
   { name: '腾讯混元', url: new URL('@/assets/icon/txhy.png', import.meta.url).href, color: '#6366F1' },
   { name: '文心一言', url: new URL('@/assets/icon/wenxin.png', import.meta.url).href, color: '#F59E0B' },
   { name: 'More...', icon: 'lucide:plus', color: '#9CA3AF' },
@@ -36,7 +36,7 @@ const engines = [
         <h2
           class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight"
         >
-          不站队，不绑死 · 任意模型随时切换
+          不依赖特定模型，可随心切换
         </h2>
         <p
           class="mt-4 text-lg text-ink-secondary leading-relaxed max-w-3xl mx-auto"

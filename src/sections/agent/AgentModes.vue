@@ -31,7 +31,7 @@ const modes = [
     desc: '一键直达',
     images: [
       // new URL('@/assets/sb/lxh.png', import.meta.url).href,
-      new URL('@/assets/sb/触控笔.png', import.meta.url).href,
+      new URL('@/assets/sb/触控笔.jpg', import.meta.url).href,
     ],
   },
 ]
@@ -44,7 +44,7 @@ const modes = [
         <p
           class="text-center text-lg md:text-xl font-semibold text-[#2DB4E6] uppercase tracking-wider mb-4"
         >
-          随时 · 随地 · 随心 · 随用
+          四种打开方式：随时 · 随地 · 随心 · 随用
         </p>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div
@@ -68,7 +68,7 @@ const modes = [
                     ? 'w-1/2 h-24 md:h-28 rounded-lg bg-white'
                     : 'w-full h-full',
                   mode.images.length > 1 && idx === 1 ? '-ml-6 md:-ml-8' : '',
-                  mode.title === '手机' ? 'max-h-20 md:max-h-24 mx-auto' : '',
+                  mode.title === '手机' || mode.title === '触控笔' ? 'max-h-20 md:max-h-24 mx-auto' : '',
                 ]"
               />
             </div>

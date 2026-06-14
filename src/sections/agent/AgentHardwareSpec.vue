@@ -11,18 +11,18 @@ useScrollReveal(leftRef, { y: 30, delay: 0.15 })
 useScrollReveal(rightRef, { y: 30 })
 
 const coreSpecs = [
-  { name: '处理器', value: 'Intel® Celeron® N5105/N5100', highlight: '最高 2.9GHz', suffix: '' },
+  { name: '处理器', value: 'Intel(R) Celeron(R) N5100 @ 1.10GHz 1.10 GHz', highlight: '', suffix: '' },
   { name: '内存', value: '8GB / 16GB', highlight: '', suffix: ' LPDDR5' },
-  { name: '存储', value: '128GB / 256GB', highlight: '', suffix: ' SSD' },
+  { name: '存储', value: '128GB / 512GB', highlight: '', suffix: ' SSD' },
   { name: '显卡', value: 'Intel® UHD Graphics', highlight: '', suffix: '' },
-  { name: '屏幕', value: '5.5" IPS 720×1280  G+G5 多点触控', highlight: '', suffix: '' },
+  { name: '屏幕', value: '5.5英寸智能触控屏显', highlight: 'G + G5 多点触控', suffix: '分辨率 720×1280（IPS）' },
   { name: '电池', value: '2500mAh  续航约 ', highlight: '5', suffix: ' 小时' },
 ]
 
 const ioSpecs = [
   { name: 'USB', value: '4×USB 3.0  +  1×USB-C', highlight: '', suffix: '' },
   { name: '视频', value: 'HDMI 2.1(', highlight: '4K', suffix: ')' },
-  { name: '网络', value: '双千兆 + Wi-Fi 2.4/5G + 蓝牙 5.0/5.2', highlight: '', suffix: '' },
+  { name: '网络', value: '双千兆网口、Wi‑Fi 2.4G/5G、蓝牙 5.0/5.2', highlight: '', suffix: '' },
   { name: '机身', value: '全铝金属外壳 · 无风扇静音散热', highlight: '', suffix: '' },
   { name: '尺寸', value: '130×120×45mm  仅 ', highlight: '0.2KG', suffix: '' },
   { name: '认证', value: 'CE / FCC · 支持 PXE 预启动', highlight: '', suffix: '' },

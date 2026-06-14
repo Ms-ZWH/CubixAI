@@ -23,20 +23,28 @@ interface Solution {
 }
 
 const jjfaImages: Record<string, string> = {
-  yq: new URL('@/assets/jjfa/yq.png', import.meta.url).href,
-  opc: new URL('@/assets/jjfa/opc.png', import.meta.url).href,
-  gx: new URL('@/assets/jjfa/gx.png', import.meta.url).href,
+  yq: new URL('@/assets/jjfa/tx.png', import.meta.url).href,
+  it: new URL('@/assets/jjfa/it.png', import.meta.url).href,
+  mt: new URL('@/assets/jjfa/mt.png', import.meta.url).href,
+  ggcy: new URL('@/assets/jjfa/ggcy.png', import.meta.url).href,
+  xl: new URL('@/assets/jjfa/xl.png', import.meta.url).href,
   px: new URL('@/assets/jjfa/px.png', import.meta.url).href,
-  nr: new URL('@/assets/jjfa/nr.png', import.meta.url).href,
   jr: new URL('@/assets/jjfa/jr.png', import.meta.url).href,
+  cw: new URL('@/assets/jjfa/cw.png', import.meta.url).href,
+  kj: new URL('@/assets/jjfa/kj.png', import.meta.url).href,
+  gq: new URL('@/assets/jjfa/gq.png', import.meta.url).href,
+  zy: new URL('@/assets/jjfa/zy.png', import.meta.url).href,
   yl: new URL('@/assets/jjfa/yl.png', import.meta.url).href,
   ds: new URL('@/assets/jjfa/ds.png', import.meta.url).href,
+  bx: new URL('@/assets/jjfa/bx.png', import.meta.url).href,
+  kcfh: new URL('@/assets/jjfa/kcfh.png', import.meta.url).href,
+  opc: new URL('@/assets/jjfa/opc.png', import.meta.url).href,
 }
 
 const solutions: Solution[] = [
   {
     id: 'telecom',
-    title: '通信 / IT服务',
+    title: '通信 / 运营商',
     subtitle: 'Telecom & IT Services',
     tags: ['技术密集', '文档繁杂', '标书众多', '流程规范', '高合规要求'],
     scenes: ['技术标书与方案文档快速撰写', '日常办公自动化（任务分配、会议纪要）', '客户技术问答支持', '项目文档版本管理与校对'],
@@ -47,40 +55,40 @@ const solutions: Solution[] = [
   },
   {
     id: 'itdev',
-    title: 'IT / 软件开发',
+    title: '软件开发 / IT',
     subtitle: 'IT & Software Development',
     tags: ['代码量大', '版本迭代快', '质量要求高', '文档同步难'],
     scenes: ['代码自动生成与补全（支持多种语言）', '代码审核、规范检查与漏洞提示', '单元测试用例自动生成', '技术文档与注释自动撰写'],
     pain: '提升编码与代码审查速度，减少文档滞后，降低缺陷漏检风险。',
     icon: 'lucide:code-2',
-    url: jjfaImages.opc,
+    url: jjfaImages.it,
     cpsm: '依靠ChatU根据注释或需求描述自动生成函数、类及单元测试代码，执行代码规范检查和潜在bug提示；生成API文档、数据库注释及变更日志；支持代码重构建议与遗留系统注释补全。',
   },
   {
     id: 'media',
-    title: '科技媒体 / 自媒体',
+    title: '自媒体 / MCN',
     subtitle: 'Tech Media & Self-Media',
     tags: ['内容创作高频', '时效性强', '多渠道分发', '用户互动需求大'],
     scenes: ['科技资讯实时采编与摘要生成', '多平台（公众号、微博、抖音）内容一键适配', '粉丝评论智能回复与话题分析', '视频脚本、直播提纲自动生成'],
     pain: '提升内容产出与分发效率，实现7×24小时粉丝互动，降低运营人力成本。',
     icon: 'lucide:radio',
-    url: jjfaImages.nr,
+    url: jjfaImages.mt,
     cpsm: '运用ChatU实时抓取科技资讯并生成深度解读长文，自动拆解为适合多平台的短文案和标题；设置智能体自动回复评论区常见问题、分析粉丝话题趋势，辅助选题策划。',
   },
   {
     id: 'design',
-    title: '广告 / 设计',
+    title: '广告 / 创意设计',
     subtitle: 'Advertising & Design',
     tags: ['创意驱动', '高频改稿', '风格多样', '交付周期紧'],
     scenes: ['营销海报、社交媒体配图生成', '图片风格迁移（如产品图转插画风）', '广告文案与Slogan批量创意', '客户方案视觉草图快速迭代'],
     pain: ' 加速创意迭代与改稿速度，提升设计效率，降低重复劳动。',
     icon: 'lucide:palette',
-    url: jjfaImages.nr,
+    url: jjfaImages.ggcy,
     cpsm: '通过ChatU进行文生图、图生图及风格迁移，快速生成插画、海报、3D概念等多个风格方案；支持批量输出不同尺寸布局的素材，以及智能扩图、背景移除、高清修复等操作。',
   },
   {
     id: 'edu',
-    title: '教育培训',
+    title: '教育 / 培训',
     subtitle: 'Education & Training',
     tags: ['知识密集', '高频互动', '个性化教学', '语言服务', '效率提升'],
     scenes: ['学员课后辅导与答疑', '翻译、纠错、口语练习', '教学内容自动生成（教案、习题）', '学员学习进度跟踪与智能提醒'],
@@ -91,47 +99,102 @@ const solutions: Solution[] = [
   },
   {
     id: 'psych',
-    title: '教育 / 心理咨询',
+    title: '心理健康 / 情感陪护',
     subtitle: 'Education & Psychological Counseling',
     tags: ['情感交互', '隐私保护', '非专业人力不足', '标准化与个性化平衡'],
     scenes: ['高校心理咨询中心助理服务', '心理机构来访者初步筛选与情绪陪伴', '咨询师工作流辅助（记录、评估、提醒）', '心理健康知识科普与自助训练'],
     pain: ' 缓解心理咨询师人力不足，减少文书工作，帮助非专业咨询师提升服务质量。',
     icon: 'lucide:brain',
-    url: jjfaImages.gx,
+    url: jjfaImages.xl,
     cpsm: '采用ChatU打造认知增强心理智能体，提供24小时情绪陪伴与心理知识问答；自动完成心理量表评分、风险分级预警及会话摘要生成；为新手咨询师提供标准化干预建议和案例参考。',
   },
+  // {
+  //   id: 'finance',
+  //   title: '金融 / 资产评估',
+  //   subtitle: 'Finance & Asset Assessment',
+  //   tags: ['数据敏感', '评估模型复杂', '报告格式规范', '合规要求高'],
+  //   scenes: ['资产评估报告自动化生成', '财务报表智能解析与异常检测', '行业数据对比分析与估值建议', '监管报送文档辅助生成'],
+  //   pain: '避免人工计算与格式错误，将报告撰写周期从数天缩短至数小时。',
+  //   icon: 'lucide:landmark',
+  //   url: jjfaImages.jr,
+  //   cpsm: '依托ChatU自动读取企业财报、市场数据，按照监管要求完成模型运算，一键生成包含文字分析、图表和风险提示的评估报告；支持历史报告逻辑一致性校验与合规性审查。',
+  // },
+
+  // {
+  //   id: 'insurance',
+  //   title: '保险业',
+  //   subtitle: 'Insurance',
+  //   tags: ['流程长', '单证多', '风控要求高', '客户服务标准化'],
+  //   scenes: ['车险报案、定损、理赔自动化', '保单信息智能问答', '欺诈风险初步识别', '客户续保提醒与个性化方案推荐'],
+  //   pain: '缩短理赔处理时间，减少定损争议，提升反欺诈识别能力。',
+  //   icon: 'lucide:shield-check',
+  //   url: jjfaImages.bx,
+  //   cpsm: '基于ChatU实现语音/文字报案信息自动录入，对接定损系统辅助损伤评估；分析历史数据识别异常行为辅助反欺诈；为投保人生成个性化方案推荐、续保提醒及常见问题自助解答。',
+  // },
+  // {
+  //   id: 'finance2',
+  //   title: ' 财务 / 企业服务',
+  //   subtitle: 'Finance & Enterprise Service',
+  //   tags: ['票据繁多', '合规严格', '数据录入量大', '周期性工作重复'],
+  //   scenes: ['发票关键信息自动识别与录入', '财务凭证与报销单智能审核', '银行对账、费用分类自动化', '税务申报表辅助生成'],
+  //   pain: '减少90%以上手工录入与校对工作，降低人工差错，加速报销流程。',
+  //   icon: 'lucide:file-text',
+  //   url: jjfaImages.cw,
+  //   cpsm: '通过ChatU结合OCR自动识别发票代码、金额、税额等字段并录入系统，智能比对费用标准判断合规性；自动生成记账凭证摘要与科目建议；按月输出费用分析报告与异常预警。',
+  // },
+  // {
+  //   id: 'enterprise',
+  //   title: '科技 / 企业服务',
+  //   subtitle: 'Enterprise Service & Tech Management',
+  //   tags: ['内部运营支撑', '多系统协同', '数据分析', '效率优化'],
+  //   scenes: ['办公PPT、周报、会议纪要自动生成', '运营数据智能分析及可视化报告', '项目管理任务自动拆解与提醒', '内部规章制度智能问答'],
+  //   pain: '自动化处理日常文档与数据整理，加速管理决策，提升跨部门协作效率。',
+  //   icon: 'lucide:building-2',
+  //   url: jjfaImages.kj,
+  //   cpsm: '使用ChatU一键生成PPT演示文稿、会议纪要和周报；连接CRM、ERP、数据库等数据源，支持自然语言查询并自动输出可视化图表和解读；提供规章制度智能问答。',
+  // },
+  // {
+  //   id: 'gov',
+  //   title: '国有企业',
+  //   subtitle: 'Government & SOE Digitalization',
+  //   tags: ['数据主权', '物理隔离', '国产化适配', '合规审计', '公文规范'],
+  //   scenes: ['涉密公文智能起草与审查', '会议纪要自动整理', '政策法规智能问答', '跨部门协作审批辅助', '数据报表自动汇总'],
+  //   pain: '消除公有云 AI 的数据外泄风险，将公文、纪要等重复事务处理效率提升 80% 以上，确保全程合规可审计。',
+  //   url: jjfaImages.gq,
+  //   icon: 'lucide:landmark',
+  //   cpsm: '基于智方体 AgentStation 本地私有化部署，数据不出盒。内置智能体支持公文起草、纪要整理、政策问答；全程留痕可追溯，满足政务合规与国产化适配要求。',
+  // },
   {
-    id: 'finance',
-    title: '金融 / 资产评估',
-    subtitle: 'Finance & Asset Assessment',
-    tags: ['数据敏感', '评估模型复杂', '报告格式规范', '合规要求高'],
-    scenes: ['资产评估报告自动化生成', '财务报表智能解析与异常检测', '行业数据对比分析与估值建议', '监管报送文档辅助生成'],
-    pain: '避免人工计算与格式错误，将报告撰写周期从数天缩短至数小时。',
+    id: 'fin_ins',
+    title: '金融 / 保险',
+    subtitle: 'Finance & Insurance',
+    tags: ['数据合规严苛', '单证报表量大', '风控识别需求强', '标准化输出报告'],
+    scenes: ['资产评估与财报智能分析', '监管报送文档自动生成', '保险定损理赔流程自动化', '保单服务与风险欺诈识别'],
+    pain: '减少人工计算、文书录入差错，压缩评估报告、理赔处理周期，强化金融保险全流程风控合规能力。',
     icon: 'lucide:landmark',
     url: jjfaImages.jr,
-    cpsm: '依托ChatU自动读取企业财报、市场数据，按照监管要求完成模型运算，一键生成包含文字分析、图表和风险提示的评估报告；支持历史报告逻辑一致性校验与合规性审查。',
+    cpsm: '依托ChatU解析财报、行业数据完成资产评估模型运算，一键生成合规评估报告并校验监管规范；同时自动录入保险报案信息，辅助定损评估，通过数据比对识别欺诈风险，实现保单问答、续保方案智能推送，覆盖金融评估与保险业务全场景数字化提效。'
   },
   {
-    id: 'finance2',
-    title: '财务 / 企业服务',
-    subtitle: 'Finance & Enterprise Service',
-    tags: ['票据繁多', '合规严格', '数据录入量大', '周期性工作重复'],
-    scenes: ['发票关键信息自动识别与录入', '财务凭证与报销单智能审核', '银行对账、费用分类自动化', '税务申报表辅助生成'],
-    pain: '减少90%以上手工录入与校对工作，降低人工差错，加速报销流程。',
-    icon: 'lucide:file-text',
-    url: jjfaImages.ds,
-    cpsm: '通过ChatU结合OCR自动识别发票代码、金额、税额等字段并录入系统，智能比对费用标准判断合规性；自动生成记账凭证摘要与科目建议；按月输出费用分析报告与异常预警。',
-  },
-  {
-    id: 'enterprise',
-    title: '企业服务 / 科技管理',
-    subtitle: 'Enterprise Service & Tech Management',
-    tags: ['内部运营支撑', '多系统协同', '数据分析', '效率优化'],
-    scenes: ['办公PPT、周报、会议纪要自动生成', '运营数据智能分析及可视化报告', '项目管理任务自动拆解与提醒', '内部规章制度智能问答'],
-    pain: '自动化处理日常文档与数据整理，加速管理决策，提升跨部门协作效率。',
+    id: 'enterprise-service',
+    title: '企业 / 国资数字化',
+    subtitle: 'Enterprise & SOE Digital Service',
+    tags: [
+      '财务合规提效',
+      '内部运营自动化',
+      '国资安全合规',
+      '数据本地化可控'
+    ],
+    scenes: [
+      '财务票据与报销智能审核',
+      '企业办公运营自动化处理',
+      '经营数据智能分析可视化',
+      '国资公文合规智能处理'
+    ],
+    pain: '解决企业财务录入繁琐、办公运营低效、数据协同困难等问题，同时满足国企数据安全、国产化适配与合规审计要求，大幅降低人工成本、提升办公与决策效率。',
     icon: 'lucide:building-2',
-    url: jjfaImages.yq,
-    cpsm: '使用ChatU一键生成PPT演示文稿、会议纪要和周报；连接CRM、ERP、数据库等数据源，支持自然语言查询并自动输出可视化图表和解读；提供规章制度智能问答。',
+    url: jjfaImages.kj,
+    cpsm: '面向通用企业场景，依托ChatU实现OCR票据识别、财务合规审核、办公文档自动生成、多源数据智能分析，轻量化落地企业运营与财务自动化；针对国企涉密合规场景，采用智方体AgentStation本地化私有化部署，数据不出物理边界，适配国产化环境，实现智能公文处理、政策问答、报表汇总与全程留痕审计，兼顾通用企业提效与国资安全合规双重需求。'
   },
   {
     id: 'agri',
@@ -141,12 +204,12 @@ const solutions: Solution[] = [
     scenes: ['水稻、玉米等品种表型数据查询与分析', '基因型与表型关联智能问答', '育种材料筛选建议', '农业科研成果自动生成报告'],
     pain: ' 提升育种数据查询与分析效率，加速新品种研发周期。',
     icon: 'lucide:leaf',
-    url: jjfaImages.opc,
+    url: jjfaImages.zy,
     cpsm: '利用ChatU构建行业智能体，支持自然语言查询品种性状、基因型、环境数据并生成可视化对比报告；辅助品种审定材料撰写、试验方案设计，将数据资产转化为可对话的知识库。',
   },
   {
     id: 'health',
-    title: '医疗健康',
+    title: '医疗 / 健康',
     subtitle: 'Healthcare',
     tags: ['高专业壁垒', '文档严谨', '诊断辅助', '数据隐私敏感'],
     scenes: ['病历与诊断报告自动撰写', '医学文献检索与摘要', '辅助影像报告初步解读', '医生科研论文润色与格式校对'],
@@ -167,37 +230,25 @@ const solutions: Solution[] = [
     cpsm: '部署基于ChatU的多渠道智能客服，统一接入淘宝、京东、微信小程序、抖音等平台，实现售前导购、售后自助退换货、物流查询；自动识别客户情绪并转人工，生成未解决问题工单，输出高频客诉分析报告。',
   },
   {
-    id: 'insurance',
-    title: '保险业',
-    subtitle: 'Insurance',
-    tags: ['流程长', '单证多', '风控要求高', '客户服务标准化'],
-    scenes: ['车险报案、定损、理赔自动化', '保单信息智能问答', '欺诈风险初步识别', '客户续保提醒与个性化方案推荐'],
-    pain: '缩短理赔处理时间，减少定损争议，提升反欺诈识别能力。',
-    icon: 'lucide:shield-check',
-    url: jjfaImages.jr,
-    cpsm: '基于ChatU实现语音/文字报案信息自动录入，对接定损系统辅助损伤评估；分析历史数据识别异常行为辅助反欺诈；为投保人生成个性化方案推荐、续保提醒及常见问题自助解答。',
-  },
-  {
-    id: 'park',
-    title: '产业园区 / 科创孵化',
-    subtitle: 'Industrial Park & Innovation Incubation',
-    tags: ['空间载体依赖', '招商引资驱动', '政策资源整合', '企业服务密集', 'AI技术赋能需求强烈'],
-    scenes: ['园区数字化转型', '孵化器智能化升级', '政府AI主题产业园建设', '园区内企业AI应用落地'],
-    pain: '帮助园区摆脱单一收租模式，降低算力成本，构建差异化AI生态。',
+    id: 'park_opc',
+    title: 'OPC',
+    subtitle: 'Industrial Park & Innovation Incubation + Solo Company & Super Individual',
+    tags: [
+      '园区数字化升级',
+      'AI算力降本',
+      '轻资产创业',
+      '一站式AI赋能'
+    ],
+    scenes: [
+      '产业园区智能化改造',
+      '园区企业AI落地应用',
+      '小微个体轻量创业',
+      '个人创作者AI赋能'
+    ],
+    pain: '帮助园区摆脱单一收租模式，解决企业与个人算力成本高、AI工具获取难、单兵信息孤岛与孤独感问题，整合政策资源构建差异化AI生态，降低企业及个人AI使用与创业门槛。',
     icon: 'lucide:building-2',
-    url: jjfaImages.opc,
-    cpsm: 'OPC Hub为园区统一部署AI底座与算力调度，降低企业使用门槛，支持私有化部署与社群运营。',
-  },
-  {
-    id: 'solo',
-    title: '一人公司 / 超级个体',
-    subtitle: 'Solo Company & Super Individual',
-    tags: ['单人创业', '轻资产运营', 'AI工具依赖', '算力成本敏感', '信息获取滞后'],
-    scenes: ['独立开发者与内容创作者', '自由职业者与小微创业者', 'AI原生个人创业项目', '远程协作的技术创作者'],
-    pain: '解决算力成本高、AI工具获取难、单兵信息孤岛与孤独感问题。',
-    icon: 'lucide:user',
-    url: jjfaImages.yq,
-    cpsm: 'OPC Hub为个人提供低成本共享算力、一站式AI工具链及社群协作网络，降低创业门槛。',
+    url: jjfaImages.kcfh,
+    cpsm: 'OPC Hub面向产业园区、孵化器及个体创业者统一部署AI底座与算力调度，提供私有化部署、一站式AI工具链与社群运营协作网络，大幅降低园区企业、独立创作者及小微创业者的算力使用与AI创业门槛。'
   },
 ]
 
@@ -207,16 +258,18 @@ const categoryTabs = [
   { id: 'creative', label: '创意' },
   { id: 'service', label: '企业服务' },
   { id: 'industry', label: '实体产业' },
+  { id: 'gov', label: '政务国企' },
   { id: 'solo', label: '个体创业' },
 ]
 
 const catMap: Record<string, string[]> = {
-  all: ['telecom', 'itdev', 'media', 'design', 'edu', 'psych', 'finance', 'finance2', 'enterprise', 'agri', 'health', 'ecommerce', 'insurance', 'park', 'solo'],
+  all: ['telecom', 'itdev', 'media', 'design', 'edu', 'psych', 'fin_ins', 'enterprise-service', 'agri', 'health', 'ecommerce', 'park_opc'],
   tech: ['telecom', 'itdev'],
   creative: ['media', 'design'],
-  service: ['edu', 'psych', 'finance', 'finance2', 'enterprise'],
-  industry: ['agri', 'health', 'ecommerce', 'insurance', 'park'],
-  solo: ['solo'],
+  service: ['edu', 'psych', 'fin_ins', 'enterprise-service'],
+  industry: ['agri', 'health', 'ecommerce', 'park_opc'],
+  gov: ['enterprise-service'],
+  solo: ['park_opc'],
 }
 
 const activeCategory = ref('all')
@@ -321,11 +374,11 @@ onUnmounted(() => {
 <template>
   <div ref="containerRef" class="relative overflow-x-hidden">
     <!-- Hero -->
-    <section id="solutions-hero" class="relative overflow-hidden bg-surface-base pt-32 md:pt-40 pb-8 md:pb-10" style="contain: paint;">
+    <section id="solutions-hero" class="relative overflow-hidden bg-surface-base pt-32 md:pt-40 pb-8 md:pb-10"
+      style="contain: paint;">
       <div
         class="absolute -top-40 -right-40 w-[500px] h-[500px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none"
-        style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(60px);"
-      />
+        style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(60px);" />
       <div ref="heroRef" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl md:text-5xl lg:text-[64px] font-semibold text-ink-primary leading-tight tracking-tight">
           用 AI 重新定义行业标准
@@ -347,13 +400,10 @@ onUnmounted(() => {
     <div class="z-40 sticky top-16 md:top-20 bg-surface-base/95 backdrop-blur-xl border-b border-line/30 py-3">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-center gap-2 md:gap-3 overflow-x-auto" style="scrollbar-width: none;">
-          <button
-            v-for="tab in categoryTabs"
-            :key="tab.id"
+          <button v-for="tab in categoryTabs" :key="tab.id"
             class="px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all shrink-0"
             :class="activeCategory === tab.id ? 'bg-brand text-white shadow-sm' : 'bg-[#F3F5F2] text-ink-secondary hover:text-ink-primary'"
-            @click="switchCategory(tab.id)"
-          >
+            @click="switchCategory(tab.id)">
             {{ tab.label }}
           </button>
         </div>
@@ -362,49 +412,30 @@ onUnmounted(() => {
 
     <!-- Dot Navigation -->
     <div class="hidden lg:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col gap-3">
-      <button
-        v-for="(s, i) in filteredSolutions"
-        :key="s.id"
-        class="group relative flex items-center justify-end"
-        @click="scrollToSection(i)"
-      >
-        <span
-          class="mr-3 text-xs font-medium text-ink-secondary opacity-0 group-hover:opacity-100 transition-opacity"
-        >
+      <button v-for="(s, i) in filteredSolutions" :key="s.id" class="group relative flex items-center justify-end"
+        @click="scrollToSection(i)">
+        <span class="mr-3 text-xs font-medium text-ink-secondary opacity-0 group-hover:opacity-100 transition-opacity">
           {{ s.title }}
         </span>
-        <div
-          class="w-2.5 h-2.5 rounded-full transition-all duration-300 border"
-          :class="
-            activeIndex === i
-              ? 'bg-brand border-brand scale-125'
-              : 'bg-transparent border-ink-tertiary hover:border-brand'
-          "
-        />
+        <div class="w-2.5 h-2.5 rounded-full transition-all duration-300 border" :class="activeIndex === i
+          ? 'bg-brand border-brand scale-125'
+          : 'bg-transparent border-ink-tertiary hover:border-brand'
+          " />
       </button>
     </div>
 
     <!-- Sections -->
-    <section
-      v-for="(s, i) in filteredSolutions"
-      :id="s.id"
-      :key="s.id"
+    <section v-for="(s, i) in filteredSolutions" :id="s.id" :key="s.id"
       class="solution-screen relative min-h-[100dvh] flex items-center snap-start overflow-hidden"
-      :class="i % 2 === 0 ? 'bg-surface-base' : 'bg-white'"
-      style="contain: paint;"
-    >
+      :class="i % 2 === 0 ? 'bg-surface-base' : 'bg-white'" style="contain: paint;">
       <!-- 装饰光晕 -->
-      <div
-        class="absolute -top-40 -right-40 w-[400px] h-[400px] rounded-full pointer-events-none opacity-30"
+      <div class="absolute -top-40 -right-40 w-[400px] h-[400px] rounded-full pointer-events-none opacity-30"
         :class="i % 2 === 0 ? 'opacity-20' : 'opacity-10'"
-        style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(80px);"
-      />
+        style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(80px);" />
 
       <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-0">
-        <div
-          class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16"
-          :class="i % 2 === 1 ? 'lg:flex-row-reverse' : ''"
-        >
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16"
+          :class="i % 2 === 1 ? 'lg:flex-row-reverse' : ''">
           <!-- Text Content -->
           <div class="anim-text w-full lg:w-1/2">
 
@@ -414,11 +445,8 @@ onUnmounted(() => {
 
             <!-- Tags -->
             <div class="flex flex-wrap gap-2 mt-6">
-              <span
-                v-for="tag in s.tags"
-                :key="tag"
-                class="px-3 py-1.5 rounded-full text-xs font-semibold border border-brand/40 text-brand bg-brand-soft"
-              >
+              <span v-for="tag in s.tags" :key="tag"
+                class="px-3 py-1.5 rounded-full text-xs font-semibold border border-brand/40 text-brand bg-brand-soft">
                 {{ tag }}
               </span>
             </div>
@@ -427,11 +455,8 @@ onUnmounted(() => {
             <div class="mt-8">
               <h3 class="text-sm font-semibold text-ink-tertiary uppercase tracking-wider mb-3">适用场景</h3>
               <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="scene in s.scenes"
-                  :key="scene"
-                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-muted text-sm text-ink-secondary"
-                >
+                <span v-for="scene in s.scenes" :key="scene"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-muted text-sm text-ink-secondary">
                   <Icon icon="lucide:check-circle" class="w-3.5 h-3.5 text-brand" />
                   {{ scene }}
                 </span>
@@ -464,20 +489,15 @@ onUnmounted(() => {
           <div class="anim-img w-full lg:w-1/2 flex items-center justify-center overflow-hidden">
             <div
               class="w-full max-w-lg aspect-[16/10] rounded-3xl flex items-center justify-center relative overflow-hidden"
-              :class="i % 2 === 0 ? 'bg-surface-muted' : 'bg-white'"
-            >
+              :class="i % 2 === 0 ? 'bg-surface-muted' : 'bg-white'">
               <template v-if="s.url">
                 <img :src="s.url" :alt="s.title" class="w-full h-full object-cover" />
               </template>
               <template v-else>
-                <div
-                  class="absolute inset-0 opacity-30"
-                  style="background: radial-gradient(circle at 30% 30%, rgba(85, 173, 115, 0.15), transparent 60%);"
-                />
+                <div class="absolute inset-0 opacity-30"
+                  style="background: radial-gradient(circle at 30% 30%, rgba(85, 173, 115, 0.15), transparent 60%);" />
                 <div class="relative text-center p-8">
-                  <div
-                    class="w-20 h-20 rounded-2xl bg-brand-gradient flex items-center justify-center mx-auto mb-4"
-                  >
+                  <div class="w-20 h-20 rounded-2xl bg-brand-gradient flex items-center justify-center mx-auto mb-4">
                     <Icon :icon="s.icon" class="w-10 h-10 text-white" />
                   </div>
                   <p class="text-lg font-semibold text-ink-primary">{{ s.title }}</p>
@@ -494,8 +514,7 @@ onUnmounted(() => {
     <section class="relative py-20 md:py-[120px] bg-white overflow-hidden" style="contain: paint;">
       <div
         class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full pointer-events-none"
-        style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(80px);"
-      />
+        style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(80px);" />
       <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold text-ink-primary tracking-tight leading-tight">
           咨询你的专属行业方案，获取一对一支持
@@ -504,10 +523,8 @@ onUnmounted(() => {
           无论身处哪个行业，软积木都能为你量身定制 AI 落地路径
         </p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="/contact#contact-bottom"
-            class="inline-flex items-center px-6 py-3 rounded-full bg-[#55AD73] text-white font-semibold hover:bg-[#2E8B57] transition-colors"
-          >
+          <a href="/contact#contact-bottom"
+            class="inline-flex items-center px-6 py-3 rounded-full bg-[#55AD73] text-white font-semibold hover:bg-[#2E8B57] transition-colors">
             联系我们
           </a>
         </div>

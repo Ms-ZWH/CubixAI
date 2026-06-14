@@ -13,6 +13,38 @@ const opc1Img = new URL('@/assets/opc1.png', import.meta.url).href
 const leftRef = ref(null)
 const rightRef = ref(null)
 
+const showModal = ref(false)
+const lxwmImg = new URL('@/assets/lxwm.png', import.meta.url).href
+
+const heroImages = [
+  { src: new URL('@/assets/opchub/opchub.png', import.meta.url).href, alt: 'OPC Hub' },
+  { src: new URL('@/assets/opchub/OPCHub1.png', import.meta.url).href, alt: 'OPC Hub 1' },
+]
+
+const heroIndex = ref(0)
+let heroTimer: ReturnType<typeof setInterval> | null = null
+
+function startHeroCarousel() {
+  heroTimer = setInterval(() => {
+    heroIndex.value = (heroIndex.value + 1) % heroImages.length
+  }, 3000)
+}
+
+function stopHeroCarousel() {
+  if (heroTimer) {
+    clearInterval(heroTimer)
+    heroTimer = null
+  }
+}
+
+onMounted(() => {
+  startHeroCarousel()
+})
+
+onUnmounted(() => {
+  stopHeroCarousel()
+})
+
 useScrollReveal(leftRef, { y: 30 })
 useScrollReveal(rightRef, { y: 30, delay: 0.15 })
 
@@ -129,13 +161,15 @@ const kcImages = [
   new URL('@/assets/kc/微信图片_20260602122353_488_111.png', import.meta.url).href,
 ]
 
+const serviceColors = ['#F04045', '#F04045', '#F04045', '#F04045', '#F04045', '#F04045']
+
 const services = [
-  { title: 'OPC Hub 支撑平台', icon: 'lucide:layout-dashboard', items: ['园区级 OPC Hub 系统', '授权企业账号（不超过约定数量）', '园区企业统一 AI 能力底座'] },
-  { title: '高端 AI 课程体系', icon: 'lucide:graduation-cap', items: ['最新一线 AI 应用课程', 'OPC 标准化培训体系', 'OPC 初级认证证书'] },
-  { title: '本地高端线下活动', icon: 'lucide:calendar-days', items: ['园区 AI 主题沙龙', '企业专场 / 行业专场', '路演 + 对接 + 转化'] },
-  { title: '算力调度平台', icon: 'lucide:cpu', items: ['多算力源统一调度', '企业低门槛用算力', '为 AI 应用落地兜底'] },
-  { title: 'OPC 创业 & 产业导师', icon: 'lucide:user-check', items: ['AI 创业导师', '行业落地导师', '企业数字化转型实战派'] },
-  { title: 'AI 运营支撑服务', icon: 'lucide:settings-2', items: ['社群 & 企业运营方法论', '内容、品牌、招商协同', '（可选）国际化 PEC 大会'] },
+  { title: 'OPC Hub 支撑平台', image: new URL('@/assets/opchub/11.png', import.meta.url).href, items: ['OPC Hub 系统', '授权账号（不超过约定数量）', '统一 AI 能力底座'] },
+  { title: '高端 AI 课程体系', image: new URL('@/assets/opchub/22.png', import.meta.url).href, items: ['最新一线 AI 应用课程', 'OPC 标准化培训体系', 'OPC 初级认证证书'] },
+  { title: '本地高端线下活动', image: new URL('@/assets/opchub/33.png', import.meta.url).href, items: ['开展 AI 主题沙龙', '企业专场 / 行业专场', '路演 + 对接 + 转化'] },
+  { title: '算力调度平台', image: new URL('@/assets/opchub/44.png', import.meta.url).href, items: ['多算力源统一调度', '企业低门槛用算力', '为 AI 应用落地赋能'] },
+  { title: 'OPC 创业 & 产业导师', image: new URL('@/assets/opchub/55.png', import.meta.url).href, items: ['AI 创业导师', '行业落地导师', '企业数智化转型实战派'] },
+  { title: 'AI 运营支撑服务', image: new URL('@/assets/opchub/66.png', import.meta.url).href, items: ['社群 & 企业运营方法论', '内容、品牌、招商协同', '（可选）国际化 PEC 大会'] },
 ]
 
 const conditions = [
@@ -151,10 +185,10 @@ const patents = [
 ]
 
 const securities = [
-  { title: '私有化部署', desc: '确保平台最高控制权，数据与能力均保留在园区内部。' },
-  { title: '全程可追溯', desc: '所有操作均有日志记录，保障服务调用全程透明可追溯。' },
-  { title: '权威可审计', desc: '支持第三方机构进行安全审计，确保平台设计合规可信。' },
-  { title: '数据安全', desc: '采用高强度加密与访问控制，全方位守护核心数据资产。' },
+  { image: new URL('@/assets/opchub/1.png', import.meta.url).href, title: '私有化部署', desc: '确保平台最高控制权，数据与能力均保留在园区内部。' },
+  { image: new URL('@/assets/opchub/2.png', import.meta.url).href, title: '全程可追溯', desc: '所有操作均有日志记录，保障服务调用全程透明可追溯。' },
+  { image: new URL('@/assets/opchub/3.png', import.meta.url).href, title: '权威可审计', desc: '支持第三方机构进行安全审计，确保平台设计合规可信。' },
+  { image: new URL('@/assets/opchub/4.png', import.meta.url).href, title: '数据安全', desc: '采用高强度加密与访问控制，全方位守护核心数据资产。' },
 ]
 
 const caseImgBwsq1 = new URL('@/assets/al/bwsq1.png', import.meta.url).href
@@ -195,7 +229,7 @@ const cases = [
 
           <!-- 左侧 -->
           <div ref="leftRef">
-            <Chip class="!bg-[#F04045]/10 !text-[#F04045]">PLATFORM · OPC HUB</Chip>
+            <!-- <Chip class="!bg-[#F04045]/10 !text-[#F04045]">PLATFORM · OPC HUB</Chip> -->
 
             <h1 class="mt-6 text-[48px] md:text-[64px] lg:text-[72px] font-semibold text-[#1A1A1A] leading-[1.08] tracking-[-0.03em]">
               OPC Hub<br />
@@ -217,27 +251,42 @@ const cases = [
             </div>
 
             <div class="mt-8 flex flex-wrap items-center gap-4">
-              <BrandButton href="#contact" class="!bg-none !bg-[#F04045]">
+              <button
+                class="px-6 py-2.5 rounded-lg bg-[#F04045] text-white font-medium hover:opacity-90 transition-opacity"
+                @click="showModal = true"
+              >
                 立即咨询
-              </BrandButton>
-              <BrandButton variant="ghost" href="#services" class="hover:!border-[#F04045] hover:!text-[#F04045]" arrow>
+              </button>
+              <BrandButton variant="ghost" to="/solutions" class="hover:!border-[#F04045] hover:!text-[#F04045]" arrow>
                 了解方案
               </BrandButton>
             </div>
           </div>
 
-          <!-- 右侧：核心数据面板 -->
-          <div ref="rightRef" class="relative">
+          <!-- 右侧：轮播 -->
+          <div ref="rightRef" class="relative" @mouseenter="stopHeroCarousel" @mouseleave="startHeroCarousel">
             <div
-              class="aspect-[16/10] rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] shadow-sm overflow-hidden flex items-center justify-center"
+              class="aspect-[16/10] rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] shadow-sm overflow-hidden"
             >
-              <span class="text-[#999999] text-sm">
-                TODO: OPC Hub 产品界面截图占位
-              </span>
+              <div class="flex h-full transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${heroIndex * 100}%)` }">
+                <img
+                  v-for="img in heroImages"
+                  :key="img.src"
+                  :src="img.src"
+                  :alt="img.alt"
+                  class="w-full h-full flex-shrink-0 object-cover"
+                />
+              </div>
             </div>
-            <!-- 角标装饰 -->
-            <div class="absolute -top-3 -right-3 px-3 py-1.5 rounded-full bg-white border border-[#F04045]/30 text-xs font-medium text-[#F04045] shadow-sm">
-              OPC = Open Platform for Collaboration
+            <!-- Dots -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+              <button
+                v-for="(img, idx) in heroImages"
+                :key="idx"
+                class="w-2 h-2 rounded-full transition-all"
+                :class="idx === heroIndex ? 'bg-[#F04045] w-4' : 'bg-white/60'"
+                @click="heroIndex = idx; stopHeroCarousel(); startHeroCarousel();"
+              />
             </div>
           </div>
 
@@ -262,42 +311,42 @@ const cases = [
 
           <!-- 右侧：三个卡片 -->
           <div class="flex flex-col gap-4">
-            <!-- 为企业 -->
+            <!-- 面向园区 -->
             <div class="flex-1 p-6 md:p-8 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] hover:shadow-lg transition-all duration-300">
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
                   <Icon icon="lucide:user" class="w-5 h-5 text-[#F04045]" />
                 </div>
-                <h3 class="text-xl font-bold text-[#1A1A1A]">为企业（一人公司）</h3>
+                <h3 class="text-xl font-bold text-[#1A1A1A]">面向园区</h3>
               </div>
               <p class="text-sm text-[#666666] leading-relaxed">
-                提供普惠算力、一站式AI工具链、法律与政策护航、社群生态及导师培训，通过OPC Hub平台降低大模型使用门槛，助力"超级个体"高效创业。
+                为园区打造多引擎、多模态 AI 能力底座，降低 AI 使用门槛。统筹管理算力券与算力资源，推动算力落地转化。打通算力、平台、培训、活动全闭环，打造轻量化 OPC 生态，让园区转型为融合算力、人才、企业的智能协同平台。
               </p>
             </div>
 
-            <!-- 为园区 -->
+            <!-- 面向企业 -->
             <div class="flex-1 p-6 md:p-8 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] hover:shadow-lg transition-all duration-300">
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
                   <Icon icon="lucide:building-2" class="w-5 h-5 text-[#F04045]" />
                 </div>
-                <h3 class="text-xl font-bold text-[#1A1A1A]">为园区</h3>
+                <h3 class="text-xl font-bold text-[#1A1A1A]">面向企业</h3>
               </div>
               <p class="text-sm text-[#666666] leading-relaxed">
-                部署园区级AI能力底座（OPC Hub系统），实现算力统筹、算力券监管、多模型调度，配套培训、活动与投资模式转型，推动园区从空间出租升级为AI产业协同平台。
+                依托 AI 推动企业组织变革，搭建内部 OPC 单元与赛马机制。配套培训、陪跑与项目辅导体系，支持快速试错迭代。企业可直接调用模型与智能体，降低算力及大模型使用门槛，助力业务降本增效、创新增长。
               </p>
             </div>
 
-            <!-- 为学校 -->
+            <!-- 面向学校 -->
             <div class="flex-1 p-6 md:p-8 rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] hover:shadow-lg transition-all duration-300">
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
                   <Icon icon="lucide:graduation-cap" class="w-5 h-5 text-[#F04045]" />
                 </div>
-                <h3 class="text-xl font-bold text-[#1A1A1A]">对学校</h3>
+                <h3 class="text-xl font-bold text-[#1A1A1A]">面向学校</h3>
               </div>
               <p class="text-sm text-[#666666] leading-relaxed">
-                <!-- 内容待补充 -->
+               助力高校升级双创教育与课程体系，引入创业导师、孵化校内项目。开展 AI 能力培养、OPC 实战训练，提升学生就业创业能力。搭建校企合作桥梁，提供真实项目场景，构建 AI 时代新型人才培养体系。
               </p>
             </div>
           </div>
@@ -337,18 +386,20 @@ const cases = [
         </div>
 
         <div class="flex flex-wrap justify-center gap-4 mb-16">
-          <RouterLink
-            to="/products/chatu"
-            class="px-8 py-3 rounded-lg bg-[#F04045] text-white font-semibold hover:opacity-90 transition-opacity"
+          <a
+            href="http://opc.chatu.plus"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-3 rounded-lg bg-[#F04045] text-white font-semibold hover:opacity-90 transition-opacity inline-block"
           >
             立即体验
-          </RouterLink>
-          <RouterLink
-            to="/contact"
+          </a>
+          <button
             class="px-8 py-3 rounded-lg border border-[#1A1A1A] text-[#1A1A1A] font-semibold hover:bg-[#1A1A1A]/5 transition-colors"
+            @click="showModal = true"
           >
             联系我们
-          </RouterLink>
+          </button>
         </div>
 
         <!-- Stats -->
@@ -365,10 +416,10 @@ const cases = [
         <!-- Screenshots -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-fr items-stretch">
           <div class="rounded-xl border border-[#E5E5E5] overflow-hidden aspect-[16/9]">
-            <img src="@/assets/OPCHub.png" class="w-full h-full object-cover" alt="OPC Hub" />
+            <img src="@/assets/opchub/opchub.png" class="w-full h-full object-cover" alt="OPC Hub" />
           </div>
           <div class="rounded-xl border border-[#E5E5E5] overflow-hidden aspect-[16/9]">
-            <img src="@/assets/OPCHub1.png" class="w-full h-full object-cover" alt="AIGC 中控后台" />
+            <img src="@/assets/opchub/OPCHub1.png" class="w-full h-full object-cover" alt="AIGC 中控后台" />
           </div>
         </div>
 
@@ -434,17 +485,46 @@ const cases = [
           <div
             v-for="(s, i) in services"
             :key="s.title"
-            class="p-6 rounded-xl bg-[#F5F5F7] hover:-translate-y-1 transition-transform duration-300"
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-white to-[#F8FAFC] border border-[#E5E5E5] p-5 hover:-translate-y-1 transition-transform duration-300"
           >
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
-                <Icon :icon="s.icon" class="w-5 h-5 text-[#F04045]" />
+            <!-- Header -->
+            <div class="flex items-start gap-3">
+              <div
+                class="w-14 h-14 rounded-br-2xl flex items-center justify-center text-white text-xl font-bold shrink-0"
+                :style="{ backgroundColor: serviceColors[i] }"
+              >
+                {{ String(i + 1).padStart(2, '0') }}
               </div>
-              <h3 class="text-lg font-bold">{{ s.title }}</h3>
+              <div class="pt-1">
+                <h3 class="text-lg font-bold text-[#1A1A1A]">{{ s.title }}</h3>
+                <div
+                  class="mt-2 w-8 h-1 rounded-full"
+                  :style="{ backgroundColor: serviceColors[i] }"
+                />
+              </div>
             </div>
-            <ul class="space-y-2 text-sm text-[#666666]">
-              <li v-for="item in s.items" :key="item">· {{ item }}</li>
-            </ul>
+
+            <!-- Body -->
+            <div class="flex items-end gap-4 mt-5">
+              <ul class="flex-1 space-y-2 text-sm text-[#666666]">
+                <li
+                  v-for="item in s.items"
+                  :key="item"
+                  class="flex items-start gap-2"
+                >
+                  <span
+                    class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0"
+                    :style="{ backgroundColor: serviceColors[i] }"
+                  />
+                  {{ item }}
+                </li>
+              </ul>
+              <img
+                :src="s.image"
+                :alt="s.title"
+                class="w-20 h-20 md:w-24 md:h-24 object-contain shrink-0"
+              />
+            </div>
           </div>
         </div>
 
@@ -539,8 +619,12 @@ const cases = [
             :key="s.title"
             class="p-6 rounded-xl bg-[#F5F5F7] text-center"
           >
-            <div class="w-12 h-12 rounded-xl bg-[#F04045]/10 flex items-center justify-center mx-auto mb-4">
-              <Icon icon="lucide:shield-check" class="w-6 h-6 text-[#F04045]" />
+            <div class="aspect-video rounded-xl overflow-hidden mb-4">
+              <img
+                :src="s.image"
+                :alt="s.title"
+                class="w-full h-full object-cover"
+              />
             </div>
             <h4 class="font-bold mb-2">{{ s.title }}</h4>
             <p class="text-sm text-[#666666]">{{ s.desc }}</p>
@@ -556,24 +640,24 @@ const cases = [
           OPC + AI 产业支撑平台 让 OPC 智能落地更具象
         </h2>
         <p class="text-center text-[#666666] max-w-3xl mx-auto mb-12">
-          面向 OPC 产业园区，ChatU 提供多引擎、多模态的 AI 能力底座，大幅降低 AI 接入以及使用门槛。
+          OPCHub 提供多引擎、多模态的 AI 能力底座，大幅降低 AI 接入以及使用门槛。
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           <div class="p-6 rounded-xl bg-[#F5F5F7]">
-            <h3 class="text-lg font-bold mb-3">对管委会 / 园区的作用</h3>
-            <p class="text-sm text-[#666666] font-semibold mb-2">（治理与统筹）</p>
-            <p class="text-[#666666]">算力补贴以算力券形式统一发放监管，算力资源可管、可控、可追溯。</p>
+            <h3 class="text-lg font-bold mb-3">赋能产业园区</h3>
+            <!-- <p class="text-sm text-[#666666] font-semibold mb-2">（治理与统筹）</p> -->
+            <p class="text-[#666666]">提供多模态 AI 底座，依托算力券统筹算力资源，打通服务全闭环，打造 OPC 产业生态，推动园区转型为集算力、人才、企业于一体的智能协同平台。</p>
           </div>
           <div class="p-6 rounded-xl bg-[#F5F5F7]">
-            <h3 class="text-lg font-bold mb-3">对企业 / 创业者的作用</h3>
-            <p class="text-sm text-[#666666] font-semibold mb-2">（降低门槛）</p>
-            <p class="text-[#666666]">直接使用模型与 AI Agent 能力，显著降低算力和大模型应用门槛。</p>
+            <h3 class="text-lg font-bold mb-3">助力实体企业</h3>
+            <!-- <p class="text-sm text-[#666666] font-semibold mb-2">（降低门槛）</p> -->
+            <p class="text-[#666666]">驱动企业组织变革，搭建内部 OPC 单元与试错机制，搭配培训陪跑服务。低门槛调用 AI 能力，帮助企业降本增效、实现创新增长。</p>
           </div>
           <div class="p-6 rounded-xl bg-[#F5F5F7]">
-            <h3 class="text-lg font-bold mb-3">对 OPC 产业生态的作用</h3>
-            <p class="text-sm text-[#666666] font-semibold mb-2">（促应用、促协同）</p>
-            <p class="text-[#666666]">推动算力向真实应用转化，形成多方协同 OPC 产业服务体系。</p>
+            <h3 class="text-lg font-bold mb-3">服务各大高校</h3>
+            <!-- <p class="text-sm text-[#666666] font-semibold mb-2">（促应用、促协同）</p> -->
+            <p class="text-[#666666]">升级双创教育体系，开展 AI 实训与创业实践，对接真实项目场景。深化校企协同，构建全新人才培养模式，助力学生就业创业。</p>
           </div>
         </div>
       </div>
@@ -718,6 +802,27 @@ const cases = [
         </div>
       </div>
     </section>
+
+    <!-- 立即咨询弹框 -->
+    <Teleport to="body">
+      <div
+        v-if="showModal"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+        @click.self="showModal = false"
+      >
+        <div class="relative bg-white rounded-2xl p-4 shadow-2xl max-w-sm mx-4">
+          <button
+            class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-ink-secondary hover:text-ink-primary"
+            @click="showModal = false"
+          >
+            ✕
+          </button>
+          <p class="text-center text-sm text-ink-secondary mb-3">扫码即可联系我们</p>
+          <p class="text-center text-sm text-ink-secondary mb-3">我们随时都在</p>
+          <img :src="lxwmImg" alt="联系我们" class="w-full h-auto rounded-xl" />
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 

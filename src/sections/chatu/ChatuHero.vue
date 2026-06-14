@@ -1,5 +1,5 @@
 ﻿<script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import Chip from '../../components/Chip.vue'
 import BrandButton from '../../components/BrandButton.vue'
@@ -9,6 +9,31 @@ const rightRef = ref<HTMLElement | null>(null)
 
 useScrollReveal(leftRef, { y: 30 })
 useScrollReveal(rightRef, { y: 30, delay: 0.15 })
+
+const images = [
+  { src: new URL('@/assets/chatUqd.png', import.meta.url).href, alt: '产品前端' },
+  { src: new URL('@/assets/zkht.png', import.meta.url).href, alt: '中控后台' },
+  { src: new URL('@/assets/ChatU/banner3.png', import.meta.url).href, alt: 'banner3' },
+]
+
+const currentIndex = ref(0)
+let timer: ReturnType<typeof setInterval> | null = null
+
+function startCarousel() {
+  timer = setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % images.length
+  }, 3000)
+}
+
+function stopCarousel() {
+  if (timer) {
+    clearInterval(timer)
+    timer = null
+  }
+}
+
+onMounted(startCarousel)
+onUnmounted(stopCarousel)
 </script>
 
 <template>
@@ -67,20 +92,30 @@ useScrollReveal(rightRef, { y: 30, delay: 0.15 })
           </div>
         </div>
 
-        <!-- 右侧 mockup -->
-        <div ref="rightRef" class="relative">
+        <!-- 右侧轮播 -->
+        <div ref="rightRef" class="relative scale-105" @mouseenter="stopCarousel" @mouseleave="startCarousel">
           <div
-            class="aspect-[16/10] rounded-2xl bg-surface-muted border border-line shadow-card overflow-hidden flex items-center justify-center"
+            class="aspect-[2/1] rounded-2xl bg-surface-muted border border-line shadow-card overflow-hidden"
           >
-            <span class="text-ink-tertiary text-sm">
-              TODO: ChatU 产品界面截图占位
-            </span>
+            <div class="flex h-full transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+              <img
+                v-for="img in images"
+                :key="img.src"
+                :src="img.src"
+                :alt="img.alt"
+                class="w-full h-full flex-shrink-0 object-contain"
+              />
+            </div>
           </div>
-          <!-- 网信算备徽章 -->
-          <div
-            class="absolute -top-3 -right-3 px-3 py-1.5 rounded-full bg-surface-card border border-gold text-xs font-medium text-gold shadow-card"
-          >
-            网信算备
+          <!-- Dots -->
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+            <button
+              v-for="(img, idx) in images"
+              :key="idx"
+              class="w-2 h-2 rounded-full transition-all"
+              :class="idx === currentIndex ? 'bg-[#433487] w-4' : 'bg-white/60'"
+              @click="currentIndex = idx; stopCarousel(); startCarousel();"
+            />
           </div>
         </div>
       </div>

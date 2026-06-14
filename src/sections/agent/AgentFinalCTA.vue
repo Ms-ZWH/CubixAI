@@ -4,6 +4,7 @@ import { useScrollReveal } from '../../composables/useScrollReveal'
 import { RouterLink } from 'vue-router'
 import jszcImg from '@/assets/jszc.jpg'
 import lxhsqImg from '@/assets/lxhsq.png'
+import wjhImg from '@/assets/wjh.jpg'
 
 const contentRef = ref<HTMLElement | null>(null)
 const cardsRef = ref<HTMLElement | null>(null)
@@ -28,6 +29,7 @@ const items = [
     title: '渠道经销商',
     desc: '成为智方体授权合作伙伴，共享 AI 硬件终端市场红利，共创智能未来',
     link: '/contact',
+    image: wjhImg,
   },
 ]
 </script>

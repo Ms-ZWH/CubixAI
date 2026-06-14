@@ -16,8 +16,8 @@ const platformList = [
   { name: '微信', svgId: 'weixin', iconify: false },
   { name: '飞书', svgId: 'feishu', iconify: false },
   { name: '钉钉', svgId: 'dingtalk', iconify: false },
-  { name: '抖音', svgId: 'douyin', iconify: false },
-  { name: '微博', svgId: 'weibo', iconify: false },
+  { name: '企业微信', svgId: 'douyin', iconify: false },
+  { name: '小红书', svgId: 'weibo', iconify: false },
   { name: '小程序', icon: 'lucide:layout-grid', iconify: true, color: 'text-emerald-500' },
   { name: 'App', icon: 'lucide:smartphone', iconify: true, color: 'text-blue-500' },
   { name: '邮件', icon: 'lucide:mail', iconify: true, color: 'text-red-500' },
@@ -56,8 +56,8 @@ const platformList = [
                 <img v-else-if="p.svgId === 'feishu'" src="@/assets/icon/fs.png" class="w-8 h-8 object-contain" alt="飞书" />
                 <img v-else-if="p.svgId === 'dingtalk'" src="@/assets/icon/dd.png" class="w-8 h-8 object-contain" alt="钉钉" />
                 <img v-else-if="p.svgId === 'weixin'" src="@/assets/icon/wx.png" class="w-8 h-8 object-contain" alt="微信" />
-                <img v-else-if="p.svgId === 'weibo'" src="@/assets/icon/xhs.png" class="w-8 h-8 object-contain" alt="微博" />
-                <img v-else-if="p.svgId === 'douyin'" src="@/assets/icon/qywx.png" class="w-8 h-8 object-contain" alt="抖音" />
+                <img v-else-if="p.svgId === 'weibo'" src="@/assets/icon/xhs.png" class="w-8 h-8 object-contain" alt="小红书" />
+                <img v-else-if="p.svgId === 'douyin'" src="@/assets/icon/qywx.png" class="w-8 h-8 object-contain" alt="企业微信" />
                 <span class="text-xs font-medium text-ink-secondary text-center">{{ p.name }}</span>
               </div>
           </div>

@@ -8,7 +8,12 @@ import StatNumber from '../components/StatNumber.vue'
    1. Hero
    ======================== */
 const heroRef = ref<HTMLElement | null>(null)
-const bannerUrl = new URL('@/assets/st.PNG', import.meta.url).href
+const bannerImages = [
+  new URL('@/assets/pecBaner/1.png', import.meta.url).href,
+  new URL('@/assets/pecBaner/2.png', import.meta.url).href,
+  new URL('@/assets/pecBaner/3.png', import.meta.url).href,
+  new URL('@/assets/pecBaner/4.png', import.meta.url).href,
+]
 useScrollReveal(heroRef, { y: 30 })
 
 const ecosystemCards = [
@@ -51,29 +56,55 @@ useScrollReveal(pecFormatsRef, { y: 30, delay: 0.1 })
 useScrollReveal(pecServicesRef, { y: 30, delay: 0.1 })
 
 const formats = [
-  { icon: 'lucide:trophy', title: '峰会', subtitle: 'Summit', time:"一年一次",gm:"1000人以上",desc: '顶级决策者的年度盛会' },
-  { icon: 'lucide:users', title: '论坛', subtitle: 'Forum',  time:"一季度一次",gm:"200~300人",desc: '行业前沿的深度对话' },
-  { icon: 'lucide:message-circle', title: '沙龙', subtitle: 'Salon',  time:"不定期",gm:"线上或线下",desc: '一线开发者的思想碰撞' },
-  { icon: 'lucide:monitor-play', title: '座谈', subtitle: 'Symposium',  time:"不定期",gm:"线上或线下",desc: '专家学者的闭门研讨' },
+  { image: new URL('@/assets/st/pec/fh.png', import.meta.url).href, title: '峰会', subtitle: 'Summit', time:"一年一次",gm:"1000人以上",desc: '顶级决策者的年度盛会' },
+  { image: new URL('@/assets/st/pec/lt.png', import.meta.url).href, title: '论坛', subtitle: 'Forum',  time:"一季度一次",gm:"200~300人",desc: '行业前沿的深度对话' },
+  { image: new URL('@/assets/st/pec/sl.png', import.meta.url).href, title: '沙龙', subtitle: 'Salon',  time:"不定期",gm:"线上或线下",desc: '一线开发者的思想碰撞' },
+  { image: new URL('@/assets/st/pec/zt.png', import.meta.url).href, title: '座谈', subtitle: 'Symposium',  time:"不定期",gm:"线上或线下",desc: '专家学者的闭门研讨' },
 ]
 
 const services = [
-  { icon: 'lucide:graduation-cap', title: '培训', desc: 'PET 提示工程培训体系，理论 + 实战，提升企业员工 AI 应用能力。' },
+  // { icon: 'lucide:graduation-cap', title: '培训', desc: 'PET 提示工程培训体系，理论 + 实战，提升企业员工 AI 应用能力。' },
   { icon: 'lucide:award', title: '认证', desc: '微软 Azure AI Fundamentals 官方认证 + PEC 职业资格证书。' },
   { icon: 'lucide:gamepad-2', title: '大赛', desc: '工信部工业文化发展中心主办，覆盖全国 270+ 院校。' },
 ]
 
 /* ========================
-   4. 技术生态
+   4. 企业 AI 服务生态圈
    ======================== */
-const techRef = ref<HTMLElement | null>(null)
-useScrollReveal(techRef, { y: 30, delay: 0.1 })
+const aiServiceRef = ref<HTMLElement | null>(null)
+const advantagesRef = ref<HTMLElement | null>(null)
+const matrixRef = ref<HTMLElement | null>(null)
+useScrollReveal(aiServiceRef, { y: 30, delay: 0.1 })
+useScrollReveal(advantagesRef, { y: 30, delay: 0.15 })
+useScrollReveal(matrixRef, { y: 30, delay: 0.2 })
 
-/* ========================
-   5. 金融生态
-   ======================== */
-const finRef = ref<HTMLElement | null>(null)
-useScrollReveal(finRef, { y: 30, delay: 0.1 })
+const advantages = [
+  {
+    image: new URL('@/assets/st/1.png', import.meta.url).href,
+    title: '全方位与多层次',
+    desc: '涵盖从技术咨询、解决方案设计、系统集成到专业培训、社群交流等多个方面和层次，为企业提供全流程支持。',
+  },
+  {
+    image: new URL('@/assets/st/2.png', import.meta.url).href,
+    title: '精准匹配需求',
+    desc: '深入了解企业的具体业务场景和痛点，利用前沿的 AI 技术，为企业量身打造高效能的 AI 服务。',
+  },
+  {
+    image: new URL('@/assets/st/3.png', import.meta.url).href,
+    title: '生态共赢持续发展',
+    desc: '加强企业间知识交流、技术合作与资源共享，激发创新活力，推动 AI 技术不断突破与应用拓展。',
+  },
+]
+
+const serviceMatrix = [
+  { icon: 'lucide:package', title: '产品', desc: '企业级 AI 工具与解决方案交付' },
+  { icon: 'lucide:graduation-cap', title: '培训', desc: '面向企业的 AI 应用能力提升培训' },
+  { icon: 'lucide:calendar-days', title: '活动', desc: '行业交流、案例分享、闭门研讨' },
+  { icon: 'lucide:lightbulb', title: '孵化', desc: 'AI 创新项目落地与孵化支持' },
+  { icon: 'lucide:landmark', title: '资本', desc: '产业资源与资本对接服务' },
+  { icon: 'lucide:route', title: '陪跑', desc: '企业 AI 转型全流程陪跑服务' },
+]
+
 </script>
 
 <template>
@@ -81,32 +112,20 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
     <!-- ========================
          1. Hero — 生态整体描述
          ======================== -->
-    <section
-      ref="heroRef"
-      class="relative w-full overflow-hidden bg-cover bg-center"
-      :style="{ minHeight: '520px', backgroundImage: `url(${bannerUrl})` }"
-    >
-      <!-- <div
-        class="absolute inset-0"
-        style="background: linear-gradient(135deg, rgba(11,79,108,0.7) 0%, rgba(27,67,50,0.6) 40%, rgba(85,173,115,0.5) 100%);"
-      />
-      <div
-        class="absolute inset-0 opacity-20"
-        style="background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.15) 0%, transparent 50%);"
-      />
-
-      <div class="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center" style="min-height: 520px; padding-top: 80px; padding-bottom: 80px;">
-        <h1 class="text-3xl sm:text-4xl lg:text-[52px] font-bold text-white leading-tight tracking-tight max-w-4xl">
-          软积木生态体系
-        </h1>
-        <p class="mt-6 text-base md:text-lg text-white/80 max-w-2xl leading-relaxed">
-          连接技术、资本与人才，共建开放共赢的 AI 产业生态
-        </p>
-      </div> -->
-    </section>
+    <!-- <section ref="heroRef" class="relative w-full overflow-hidden">
+      <div class="grid grid-cols-2 grid-rows-2 grid-flow-col h-[320px] md:h-[520px]">
+        <img
+          v-for="(url, idx) in bannerImages"
+          :key="idx"
+          :src="url"
+          class="w-full h-full object-cover"
+          :alt="`Banner ${idx + 1}`"
+        />
+      </div>
+    </section> -->
 
     <!-- 三个生态概览卡片 -->
-    <section class="py-20 md:py-[120px] bg-surface-base">
+    <!-- <section class="py-20 md:py-[120px] bg-surface-base">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
@@ -122,15 +141,15 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- ========================
          2. PEC — 数据成就 + 活动形式
          ======================== -->
-    <section class="py-20 md:py-[120px] bg-white">
+    <section class="py-20 md:py-[120px] bg-surface-base">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
-          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-soft text-brand mb-4">PEC 生态</span>
+          <!-- <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-soft text-brand mb-4">PEC 生态</span> -->
           <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
             PEC · 提示工程大会
           </h2>
@@ -165,8 +184,12 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
             :key="f.title"
             class="group p-6 md:p-8 rounded-3xl bg-surface-base border border-line/50 hover:shadow-card hover:border-brand/20 transition-all duration-300"
           >
-            <div class="w-12 h-12 rounded-xl bg-brand-soft flex items-center justify-center mb-5">
-              <Icon :icon="f.icon" class="w-6 h-6 text-brand" />
+            <div class="aspect-video rounded-xl overflow-hidden mb-5">
+              <img
+                :src="f.image"
+                :alt="f.title"
+                class="w-full h-full object-cover"
+              />
             </div>
             <h4 class="text-xl font-semibold text-ink-primary">{{ f.title }}</h4>
             <p class="text-sm text-ink-tertiary mt-1">{{ f.subtitle }}</p>
@@ -186,19 +209,19 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
         <div class="text-center mb-12 md:mb-16">
           <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">生态服务</h3>
           <p class="mt-3 text-base text-ink-secondary">
-            培训 · 认证 · 大赛，构建提示工程人才全链路成长体系
+            认证 · 大赛，构建提示工程人才全链路成长体系
           </p>
         </div>
 
-        <div ref="pecServicesRef" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div ref="pecServicesRef" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div
             v-for="svc in services"
             :key="svc.title"
             class="p-8 rounded-3xl bg-white border border-line/50 hover:shadow-card hover:border-brand/20 transition-all duration-300"
           >
-            <div class="w-14 h-14 rounded-2xl bg-brand-gradient flex items-center justify-center mb-6">
+            <!-- <div class="w-14 h-14 rounded-2xl bg-brand-gradient flex items-center justify-center mb-6">
               <Icon :icon="svc.icon" class="w-7 h-7 text-white" />
-            </div>
+            </div> -->
             <h4 class="text-2xl font-bold text-ink-primary">{{ svc.title }}</h4>
             <p class="mt-4 text-base text-ink-secondary leading-relaxed">{{ svc.desc }}</p>
           </div>
@@ -239,103 +262,75 @@ useScrollReveal(finRef, { y: 30, delay: 0.1 })
     </section>
 
     <!-- ========================
-         4. 技术生态体系
+         4. 软积木 · 企业 AI 服务生态圈
          ======================== -->
     <section class="py-20 md:py-[120px] bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 md:mb-16">
-          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-soft text-brand mb-4">技术生态</span>
+        <!-- 标题区 -->
+        <div ref="aiServiceRef" class="text-center mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
-            技术生态体系
+            软积木 · 企业 AI 服务生态圈
           </h2>
-          <p class="mt-5 text-base md:text-lg text-ink-secondary max-w-4xl mx-auto leading-relaxed">
-            软积木不仅是一家AI解决方案公司，更在开发者、技术社区与产业合作层面，构建了完整的人工智能技术生态。
+          <p class="mt-5 text-base md:text-lg text-ink-secondary max-w-3xl mx-auto leading-relaxed">
+            软积木通过整合前沿 AI 技术、个性化解决方案、专业培训与社群交流等多元化服务，
+          </p>
+          <p class="mt-5 text-base md:text-lg text-ink-secondary max-w-3xl mx-auto leading-relaxed">
+            助力企业实现智能化升级与业务创新。
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
-            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">1</div>
-            <h3 class="text-lg font-bold text-ink-primary mb-3">百万级开发者技术基础</h3>
-            <p class="text-sm text-ink-secondary leading-relaxed">
-              依托多年技术社区积累，软积木关联技术平台拥有超过 108万开发者用户，覆盖企业开发、软件工程、AI应用、系统架构等多个技术领域，具备强大的开发者连接能力与技术传播能力。
-            </p>
+        <!-- 核心优势 -->
+        <div ref="advantagesRef" class="mb-20 md:mb-24">
+          <div class="text-center mb-10 md:mb-12">
           </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              v-for="(item, idx) in advantages"
+              :key="item.title"
+              class="group p-8 rounded-3xl bg-surface-base border border-line/50 hover:shadow-card hover:border-brand/20 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div class="aspect-video rounded-2xl overflow-hidden mb-5">
+                <img
+                  :src="item.image"
+                  :alt="item.title"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h4 class="text-lg font-bold text-ink-primary mb-2">{{ item.title }}</h4>
+              <p class="text-sm text-ink-secondary leading-relaxed">{{ item.desc }}</p>
+            </div>
+          </div>
+        </div>
 
-          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
-            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">2</div>
-            <h3 class="text-lg font-bold text-ink-primary mb-3">领先的AI技术社区与行业影响力</h3>
-            <p class="text-sm text-ink-secondary leading-relaxed">
-              早在 2023 年，软积木便率先发起 AI 技术交流社群，持续聚集国内活跃的 AI 技术 KOL、开发者、布道者与行业实践者，围绕大模型、AI Agent、企业智能化等方向展开深度交流与实践，共同推动AI技术普及与产业落地。
-            </p>
+        <!-- 服务矩阵 -->
+        <div ref="matrixRef">
+          <div class="text-center mb-10 md:mb-12">
+            <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">服务矩阵</h3>
+            <p class="mt-3 text-base text-ink-secondary">围绕客户构建六大核心服务支撑</p>
+            <div class="mt-6 max-w-6xl mx-auto rounded-2xl overflow-hidden">
+              <img
+                src="@/assets/st/yq.png"
+                alt="服务矩阵"
+                class="w-full h-auto object-contain"
+              />
+            </div>
           </div>
-
-          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
-            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">3</div>
-            <h3 class="text-lg font-bold text-ink-primary mb-3">完整的产业技术生态合作</h3>
-            <p class="text-sm text-ink-secondary leading-relaxed">
-              软积木已与多家国内领先AI与云计算厂商建立技术合作关系，包括：微软、亚马逊、火山引擎、百度智能云等，围绕大模型能力、云基础设施、智能应用与企业服务等方向展开协同，共同打造开放、稳定、可持续发展的AI技术生态体系。
-            </p>
-          </div>
+          <!-- <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+            <div
+              v-for="item in serviceMatrix"
+              :key="item.title"
+              class="group p-6 rounded-3xl bg-surface-base border border-line/50 hover:shadow-card hover:border-brand/20 hover:-translate-y-1 transition-all duration-300 text-center"
+            >
+              <div class="w-12 h-12 rounded-2xl bg-brand-soft flex items-center justify-center mx-auto mb-4 group-hover:bg-brand group-hover:scale-110 transition-all duration-300">
+                <Icon :icon="item.icon" class="w-6 h-6 text-brand group-hover:text-white transition-colors duration-300" />
+              </div>
+              <h4 class="text-lg font-bold text-ink-primary mb-1">{{ item.title }}</h4>
+              <p class="text-sm text-ink-secondary leading-relaxed">{{ item.desc }}</p>
+            </div>
+          </div> -->
         </div>
       </div>
     </section>
 
-    <!-- ========================
-         5. 金融与产业生态
-         ======================== -->
-    <section class="py-20 md:py-[120px] bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12 md:mb-16">
-          <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-soft text-brand mb-4">金融与产业生态</span>
-          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
-            金融与产业生态
-          </h2>
-          <p class="mt-5 text-base md:text-lg text-ink-secondary max-w-4xl mx-auto leading-relaxed">
-            软积木持续构建"技术 + 资本 + 产业"协同生态，打通项目成长、产业落地与资本对接的关键链路，为AI创新企业与产业合作提供长期支撑。
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
-            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">1</div>
-            <h3 class="text-lg font-bold text-ink-primary mb-3">广泛的投融资资源连接能力</h3>
-            <p class="text-sm text-ink-secondary leading-relaxed">
-              软积木与众多银行、投资机构、产业资本及创新平台保持长期交流与合作，能够帮助优质项目快速对接资本资源，提升项目成长与产业化效率。
-            </p>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
-            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">2</div>
-            <h3 class="text-lg font-bold text-ink-primary mb-3">丰富的金融生态合作伙伴体系</h3>
-            <p class="text-sm text-ink-secondary leading-relaxed">
-              围绕人工智能、大模型、产业数字化等方向，软积木已建立覆盖投资机构、产业伙伴、技术平台与创新服务机构的生态合作网络，形成多维度协同发展的产业生态。
-            </p>
-          </div>
-
-          <div class="p-6 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card transition-all">
-            <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-brand-soft text-brand text-lg font-bold mb-4">3</div>
-            <h3 class="text-lg font-bold text-ink-primary mb-3">地方产业基金与政府资源联动</h3>
-            <p class="text-sm text-ink-secondary leading-relaxed">
-              具备对接地方政府产业基金、产业园区及区域创新平台的能力，可协助项目链接地方产业政策、专项资金与落地资源，推动AI项目与区域产业深度融合，实现技术、产业与资本的协同发展。
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 金融生态 CTA -->
-    <section>
-      <div class="py-20 md:py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 class="text-2xl md:text-3xl font-bold text-ink-primary leading-relaxed">
-            开放互联 · 合规稳健 · 数智赋能
-          </h2>
-          <p class="mt-6 text-base md:text-lg text-ink-secondary leading-relaxed">
-            软积木以 AI 原生技术底座为根基，携手金融机构、产业伙伴与科技企业，共建开放包容、稳健可持续、多方共赢的金融科技新生态。
-          </p>
-        </div>
-      </div>
-    </section>
   </div>
 </template>

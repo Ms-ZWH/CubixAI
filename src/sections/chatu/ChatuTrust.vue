@@ -24,15 +24,19 @@ const items = [
 ]
 
 const certImages = [
+  new URL('@/assets/zz/图片1.png', import.meta.url).href,
+  new URL('@/assets/zz/图片2.png', import.meta.url).href,
+  new URL('@/assets/zz/图片3.png', import.meta.url).href,
+  new URL('@/assets/zz/图片4.png', import.meta.url).href,
   new URL('@/assets/zz/CubixAI大模型调度系统证书_01.png', import.meta.url).href,
   new URL('@/assets/zz/企业智能销售后台管理系统证书_01.png', import.meta.url).href,
-  new URL('@/assets/zz/企业智能销售管理系统证书_01.png', import.meta.url).href,
-  new URL('@/assets/zz/大模型调度管理系统证书_01.png', import.meta.url).href,
-  new URL('@/assets/zz/智能交互办公管理系统证书_01.png', import.meta.url).href,
-  new URL('@/assets/zz/智能体分发系统证书_01.png', import.meta.url).href,
-  new URL('@/assets/zz/智能体设计管理系统证书_01.png', import.meta.url).href,
-  new URL('@/assets/zz/证书_01.png', import.meta.url).href,
-  new URL('@/assets/zz/软积木智慧教学管理系统证书_01.png', import.meta.url).href,
+  // new URL('@/assets/zz/企业智能销售管理系统证书_01.png', import.meta.url).href,
+  // new URL('@/assets/zz/大模型调度管理系统证书_01.png', import.meta.url).href,
+  // new URL('@/assets/zz/智能交互办公管理系统证书_01.png', import.meta.url).href,
+  // new URL('@/assets/zz/智能体分发系统证书_01.png', import.meta.url).href,
+  // new URL('@/assets/zz/智能体设计管理系统证书_01.png', import.meta.url).href,
+  // new URL('@/assets/zz/证书_01.png', import.meta.url).href,
+  // new URL('@/assets/zz/软积木智慧教学管理系统证书_01.png', import.meta.url).href,
 ]
 </script>
 
