@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import { Icon } from '@iconify/vue'
 import Chip from '../../components/Chip.vue'
 import BrandButton from '../../components/BrandButton.vue'
+
+const openModal = inject<() => void>('agentStationOpenModal')
 
 const sectionRef = ref<HTMLElement | null>(null)
 useScrollReveal(sectionRef, { y: 30 })
@@ -118,11 +120,11 @@ const versions = [
             <BrandButton
               :variant="v.ctaVariant"
               size="sm"
-              :to="v.to"
               :class="[
                 'w-full justify-center',
                 v.ctaVariant === 'primary' ? '!bg-none !bg-[#2DB4E6]' : 'hover:!border-[#2DB4E6] hover:!text-[#2DB4E6]',
               ]"
+              @click="openModal"
             >
               {{ v.cta }}
             </BrandButton>

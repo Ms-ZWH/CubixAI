@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
-import { RouterLink } from 'vue-router'
 import jszcImg from '@/assets/jszc.jpg'
-import lxhsqImg from '@/assets/lxhsq.png'
+import lxhsqImg from '@/assets/lxwm.png'
 import wjhImg from '@/assets/wjh.jpg'
 
 const contentRef = ref<HTMLElement | null>(null)
@@ -14,7 +13,7 @@ useScrollReveal(cardsRef, { y: 30, delay: 0.2 })
 
 const items = [
   {
-    title: '社区',
+    title: '联系我们',
     desc: '加入智方体用户社区，获取最新产品动态、实战教程与同行经验交流',
     link: '/ecosystem',
     image: lxhsqImg,
@@ -49,11 +48,10 @@ const items = [
       </div>
 
       <div ref="cardsRef" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <RouterLink
+        <div
           v-for="item in items"
           :key="item.title"
-          :to="item.link"
-          class="flex flex-col items-center text-center rounded-2xl bg-surface-base border border-line hover:shadow-card hover:border-[#2DB4E6]/20 transition-all overflow-hidden"
+          class="flex flex-col items-center text-center rounded-2xl bg-surface-base border border-line overflow-hidden"
         >
           <!-- 图片 -->
           <div class="w-full aspect-square bg-white flex items-center justify-center overflow-hidden p-6">
@@ -70,7 +68,7 @@ const items = [
             <h3 class="text-lg font-semibold text-ink-primary">{{ item.title }}</h3>
             <p class="mt-2 text-sm text-ink-secondary leading-relaxed">{{ item.desc }}</p>
           </div>
-        </RouterLink>
+        </div>
       </div>
 
     </div>

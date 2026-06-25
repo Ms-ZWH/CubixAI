@@ -14,6 +14,12 @@ useScrollReveal(card1Ref, { y: 30, delay: 0.1 })
 useScrollReveal(card2Ref, { y: 30, delay: 0.2 })
 useScrollReveal(card3Ref, { y: 30, delay: 0.3 })
 
+function setCardRef(el: HTMLElement | null, idx: number) {
+  if (idx === 0) card1Ref.value = el
+  else if (idx === 1) card2Ref.value = el
+  else card3Ref.value = el
+}
+
 const cases = [
   {
     image: new URL('@/assets/hzqy/qh.png', import.meta.url).href,
@@ -54,7 +60,7 @@ const cases = [
         <div
           v-for="(c, idx) in cases"
           :key="c.title"
-          :ref="idx === 0 ? card1Ref : idx === 1 ? card2Ref : card3Ref"
+          :ref="(el) => setCardRef(el as HTMLElement | null, idx)"
           class="group rounded-3xl bg-surface-card border border-line shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden"
         >
           <!-- 图片区域 -->

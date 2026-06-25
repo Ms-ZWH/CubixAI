@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref, provide } from 'vue'
 import AgentHero from '../sections/agent/AgentHero.vue'
 import AgentPainPoint from '../sections/agent/AgentPainPoint.vue'
 import AgentSimplicity from '../sections/agent/AgentSimplicity.vue'
@@ -11,6 +12,15 @@ import AgentCompare from '../sections/agent/AgentCompare.vue'
 import AgentVersions from '../sections/agent/AgentVersions.vue'
 import AgentPricing from '../sections/agent/AgentPricing.vue'
 import AgentFinalCTA from '../sections/agent/AgentFinalCTA.vue'
+import EnterpriseModal from '../components/EnterpriseModal.vue'
+
+const showModal = ref(false)
+
+function openModal() {
+  showModal.value = true
+}
+
+provide('agentStationOpenModal', openModal)
 </script>
 
 <template>
@@ -28,4 +38,6 @@ import AgentFinalCTA from '../sections/agent/AgentFinalCTA.vue'
     <AgentPricing />
     <AgentFinalCTA />
   </div>
+
+  <EnterpriseModal v-model="showModal" />
 </template>

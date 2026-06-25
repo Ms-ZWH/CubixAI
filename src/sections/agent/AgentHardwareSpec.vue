@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
+import hero1 from '@/assets/zft/hero1.png'
 import zft1 from '@/assets/zft/1.png'
+import zft2 from '@/assets/zft/2.png'
 import zft3 from '@/assets/zft/3.png'
 
 const leftRef = ref<HTMLElement | null>(null)
@@ -9,6 +11,28 @@ const rightRef = ref<HTMLElement | null>(null)
 
 useScrollReveal(leftRef, { y: 30, delay: 0.15 })
 useScrollReveal(rightRef, { y: 30 })
+
+const galleryImages = [hero1, zft1, zft2, zft3]
+const thumbImages = [zft1, zft2, zft3]
+const currentIndex = ref(0)
+
+const DEFAULT_INDEX = 0
+const AUTO_RESET_DELAY = 3000
+let resetTimer: ReturnType<typeof setTimeout> | null = null
+
+function resetToDefault() {
+  currentIndex.value = DEFAULT_INDEX
+}
+
+function selectImage(index: number) {
+  currentIndex.value = index + 1
+  if (resetTimer) clearTimeout(resetTimer)
+  resetTimer = setTimeout(resetToDefault, AUTO_RESET_DELAY)
+}
+
+onUnmounted(() => {
+  if (resetTimer) clearTimeout(resetTimer)
+})
 
 const coreSpecs = [
   { name: '处理器', value: 'Intel(R) Celeron(R) N5100 @ 1.10GHz 1.10 GHz', highlight: '', suffix: '' },
@@ -35,39 +59,39 @@ const ioSpecs = [
       <div
         class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
       >
-        <!-- 左：多角度图占位 -->
+        <!-- 左：多角度图 -->
         <div ref="leftRef" class="relative">
           <div
-            class="aspect-square rounded-2xl bg-white border border-line shadow-card flex items-center justify-center"
+            class="aspect-square rounded-2xl bg-white border border-line shadow-card flex items-center justify-center overflow-hidden"
           >
-            <span class="text-ink-tertiary text-sm">
-              TODO: 主视角渲染图
-            </span>
+            <div
+              class="flex h-full w-full transition-transform duration-500 ease-in-out"
+              :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
+            >
+              <img
+                v-for="(img, i) in galleryImages"
+                :key="i"
+                :src="img"
+                :alt="`角度 ${i + 1}`"
+                class="w-full h-full shrink-0 object-contain"
+              />
+            </div>
           </div>
           <div class="grid grid-cols-3 gap-3 mt-4">
-            <div
-              class="aspect-square rounded-xl bg-white border border-line flex items-center justify-center overflow-hidden"
+            <button
+              v-for="(img, i) in thumbImages"
+              :key="i"
+              type="button"
+              class="aspect-square rounded-xl bg-white border flex items-center justify-center overflow-hidden transition-colors"
+              :class="currentIndex === i ? 'border-[#2DB4E6] ring-2 ring-[#2DB4E6]/20' : 'border-line hover:border-[#2DB4E6]/50'"
+              @click="selectImage(i)"
             >
               <img
-                :src="zft1"
-                alt="角度 1"
+                :src="img"
+                :alt="`角度 ${i + 1}`"
                 class="w-full h-full object-contain"
               />
-            </div>
-            <div
-              class="aspect-square rounded-xl bg-white border border-line flex items-center justify-center"
-            >
-              <span class="text-ink-tertiary text-xs">角度 2</span>
-            </div>
-            <div
-              class="aspect-square rounded-xl bg-white border border-line flex items-center justify-center overflow-hidden"
-            >
-              <img
-                :src="zft3"
-                alt="角度 3"
-                class="w-full h-full object-contain"
-              />
-            </div>
+            </button>
           </div>
         </div>
 

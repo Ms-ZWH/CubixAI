@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const slides = [
   { src: new URL('@/assets/rjm_banana.png', import.meta.url).href, alt: '软积木' },
   { src: new URL('@/assets/ChatU_banana.png', import.meta.url).href, alt: 'ChatU' },
-  // { src: new URL('@/assets/zft_banana.png', import.meta.url).href, alt: '智方体' },
+  { src: new URL('@/assets/zft_banana1.png', import.meta.url).href, alt: '智方体' },
 ]
 
 const current = ref(0)
@@ -70,6 +70,20 @@ onUnmounted(() => {
               <p class="mt-6 text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A] drop-shadow-lg tracking-wider">企业 AI 操作系统</p>
               <p class="mt-6 text-lg md:text-xl lg:text-2xl font-semibold text-ink-secondary drop-shadow-lg tracking-wide">多引擎调度 · 多模态交互 · 多智能体协同</p>
               <p class="mt-6 text-lg md:text-xl lg:text-2xl font-semibold text-[#1A1A1A] drop-shadow-lg tracking-wide">让每一家企业都拥有专属 AI 能力</p>
+            </div>
+          </div>
+        </div>
+        <!-- 第三张图(zft_banana1)的文案 -->
+        <div
+          v-if="i === 2"
+          class="absolute inset-0 flex items-center"
+        >
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-xl">
+              <p class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1A8BC4] drop-shadow-lg tracking-widest">智方体 · AgentStation</p>
+              <p class="mt-6 text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A] drop-shadow-lg tracking-wider">智能工作 · 安全到家</p>
+              <p class="mt-6 text-lg md:text-xl lg:text-2xl font-semibold text-ink-secondary drop-shadow-lg tracking-wide">开箱即用的企业 AI 工作站 · 数据不出盒</p>
+              <p class="mt-6 text-lg md:text-xl lg:text-2xl font-semibold text-[#1A1A1A] drop-shadow-lg tracking-wide">预置智能体 · 高清触控可视屏</p>
             </div>
           </div>
         </div>

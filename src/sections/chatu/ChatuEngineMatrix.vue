@@ -10,21 +10,21 @@ useScrollReveal(titleRef, { y: 30 })
 useScrollReveal(gridRef, { y: 30, delay: 0.15 })
 
 const engines = [
-  { name: 'claude', url: new URL('@/assets/icon/claude.png', import.meta.url).href, color: '#412991' },
-  { name: 'Pin', url: new URL('@/assets/icon/Azure.png', import.meta.url).href, color: '#D4A574' },
+  { name: 'Claude', url: new URL('@/assets/icon/claude.png', import.meta.url).href, color: '#412991' },
+  { name: 'ChatGPT', url: new URL('@/assets/icon/ChatGPT2.png', import.meta.url).href, color: '#D4A574' },
   { name: 'Gemini', url: new URL('@/assets/icon/Gemini.png', import.meta.url).href, color: '#4285F4' },
-  { name: '通义千问', url: new URL('@/assets/icon/alty.png', import.meta.url).href, color: '#12B7F5' },
-  { name: 'Deepseek', url: new URL('@/assets/icon/deepseek.png', import.meta.url).href, color: '#FF6A00' },
+  { name: 'Qwen', url: new URL('@/assets/icon/alty.png', import.meta.url).href, color: '#12B7F5' },
+  { name: 'DeepSeek', url: new URL('@/assets/icon/deepseek1.png', import.meta.url).href, color: '#FF6A00' },
   { name: 'Kimi', url: new URL('@/assets/icon/kimi.png', import.meta.url).href, color: '#2932E1' },
   { name: 'Minimax', url: new URL('@/assets/icon/minimax.png', import.meta.url).href, color: '#3C8CFF' },
-  { name: '智谱-GLM', url: new URL('@/assets/icon/GLM.png', import.meta.url).href, color: '#FF6B35' },
+  { name: 'GLM', url: new URL('@/assets/icon/GLM.png', import.meta.url).href, color: '#FF6B35' },
   { name: 'Step', url: new URL('@/assets/icon/jyxc.png', import.meta.url).href, color: '#8B5CF6' },
   { name: 'Baichuan', url: new URL('@/assets/icon/Baichuan.png', import.meta.url).href, color: '#4D6BFA' },
   { name: 'Taichu', url: new URL('@/assets/icon/Taichu.png', import.meta.url).href, color: '#10B981' },
   { name: 'Doubao', url: new URL('@/assets/icon/hsyq.png', import.meta.url).href, color: '#FF4500' },
   { name: 'Llama', url: new URL('@/assets/icon/meta.png', import.meta.url).href, color: '#0668E1' },
-  { name: '腾讯混元', url: new URL('@/assets/icon/txhy.png', import.meta.url).href, color: '#6366F1' },
-  { name: '文心一言', url: new URL('@/assets/icon/wenxin.png', import.meta.url).href, color: '#F59E0B' },
+  { name: 'Tencent HY', url: new URL('@/assets/icon/txhy.png', import.meta.url).href, color: '#6366F1' },
+  { name: 'ERNIE', url: new URL('@/assets/icon/wenxin.png', import.meta.url).href, color: '#F59E0B' },
   { name: 'More...', icon: 'lucide:plus', color: '#9CA3AF' },
 ]
 </script>

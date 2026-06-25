@@ -72,12 +72,13 @@ useScrollReveal(globalRef, { y: 30, delay: 0.1 })
 useScrollReveal(cctvRef, { y: 20, delay: 0.3 })
 
 const events = [
-  { name: '韩国 SOUTH SUMMIT', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg.png' },
-  { name: '中国 香港贸发局活动', location: '香港', desc: 'TODO: 活动说明占位', image: 'xg.png' },
-  { name: '美国 Microsoft MVP Global Summit', location: '西雅图', desc: 'TODO: 活动说明占位', image: 'xyt.png' },
+  { name: '韩国 SOUTH SUMMIT 2023', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg.png' },
+  { name: '中国 香港贸发局活动 2024', location: '香港', desc: 'TODO: 活动说明占位', image: 'xg.png' },
+  { name: '美国 Microsoft MVP Global Summit 2024', location: '西雅图', desc: 'TODO: 活动说明占位', image: 'xyt.png' },
+  { name: '英国 PEC 国际 2025', location: '伦敦', desc: 'TODO: 活动说明占位', image: 'ld.png' },
   { name: '美国 NVIDIA GTC 2026', location: '硅谷', desc: 'TODO: 活动说明占位', image: 'ywd.png', extraImage: 'ywd3.png' },
-  { name: '英国 PEC 国际', location: '伦敦', desc: 'TODO: 活动说明占位', image: 'ld.png' },
-  { name: '日本', location: '', desc: 'TODO: 活动说明占位', image: '' },
+  // { name: '日本', location: '', desc: 'TODO: 活动说明占位', image: '' },
+  { name: '韩国 NextRise 2026', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg2.png' },
 ]
 
 /* ========================

@@ -39,7 +39,7 @@ const features = [
           为企业打造专属的智能体搭建平台
         </h2>
         <p class="mt-4 text-lg text-ink-secondary">
-          千余种智能体覆盖 8 大行业领域
+          千余种智能体覆盖 8 大职能与业务场景
         </p>
       </div>
 

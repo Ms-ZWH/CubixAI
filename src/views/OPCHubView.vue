@@ -7,6 +7,7 @@ import { useCountUp } from '../composables/useCountUp'
 
 import Chip from '../components/Chip.vue'
 import BrandButton from '../components/BrandButton.vue'
+import EnterpriseModal from '../components/EnterpriseModal.vue'
 
 const opc1Img = new URL('@/assets/opc1.png', import.meta.url).href
 
@@ -14,7 +15,6 @@ const leftRef = ref(null)
 const rightRef = ref(null)
 
 const showModal = ref(false)
-const lxwmImg = new URL('@/assets/lxwm.png', import.meta.url).href
 
 const heroImages = [
   { src: new URL('@/assets/opchub/opchub.png', import.meta.url).href, alt: 'OPC Hub' },
@@ -141,19 +141,6 @@ useScrollReveal(vpTitleRef, { y: 30 })
 useScrollReveal(vpColumnsRef, { y: 30, delay: 0.15 })
 useScrollReveal(vpBottomRef, { y: 30, delay: 0.25 })
 
-const chains = [
-  { title: '算力高墙', desc: '高昂的 AI 算力门槛阻碍创意实现。' },
-  { title: 'AI 能力滞后', desc: '难以获取最新的 AI 能力支撑，导致信息滞后。' },
-  { title: '信息孤岛', desc: '单兵作战易陷入信息闭塞和孤独感。' },
-]
-
-const solutions = [
-  { title: '算力共享', desc: '共享低成本算力资源，解决计算瓶颈。' },
-  { title: 'AI 工具链', desc: '集成一站式 AI 开发与营销工具，提升效率。' },
-  { title: '政策护航', desc: '引入法律和财务服务，降低运营风险。' },
-  { title: '生态互联', desc: '构建创新网络，促进合作与价值孵化。' },
-]
-
 const kcImages = [
   new URL('@/assets/kc/微信图片_20260602122120_485_111.png', import.meta.url).href,
   new URL('@/assets/kc/微信图片_20260602122135_486_111.png', import.meta.url).href,
@@ -172,11 +159,37 @@ const services = [
   { title: 'AI 运营支撑服务', image: new URL('@/assets/opchub/66.png', import.meta.url).href, items: ['社群 & 企业运营方法论', '内容、品牌、招商协同', '（可选）国际化 PEC 大会'] },
 ]
 
-const conditions = [
-  { title: '资源基础', items: ['可用办公面积：建议≥1,000㎡', '固定活动场地（含路演 / 培训 / 闭门会）', 'OPC 创业者社群（个人 / 小团队）'] },
-  { title: '运营能力', items: ['3–5 名园区常驻运营人员（招商 / 活动 / 社群 / 对接政府 & 企业）', '有过产业园、孵化器、加速器运营经验（加分）'] },
-  { title: '政策与资源', items: ['当地政府明确支持方向：AI / 数字经济 / 产业升级 / 创新创业', '能对接到政策、项目、资金或算力券'] },
-  { title: '数据与算力', items: ['具备合规可用的行业数据', '稳定、可调度的算力环境'] },
+const conditionGroups = [
+  {
+    category: '园区',
+    image: new URL('@/assets/opchub/yq.png', import.meta.url).href,
+    items: [
+      { title: '资源基础', items: ['可用办公面积：建议≥1,000㎡', '固定活动场地（含路演 / 培训 / 闭门会）', 'OPC 创业者社群（个人 / 小团队）'] },
+      { title: '运营能力', items: ['3–5 名园区常驻运营人员（招商 / 活动 / 社群 / 对接政府 & 企业）', '有过产业园、孵化器、加速器运营经验（加分）'] },
+      { title: '政策与资源', items: ['当地政府明确支持方向：AI / 数字经济 / 产业升级 / 创新创业', '能对接刡政策、项目、资金或算力券'] },
+      { title: '数据与算力', items: ['具备合规可用的行业数据', '稳定、可调度的算力环境'] },
+    ],
+  },
+  {
+    category: '企业',
+    image: new URL('@/assets/opchub/qy.png', import.meta.url).href,
+    items: [
+      { title: '业务场景', items: ['有明确的 AI 落地场景或待解决的业务痛点（如智能客服、流程自动化、知识管理）', '内部有愿意配合的业务部门，能推动 POC 快速验证', '对 OPC 技术有真实需求，而非"为了上 AI 而上 AI"'] },
+      { title: '技术底座', items: ['有基础 IT 团队或技术负责人，能对接 OPC 技术集成', '现有系统具备一定的 API 开放能力或数据接口', '有内部知识库、文档或数据沉淀，可供 AI 训练与调用'] },
+      { title: '组织意愿', items: ['管理层对 AI 转型有明确共识，愿意投入时间和预算', '能接受"先小步快跑、再逐步扩展"的落地节奏', '有跨部门协作机制，打破信息孤岛'] },
+      { title: '生态连接', items: ['愿意开放部分场景与 OPC 生态伙伴共创', '能作为行业标杆案例，反哺 OPC 社区方法论', '有参与行业标准共建或技术分享的意愿'] },
+    ],
+  },
+  {
+    category: '高校',
+    image: new URL('@/assets/opchub/gx.png', import.meta.url).href,
+    items: [
+      { title: '学科与人才', items: ['计算机、人工智能、软件工程等相关专业支撑', '有研究生或高年级本科生可参与实际项目', '教师团队中有对 Agent、LLM、RAG 等方向有研究兴趣的骨干'] },
+      { title: '科研与课题', items: ['有省部级或校企联合课题资源，能将 OPC 技术嵌入研究', '实验室或课题组有算力设备或云资源配额', '愿意将 OPC 作为教学案例或课程实践内容'] },
+      { title: '产教融合', items: ['有校企合作基础，能对接企业真实业务场景', '愿意共建实习基地、联合实验室或技术转化中心', '有科技成果转化机制，能将学生项目或研究成果推向市场'] },
+      { title: '社群与活动', items: ['有学生技术社团（如 AI 社团、开发者俱乐部）作为种子用户', '能承办 OPC 技术沙龙、黑客松、Workshop 等线下活动', '校园内有合适的场地用于日常交流、项目展示和成果路演'] },
+    ],
+  },
 ]
 
 const patents = [
@@ -200,7 +213,7 @@ const cases = [
   {
     tag: '中关村 AI 北纬社区（北京·海淀）',
     label: '中关村 AI 北纬社区 人工智能 OPC 服务计划发布',
-    slogan: '"海淀友" 豪力 AI 的千万种可能；北京首个人工智能 OPC 服务计划',
+    slogan: '北京首个人工智能 OPC 服务计划',
     results: ['实现园区企业统一 AI 能力入口', '支撑多场 AI 主题沙龙与技术交流活动', '形成 "社区 + 平台 + 企业" 的轻量化 OPC 生态模型'],
     feature: '验证了 OPC 在社区级载体中的可落地性',
     images: [caseImgBwsq1, caseImgBwsq],
@@ -208,7 +221,7 @@ const cases = [
   {
     tag: '中关村（朝阳）AI Space 产业园（北京·朝阳）',
     label: '京朝阳首个 OPC+AI 落地 Aspace',
-    slogan: '软积木助力、ChatU 首批人工智能 OPC 友好社区生态伙伴',
+    slogan: '软积木助力中关村人工智能智用研究院打造服务园区 OPC 平台',
     results: ['支撑园区企业 AI 应用落地与能力提升', '打通 "算力 + 平台 + 培训 + 活动" 的完整闭环', '显著提升园区在 AI 产业方向的承载能力'],
     feature: '验证了 OPC 在产业园级别的规模化可行性',
     images: [caseImgCycyy, caseImgCycyy1],
@@ -234,7 +247,7 @@ const cases = [
             <h1 class="mt-6 text-[48px] md:text-[64px] lg:text-[72px] font-semibold text-[#1A1A1A] leading-[1.08] tracking-[-0.03em]">
               OPC Hub<br />
               <span class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#1A1A1A]">
-                一人公司园区方案
+                面向 OPC 时代的 AI 创业生态基础设施平台
               </span>
             </h1>
 
@@ -281,7 +294,7 @@ const cases = [
             <!-- Dots -->
             <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
               <button
-                v-for="(img, idx) in heroImages"
+                v-for="(_, idx) in heroImages"
                 :key="idx"
                 class="w-2 h-2 rounded-full transition-all"
                 :class="idx === heroIndex ? 'bg-[#F04045] w-4' : 'bg-white/60'"
@@ -320,7 +333,10 @@ const cases = [
                 <h3 class="text-xl font-bold text-[#1A1A1A]">面向园区</h3>
               </div>
               <p class="text-sm text-[#666666] leading-relaxed">
-                为园区打造多引擎、多模态 AI 能力底座，降低 AI 使用门槛。统筹管理算力券与算力资源，推动算力落地转化。打通算力、平台、培训、活动全闭环，打造轻量化 OPC 生态，让园区转型为融合算力、人才、企业的智能协同平台。
+                痛点：园区招商缺乏 AI 特色竞争力，创业者算力成本高、信息孤立、工具更新慢，无统一算力管控平台。
+              </p>
+              <p class="text-sm text-[#666666] leading-relaxed">
+                方案：部署 OPC Hub 园区管控中台，共享算力并发放算力券，汇聚全品类大模型与行业智能体；配套 AI 培训、创业导师、路演对接服务，搭建创业者社群，本地私有化合规部署，帮助园区从物业房东转型 AI 产业孵化器。
               </p>
             </div>
 
@@ -333,7 +349,10 @@ const cases = [
                 <h3 class="text-xl font-bold text-[#1A1A1A]">面向企业</h3>
               </div>
               <p class="text-sm text-[#666666] leading-relaxed">
-                依托 AI 推动企业组织变革，搭建内部 OPC 单元与赛马机制。配套培训、陪跑与项目辅导体系，支持快速试错迭代。企业可直接调用模型与智能体，降低算力及大模型使用门槛，助力业务降本增效、创新增长。
+                痛点：人力成本高，员工缺少 AI 实操能力，缺少轻量化创新单元，业务创新迭代缓慢。
+              </p>
+              <p class="text-sm text-[#666666] leading-relaxed">
+                方案：搭建企业内部 OPC 微型创新单元，落地赛马试错机制；接入一站式多模型 AI 底座，用智能体替代重复工作；配套分层 AI 课程、官方能力认证与行业导师一对一陪跑，共享算力大幅降低技术投入，实现降本增效。
               </p>
             </div>
 
@@ -343,10 +362,13 @@ const cases = [
                 <div class="w-10 h-10 rounded-xl bg-[#F04045]/10 flex items-center justify-center">
                   <Icon icon="lucide:graduation-cap" class="w-5 h-5 text-[#F04045]" />
                 </div>
-                <h3 class="text-xl font-bold text-[#1A1A1A]">面向学校</h3>
+                <h3 class="text-xl font-bold text-[#1A1A1A]">面向高校</h3>
               </div>
               <p class="text-sm text-[#666666] leading-relaxed">
-               助力高校升级双创教育与课程体系，引入创业导师、孵化校内项目。开展 AI 能力培养、OPC 实战训练，提升学生就业创业能力。搭建校企合作桥梁，提供真实项目场景，构建 AI 时代新型人才培养体系。
+               痛点：AI 教学体系落后，学生缺少算力与实战项目，就业创业资源匮乏，校企人才供需脱节。
+              </p>
+              <p class="text-sm text-[#666666] leading-relaxed">
+               方案：引入 OPC 标准化 AI 实训课程与权威技能认证，开放平台免费算力与模型资源；导入企业真实产业项目用于实训，配备创业导师，常态化举办 AI 沙龙路演，打通校企协同渠道，同步赋能学生就业与轻创业。
               </p>
             </div>
           </div>
@@ -358,9 +380,9 @@ const cases = [
     <section class="py-20 md:py-[120px] bg-white text-[#1A1A1A] fade-in-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">
-          技术底座：OPC Hub——AI Agent 操作系统
+          OPC Hub——面向 OPC 时代的 AI 创业生态基础设施平台
         </h2>
-        <p class="text-center text-[#666666] mb-10">OPC 智能服务平台</p>
+        <p class="text-center text-[#666666] mb-10"></p>
 
         <div class="text-center mb-12">
           <p class="text-4xl md:text-5xl font-bold text-[#F04045] flex items-center justify-center">
@@ -400,6 +422,7 @@ const cases = [
           >
             联系我们
           </button>
+          <EnterpriseModal v-model="showModal" />
         </div>
 
         <!-- Stats -->
@@ -455,14 +478,37 @@ const cases = [
         </div>
 
         <!-- Conditions -->
-        <h3 class="text-xl font-bold text-center mb-2">OPC Hub 能不能落到我们园区？</h3>
-        <p class="text-center text-[#666666] mb-8">想做 OPC 产业园，你要具备这些条件</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div v-for="c in conditions" :key="c.title" class="p-6 rounded-xl bg-white border border-[#E5E5E5]">
-            <h4 class="text-lg font-bold mb-3 text-[#F04045]">{{ c.title }}</h4>
-            <ul class="space-y-2 text-sm text-[#666666]">
-              <li v-for="item in c.items" :key="item">· {{ item }}</li>
-            </ul>
+        <h3 class="text-xl font-bold text-center mb-2">OPC Hub 能不能落到我们 园区 / 企业 / 高校 ？</h3>
+        <p class="text-center text-[#666666] mb-8">想做 OPC，你要具备这些条件</p>
+
+        <div v-for="group in conditionGroups" :key="group.category" class="mb-16 last:mb-0">
+          <!-- <div class="text-center mb-4">
+            <span class="inline-block px-8 py-3 rounded-full bg-[#F04045] text-white text-lg font-bold shadow-md">
+              {{ group.category }}
+            </span>
+          </div> -->
+
+          <div class="relative mb-8 rounded-xl overflow-hidden h-[120px]">
+            <img
+              v-if="group.image"
+              :src="group.image"
+              :alt="group.category"
+              class="absolute inset-0 w-full h-full object-cover object-center blur-sm"
+            />
+            <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+              <span class="text-white text-2xl font-bold tracking-wide">
+                {{ group.category }}
+              </span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div v-for="c in group.items" :key="c.title" class="p-6 rounded-xl bg-white border border-[#E5E5E5]">
+              <h4 class="text-lg font-bold mb-3 text-[#F04045]">{{ c.title }}</h4>
+              <ul class="space-y-2 text-sm text-[#666666]">
+                <li v-for="item in c.items" :key="item">· {{ item }}</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -472,13 +518,13 @@ const cases = [
     <section class="py-20 md:py-[120px] bg-white fade-in-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">
-          软积木 OPC 产业园整体解决方案
+          软积木 OPC 产业生态整体解决方案
         </h2>
         <p class="text-center font-bold text-[#1A1A1A] mb-2">
           构建一个 AI 时代的新型产业形态
         </p>
         <p class="text-center text-sm text-[#666666] mb-12">
-          支撑方：软积木，提供完善的 AI 体系化能力
+          <!-- 支撑方：软积木，提供完善的 AI 体系化能力 -->
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -591,10 +637,11 @@ const cases = [
     <section class="py-20 md:py-[120px] bg-white fade-in-section">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold text-center mb-4">
-          合规与安全：基石
+          <!-- 合规与安全：基石 -->
+           自主产权｜合规备案｜安全可控
         </h2>
         <p class="text-center text-[#666666] mb-12">
-          软积木遵循国家监管，合规备案（拥有自有知识产权）
+          <!-- 软积木遵循国家监管，合规备案（拥有自有知识产权） -->
         </p>
 
         <!-- Patents -->
@@ -646,18 +693,15 @@ const cases = [
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           <div class="p-6 rounded-xl bg-[#F5F5F7]">
             <h3 class="text-lg font-bold mb-3">赋能产业园区</h3>
-            <!-- <p class="text-sm text-[#666666] font-semibold mb-2">（治理与统筹）</p> -->
-            <p class="text-[#666666]">提供多模态 AI 底座，依托算力券统筹算力资源，打通服务全闭环，打造 OPC 产业生态，推动园区转型为集算力、人才、企业于一体的智能协同平台。</p>
+            <p class="text-[#666666]">差异化 AI 定位解决招商空置，统管算力数据精准补贴；集聚 OPC 创业群体，园区转型 AI 孵化样板</p>
           </div>
           <div class="p-6 rounded-xl bg-[#F5F5F7]">
             <h3 class="text-lg font-bold mb-3">助力实体企业</h3>
-            <!-- <p class="text-sm text-[#666666] font-semibold mb-2">（降低门槛）</p> -->
-            <p class="text-[#666666]">驱动企业组织变革，搭建内部 OPC 单元与试错机制，搭配培训陪跑服务。低门槛调用 AI 能力，帮助企业降本增效、实现创新增长。</p>
+            <p class="text-[#666666]">轻量化组织控人力成本，全员掌握 AI 实操，赛马机制迭代业务；AI 智能体替代重复工作，降本增效、培育创新业务。</p>
           </div>
           <div class="p-6 rounded-xl bg-[#F5F5F7]">
             <h3 class="text-lg font-bold mb-3">服务各大高校</h3>
-            <!-- <p class="text-sm text-[#666666] font-semibold mb-2">（促应用、促协同）</p> -->
-            <p class="text-[#666666]">升级双创教育体系，开展 AI 实训与创业实践，对接真实项目场景。深化校企协同，构建全新人才培养模式，助力学生就业创业。</p>
+            <p class="text-[#666666]">搭建 AI 产教融合体系，补齐实训短板，提升学生就业创业能力；打通校企资源，持续输送适配产业的 AI 专业人才。</p>
           </div>
         </div>
       </div>
@@ -739,6 +783,7 @@ const cases = [
                   <img src="@/assets/st/sj/24xs.png" class="w-full h-full object-contain" alt="24 小时精通 AI Agent" />
                 </div>
                 <p class="text-xs font-semibold text-[#1A1A1A]">《二十四小时 AI Agent》</p>
+                <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">机械工业出版社 出版</p>
                 <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">可快速上手实操AI的畅销书。</p>
               </div>
               <div class="text-center">
@@ -746,7 +791,8 @@ const cases = [
                   <img src="@/assets/st/sj/jsAI.png" class="w-full h-full object-contain" alt="解锁 AI 力量" />
                 </div>
                 <p class="text-xs font-semibold text-[#1A1A1A]">《解锁 AI 力量》</p>
-                <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">（中央党校出版社）：AI行业全景发展的权威读本。</p>
+                <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">中共中央党校出版社 出版</p>
+                <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">AI行业全景发展的权威读本。</p>
               </div>
             </div>
           </div>
@@ -803,26 +849,7 @@ const cases = [
       </div>
     </section>
 
-    <!-- 立即咨询弹框 -->
-    <Teleport to="body">
-      <div
-        v-if="showModal"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
-        @click.self="showModal = false"
-      >
-        <div class="relative bg-white rounded-2xl p-4 shadow-2xl max-w-sm mx-4">
-          <button
-            class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center text-ink-secondary hover:text-ink-primary"
-            @click="showModal = false"
-          >
-            ✕
-          </button>
-          <p class="text-center text-sm text-ink-secondary mb-3">扫码即可联系我们</p>
-          <p class="text-center text-sm text-ink-secondary mb-3">我们随时都在</p>
-          <img :src="lxwmImg" alt="联系我们" class="w-full h-auto rounded-xl" />
-        </div>
-      </div>
-    </Teleport>
+
   </div>
 </template>
 

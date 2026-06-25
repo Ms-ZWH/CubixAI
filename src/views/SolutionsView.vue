@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
+import EnterpriseModal from '../components/EnterpriseModal.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -39,12 +40,13 @@ const jjfaImages: Record<string, string> = {
   bx: new URL('@/assets/jjfa/bx.png', import.meta.url).href,
   kcfh: new URL('@/assets/jjfa/kcfh.png', import.meta.url).href,
   opc: new URL('@/assets/jjfa/opc.png', import.meta.url).href,
+  gxjg: new URL('@/assets/jjfa/gxjg.png', import.meta.url).href,
 }
 
 const solutions: Solution[] = [
   {
     id: 'telecom',
-    title: '通信 / 运营商',
+    title: '电信 / 运营商',
     subtitle: 'Telecom & IT Services',
     tags: ['技术密集', '文档繁杂', '标书众多', '流程规范', '高合规要求'],
     scenes: ['技术标书与方案文档快速撰写', '日常办公自动化（任务分配、会议纪要）', '客户技术问答支持', '项目文档版本管理与校对'],
@@ -53,16 +55,27 @@ const solutions: Solution[] = [
     url: jjfaImages.yq,
     cpsm: '基于ChatU快速生成技术标书、方案建议书和故障处理报告；与内部OA、项目管理工具打通，实现文档自动归集、版本比对和任务分发；为一线技术工程师提供知识库问答助手。',
   },
+  
   {
-    id: 'itdev',
-    title: '软件开发 / IT',
-    subtitle: 'IT & Software Development',
-    tags: ['代码量大', '版本迭代快', '质量要求高', '文档同步难'],
-    scenes: ['代码自动生成与补全（支持多种语言）', '代码审核、规范检查与漏洞提示', '单元测试用例自动生成', '技术文档与注释自动撰写'],
-    pain: '提升编码与代码审查速度，减少文档滞后，降低缺陷漏检风险。',
-    icon: 'lucide:code-2',
-    url: jjfaImages.it,
-    cpsm: '依靠ChatU根据注释或需求描述自动生成函数、类及单元测试代码，执行代码规范检查和潜在bug提示；生成API文档、数据库注释及变更日志；支持代码重构建议与遗留系统注释补全。',
+    id: 'park_opc',
+    title: 'OPC产业园区 / 孵化器',
+    subtitle: 'Industrial Park & Innovation Incubation + Solo Company & Super Individual',
+    tags: [
+      '园区数字化升级',
+      'AI算力降本',
+      '轻资产创业',
+      '一站式AI赋能'
+    ],
+    scenes: [
+      '产业园区智能化改造',
+      '园区企业AI落地应用',
+      '小微个体轻量创业',
+      '个人创作者AI赋能'
+    ],
+    pain: '帮助园区摆脱单一收租模式，解决企业与个人算力成本高、AI工具获取难、单兵信息孤岛与孤独感问题，整合政策资源构建差异化AI生态，降低企业及个人AI使用与创业门槛。',
+    icon: 'lucide:building-2',
+    url: jjfaImages.kcfh,
+    cpsm: 'OPC Hub面向产业园区、孵化器及个体创业者统一部署AI底座与算力调度，提供私有化部署、一站式AI工具链与社群运营协作网络，大幅降低园区企业、独立创作者及小微创业者的算力使用与AI创业门槛。'
   },
   {
     id: 'media',
@@ -108,62 +121,6 @@ const solutions: Solution[] = [
     url: jjfaImages.xl,
     cpsm: '采用ChatU打造认知增强心理智能体，提供24小时情绪陪伴与心理知识问答；自动完成心理量表评分、风险分级预警及会话摘要生成；为新手咨询师提供标准化干预建议和案例参考。',
   },
-  // {
-  //   id: 'finance',
-  //   title: '金融 / 资产评估',
-  //   subtitle: 'Finance & Asset Assessment',
-  //   tags: ['数据敏感', '评估模型复杂', '报告格式规范', '合规要求高'],
-  //   scenes: ['资产评估报告自动化生成', '财务报表智能解析与异常检测', '行业数据对比分析与估值建议', '监管报送文档辅助生成'],
-  //   pain: '避免人工计算与格式错误，将报告撰写周期从数天缩短至数小时。',
-  //   icon: 'lucide:landmark',
-  //   url: jjfaImages.jr,
-  //   cpsm: '依托ChatU自动读取企业财报、市场数据，按照监管要求完成模型运算，一键生成包含文字分析、图表和风险提示的评估报告；支持历史报告逻辑一致性校验与合规性审查。',
-  // },
-
-  // {
-  //   id: 'insurance',
-  //   title: '保险业',
-  //   subtitle: 'Insurance',
-  //   tags: ['流程长', '单证多', '风控要求高', '客户服务标准化'],
-  //   scenes: ['车险报案、定损、理赔自动化', '保单信息智能问答', '欺诈风险初步识别', '客户续保提醒与个性化方案推荐'],
-  //   pain: '缩短理赔处理时间，减少定损争议，提升反欺诈识别能力。',
-  //   icon: 'lucide:shield-check',
-  //   url: jjfaImages.bx,
-  //   cpsm: '基于ChatU实现语音/文字报案信息自动录入，对接定损系统辅助损伤评估；分析历史数据识别异常行为辅助反欺诈；为投保人生成个性化方案推荐、续保提醒及常见问题自助解答。',
-  // },
-  // {
-  //   id: 'finance2',
-  //   title: ' 财务 / 企业服务',
-  //   subtitle: 'Finance & Enterprise Service',
-  //   tags: ['票据繁多', '合规严格', '数据录入量大', '周期性工作重复'],
-  //   scenes: ['发票关键信息自动识别与录入', '财务凭证与报销单智能审核', '银行对账、费用分类自动化', '税务申报表辅助生成'],
-  //   pain: '减少90%以上手工录入与校对工作，降低人工差错，加速报销流程。',
-  //   icon: 'lucide:file-text',
-  //   url: jjfaImages.cw,
-  //   cpsm: '通过ChatU结合OCR自动识别发票代码、金额、税额等字段并录入系统，智能比对费用标准判断合规性；自动生成记账凭证摘要与科目建议；按月输出费用分析报告与异常预警。',
-  // },
-  // {
-  //   id: 'enterprise',
-  //   title: '科技 / 企业服务',
-  //   subtitle: 'Enterprise Service & Tech Management',
-  //   tags: ['内部运营支撑', '多系统协同', '数据分析', '效率优化'],
-  //   scenes: ['办公PPT、周报、会议纪要自动生成', '运营数据智能分析及可视化报告', '项目管理任务自动拆解与提醒', '内部规章制度智能问答'],
-  //   pain: '自动化处理日常文档与数据整理，加速管理决策，提升跨部门协作效率。',
-  //   icon: 'lucide:building-2',
-  //   url: jjfaImages.kj,
-  //   cpsm: '使用ChatU一键生成PPT演示文稿、会议纪要和周报；连接CRM、ERP、数据库等数据源，支持自然语言查询并自动输出可视化图表和解读；提供规章制度智能问答。',
-  // },
-  // {
-  //   id: 'gov',
-  //   title: '国有企业',
-  //   subtitle: 'Government & SOE Digitalization',
-  //   tags: ['数据主权', '物理隔离', '国产化适配', '合规审计', '公文规范'],
-  //   scenes: ['涉密公文智能起草与审查', '会议纪要自动整理', '政策法规智能问答', '跨部门协作审批辅助', '数据报表自动汇总'],
-  //   pain: '消除公有云 AI 的数据外泄风险，将公文、纪要等重复事务处理效率提升 80% 以上，确保全程合规可审计。',
-  //   url: jjfaImages.gq,
-  //   icon: 'lucide:landmark',
-  //   cpsm: '基于智方体 AgentStation 本地私有化部署，数据不出盒。内置智能体支持公文起草、纪要整理、政策问答；全程留痕可追溯，满足政务合规与国产化适配要求。',
-  // },
   {
     id: 'fin_ins',
     title: '金融 / 保险',
@@ -230,25 +187,26 @@ const solutions: Solution[] = [
     cpsm: '部署基于ChatU的多渠道智能客服，统一接入淘宝、京东、微信小程序、抖音等平台，实现售前导购、售后自助退换货、物流查询；自动识别客户情绪并转人工，生成未解决问题工单，输出高频客诉分析报告。',
   },
   {
-    id: 'park_opc',
-    title: 'OPC',
-    subtitle: 'Industrial Park & Innovation Incubation + Solo Company & Super Individual',
-    tags: [
-      '园区数字化升级',
-      'AI算力降本',
-      '轻资产创业',
-      '一站式AI赋能'
-    ],
-    scenes: [
-      '产业园区智能化改造',
-      '园区企业AI落地应用',
-      '小微个体轻量创业',
-      '个人创作者AI赋能'
-    ],
-    pain: '帮助园区摆脱单一收租模式，解决企业与个人算力成本高、AI工具获取难、单兵信息孤岛与孤独感问题，整合政策资源构建差异化AI生态，降低企业及个人AI使用与创业门槛。',
-    icon: 'lucide:building-2',
-    url: jjfaImages.kcfh,
-    cpsm: 'OPC Hub面向产业园区、孵化器及个体创业者统一部署AI底座与算力调度，提供私有化部署、一站式AI工具链与社群运营协作网络，大幅降低园区企业、独立创作者及小微创业者的算力使用与AI创业门槛。'
+    id: 'university',
+    title: '高校 / 培训机构',
+    subtitle: 'University & Training Institutions',
+    tags: ['高校 AI 实训', '产教融合', '实战赋能就业'],
+    scenes: ['高校 AI 通识与专业课程教学', '产教融合实训基地落地', '企业真实项目实战训练', '学员能力认证与就业推荐'],
+    pain: '高校 AI 教学常偏理论、实操不足，学生能力难匹配企业岗位需求，同时院校受限于算力、师资，难以规模化开展高质量实训，学生也缺少实战项目背书，就业竞争力不足。',
+    icon: 'lucide:graduation-cap',
+    url: jjfaImages.gxjg,
+    cpsm: '为高校培训机构提供分层 AI 课程：通识教大模型应用，专业授 AI 技术实操，实战做企业项目；适配高校课程场景，配套教案与实训环境，快速落地教学并出具能力证明。'
+  },
+  {
+    id: 'itdev',
+    title: '软件开发 / IT',
+    subtitle: 'IT & Software Development',
+    tags: ['代码量大', '版本迭代快', '质量要求高', '文档同步难'],
+    scenes: ['代码自动生成与补全（支持多种语言）', '代码审核、规范检查与漏洞提示', '单元测试用例自动生成', '技术文档与注释自动撰写'],
+    pain: '提升编码与代码审查速度，减少文档滞后，降低缺陷漏检风险。',
+    icon: 'lucide:code-2',
+    url: jjfaImages.it,
+    cpsm: '依靠ChatU根据注释或需求描述自动生成函数、类及单元测试代码，执行代码规范检查和潜在bug提示；生成API文档、数据库注释及变更日志；支持代码重构建议与遗留系统注释补全。',
   },
 ]
 
@@ -263,16 +221,17 @@ const categoryTabs = [
 ]
 
 const catMap: Record<string, string[]> = {
-  all: ['telecom', 'itdev', 'media', 'design', 'edu', 'psych', 'fin_ins', 'enterprise-service', 'agri', 'health', 'ecommerce', 'park_opc'],
+  all: ['telecom', 'itdev', 'media', 'design', 'edu', 'psych', 'fin_ins', 'enterprise-service', 'agri', 'health', 'ecommerce', 'park_opc', 'university'],
   tech: ['telecom', 'itdev'],
   creative: ['media', 'design'],
-  service: ['edu', 'psych', 'fin_ins', 'enterprise-service'],
+  service: ['edu', 'psych', 'fin_ins', 'enterprise-service', 'university'],
   industry: ['agri', 'health', 'ecommerce', 'park_opc'],
   gov: ['enterprise-service'],
   solo: ['park_opc'],
 }
 
 const activeCategory = ref('all')
+const showModal = ref(false)
 const activeIndex = ref(0)
 const containerRef = ref<HTMLElement | null>(null)
 let triggers: ScrollTrigger[] = []
@@ -523,12 +482,16 @@ onUnmounted(() => {
           无论身处哪个行业，软积木都能为你量身定制 AI 落地路径
         </p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a href="/contact#contact-bottom"
-            class="inline-flex items-center px-6 py-3 rounded-full bg-[#55AD73] text-white font-semibold hover:bg-[#2E8B57] transition-colors">
+          <button
+            class="inline-flex items-center px-6 py-3 rounded-full bg-[#55AD73] text-white font-semibold hover:bg-[#2E8B57] transition-colors"
+            @click="showModal = true"
+          >
             联系我们
-          </a>
+          </button>
         </div>
       </div>
     </section>
+
+    <EnterpriseModal v-model="showModal" />
   </div>
 </template>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter, useRoute } from 'vue-router'
 import { Icon } from '@iconify/vue'
 
+const router = useRouter()
+const route = useRoute()
 
 const showProductMenu = ref(false)
 const showLangMenu = ref(false)
@@ -14,12 +16,33 @@ const langList = ['中文', 'English', '한국어', '日本語']
 function selectLang(lang: string) {
   currentLang.value = lang
   showLangMenu.value = false
+  mobileOpen.value = false
+  if (lang === 'English') {
+    router.push('/en/contact')
+  } else if (lang === '日本語') {
+    router.push('/jp/contact')
+  } else if (lang === '한국어') {
+    router.push('/hg/contact')
+  } else if (lang === '中文') {
+    router.push('/contact')
+  }
 }
 
 const navItems = [
   { label: '解决方案', to: '/solutions' },
   { label: '案例', to: '/cases' },
 ]
+
+function isActive(path: string): boolean {
+  if (path === '/') {
+    return route.path === '/'
+  }
+  return route.path === path || route.path.startsWith(path + '/')
+}
+
+function isProductActive(): boolean {
+  return ['/products/chatu', '/products/agentstation', '/opc-hub', '/training'].includes(route.path)
+}
 </script>
 
 <template>
@@ -41,7 +64,8 @@ const navItems = [
         <nav class="hidden md:flex items-center gap-0.5">
           <RouterLink
             to="/"
-            class="px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
+            class="px-3 py-2 text-sm font-medium transition-colors rounded-lg"
+            :class="isActive('/') ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
           >
             首页
           </RouterLink>
@@ -53,7 +77,8 @@ const navItems = [
             @mouseleave="showProductMenu = false"
           >
             <button
-              class="flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors"
+              class="flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-lg"
+              :class="isProductActive() ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
             >
               产品
               <Icon
@@ -78,7 +103,7 @@ const navItems = [
                 <div>
                   <div class="font-semibold text-ink-primary">ChatU（才兔）</div>
                   <div class="text-sm text-ink-secondary mt-0.5">
-                    企业级 AI 对话平台
+                    企业 AI 操作系统
                   </div>
                 </div>
               </RouterLink>
@@ -115,7 +140,7 @@ const navItems = [
                 </div>
               </RouterLink>
               <RouterLink
-                to="#"
+                to="/training"
                 class="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-muted transition-colors mt-1"
               >
                 <div
@@ -137,30 +162,24 @@ const navItems = [
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
-            class="px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
+            class="px-3 py-2 text-sm font-medium transition-colors rounded-lg"
+            :class="isActive(item.to) ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
           >
             {{ item.label }}
           </RouterLink>
 
           <RouterLink
-            to="/ecosystem"
-            class="px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
+            v-for="item in [
+              { label: '生态', to: '/ecosystem' },
+              { label: 'AI洞察', to: '/ai-insight' },
+              { label: '关于我们', to: '/contact' },
+            ]"
+            :key="item.to"
+            :to="item.to"
+            class="px-3 py-2 text-sm font-medium transition-colors rounded-lg"
+            :class="isActive(item.to) ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
           >
-            生态
-          </RouterLink>
-
-          <RouterLink
-            to="/ai-insight"
-            class="px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
-          >
-            AI洞察
-          </RouterLink>
-
-          <RouterLink
-            to="/contact"
-            class="px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
-          >
-            关于我们
+            {{ item.label }}
           </RouterLink>
         </nav>
 
@@ -211,7 +230,8 @@ const navItems = [
     >
       <RouterLink
         to="/"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
+        class="block px-3 py-2 text-sm font-medium rounded-lg"
+        :class="isActive('/') ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
         @click="mobileOpen = false"
       >
         首页
@@ -221,63 +241,35 @@ const navItems = [
         产品
       </div>
       <RouterLink
-        to="/products/chatu"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
-        @click="mobileOpen = false"
-      >
-        ChatU
-      </RouterLink>
-      <RouterLink
-        to="/products/agentstation"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
-        @click="mobileOpen = false"
-      >
-        智方体·AgentStation
-      </RouterLink>
-      <RouterLink
-        to="/opc-hub"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
-        @click="mobileOpen = false"
-      >
-        OPC Hub
-      </RouterLink>
-      <RouterLink
-        to="#"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
-        @click="mobileOpen = false"
-      >
-        咨询培训
-      </RouterLink>
-      <div class="border-t border-line/50 my-2" />
-      <RouterLink
-        v-for="item in navItems"
+        v-for="item in [
+          { label: 'ChatU', to: '/products/chatu' },
+          { label: '智方体·AgentStation', to: '/products/agentstation' },
+          { label: 'OPC Hub', to: '/opc-hub' },
+          { label: '咨询培训', to: '/training' },
+        ]"
         :key="item.to"
         :to="item.to"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
+        class="block px-3 py-2 text-sm font-medium rounded-lg"
+        :class="isActive(item.to) ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
         @click="mobileOpen = false"
       >
         {{ item.label }}
       </RouterLink>
+      <div class="border-t border-line/50 my-2" />
       <RouterLink
-        to="/ecosystem"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
+        v-for="item in [
+          ...navItems,
+          { label: '生态', to: '/ecosystem' },
+          { label: 'AI洞察', to: '/ai-insight' },
+          { label: '关于我们', to: '/contact' },
+        ]"
+        :key="item.to"
+        :to="item.to"
+        class="block px-3 py-2 text-sm font-medium rounded-lg"
+        :class="isActive(item.to) ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
         @click="mobileOpen = false"
       >
-        生态
-      </RouterLink>
-      <RouterLink
-        to="/ai-insight"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
-        @click="mobileOpen = false"
-      >
-        AI洞察
-      </RouterLink>
-      <RouterLink
-        to="/contact"
-        class="block px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary hover:bg-surface-muted rounded-lg"
-        @click="mobileOpen = false"
-      >
-        关于我们
+        {{ item.label }}
       </RouterLink>
       <div class="border-t border-line/50 my-2" />
       <div class="px-3 py-2 text-xs font-semibold text-ink-tertiary uppercase tracking-wider">

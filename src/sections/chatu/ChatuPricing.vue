@@ -63,7 +63,7 @@ const cardFeatures = [
               <img
                 src="@/assets/ChatU/llb.png"
                 alt="流量包"
-                class="w-full md:w-80 lg:w-96 h-auto object-contain rounded-2xl shrink-0"
+                class="w-20 md:w-24 lg:w-28 h-auto object-contain rounded-2xl shrink-0"
               />
             </div>
           </GlassCard>
@@ -72,18 +72,27 @@ const cardFeatures = [
         <!-- 右 -->
         <div ref="rightRef" class="flex flex-col">
           <GlassCard padding="lg" class="flex-1">
-            <div class="flex flex-col md:flex-row gap-8 items-center h-full">
-              <img
-                src="@/assets/czk.png"
-                alt="定制充值卡"
-                class="w-full md:w-56 lg:w-64 h-auto object-contain rounded-3xl shadow-md shrink-0"
-              />
-              <div class="flex-1">
-                <h3 class="text-lg font-semibold text-ink-primary">
-                  定制充值卡
-                </h3>
-                <p class="mt-1 text-ink-secondary">按需充值 / 长期有效</p>
-                <ul class="mt-5 space-y-4">
+            <div class="flex flex-col gap-6 h-full">
+              <div class="flex flex-row gap-4 justify-start items-start">
+                <img
+                  src="@/assets/czk.png"
+                  alt="定制充值卡"
+                  class="flex-1 min-w-0 h-auto object-contain rounded-3xl shadow-md"
+                />
+                <img
+                  src="@/assets/ChatU/llk2.jpg"
+                  alt="定制充值卡"
+                  class="flex-1 min-w-0 h-auto object-contain rounded-3xl shadow-md"
+                />
+              </div>
+              <div class="flex flex-col md:flex-row gap-6 md:gap-8">
+                <div class="md:w-1/3">
+                  <h3 class="text-lg font-semibold text-ink-primary">
+                    定制充值卡
+                  </h3>
+                  <p class="mt-1 text-ink-secondary">按需充值 / 长期有效</p>
+                </div>
+                <ul class="md:w-2/3 space-y-4">
                   <li
                     v-for="f in cardFeatures"
                     :key="f"

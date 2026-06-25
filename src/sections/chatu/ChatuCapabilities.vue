@@ -18,7 +18,7 @@ const items = [
   { image: new URL('../../assets/ChatU/8.png', import.meta.url).href, title: '阅读理解', desc: '文件分析' },
   { image: new URL('../../assets/ChatU/9.png', import.meta.url).href, title: '逻辑推理', desc: '复杂任务分解' },
   { image: new URL('../../assets/ChatU/10.png', import.meta.url).href, title: '知识问答', desc: '企业知识库' },
-  { image: new URL('../../assets/ChatU/11.png', import.meta.url).href, title: '语法分析', desc: '代码生成' },
+  { image: new URL('../../assets/ChatU/11.png', import.meta.url).href, title: '代码生成', desc: '自然语言驱动代码开发' },
 ]
 </script>
 

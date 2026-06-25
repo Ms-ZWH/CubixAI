@@ -40,7 +40,7 @@ const classes = computed(() => {
     <slot />
     <Icon v-if="arrow" icon="lucide:arrow-right" class="ml-2 w-4 h-4" />
   </a>
-  <button v-else :class="classes">
+  <button v-else :class="classes" v-bind="$attrs">
     <slot />
     <Icon v-if="arrow" icon="lucide:arrow-right" class="ml-2 w-4 h-4" />
   </button>

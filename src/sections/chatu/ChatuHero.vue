@@ -68,7 +68,7 @@ onUnmounted(stopCarousel)
             <span
               class="text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-primary"
             >
-              企业级 AI Agent 操作系统
+              企业 AI 操作系统
             </span>
           </h1>
 
@@ -110,7 +110,7 @@ onUnmounted(stopCarousel)
           <!-- Dots -->
           <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
             <button
-              v-for="(img, idx) in images"
+              v-for="(_, idx) in images"
               :key="idx"
               class="w-2 h-2 rounded-full transition-all"
               :class="idx === currentIndex ? 'bg-[#433487] w-4' : 'bg-white/60'"

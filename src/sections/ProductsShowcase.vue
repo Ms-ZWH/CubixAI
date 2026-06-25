@@ -122,7 +122,7 @@ useScrollReveal(card4Ref, { y: 30, delay: 0.25 })
                 <Chip class="!bg-[#F4AB38]/8 !text-[#F4AB38]">企业智能转型培训</Chip>
               </div>
               <div class="mt-auto pt-8">
-                <BrandButton variant="ghost" size="sm" to="#" class="hover:!border-[#F4AB38] hover:!text-[#F4AB38]" arrow>
+                <BrandButton variant="ghost" size="sm" to="/training" class="hover:!border-[#F4AB38] hover:!text-[#F4AB38]" arrow>
                   了解详情
                 </BrandButton>
               </div>

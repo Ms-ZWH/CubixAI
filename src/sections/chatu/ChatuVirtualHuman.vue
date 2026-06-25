@@ -9,9 +9,6 @@ const rightRef = ref<HTMLElement | null>(null)
 useScrollReveal(leftRef, { y: 30, delay: 0.15 })
 useScrollReveal(rightRef, { y: 30 })
 
-const activeRole = ref(0)
-const roles = ['专家', '学者', '教师']
-
 const features = [
   '24 小时不间断服务',
   '智能化交互与生成',

@@ -1,14 +1,39 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
-import Chip from '../../components/Chip.vue'
 import BrandButton from '../../components/BrandButton.vue'
+
+const openModal = inject<() => void>('agentStationOpenModal')
 
 const leftRef = ref<HTMLElement | null>(null)
 const rightRef = ref<HTMLElement | null>(null)
 
 useScrollReveal(leftRef, { y: 30 })
 useScrollReveal(rightRef, { y: 30, delay: 0.15 })
+
+const heroImages = [
+  { src: new URL('@/assets/zft/hero1.png', import.meta.url).href, alt: '智方体 AgentStation' },
+  { src: new URL('@/assets/zft/hero2.png', import.meta.url).href, alt: '智方体 AgentStation' },
+]
+
+const currentIndex = ref(0)
+let timer: ReturnType<typeof setInterval> | null = null
+
+function startCarousel() {
+  timer = setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % heroImages.length
+  }, 3000)
+}
+
+function stopCarousel() {
+  if (timer) {
+    clearInterval(timer)
+    timer = null
+  }
+}
+
+onMounted(startCarousel)
+onUnmounted(stopCarousel)
 </script>
 
 <template>
@@ -30,7 +55,7 @@ useScrollReveal(rightRef, { y: 30, delay: 0.15 })
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div
-        class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+        class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center"
       >
         <!-- 左侧 -->
         <div ref="leftRef">
@@ -74,8 +99,8 @@ useScrollReveal(rightRef, { y: 30, delay: 0.15 })
           </div>
 
           <div class="mt-8 flex flex-wrap items-center gap-4">
-            <BrandButton to="/contact" class="!bg-none !bg-[#2DB4E6]">¥2999 起购</BrandButton>
-            <BrandButton variant="ghost" to="/products/agentstation" class="hover:!border-[#2DB4E6] hover:!text-[#2DB4E6]" arrow>
+            <BrandButton class="!bg-none !bg-[#2DB4E6]" @click="openModal">¥2999 起购</BrandButton>
+            <BrandButton variant="ghost" class="hover:!border-[#2DB4E6] hover:!text-[#2DB4E6]" arrow @click="openModal">
               查看所有版本
             </BrandButton>
           </div>
@@ -84,11 +109,27 @@ useScrollReveal(rightRef, { y: 30, delay: 0.15 })
         <!-- 右侧 -->
         <div ref="rightRef" class="flex justify-center">
           <div
-            class="w-full max-w-md aspect-square rounded-2xl bg-surface-muted border border-line shadow-[0_20px_60px_rgba(15,31,23,0.12)] flex items-center justify-center transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500"
+            class="relative w-full max-w-md aspect-square rounded-2xl bg-surface-muted border border-line shadow-[0_20px_60px_rgba(15,31,23,0.12)] overflow-hidden"
           >
-            <span class="text-ink-tertiary text-sm">
-              TODO: 硬件 3D 渲染图占位
-            </span>
+            <div class="flex h-full transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+              <img
+                v-for="img in heroImages"
+                :key="img.src"
+                :src="img.src"
+                :alt="img.alt"
+                class="w-full h-full flex-shrink-0 object-contain rounded-2xl"
+              />
+            </div>
+            <!-- Dots -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+              <button
+                v-for="(_, idx) in heroImages"
+                :key="idx"
+                class="w-2 h-2 rounded-full transition-all"
+                :class="idx === currentIndex ? 'bg-[#2DB4E6] w-4' : 'bg-white/60'"
+                @click="currentIndex = idx; stopCarousel(); startCarousel();"
+              />
+            </div>
           </div>
         </div>
       </div>

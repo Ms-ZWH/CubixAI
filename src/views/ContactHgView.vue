@@ -1,0 +1,641 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useScrollReveal } from '../composables/useScrollReveal.ts'
+import { Icon } from '@iconify/vue'
+import cctvImg1 from '@/assets/st/cctv/c1.png'
+import cctvImg2 from '@/assets/st/cctv/c2.png'
+
+onMounted(() => {
+  const hash = window.location.hash
+  if (hash === '#contact-bottom') {
+    setTimeout(() => {
+      const el = document.getElementById('contact-bottom')
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 300)
+  }
+})
+
+/* ========================
+   1. Hero
+   ======================== */
+const heroRef = ref<HTMLElement | null>(null)
+useScrollReveal(heroRef, { y: 30 })
+
+/* ========================
+   2. 핵심 이념
+   ======================== */
+const missionRef = ref<HTMLElement | null>(null)
+useScrollReveal(missionRef, { y: 30, delay: 0.1 })
+
+const missions = [
+  {
+    image: new URL('@/assets/gywm/1.png', import.meta.url).href,
+    title: '미션 Mission',
+    desc: '전 세계 기업이 신뢰하는 AI 서비스 파트너가 되는 것을 목표로 기술 혁신과 전문화된 솔루션을 통해 기업의 디지털 지능 전환을 지원합니다',
+  },
+  {
+    image: new URL('@/assets/gywm/2.png', import.meta.url).href,
+    title: '비전 Vision',
+    desc: 'AI 인텔리전스가 주도하는 글로벌 비즈니스 생태계를 꿈꾸며 기업에 더 우수한 생산성 도구를 제공하고 효율적이고 지속 가능한 발전을 추진합니다',
+  },
+  {
+    image: new URL('@/assets/gywm/3.png', import.meta.url).href,
+    title: '가치관 Values',
+    desc: '고객 최우선 · 혁신 주도 · 글로벌 시각 · 상생 협력 · 진실한 책임감',
+  },
+]
+
+/* ========================
+   3. 발전 연혁
+   ======================== */
+const timelineRef = ref<HTMLElement | null>(null)
+useScrollReveal(timelineRef, { y: 30, delay: 0.1 })
+
+const milestones = [
+  { year: '2023.03', title: 'ChatU 런칭', desc: '기업용 AI 운영체제' },
+  { year: '2023.06', title: '회사 설립', desc: '소프트블록(북경) 테크놀로지 유한회사 정식 설립' },
+  { year: '2023.08', title: '계약 고객 3000곳 돌파', desc: '일본, 한국, 유럽, 미국 시장 진출' },
+  { year: '2025.01', title: '국제 사업 확장', desc: 'PEC 차이나 지역에 「프롬프트 엔지니어링 컨퍼런스」 국제 브랜드를 도입하고 아시아 시장 운영 시작' },
+  { year: '2025.12', title: 'OPC Hub', desc: 'OPC Hub 출시, OPC 산업 생태계 구축' },
+  { year: '2026.05', title: '지팡티 · AgentStation', desc: '하드웨어 제품「팡티 · AgentStation」정식 출시' },
+]
+
+/* ========================
+   4. 글로벌 인정 실적
+   ======================== */
+const globalRef = ref<HTMLElement | null>(null)
+const cctvRef = ref<HTMLElement | null>(null)
+useScrollReveal(globalRef, { y: 30, delay: 0.1 })
+useScrollReveal(cctvRef, { y: 20, delay: 0.3 })
+
+const events = [
+  { name: '한국 SOUTH SUMMIT', location: '서울', desc: '내용 임시 텍스트', image: 'hg.png' },
+  { name: '중국 홍콩무역발전국 행사', location: '홍콩', desc: '내용 임시 텍스트', image: 'xg.png' },
+  { name: '미국 Microsoft MVP Global Summit', location: '시애틀', desc: '내용 임시 텍스트', image: 'xyt.png' },
+  { name: '미국 NVIDIA GTC 2026', location: '실리콘밸리', desc: '내용 임시 텍스트', image: 'ywd.png', extraImage: 'ywd3.png' },
+  { name: '영국 PEC 인터내셔널', location: '런던', desc: '내용 임시 텍스트', image: 'ld.png' },
+  // { name: '일본', location: '', desc: '내용 임시 텍스트', image: '' },
+  { name: '한국 NextRise 2026', location: '서울', desc: '내용 임시 텍스트', image: 'hg2.png' },
+]
+
+/* ========================
+   5. 기업 수상 & 파트너
+   ======================== */
+const honorsRef = ref<HTMLElement | null>(null)
+useScrollReveal(honorsRef, { y: 30 })
+
+const marqueeRef = ref<HTMLElement | null>(null)
+
+function pauseMarquee() {
+  marqueeRef.value?.classList.add('paused')
+}
+
+function resumeMarquee() {
+  marqueeRef.value?.classList.remove('paused')
+}
+
+const honors = [
+  { image: '111.png', title: '' },
+  { image: '222.png', title: '' },
+  { image: '333.png', title: '' },
+  { image: '444.png', title: '' },
+  { image: '555.png', title: '' },
+  { image: '666.png', title: '' },
+  { image: '777.png', title: '' },
+  { image: '888.png', title: '' },
+  { image: '999.png', title: '' },
+  { image: '101.png', title: '' },
+  { image: '102.png', title: '' },
+  { image: '103.png', title: '' },
+  { image: '104.png', title: '' },
+  { image: '105.png', title: '' },
+  { image: '106.png', title: '' },
+  { image: '107.png', title: '' },
+  { image: 'a1.jpg', title: '' },
+  { image: 'a2.png', title: '' },
+  { image: 'a3.png', title: '' },
+]
+
+function getHonorUrl(name: string) {
+  return new URL(`../assets/qyry/${name}`, import.meta.url).href
+}
+
+function getQqUrl(name: string) {
+  return new URL(`../assets/qq/${name}`, import.meta.url).href
+}
+
+function getAlUrl(name: string) {
+  return new URL(`../assets/al/${name}`, import.meta.url).href
+}
+
+/* ========================
+   6. 글로벌 사무소
+   ======================== */
+const locationsRef = ref<HTMLElement | null>(null)
+useScrollReveal(locationsRef, { y: 30, delay: 0.1 })
+
+const locations = [
+  {
+    city: '북경 · 중관촌AI 북위 커뮤니티',
+    address: '북경시 해전구 해전대열 정보테크노파크 D2-D401',
+    func: 'AI 산업 생태 협력, 혁신 사업 인큐베이션, 첨단 기술 교류',
+    image: 'bwsq1.png',
+  },
+  {
+    city: '북경 · 칭화 테크노파크',
+    address: '중관촌동로 1번지 칭화 테크노파크 C동 21층',
+    func: '전략 의사결정, 제품 연구개발, 브랜드 운영',
+    image: 'wdk.jpeg',
+  },
+  {
+    city: '우시 · 석산',
+    address: '안진가 단산로 88번지 석동창융빌딩 C동 15-005',
+    func: '화동 지역 고객 납품, 기술 지원',
+    image: 'wx.jpeg',
+  },
+  {
+    city: '싱가포르',
+    address: '139 PASIR RIS GROVE, #05-43, D\'NEST',
+    func: '국제 시장 개척, 해외 고객 서비스',
+    image: 'xjp.png',
+  },
+]
+
+/* ========================
+   7. 문의 유도 영역 (CTA)
+   ======================== */
+const ctaRef = ref<HTMLElement | null>(null)
+useScrollReveal(ctaRef, { y: 30 })
+
+/* ========================
+   8. 문의 채널 안내
+   ======================== */
+const matrixRef = ref<HTMLElement | null>(null)
+useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
+
+
+
+const titleRef = ref<HTMLElement | null>(null)
+useScrollReveal(titleRef, { y: 30 })
+
+const partners = [
+  { name: 'Microsoft', image: new URL('@/assets/hzhb/Microsoft-logo.webp', import.meta.url).href },
+  { name: 'NVIDIA', image: new URL('@/assets/hzhb/nvidia.png', import.meta.url).href },
+  { name: 'OpenAI', image: new URL('@/assets/hzhb/OpenAI.png', import.meta.url).href },
+  { name: 'Google', image: new URL('@/assets/hzhb/Google.png', import.meta.url).href },
+  { name: 'Amazon', image: new URL('@/assets/hzhb/amazon.png', import.meta.url).href },
+  { name: 'Oracle', image: new URL('@/assets/hzhb/oracle.png', import.meta.url).href },
+  { name: 'MiniMax', image: new URL('@/assets/hzhb/minimax.png', import.meta.url).href },
+  { name: '阿里巴巴', image: new URL('@/assets/hzhb/almm.png', import.meta.url).href },
+  { name: '月之暗面', image: new URL('@/assets/hzhb/yzam.png', import.meta.url).href },
+  { name: '百度', image: new URL('@/assets/hzhb/baidu.png', import.meta.url).href },
+  // { name: '百度智能云', image: new URL('@/assets/hzhb/baidu1.png', import.meta.url).href },
+  { name: 'DeepSeek', image: new URL('@/assets/hzhb/deepseek.png', import.meta.url).href },
+  // { name: '华为', image: new URL('@/assets/hzhb/huawei.png', import.meta.url).href },
+  { name: '火山引擎', image: new URL('@/assets/hzhb/huoshan.png', import.meta.url).href },
+  { name: '京东', image: new URL('@/assets/hzhb/jd.jpg', import.meta.url).href },
+  { name: '字节跳动', image: new URL('@/assets/hzhb/zjtd.png', import.meta.url).href },
+  { name: '智谱 AI', image: new URL('@/assets/hzhb/zp.png', import.meta.url).href },
+]
+</script>
+
+<template>
+  <div>
+    <!-- ========================
+         1. Hero
+         ======================== -->
+    <section class="relative overflow-hidden bg-surface-base pt-32 md:pt-40 pb-16 md:pb-24">
+      <div
+        class="absolute -top-40 -right-40 w-[500px] h-[500px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none"
+        style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(60px);"
+      />
+      <div ref="heroRef" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-[64px] font-semibold text-ink-primary leading-tight tracking-tight">
+          본원적 범용 인공지능 기업
+        </h1>
+        <p class="mt-6 text-xl md:text-2xl text-ink-secondary">
+          기업 AI 활용 촉진을 위해 탄생, 기업 AI 현장 적용의 마지막 장벽을 해결
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================
+         2. 핵심 이념
+         ======================== -->
+    <section class="py-20 md:py-[120px] bg-surface-base">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">핵심 이념</h2>
+        </div>
+        <div ref="missionRef" class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          <div
+            v-for="item in missions"
+            :key="item.title"
+            class="flex flex-col p-8 rounded-3xl bg-surface-card border border-line shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <div class="aspect-video rounded-xl overflow-hidden mb-5">
+              <img
+                :src="item.image"
+                :alt="item.title"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-semibold text-ink-primary">{{ item.title }}</h3>
+            <p class="mt-3 text-ink-secondary leading-relaxed flex-1">{{ item.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         3. 발전 연혁
+         ======================== -->
+    <section class="py-20 md:py-[120px] bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">발전 연혁</h2>
+        </div>
+        <div ref="timelineRef" class="relative">
+          <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-ink-primary/10 md:-translate-x-px" />
+          <div
+            v-for="(m, i) in milestones"
+            :key="m.year"
+            class="relative flex items-start md:items-center mb-10 last:mb-0"
+            :class="i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'"
+          >
+            <div class="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-brand border-2 border-white md:-translate-x-1.5 z-10 mt-1.5 md:mt-0" />
+            <div class="ml-10 md:ml-0 md:w-1/2" :class="i % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'">
+              <span class="text-2xl md:text-3xl font-bold text-brand">{{ m.year }}</span>
+              <h3 class="mt-1 text-lg font-semibold text-ink-primary">{{ m.title }}</h3>
+              <p class="mt-1 text-sm text-ink-secondary">{{ m.desc }}</p>
+            </div>
+            <div class="hidden md:block md:w-1/2" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         4. 글로벌 인정 실적
+         ======================== -->
+    <section class="py-20 md:py-[120px] bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref="globalRef" class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
+            세계로 나아가다 · 국제 최고 테크 컨퍼런스 초청 참가
+          </h2>
+          <p class="mt-4 text-lg text-ink-secondary">
+            유럽 · 미국 · 한국 · 일본 · 싱가포르 등 전 시장 전면 진출
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-10">
+          <div
+            v-for="e in events"
+            :key="e.name"
+            class="group w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] p-5 rounded-2xl bg-surface-base border border-line/50 hover:shadow-card hover:-translate-y-1 hover:border-brand/30 transition-all duration-300"
+          >
+            <div
+              class="rounded-xl bg-surface-muted border border-line/50 overflow-hidden mb-4"
+              :class="e.extraImage ? 'flex flex-col aspect-video' : 'aspect-video'"
+            >
+              <template v-if="e.image">
+                <div :class="e.extraImage ? 'w-full h-1/2' : 'w-full h-full'">
+                  <img
+                    :src="getQqUrl(e.image)"
+                    class="group-hover:scale-105 transition-transform duration-500"
+                    :class="[e.image === 'ywd.png' ? 'object-cover object-top' : 'object-cover', e.extraImage ? 'w-full h-full' : 'w-full h-full']"
+                    alt=""
+                  />
+                </div>
+              </template>
+              <template v-if="e.extraImage">
+                <div class="w-full h-1/2">
+                  <img
+                    :src="getQqUrl(e.extraImage)"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    alt=""
+                  />
+                </div>
+              </template>
+              <span v-if="!e.image && !e.extraImage" class="flex items-center justify-center h-full text-xs text-ink-tertiary">행사 이미지 임시 영역</span>
+            </div>
+            <h3 class="text-base font-semibold text-ink-primary">{{ e.name }}</h3>
+            <p class="text-xs text-brand mt-1">{{ e.location }}</p>
+          </div>
+        </div>
+
+        <!-- CCTV 인정 실적 -->
+        <div
+          ref="cctvRef"
+          class="max-w-7xl mx-auto p-6 rounded-2xl bg-surface-base border border-line/50 text-center"
+        >
+          <div class="flex items-center justify-center gap-3 mb-2">
+            <Icon icon="lucide:tv" class="w-5 h-5 text-gold" />
+            <span class="text-sm font-semibold text-ink-primary">
+              CCTV-2 《AI+로 승리하다》 프로그램
+            </span>
+          </div>
+          <p class="text-sm text-ink-secondary mb-5">
+            소프트블록 CTO 쭈우지엔 & ChatU CCTV 재경 채널 출연
+          </p>
+          <div class="grid grid-cols-2 gap-4 md:gap-6">
+            <div class="rounded-xl overflow-hidden h-56 md:h-80">
+              <img
+                :src="cctvImg1"
+                alt="CCTV-2 AI+로 승리하다 프로그램 스크린샷 1"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="rounded-xl overflow-hidden h-56 md:h-80">
+              <img
+                :src="cctvImg2"
+                alt="CCTV-2 AI+로 승리하다 프로그램 스크린샷 2"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-8 text-center text-base text-ink-tertiary">
+          다수의 해외 기업과 견고한 파트너 관계 구축
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================
+         5. 기업 수상 내역
+         ======================== -->
+    <section class="py-20 md:py-[120px] bg-surface-base">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref="honorsRef">
+          <div class="text-center mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
+              기업 수상 내역
+            </h2>
+            <p class="mt-4 text-lg text-ink-secondary">
+              권위 있는 인증 · 끊임없는 혁신
+            </p>
+          </div>
+
+          <div
+            ref="marqueeRef"
+            class="relative overflow-hidden"
+            @mouseenter="pauseMarquee"
+            @mouseleave="resumeMarquee"
+          >
+            <!-- 그라데이션 마스크 -->
+            <div
+              class="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10"
+              style="background: linear-gradient(to right, #FAFAF7, transparent);"
+            />
+            <div
+              class="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10"
+              style="background: linear-gradient(to left, #FAFAF7, transparent);"
+            />
+
+            <!-- 첫 번째 줄 -->
+            <div class="flex honor-track">
+              <div
+                v-for="h in honors.slice(0, 8)"
+                :key="'a-' + h.image"
+                class="flex-shrink-0 w-44 md:w-56 px-2"
+              >
+                <div class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
+                  <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-5 flex items-center justify-center">
+                    <img
+                      :src="getHonorUrl(h.image)"
+                      class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                v-for="h in honors.slice(0, 8)"
+                :key="'b-' + h.image"
+                class="flex-shrink-0 w-44 md:w-56 px-2"
+              >
+                <div class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
+                  <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-5 flex items-center justify-center">
+                    <img
+                      :src="getHonorUrl(h.image)"
+                      class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 두 번째 줄 (역방향) -->
+            <div class="flex honor-track-reverse mt-4">
+              <div
+                v-for="h in honors.slice(8)"
+                :key="'c-' + h.image"
+                class="flex-shrink-0 w-44 md:w-56 px-2"
+              >
+                <div class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
+                  <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-5 flex items-center justify-center">
+                    <img
+                      :src="getHonorUrl(h.image)"
+                      class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                v-for="h in honors.slice(8)"
+                :key="'d-' + h.image"
+                class="flex-shrink-0 w-44 md:w-56 px-2"
+              >
+                <div class="group relative rounded-2xl bg-white border border-line shadow-sm hover:shadow-card transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col">
+                  <div class="flex-1 min-h-0 aspect-[4/3] bg-gradient-to-b from-[#F9FAFB] to-white p-4 md:p-5 flex items-center justify-center">
+                    <img
+                      :src="getHonorUrl(h.image)"
+                      class="max-w-full max-h-full object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         6. 파트너 기업
+         ======================== -->
+    <section class="py-20 md:py-[120px] bg-surface-base overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref="titleRef" class="text-center mb-16 md:mb-24">
+        <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
+            파트너 기업
+        </h2>
+      </div>
+
+      <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-14 md:gap-x-20 md:gap-y-16">
+        <div
+          v-for="p in partners"
+          :key="p.name"
+          class="w-28 h-14 md:w-36 md:h-16 lg:w-44 lg:h-20 flex items-center justify-center"
+        >
+          <img
+            :src="p.image"
+            :alt="p.name"
+            class="max-w-full max-h-full object-contain opacity-100 transition-all duration-300"
+            :class="(p.name === 'Amazon' || p.name === '京东') ? 'max-h-[70%]' : ''"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- ========================
+         7. 글로벌 사무소 · 현지 맞춤 서비스
+         ======================== -->
+    <section class="py-20 md:py-[120px] bg-surface-base">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 md:mb-16">
+          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
+            글로벌 사무소 · 현지 맞춤 서비스
+          </h2>
+        </div>
+        <div ref="locationsRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            v-for="loc in locations"
+            :key="loc.city"
+            class="flex flex-col p-6 md:p-8 rounded-2xl bg-surface-card border border-line shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+          >
+            <h3 class="text-xl font-semibold text-ink-primary">{{ loc.city }}</h3>
+            <p class="mt-4 text-sm text-ink-secondary leading-relaxed">{{ loc.address }}</p>
+            <p class="mt-1 text-xs text-ink-tertiary">{{ loc.func }}</p>
+            <div class="mt-6 flex-1 min-h-[120px] rounded-xl bg-surface-muted border border-line/50 overflow-hidden">
+              <img v-if="loc.image" :src="getAlUrl(loc.image)" class="w-full h-full object-cover" alt="" />
+              <span v-else class="flex items-center justify-center h-full text-xs text-ink-tertiary">지도 이미지 임시 영역</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         8. 문의 유도 + 문의 채널 안내
+         ======================== -->
+    <section id="contact-bottom" class="relative overflow-hidden bg-white">
+      <div
+        class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full pointer-events-none"
+        style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(80px);"
+      />
+
+      <!-- 제목 영역 -->
+      <div class="relative pt-20 md:pt-[120px] pb-10 md:pb-16">
+        <div ref="ctaRef" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl md:text-4xl lg:text-[56px] font-semibold text-ink-primary tracking-tight leading-tight">
+            다양한 채널로 언제든 문의하세요
+          </h2>
+          <p class="mt-6 text-lg text-ink-secondary leading-relaxed max-w-2xl mx-auto">
+            제품 체험, 업무 제휴, 기술 상담 무엇이든 여기서 해결책을 찾으실 수 있습니다
+          </p>
+        </div>
+      </div>
+
+      <!-- 문의 채널 안내 -->
+      <div class="relative pb-20 md:pb-[120px]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div ref="matrixRef" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 첫 번째 열 : 영업용 QR코드 -->
+            <div
+              class="flex flex-col items-center p-8 rounded-2xl text-center bg-white border border-[#E5E5E5] shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-ink-primary">문의하기</h3>
+              <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
+                <img
+                  src="@/assets/lxwm.png"
+                  alt="문의용 QR코드"
+                  class="w-full h-full object-contain"
+                />
+              </div>
+              <p class="mt-5 text-sm text-ink-secondary leading-relaxed">
+                QR코드 스캔으로 기업 지능화 전환 상담 시작
+              </p>
+            </div>
+
+            <!-- 두 번째 열 : 위챗 공식계정 -->
+            <div
+              class="flex flex-col items-center p-8 rounded-2xl text-center bg-white border border-[#E5E5E5] shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-ink-primary">팔로우하기</h3>
+              <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
+                <img src="@/assets/rjm.jpg" alt="공식계정 QR코드" class="w-full h-full object-cover" />
+              </div>
+              <p class="mt-5 text-sm text-ink-secondary leading-relaxed">
+                회사 최신 소식과 AI 업계 동향을 확인하세요
+              </p>
+            </div>
+
+            <!-- 세 번째 열 : 업무용 메일 -->
+            <div
+              class="flex flex-col items-center p-8 rounded-2xl text-center bg-white border border-[#E5E5E5] shadow-sm"
+            >
+              <h3 class="text-lg font-semibold text-ink-primary">업무 제휴 상담</h3>
+              <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex flex-col items-center justify-center gap-2">
+                <div class="w-14 h-14 rounded-2xl bg-brand-gradient flex items-center justify-center">
+                  <Icon icon="lucide:mail" class="w-7 h-7 text-white" />
+                </div>
+                <span class="text-xs text-ink-secondary">bd@cubixai.com</span>
+              </div>
+              <a
+                href="mailto:bd@cubixai.com"
+                class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-[#55AD73] text-white hover:bg-[#2E8B57] transition-colors"
+              >
+                메일 보내기
+                <Icon icon="lucide:arrow-right" class="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<style scoped>
+@keyframes honor-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes honor-scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.honor-track {
+  animation: honor-scroll 40s linear infinite;
+  width: max-content;
+}
+
+.honor-track-reverse {
+  animation: honor-scroll-reverse 40s linear infinite;
+  width: max-content;
+}
+
+.paused .honor-track,
+.paused .honor-track-reverse {
+  animation-play-state: paused;
+}
+</style>

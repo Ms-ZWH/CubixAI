@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
-import { Icon } from '@iconify/vue'
 
 const bottomRef = ref<HTMLElement | null>(null)
 useScrollReveal(bottomRef, { y: 30, delay: 0.15 })
