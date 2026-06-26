@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://cubixai.com/</loc>
+    <loc>https://www.cubixai.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/products/chatu</loc>
+    <loc>https://www.cubixai.com/products/chatu</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/products/agentstation</loc>
+    <loc>https://www.cubixai.com/products/agentstation</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/ai-insight</loc>
+    <loc>https://www.cubixai.com/ai-insight</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/solutions</loc>
+    <loc>https://www.cubixai.com/solutions</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/ecosystem</loc>
+    <loc>https://www.cubixai.com/ecosystem</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/cases</loc>
+    <loc>https://www.cubixai.com/cases</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/opc-hub</loc>
+    <loc>https://www.cubixai.com/opc-hub</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/training</loc>
+    <loc>https://www.cubixai.com/training</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/contact</loc>
+    <loc>https://www.cubixai.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/en/contact</loc>
+    <loc>https://www.cubixai.com/en/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/jp/contact</loc>
+    <loc>https://www.cubixai.com/jp/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://cubixai.com/hg/contact</loc>
+    <loc>https://www.cubixai.com/hg/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

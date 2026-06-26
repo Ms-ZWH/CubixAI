@@ -111,7 +111,7 @@ useScrollReveal(card4Ref, { y: 30, delay: 0.25 })
             <div class="flex flex-col h-full">
               <Chip class="!bg-[#F4AB38]/10 !text-[#F4AB38]">服务</Chip>
               <h3 class="mt-5 text-2xl font-semibold text-ink-primary">
-                软积木 · 咨询培训
+                咨询培训
               </h3>
               <p class="mt-3 text-ink-secondary leading-relaxed">
                 以 AI Agent 实战为核心，提供从基础入门到行业落地的全栈培训课程，配套实战案例与认证体系，帮助个人与企业快速掌握 AI 落地能力，实现 AI 技能变现与业务提效。

@@ -34,12 +34,12 @@ useScrollReveal(card3Ref, { y: 30, delay: 0.3 })
           <div class="aspect-video rounded-2xl overflow-hidden mb-6">
             <img
               src="@/assets/ChatU/1.png"
-              alt="多引擎 · 不绑架"
+              alt="多引擎・更自由"
               class="w-full h-full object-cover"
             />
           </div>
           <h3 class="text-xl font-semibold text-ink-primary mb-4">
-            多引擎 · 不绑架
+            多引擎・更自由
           </h3>
           <ul class="space-y-3">
             <li class="flex items-start gap-2 text-sm text-ink-secondary">

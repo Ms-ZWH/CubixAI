@@ -1,8 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import Chip from '../../components/Chip.vue'
 import BrandButton from '../../components/BrandButton.vue'
+import CaseDetailModal from '../../components/CaseDetailModal.vue'
+import { cases } from '../../data/cases'
+import type { CaseItem } from '../../data/cases'
 
 const titleRef = ref<HTMLElement | null>(null)
 const card1Ref = ref<HTMLElement | null>(null)
@@ -20,29 +23,20 @@ function setCardRef(el: HTMLElement | null, idx: number) {
   else card3Ref.value = el
 }
 
-const cases = [
-  {
-    image: new URL('@/assets/hzqy/qh.png', import.meta.url).href,
-    chip: '心理健康',
-    title: '清华大学',
-    client: '认知增强心理智能体系统',
-    desc: '构建面向个人来访者的心理智能体，提升心理咨询服务效率',
-  },
-  {
-    image: new URL('@/assets/hzqy/pkz.png', import.meta.url).href,
-    chip: '内容创作',
-    title: '朋克周',
-    client: 'AI 科技博主全流程赋能',
-    desc: '在创作、优化、运营、互动全流程实现高效赋能，全面提升影响力与传播效果',
-  },
-  {
-    image: new URL('@/assets/hzqy/zyxt.jpg', import.meta.url).href,
-    chip: '央企办公',
-    title: '中移系统集成有限公司',
-    client: '大型央企办公智能化升级',
-    desc: '实现降本增效目标，标书撰写、文档制作、日常办公效率显著提升',
-  },
-]
+const featuredIds = ['c1', 'c3', 'c5']
+const featuredCases = computed(() => {
+  return featuredIds
+    .map((id) => cases.find((c) => c.id === id))
+    .filter(Boolean) as CaseItem[]
+})
+
+const selectedCase = ref<CaseItem | null>(null)
+const isModalOpen = ref(false)
+
+function openCaseModal(caseItem: CaseItem) {
+  selectedCase.value = caseItem
+  isModalOpen.value = true
+}
 </script>
 
 <template>
@@ -58,8 +52,8 @@ const cases = [
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div
-          v-for="(c, idx) in cases"
-          :key="c.title"
+          v-for="(c, idx) in featuredCases"
+          :key="c.id"
           :ref="(el) => setCardRef(el as HTMLElement | null, idx)"
           class="group rounded-3xl bg-surface-card border border-line shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden"
         >
@@ -77,18 +71,24 @@ const cases = [
 
           <!-- 内容区域 -->
           <div class="p-6 md:p-8">
-            <Chip variant="muted">{{ c.chip }}</Chip>
+            <Chip variant="muted">{{ c.tag }}</Chip>
             <h3 class="mt-4 text-xl font-semibold text-ink-primary leading-tight">
-              {{ c.title }}
+              {{ c.client }}
             </h3>
             <p class="mt-1 text-sm font-medium text-brand">
-              {{ c.client }}
+              {{ c.title }}
             </p>
             <p class="mt-3 text-sm text-ink-secondary leading-relaxed">
-              {{ c.desc }}
+              {{ c.result }}
             </p>
             <div class="mt-6">
-              <BrandButton variant="ghost" size="sm" to="/cases" class="hover:!border-[#433487] hover:!text-[#433487]" arrow>
+              <BrandButton
+                variant="ghost"
+                size="sm"
+                class="hover:!border-[#433487] hover:!text-[#433487]"
+                arrow
+                @click="openCaseModal(c)"
+              >
                 查看案例
               </BrandButton>
             </div>
@@ -103,4 +103,6 @@ const cases = [
       </div>
     </div>
   </section>
+
+  <CaseDetailModal v-model="isModalOpen" :case-item="selectedCase" />
 </template>

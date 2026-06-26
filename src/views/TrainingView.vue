@@ -64,19 +64,19 @@ const differences = [
 const paths = [
   {
     role: '企业管理者',
-    route: '初级模块 → 高级全修 → 行业课·金融保险',
+    route: '初级模块 → 高级全修 → 对应行业 AI 专项实战课程',
     result: '6个月后：主导公司AI中台建设，团队效率提升3倍',
     image: new URL('@/assets/pxzx/qy.png', import.meta.url).href,
   },
   {
     role: '业务负责人',
-    route: '初级全修 → 中级模块1-3 → 行业课·电商与新零售',
+    route: '初级全修 → 中级模块1-3 → 所属赛道 AI 数字化运营课',
     result: '3个月后：用AI管3家店客服+营销，人力成本省40%',
     image: new URL('@/assets/pxzx/yw.png', import.meta.url).href,
   },
   {
     role: '自由职业者/创业者',
-    route: '初级全修 → 中级全修 → 扩展·AI+创意设计',
+    route: '初级全修 → 中级全修 → 垂直领域 AI 能力拓展课程',
     result: '2个月后：AI接单月入2万+，服务12个中小企业客户',
     image: new URL('@/assets/pxzx/gr.png', import.meta.url).href,
   },
@@ -86,16 +86,28 @@ const showModal = ref(false)
 
 const consultWays = [
   {
-    title: '企业内训',
-    items: ['根据团队现状定制模块组合', '上门或线上交付，含课后落地跟踪'],
+    title: '线下名师面授',
+    items: [
+      '行业资深导师实地驻场授课，面对面深度答疑',
+      '实地案例沙盘实操，现场拆解企业真实业务难题',
+      '线下圈层资源对接，同步链接同行产业人脉',
+    ],
   },
   {
-    title: '个人进阶',
-    items: ['选择对应行业赛道，自主节奏学习', '社群答疑 + 项目实战陪跑'],
+    title: '线上随心点播课',
+    items: [
+      '下单即刻解锁全量课程，无时间地点观看限制',
+      '课程永久回放，可反复复盘知识点、实操步骤',
+      '轻量化碎片化学习，适配通勤、间隙自主提升',
+    ],
   },
   {
-    title: '合作咨询',
-    items: ['课程体系授权 · 联合品牌培训 · 行业解决方案共建'],
+    title: '沉浸式互动 AI 训练营',
+    items: [
+      '全程助教伴学，实时答疑纠偏，杜绝自学断层',
+      '阶段性实战任务输出，配套点评打磨落地能力',
+      '学员社群同步交流，组队完成 AI 商业实战项目',
+    ],
   },
 ]
 </script>
@@ -107,7 +119,7 @@ const consultWays = [
       <div class="absolute -top-40 -right-40 w-[500px] h-[500px] md:w-[600px] md:h-[600px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(253, 174, 55, 0.15) 0%, transparent 70%); filter: blur(60px);" />
       <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold text-ink-primary leading-tight tracking-tight">
-          模块化实训：打通业务与营收闭环
+          模块化 AI 实训：打通业务与营收闭环
         </h1>
         <p class="mt-6 text-lg md:text-xl text-ink-secondary max-w-3xl mx-auto leading-relaxed">
           一套为「业务落地」与「收入变现」而设计的模块化培训体系
@@ -151,7 +163,8 @@ const consultWays = [
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl font-semibold text-ink-primary tracking-tight">课程架构：积木式组合</h2>
-          <p class="mt-4 text-lg text-ink-secondary">不是一条线，而是一盒积木。</p>
+          <p class="mt-4 text-lg text-ink-secondary">课程不是一条线，而是一盒积木。</p>
+          <p class="mt-4 text-lg text-ink-secondary">初中高三阶主线 + 6大行业纵深 + 5大前沿扩展，像搭积木一样自由组合你的学习路径。</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -168,10 +181,6 @@ const consultWays = [
             </ul>
           </div>
         </div>
-
-        <p class="mt-8 text-center text-ink-secondary">
-          餐饮老板选餐饮模块，跨境卖家选出海模块——学你需要的，不浪费一节课。
-        </p>
       </div>
     </section>
 
@@ -204,7 +213,7 @@ const consultWays = [
     <section ref="pathRef" class="py-20 md:py-[120px] bg-surface-base">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-semibold text-ink-primary tracking-tight">典型学习路径</h2>
+          <h2 class="text-3xl md:text-4xl font-semibold text-ink-primary tracking-tight">全赛道 AI 能力进阶</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -228,7 +237,7 @@ const consultWays = [
     <section ref="consultRef" class="py-20 md:py-[120px] bg-white">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl font-semibold text-ink-primary tracking-tight">三大服务合作通道</h2>
+          <h2 class="text-3xl md:text-4xl font-semibold text-ink-primary tracking-tight">三大授课形式</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -249,7 +258,7 @@ const consultWays = [
     <section ref="ctaRef" class="py-20 md:py-[120px] bg-surface-base">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl md:text-4xl font-semibold text-ink-primary tracking-tight">
-          AI 赋能成长，沉淀可落地创收实力
+          AI 赋能成长，沉淀可落地的企业生产力
         </h2>
         <p class="mt-6 text-lg text-ink-secondary">
           89+课时 · 40+实战场景 · 6大行业方向

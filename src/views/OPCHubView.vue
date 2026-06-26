@@ -152,8 +152,8 @@ const serviceColors = ['#F04045', '#F04045', '#F04045', '#F04045', '#F04045', '#
 
 const services = [
   { title: 'OPC Hub 支撑平台', image: new URL('@/assets/opchub/11.png', import.meta.url).href, items: ['OPC Hub 系统', '授权账号（不超过约定数量）', '统一 AI 能力底座'] },
-  { title: '高端 AI 课程体系', image: new URL('@/assets/opchub/22.png', import.meta.url).href, items: ['最新一线 AI 应用课程', 'OPC 标准化培训体系', 'OPC 初级认证证书'] },
-  { title: '本地高端线下活动', image: new URL('@/assets/opchub/33.png', import.meta.url).href, items: ['开展 AI 主题沙龙', '企业专场 / 行业专场', '路演 + 对接 + 转化'] },
+  { title: '全栈 AI 课程体系', image: new URL('@/assets/opchub/22.png', import.meta.url).href, items: [ 'OPC 标准化培训体系', '初级|中级|高级 100+实战AI课程',"OPC认证证书"] },
+  { title: 'AI 训练营 & 线下活动', image: new URL('@/assets/opchub/33.png', import.meta.url).href, items: ['开展企业、行业双专场 AI 主题沙龙',  '路演 + 对接 + 转化',"AI 训练营，赋能产业落地 AI 应用"] },
   { title: '算力调度平台', image: new URL('@/assets/opchub/44.png', import.meta.url).href, items: ['多算力源统一调度', '企业低门槛用算力', '为 AI 应用落地赋能'] },
   { title: 'OPC 创业 & 产业导师', image: new URL('@/assets/opchub/55.png', import.meta.url).href, items: ['AI 创业导师', '行业落地导师', '企业数智化转型实战派'] },
   { title: 'AI 运营支撑服务', image: new URL('@/assets/opchub/66.png', import.meta.url).href, items: ['社群 & 企业运营方法论', '内容、品牌、招商协同', '（可选）国际化 PEC 大会'] },
@@ -162,6 +162,7 @@ const services = [
 const conditionGroups = [
   {
     category: '园区',
+    subtitle: '搭建全域算力与 AI 基础底座，为产业创新落地提供核心支撑。',
     image: new URL('@/assets/opchub/yq.png', import.meta.url).href,
     items: [
       { title: '资源基础', items: ['可用办公面积：建议≥1,000㎡', '固定活动场地（含路演 / 培训 / 闭门会）', 'OPC 创业者社群（个人 / 小团队）'] },
@@ -172,16 +173,18 @@ const conditionGroups = [
   },
   {
     category: '企业',
+    subtitle: '依托 AI 赋能体系激活内部研发小组，快速落地项目、形成业务实战能力。',
     image: new URL('@/assets/opchub/qy.png', import.meta.url).href,
     items: [
-      { title: '业务场景', items: ['有明确的 AI 落地场景或待解决的业务痛点（如智能客服、流程自动化、知识管理）', '内部有愿意配合的业务部门，能推动 POC 快速验证', '对 OPC 技术有真实需求，而非"为了上 AI 而上 AI"'] },
-      { title: '技术底座', items: ['有基础 IT 团队或技术负责人，能对接 OPC 技术集成', '现有系统具备一定的 API 开放能力或数据接口', '有内部知识库、文档或数据沉淀，可供 AI 训练与调用'] },
-      { title: '组织意愿', items: ['管理层对 AI 转型有明确共识，愿意投入时间和预算', '能接受"先小步快跑、再逐步扩展"的落地节奏', '有跨部门协作机制，打破信息孤岛'] },
-      { title: '生态连接', items: ['愿意开放部分场景与 OPC 生态伙伴共创', '能作为行业标杆案例，反哺 OPC 社区方法论', '有参与行业标准共建或技术分享的意愿'] },
+      { title: '组织规模', items: ['员工规模：通常 1,000+ 人，多层级、多事业部架构', '产品线庞杂：核心大产品之外，存在大量小场景、内部工具、边缘创新需求', '创新无法靠顶层统一规划：高层难以对全部业务场景有全貌认知'] },
+      { title: '创新机制', items: ['已有项目小组制运作基础：3-5人可独立成组，快速迭代验证', '内部有"让听见炮火的人做决策"的文化或成功案例（加分）', '员工具备主动发现场景、自发组队的意识和动力'] },
+      { title: '资源开放度', items: ['内部平台、渠道、数据、技术资源已具备，愿意池化开放', 'AI 工具、算力、开发环境可内部调用或快速接入', '能把大公司的"资源厚度"转化为小团队的"创业灵活度"'] },
+      { title: '管理痛点', items: ['创新需求分散在各业务线，缺乏统一入口和孵化机制', '跨部门协作壁垒高，小团队难以快速获取所需资源', '需要外部输入：OBC 机制设计、AI 方法论培训、标杆案例参考'] },
     ],
   },
   {
     category: '高校',
+    subtitle: '以 OPC+AI 创新模式，赋能在校学生开展创新创业实践。',
     image: new URL('@/assets/opchub/gx.png', import.meta.url).href,
     items: [
       { title: '学科与人才', items: ['计算机、人工智能、软件工程等相关专业支撑', '有研究生或高年级本科生可参与实际项目', '教师团队中有对 Agent、LLM、RAG 等方向有研究兴趣的骨干'] },
@@ -247,7 +250,8 @@ const cases = [
             <h1 class="mt-6 text-[48px] md:text-[64px] lg:text-[72px] font-semibold text-[#1A1A1A] leading-[1.08] tracking-[-0.03em]">
               OPC Hub<br />
               <span class="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#1A1A1A]">
-                面向 OPC 时代的 AI 创业生态基础设施平台
+                面向 OPC 时代的 AI 创业<br />
+                生态基础设施平台
               </span>
             </h1>
 
@@ -270,7 +274,7 @@ const cases = [
               >
                 立即咨询
               </button>
-              <BrandButton variant="ghost" to="/solutions" class="hover:!border-[#F04045] hover:!text-[#F04045]" arrow>
+              <BrandButton variant="ghost" to="/solutions?tab=solo" class="hover:!border-[#F04045] hover:!text-[#F04045]" arrow>
                 了解方案
               </BrandButton>
             </div>
@@ -478,7 +482,7 @@ const cases = [
         </div>
 
         <!-- Conditions -->
-        <h3 class="text-xl font-bold text-center mb-2">OPC Hub 能不能落到我们 园区 / 企业 / 高校 ？</h3>
+        <h3 class="text-2xl md:text-3xl font-bold text-center mb-2">OPC Hub 能不能落到我们 园区 / 企业 / 高校 ？</h3>
         <p class="text-center text-[#666666] mb-8">想做 OPC，你要具备这些条件</p>
 
         <div v-for="group in conditionGroups" :key="group.category" class="mb-16 last:mb-0">
@@ -488,16 +492,19 @@ const cases = [
             </span>
           </div> -->
 
-          <div class="relative mb-8 rounded-xl overflow-hidden h-[120px]">
+          <div class="relative mb-8 rounded-xl overflow-hidden h-[140px]">
             <img
               v-if="group.image"
               :src="group.image"
               :alt="group.category"
               class="absolute inset-0 w-full h-full object-cover object-center blur-sm"
             />
-            <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+            <div class="absolute inset-0 bg-black/30 flex flex-col items-center justify-center px-6 text-center">
               <span class="text-white text-2xl font-bold tracking-wide">
                 {{ group.category }}
+              </span>
+              <span class="mt-2 text-white/90 text-base md:text-lg leading-relaxed max-w-2xl">
+                {{ group.subtitle }}
               </span>
             </div>
           </div>
@@ -777,9 +784,9 @@ const cases = [
           <div class="p-6 rounded-xl bg-white border border-[#E5E5E5] h-full flex flex-col">
             <h4 class="text-base font-bold text-[#F04045] mb-4">书籍</h4>
             <p class="text-sm text-[#666666]">撰写并发行多本 AI 实战书籍，助力从业者快速掌握 AI 技术与落地技巧。</p>
-            <div class="grid grid-cols-2 gap-4 flex-1 items-center">
+            <div class="grid grid-cols-3 gap-3 flex-1 items-center">
               <div class="text-center">
-                <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-44 mb-2">
+                <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-32 md:h-36 mb-2">
                   <img src="@/assets/st/sj/24xs.png" class="w-full h-full object-contain" alt="24 小时精通 AI Agent" />
                 </div>
                 <p class="text-xs font-semibold text-[#1A1A1A]">《二十四小时 AI Agent》</p>
@@ -787,12 +794,20 @@ const cases = [
                 <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">可快速上手实操AI的畅销书。</p>
               </div>
               <div class="text-center">
-                <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-44 mb-2">
+                <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-32 md:h-36 mb-2">
                   <img src="@/assets/st/sj/jsAI.png" class="w-full h-full object-contain" alt="解锁 AI 力量" />
                 </div>
                 <p class="text-xs font-semibold text-[#1A1A1A]">《解锁 AI 力量》</p>
                 <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">中共中央党校出版社 出版</p>
                 <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">AI行业全景发展的权威读本。</p>
+              </div>
+              <div class="text-center">
+                <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-32 md:h-36 mb-2">
+                  <img src="@/assets/st/sj/opc.png" class="w-full h-full object-contain object-bottom" alt="时代的 OPC" />
+                </div>
+                <p class="text-xs font-semibold text-[#1A1A1A]">《时代的 OPC 》</p>
+                <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">机械工业出版社 出版</p>
+                <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">一人公司从0到1方法论。</p>
               </div>
             </div>
           </div>
@@ -834,7 +849,7 @@ const cases = [
         </div>
 
         <p class="text-center text-2xl md:text-3xl font-bold text-[#F04045] mb-12">
-          OPC Hub：园区级 AI 能力生产与交易平台
+          OPC Hub——面向 OPC 时代的 AI 创业生态基础设施平台
         </p>
 
         <div class="text-center">

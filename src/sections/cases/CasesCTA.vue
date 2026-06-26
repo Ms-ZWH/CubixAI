@@ -2,8 +2,10 @@
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import BrandButton from '../../components/BrandButton.vue'
+import EnterpriseModal from '../../components/EnterpriseModal.vue'
 
 const contentRef = ref<HTMLElement | null>(null)
+const showEnterpriseModal = ref(false)
 useScrollReveal(contentRef, { y: 30 })
 </script>
 
@@ -32,7 +34,7 @@ useScrollReveal(contentRef, { y: 30 })
         联系我们，共建数字化行业范本
       </h2>
       <div class="flex flex-wrap items-center justify-center gap-4">
-        <BrandButton to="/contact" class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]">申请合作</BrandButton>
+        <BrandButton class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]" @click="showEnterpriseModal = true">申请合作</BrandButton>
         <BrandButton
           to="/solutions"
           arrow
@@ -43,5 +45,7 @@ useScrollReveal(contentRef, { y: 30 })
       </div>
     </div>
   </section>
+
+  <EnterpriseModal v-model="showEnterpriseModal" />
 </template>
 

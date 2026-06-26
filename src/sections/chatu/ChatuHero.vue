@@ -85,7 +85,7 @@ onUnmounted(stopCarousel)
           </div>
 
           <div class="mt-8 flex flex-wrap items-center gap-4">
-            <BrandButton href="https://m.chatu.pro" target="_blank" class="!bg-none !bg-[#433487]">申请试用</BrandButton>
+            <BrandButton href="https://admin.chatu.pro/" target="_blank" class="!bg-none !bg-[#433487]">申请试用</BrandButton>
             <!-- <BrandButton variant="ghost" to="/contact" class="hover:!border-[#433487] hover:!text-[#433487]" arrow>
               查看演示
             </BrandButton> -->
