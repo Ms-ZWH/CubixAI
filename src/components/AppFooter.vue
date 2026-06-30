@@ -1,8 +1,10 @@
 ﻿<script setup lang="ts">
 import { RouterLink, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
 
+const { t } = useI18n()
 const route = useRoute()
 
 const greenRoutes = ['/', '/solutions', '/cases', '/ai-insight', '/contact']
@@ -31,24 +33,24 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
                 <Icon icon="lucide:hexagon" class="w-5 h-5 text-white" />
               </div>
               <span class="text-lg font-bold text-white tracking-tight">
-                软积木
+                {{ t('common.siteName') }}
               </span>
             </div>
           </template><p class="text-sm text-white/60 leading-relaxed">
-            AI 原生公司，以 ChatU 软件平台与智方体硬件终端，打通企业智能化的全链路。
+            {{ t('common.siteTagline') }}
           </p>
         </div>
 
         <!-- Links -->
         <div>
-          <h4 class="text-sm font-semibold text-white mb-4">产品</h4>
+          <h4 class="text-sm font-semibold text-white mb-4">{{ t('footer.products') }}</h4>
           <ul class="space-y-2.5">
             <li>
               <RouterLink
                 to="/products/chatu"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                ChatU
+                {{ t('footer.chatu') }}
               </RouterLink>
             </li>
             <li>
@@ -56,7 +58,7 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
                 to="/products/agentstation"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                智方体
+                {{ t('footer.agentStation') }}
               </RouterLink>
             </li>
             <li>
@@ -64,7 +66,7 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
                 to="/opc-hub"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                OPC Hub
+                {{ t('footer.opcHub') }}
               </RouterLink>
             </li>
             <li>
@@ -72,21 +74,21 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
                 to="/contact"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                咨询培训
+                {{ t('footer.training') }}
               </RouterLink>
             </li>
           </ul>
         </div>
 
         <div>
-          <h4 class="text-sm font-semibold text-white mb-4">公司</h4>
+          <h4 class="text-sm font-semibold text-white mb-4">{{ t('footer.company') }}</h4>
           <ul class="space-y-2.5">
             <li>
               <RouterLink
                 to="/contact"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                关于我们
+                {{ t('footer.aboutUs') }}
               </RouterLink>
             </li>
             <li>
@@ -94,7 +96,7 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
                 to="/cases"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                客户案例
+                {{ t('footer.customerCases') }}
               </RouterLink>
             </li>
             <li>
@@ -102,21 +104,21 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
                 to="/contact"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                联系我们
+                {{ t('footer.contactUs') }}
               </RouterLink>
             </li>
           </ul>
         </div>
 
         <div>
-          <h4 class="text-sm font-semibold text-white mb-4">资源</h4>
+          <h4 class="text-sm font-semibold text-white mb-4">{{ t('footer.resources') }}</h4>
           <ul class="space-y-2.5">
             <li>
               <RouterLink
                 to="/solutions"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                解决方案
+                {{ t('footer.solutions') }}
               </RouterLink>
             </li>
             <li>
@@ -124,7 +126,7 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
                 to="/ecosystem"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
-                生态系统
+                {{ t('footer.ecosystem') }}
               </RouterLink>
             </li>
           </ul>
@@ -135,7 +137,7 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
         class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4"
       >
         <p class="text-sm text-white/40">
-          © 2025 软积木. All rights reserved.
+          {{ t('common.copyright') }}
         </p>
       </div>
     </div>

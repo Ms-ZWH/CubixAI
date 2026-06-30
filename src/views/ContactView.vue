@@ -1,10 +1,13 @@
 ﻿<script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollReveal } from '../composables/useScrollReveal'
 import { Icon } from '@iconify/vue'
 import PartnersSection from '../sections/PartnersSection.vue'
 import cctvImg1 from '@/assets/st/cctv/c1.png'
 import cctvImg2 from '@/assets/st/cctv/c2.png'
+
+const { t } = useI18n()
 
 onMounted(() => {
   const hash = window.location.hash
@@ -190,10 +193,10 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
       />
       <div ref="heroRef" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl md:text-5xl lg:text-[64px] font-semibold text-ink-primary leading-tight tracking-tight">
-          一家原生的通用人工智能公司
+          {{ t('about.hero.title') }}
         </h1>
         <p class="mt-6 text-xl md:text-2xl text-ink-secondary">
-          专为推动企业AI应用而生，解决企业AI落地最后三公里
+          {{ t('about.hero.desc') }}
         </p>
       </div>
     </section>
@@ -204,7 +207,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
     <section class="py-20 md:py-[120px] bg-surface-base">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">核心理念</h2>
+          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">{{ t('about.mission.title') }}</h2>
         </div>
         <div ref="missionRef" class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
           <div
@@ -232,7 +235,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
     <section class="py-20 md:py-[120px] bg-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
-          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">发展历程</h2>
+          <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">{{ t('about.timeline.title') }}</h2>
         </div>
         <div ref="timelineRef" class="relative">
           <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-ink-primary/10 md:-translate-x-px" />
@@ -261,10 +264,10 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref="globalRef" class="text-center mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
-            走向全球 · 受邀参与国际顶级科技盛会
+            {{ t('about.global.title') }}
           </h2>
           <p class="mt-4 text-lg text-ink-secondary">
-            欧洲 · 美国 · 韩国 · 日本 · 新加坡等市场全面布局
+            {{ t('about.global.desc') }}
           </p>
         </div>
 
@@ -312,11 +315,11 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
           <div class="flex items-center justify-center gap-3 mb-2">
             <Icon icon="lucide:tv" class="w-5 h-5 text-gold" />
             <span class="text-sm font-semibold text-ink-primary">
-              CCTV-2《赢在 AI+》栏目
+              {{ t('about.global.cctv') }}
             </span>
           </div>
           <p class="text-sm text-ink-secondary mb-5">
-            软积木 CTO 邹健 & ChatU 登上央视财经频道
+            {{ t('about.global.cctvDesc') }}
           </p>
           <div class="grid grid-cols-2 gap-4 md:gap-6">
             <div class="rounded-xl overflow-hidden h-56 md:h-80">
@@ -337,7 +340,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
         </div>
 
         <p class="mt-8 text-center text-base text-ink-tertiary">
-          与多家海外企业构建牢固合作伙伴关系
+          {{ t('about.global.partners') }}
         </p>
       </div>
     </section>
@@ -350,10 +353,10 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
         <div ref="honorsRef">
           <div class="text-center mb-12 md:mb-16">
             <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
-              企业荣誉
+              {{ t('about.honors.title') }}
             </h2>
             <p class="mt-4 text-lg text-ink-secondary">
-              权威认证 · 持续创新
+              {{ t('about.honors.desc') }}
             </p>
           </div>
 
@@ -457,7 +460,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
-            全球办公 · 本地服务
+            {{ t('about.locations.title') }}
           </h2>
         </div>
         <div ref="locationsRef" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -491,10 +494,10 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
       <div class="relative pt-20 md:pt-[120px] pb-10 md:pb-16">
         <div ref="ctaRef" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 class="text-3xl md:text-4xl lg:text-[56px] font-semibold text-ink-primary tracking-tight leading-tight">
-            多种方式 · 随时联系
+            {{ t('about.contact.title') }}
           </h2>
           <p class="mt-6 text-lg text-ink-secondary leading-relaxed max-w-2xl mx-auto">
-            无论是产品试用、商务合作，还是技术咨询，都在这里找到答案
+            {{ t('about.contact.desc') }}
           </p>
         </div>
       </div>
@@ -507,7 +510,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
             <div
               class="flex flex-col items-center p-8 rounded-2xl text-center bg-white border border-[#E5E5E5] shadow-sm"
             >
-              <h3 class="text-lg font-semibold text-ink-primary">联系我们</h3>
+              <h3 class="text-lg font-semibold text-ink-primary">{{ t('about.contact.contactUs') }}</h3>
               <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
                 <img
                   src="@/assets/lxwm.png"
@@ -516,7 +519,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
                 />
               </div>
               <p class="mt-5 text-sm text-ink-secondary leading-relaxed">
-                扫码即刻开启企业智能化转型
+                {{ t('about.contact.contactDesc') }}
               </p>
             </div>
 
@@ -524,12 +527,12 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
             <div
               class="flex flex-col items-center p-8 rounded-2xl text-center bg-white border border-[#E5E5E5] shadow-sm"
             >
-              <h3 class="text-lg font-semibold text-ink-primary">关注我们</h3>
+              <h3 class="text-lg font-semibold text-ink-primary">{{ t('about.contact.followUs') }}</h3>
               <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
                 <img src="@/assets/rjm.jpg" alt="公众号二维码" class="w-full h-full object-cover" />
               </div>
               <p class="mt-5 text-sm text-ink-secondary leading-relaxed">
-                了解公司动态，洞悉 AI 行业趋势
+                {{ t('about.contact.followDesc') }}
               </p>
             </div>
 
@@ -537,7 +540,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
             <div
               class="flex flex-col items-center p-8 rounded-2xl text-center bg-white border border-[#E5E5E5] shadow-sm"
             >
-              <h3 class="text-lg font-semibold text-ink-primary">商务洽谈</h3>
+              <h3 class="text-lg font-semibold text-ink-primary">{{ t('about.contact.business') }}</h3>
               <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex flex-col items-center justify-center gap-2">
                 <div class="w-14 h-14 rounded-2xl bg-brand-gradient flex items-center justify-center">
                   <Icon icon="lucide:mail" class="w-7 h-7 text-white" />
@@ -548,7 +551,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
                 href="mailto:bd@cubixai.com"
                 class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-[#55AD73] text-white hover:bg-[#2E8B57] transition-colors"
               >
-                发送邮件
+                {{ t('common.sendEmail') }}
                 <Icon icon="lucide:arrow-right" class="w-4 h-4" />
               </a>
             </div>

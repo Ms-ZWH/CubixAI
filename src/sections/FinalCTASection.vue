@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollReveal } from '../composables/useScrollReveal'
 import BrandButton from '../components/BrandButton.vue'
 
+const { t } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
 useScrollReveal(contentRef, { y: 30 })
 </script>
@@ -17,16 +19,16 @@ useScrollReveal(contentRef, { y: 30 })
         <h2
           class="text-3xl md:text-4xl lg:text-[56px] font-semibold text-ink-primary tracking-tight leading-tight"
         >
-          专为推动企业AI应用而生
+          {{ t('about.hero.desc') }}
         </h2>
         <p
           class="mt-6 text-lg text-ink-secondary leading-relaxed max-w-2xl mx-auto"
         >
-          解决企业AI落地最后三公里
+          {{ t('home.hero.slide1Desc') }}
         </p>
 
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <BrandButton to="/contact">联系我们</BrandButton>
+          <BrandButton to="/contact">{{ t('common.contactUs') }}</BrandButton>
         </div>
       </div>
     </div>

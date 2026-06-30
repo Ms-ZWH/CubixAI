@@ -1,37 +1,51 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { RouterLink, useRouter, useRoute } from 'vue-router'
+import { ref, computed } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
+import i18n, { localeMap, localeLabels } from '../i18n'
 
-const router = useRouter()
+const { t } = useI18n()
 const route = useRoute()
 
 const showProductMenu = ref(false)
 const showLangMenu = ref(false)
 const mobileOpen = ref(false)
 
-const currentLang = ref('中文')
-const langList = ['中文', 'English', '한국어', '日本語']
+const currentLangLabel = computed(() => {
+  const key = i18n.global.locale.value
+  return (localeLabels as Record<string, string>)[key] || '中文'
+})
+
+const langList: string[] = ['中文', 'English', '한국어', '日本語']
 
 function selectLang(lang: string) {
-  currentLang.value = lang
+  const newLocale = localeMap[lang]
+  if (newLocale) {
+    i18n.global.locale.value = newLocale
+    localStorage.setItem('locale', newLocale)
+  }
   showLangMenu.value = false
   mobileOpen.value = false
-  if (lang === 'English') {
-    router.push('/en/contact')
-  } else if (lang === '日本語') {
-    router.push('/jp/contact')
-  } else if (lang === '한국어') {
-    router.push('/hg/contact')
-  } else if (lang === '中文') {
-    router.push('/contact')
-  }
 }
 
-const navItems = [
-  { label: '解决方案', to: '/solutions' },
-  { label: '案例', to: '/cases' },
-]
+const navItems = computed(() => [
+  { label: t('header.solutions'), to: '/solutions' },
+  { label: t('header.cases'), to: '/cases' },
+])
+
+const moreNavItems = computed(() => [
+  { label: t('header.ecosystem'), to: '/ecosystem' },
+  { label: t('header.aiInsight'), to: '/ai-insight' },
+  { label: t('header.aboutUs'), to: '/contact' },
+])
+
+const mobileProductItems = computed(() => [
+  { label: 'ChatU', to: '/products/chatu' },
+  { label: t('header.agentName'), to: '/products/agentstation' },
+  { label: 'OPC Hub', to: '/opc-hub' },
+  { label: t('header.trainingName'), to: '/training' },
+])
 
 function isActive(path: string): boolean {
   if (path === '/') {
@@ -67,7 +81,7 @@ function isProductActive(): boolean {
             class="px-3 py-2 text-sm font-medium transition-colors rounded-lg"
             :class="isActive('/') ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
           >
-            首页
+            {{ t('header.home') }}
           </RouterLink>
 
           <!-- Products dropdown -->
@@ -80,7 +94,7 @@ function isProductActive(): boolean {
               class="flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-lg"
               :class="isProductActive() ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
             >
-              产品
+              {{ t('header.products') }}
               <Icon
                 icon="lucide:chevron-down"
                 class="w-4 h-4 transition-transform"
@@ -101,9 +115,9 @@ function isProductActive(): boolean {
                   <Icon icon="lucide:message-square" class="w-5 h-5 text-brand" />
                 </div>
                 <div>
-                  <div class="font-semibold text-ink-primary">ChatU（才兔）</div>
+                  <div class="font-semibold text-ink-primary">{{ t('header.chatuName') }}</div>
                   <div class="text-sm text-ink-secondary mt-0.5">
-                    企业 AI 操作系统
+                    {{ t('header.chatuDesc') }}
                   </div>
                 </div>
               </RouterLink>
@@ -117,9 +131,9 @@ function isProductActive(): boolean {
                   <Icon icon="lucide:cpu" class="w-5 h-5 text-brand" />
                 </div>
                 <div>
-                  <div class="font-semibold text-ink-primary">智方体·AgentStation</div>
+                  <div class="font-semibold text-ink-primary">{{ t('header.agentName') }}</div>
                   <div class="text-sm text-ink-secondary mt-0.5">
-                    AI 硬件终端
+                    {{ t('header.agentDesc') }}
                   </div>
                 </div>
               </RouterLink>
@@ -133,9 +147,9 @@ function isProductActive(): boolean {
                   <Icon icon="lucide:building-2" class="w-5 h-5 text-brand" />
                 </div>
                 <div>
-                  <div class="font-semibold text-ink-primary">OPC Hub</div>
+                  <div class="font-semibold text-ink-primary">{{ t('header.opcHubName') }}</div>
                   <div class="text-sm text-ink-secondary mt-0.5">
-                    赋能超级个体
+                    {{ t('header.opcHubDesc') }}
                   </div>
                 </div>
               </RouterLink>
@@ -149,9 +163,9 @@ function isProductActive(): boolean {
                   <Icon icon="lucide:book-open" class="w-5 h-5 text-brand" />
                 </div>
                 <div>
-                  <div class="font-semibold text-ink-primary">咨询培训</div>
+                  <div class="font-semibold text-ink-primary">{{ t('header.trainingName') }}</div>
                   <div class="text-sm text-ink-secondary mt-0.5">
-                    软积木 AI 课程体系
+                    {{ t('header.trainingDesc') }}
                   </div>
                 </div>
               </RouterLink>
@@ -169,11 +183,7 @@ function isProductActive(): boolean {
           </RouterLink>
 
           <RouterLink
-            v-for="item in [
-              { label: '生态', to: '/ecosystem' },
-              { label: 'AI洞察', to: '/ai-insight' },
-              { label: '关于我们', to: '/contact' },
-            ]"
+            v-for="item in moreNavItems"
             :key="item.to"
             :to="item.to"
             class="px-3 py-2 text-sm font-medium transition-colors rounded-lg"
@@ -183,13 +193,13 @@ function isProductActive(): boolean {
           </RouterLink>
         </nav>
 
-        <!-- Language Switcher (style only) -->
+        <!-- Language Switcher -->
         <div class="hidden md:block relative" @mouseenter="showLangMenu = true" @mouseleave="showLangMenu = false">
           <button
             class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
           >
             <Icon icon="lucide:globe" class="w-4 h-4" />
-            <span>{{ currentLang }}</span>
+            <span>{{ currentLangLabel }}</span>
             <Icon
               icon="lucide:chevron-down"
               class="w-3.5 h-3.5 transition-transform"
@@ -204,10 +214,10 @@ function isProductActive(): boolean {
               v-for="l in langList"
               :key="l"
               class="w-full flex items-center gap-2 px-3 py-2 text-sm rounded-xl transition-colors"
-              :class="currentLang === l ? 'bg-brand-soft text-brand font-medium' : 'text-ink-secondary hover:bg-surface-muted'"
+              :class="currentLangLabel === l ? 'bg-brand-soft text-brand font-medium' : 'text-ink-secondary hover:bg-surface-muted'"
               @click="selectLang(l)"
             >
-              <span class="w-2 h-2 rounded-full" :class="currentLang === l ? 'bg-brand' : 'bg-line'"></span>
+              <span class="w-2 h-2 rounded-full" :class="currentLangLabel === l ? 'bg-brand' : 'bg-line'"></span>
               {{ l }}
             </button>
           </div>
@@ -234,19 +244,14 @@ function isProductActive(): boolean {
         :class="isActive('/') ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
         @click="mobileOpen = false"
       >
-        首页
+        {{ t('header.home') }}
       </RouterLink>
       <div class="border-t border-line/50 my-2" />
       <div class="px-3 py-2 text-xs font-semibold text-ink-tertiary uppercase tracking-wider">
-        产品
+        {{ t('header.products') }}
       </div>
       <RouterLink
-        v-for="item in [
-          { label: 'ChatU', to: '/products/chatu' },
-          { label: '智方体·AgentStation', to: '/products/agentstation' },
-          { label: 'OPC Hub', to: '/opc-hub' },
-          { label: '咨询培训', to: '/training' },
-        ]"
+        v-for="item in mobileProductItems"
         :key="item.to"
         :to="item.to"
         class="block px-3 py-2 text-sm font-medium rounded-lg"
@@ -259,9 +264,7 @@ function isProductActive(): boolean {
       <RouterLink
         v-for="item in [
           ...navItems,
-          { label: '生态', to: '/ecosystem' },
-          { label: 'AI洞察', to: '/ai-insight' },
-          { label: '关于我们', to: '/contact' },
+          ...moreNavItems,
         ]"
         :key="item.to"
         :to="item.to"
@@ -273,14 +276,14 @@ function isProductActive(): boolean {
       </RouterLink>
       <div class="border-t border-line/50 my-2" />
       <div class="px-3 py-2 text-xs font-semibold text-ink-tertiary uppercase tracking-wider">
-        语言
+        {{ t('header.language') }}
       </div>
       <div class="flex gap-2 px-3 py-2">
         <button
           v-for="l in langList"
           :key="l"
           class="px-3 py-1.5 text-sm rounded-lg border transition-colors"
-          :class="currentLang === l ? 'border-brand bg-brand-soft text-brand font-medium' : 'border-line text-ink-secondary hover:bg-surface-muted'"
+          :class="currentLangLabel === l ? 'border-brand bg-brand-soft text-brand font-medium' : 'border-line text-ink-secondary hover:bg-surface-muted'"
           @click="selectLang(l)"
         >
           {{ l }}

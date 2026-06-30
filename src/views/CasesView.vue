@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick } from 'vue'
 import gsap from 'gsap'
+import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import CasesHero from '../sections/cases/CasesHero.vue'
 import CasesCTA from '../sections/cases/CasesCTA.vue'
 import BrandButton from '../components/BrandButton.vue'
+
+const { t } = useI18n()
 
 const clientLogosRow1 = [
   'bjyz.png', 'chjh.png', 'dyck.png', 'gzlgxy.png', 'hjcm.png',
@@ -49,13 +52,13 @@ interface Category {
   label: string
 }
 
-const categories: Category[] = [
-  { id: 'all', label: '全部' },
-  { id: 'enterprise', label: '企业服务' },
-  { id: 'opc', label: 'OPC产业生态' },
-  { id: 'training', label: '培训' },
-  { id: 'other', label: '其他' },
-]
+const categories = computed<Category[]>(() => [
+  { id: 'all', label: t('cases.tabs.all') },
+  { id: 'enterprise', label: t('cases.tabs.enterprise') },
+  { id: 'opc', label: t('cases.tabs.opc') },
+  { id: 'training', label: t('cases.tabs.training') },
+  { id: 'other', label: t('cases.tabs.other') },
+])
 
 const cases: CaseItem[] = [
   
@@ -576,7 +579,7 @@ nextTick(() => {
               <!-- Button -->
               <div class="mt-8">
                 <BrandButton size="sm" @click="openModal(c)">
-                  案例详情
+                  {{ t('common.caseDetails') }}
                 </BrandButton>
               </div>
             </div>
@@ -684,7 +687,7 @@ nextTick(() => {
                 class="flex items-center gap-2 text-sm font-bold text-ink-primary mb-3"
               >
                 <Icon icon="lucide:building" class="w-4 h-4 text-brand" />
-                客户背景
+                {{ t('common.customerBackground') }}
               </h4>
               <p class="text-base text-ink-secondary leading-relaxed">
                 {{ selectedCase?.background || selectedCase?.client }}
@@ -699,7 +702,7 @@ nextTick(() => {
                 class="flex items-center gap-2 text-sm font-bold text-[#991B1B] mb-4"
               >
                 <Icon icon="lucide:alert-circle" class="w-4 h-4" />
-                核心痛点
+                {{ t('common.corePainPoints') }}
               </h4>
               <ul class="space-y-3">
                 <li
@@ -721,7 +724,7 @@ nextTick(() => {
                 class="flex items-center gap-2 text-sm font-bold text-brand mb-4"
               >
                 <Icon icon="lucide:check-circle" class="w-4 h-4" />
-                方案细节
+                {{ t('common.schemeDetails') }}
               </h4>
               <ul class="space-y-3">
                 <li
@@ -744,7 +747,7 @@ nextTick(() => {
                 class="flex items-center gap-2 text-sm font-bold text-brand mb-4"
               >
                 <Icon icon="lucide:check-circle" class="w-4 h-4" />
-                解决问题
+                {{ t('common.solveProblems') }}
               </h4>
               <ul class="space-y-3">
                 <li
@@ -769,7 +772,7 @@ nextTick(() => {
               <p class="text-sm md:text-base font-semibold text-brand">
                 <span class="inline-flex items-center gap-2">
                   <Icon icon="lucide:trending-up" class="w-4 h-4" />
-                  成效：
+                  {{ t('common.effect') }}：
                 </span>
                 {{ selectedCase?.effect || selectedCase.result }}
               </p>
@@ -784,10 +787,10 @@ nextTick(() => {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-20 md:mb-28">
           <h2 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">
-            签约客户
+            {{ t('cases.clients.title') }}
           </h2>
           <p class="mt-3 text-base text-ink-secondary">
-            他们都在使用我们的产品与服务
+            {{ t('cases.clients.desc') }}
           </p>
         </div>
       </div>

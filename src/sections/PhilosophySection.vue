@@ -1,9 +1,11 @@
 ﻿<script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollReveal } from '../composables/useScrollReveal'
 import { Icon } from '@iconify/vue'
 import BrandButton from '../components/BrandButton.vue'
 
+const { t } = useI18n()
 const titleRef = ref<HTMLElement | null>(null)
 
 useScrollReveal(titleRef, { y: 30 })
@@ -47,7 +49,7 @@ const cases = [
         <h2
           class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight"
         >
-          解决方案
+          {{ t('home.philosophy.title') }}
         </h2>
       </div>
 
@@ -88,7 +90,7 @@ const cases = [
             <div class="mt-6 p-4 md:p-5 rounded-2xl bg-brand-soft/40 border border-brand/10">
               <h4 class="text-sm font-semibold text-ink-primary mb-2 flex items-center gap-2">
                 <Icon icon="lucide:briefcase" class="w-4 h-4 text-brand" />
-                产品方案
+                {{ t('common.productScheme') }}
               </h4>
               <p class="text-sm md:text-base text-ink-secondary leading-relaxed">{{ item.cpsm }}</p>
             </div>
@@ -97,7 +99,7 @@ const cases = [
             <div class="mt-4 p-4 md:p-5 rounded-2xl bg-surface-muted/60 border border-line/50">
               <h4 class="text-sm font-semibold text-ink-primary mb-2 flex items-center gap-2">
                 <Icon icon="lucide:lightbulb" class="w-4 h-4 text-brand" />
-                解决痛点
+                {{ t('common.solvePainPoints') }}
               </h4>
               <p class="text-sm md:text-base text-ink-secondary leading-relaxed">{{ item.pain }}</p>
             </div>
@@ -108,7 +110,7 @@ const cases = [
       <!-- CTA -->
       <div class="mt-12 text-center">
         <BrandButton variant="ghost" to="/solutions" arrow>
-          查看全部行业解决方案
+          {{ t('home.philosophy.cta') }}
         </BrandButton>
       </div>
     </div>

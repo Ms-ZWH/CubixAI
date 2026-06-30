@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 
+const { t } = useI18n()
 const titleRef = ref<HTMLElement | null>(null)
 
 useScrollReveal(titleRef, { y: 30 })
@@ -31,10 +33,10 @@ useScrollReveal(titleRef, { y: 30 })
         <h1
           class="text-2xl md:text-4xl lg:text-5xl font-semibold text-ink-primary leading-[1.08] tracking-[-0.03em] whitespace-nowrap"
         >
-          3000 家企业 · 100+ 行业 · 共同验证
+          {{ t('cases.hero.title') }}
         </h1>
         <p class="mt-6 text-lg md:text-xl text-ink-secondary">
-          从政企到个人创作者，AI 落地已跑通
+          {{ t('cases.hero.desc') }}
         </p>
       </div>
     </div>

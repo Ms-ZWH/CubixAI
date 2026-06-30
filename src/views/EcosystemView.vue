@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 import StatNumber from '../components/StatNumber.vue'
+
+const { t } = useI18n()
 
 /* ========================
    1. Hero
@@ -117,9 +120,9 @@ const advantages = [
 
         <!-- 活动形式 -->
         <div class="text-center mb-12">
-          <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">活动形式</h3>
+          <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">{{ t('ecosystem.pec.formats.title') }}</h3>
           <p class="mt-3 text-base text-ink-secondary">
-            峰会 · 论坛 · 沙龙 · 座谈，覆盖从顶级决策者到一线开发者的完整生态链
+            {{ t('ecosystem.pec.formats.desc') }}
           </p>
         </div>
         <div ref="pecFormatsRef" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -144,9 +147,9 @@ const advantages = [
     <section class="py-20 md:py-[120px] bg-surface-base">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
-          <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">生态服务</h3>
+          <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">{{ t('ecosystem.pec.services.title') }}</h3>
           <p class="mt-3 text-base text-ink-secondary">
-            认证 · 联盟，构建提示工程人才全链路成长体系
+            {{ t('ecosystem.pec.services.desc') }}
           </p>
         </div>
 
@@ -170,15 +173,15 @@ const advantages = [
             <img src="../assets/PEC.jpg" alt="PEC 公众号二维码" class="w-full h-full object-cover" />
           </div>
           <h3 class="mt-5 text-xl md:text-2xl font-semibold text-ink-primary tracking-tight">
-            关注 PEC提示工程大会 公众号
+            {{ t('ecosystem.pec.follow.title') }}
           </h3>
           <p class="mt-2 text-sm text-ink-secondary max-w-xs">
-            获取最新活动资讯、行业洞察与社区动态
+            {{ t('ecosystem.pec.follow.desc') }}
           </p>
           <div class="mt-5">
             <a href="https://www.pec.asia" target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand text-white font-semibold hover:bg-brand-deep transition-colors shadow-lg">
-              前往 PEC 官网查看详情
+              {{ t('ecosystem.pec.follow.cta') }}
               <Icon icon="lucide:arrow-up-right" class="w-4 h-4" />
             </a>
           </div>
@@ -194,13 +197,13 @@ const advantages = [
         <!-- 标题区 -->
         <div ref="aiServiceRef" class="text-center mb-12 md:mb-16">
           <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
-            更多企业 AI 服务生态圈
+            {{ t('ecosystem.aiService.title') }}
           </h2>
           <p class="mt-5 text-base md:text-lg text-ink-secondary max-w-3xl mx-auto leading-relaxed">
-            软积木通过整合前沿 AI 技术、个性化解决方案、专业培训与社群交流等多元化服务，
+            {{ t('ecosystem.aiService.desc1') }}
           </p>
           <p class="mt-5 text-base md:text-lg text-ink-secondary max-w-3xl mx-auto leading-relaxed">
-            助力企业实现智能化升级与业务创新。
+            {{ t('ecosystem.aiService.desc2') }}
           </p>
         </div>
 
@@ -223,8 +226,8 @@ const advantages = [
         <!-- 服务矩阵 -->
         <div ref="matrixRef">
           <div class="text-center mb-10 md:mb-12">
-            <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">服务矩阵</h3>
-            <p class="mt-3 text-base text-ink-secondary">围绕客户构建六大核心服务支撑</p>
+            <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">{{ t('ecosystem.aiService.matrix.title') }}</h3>
+            <p class="mt-3 text-base text-ink-secondary">{{ t('ecosystem.aiService.matrix.desc') }}</p>
             <div class="mt-6 max-w-6xl mx-auto rounded-2xl overflow-hidden">
               <img src="@/assets/st/yq.png" alt="服务矩阵" class="w-full h-auto object-contain" />
             </div>

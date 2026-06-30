@@ -2,10 +2,12 @@
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 import EnterpriseModal from '../components/EnterpriseModal.vue'
 
+const { t } = useI18n()
 gsap.registerPlugin(ScrollTrigger)
 
 const heroRef = ref<HTMLElement | null>(null)
@@ -210,15 +212,15 @@ const solutions: Solution[] = [
   },
 ]
 
-const categoryTabs = [
-  { id: 'all', label: '全部' },
-  { id: 'tech', label: '信息技术' },
-  { id: 'creative', label: '创意' },
-  { id: 'service', label: '企业服务' },
-  { id: 'industry', label: '实体产业' },
-  { id: 'gov', label: '政务国企' },
-  { id: 'solo', label: '个体创业' },
-]
+const categoryTabs = computed(() => [
+  { id: 'all', label: t('solutions.tabs.all') },
+  { id: 'tech', label: t('solutions.tabs.tech') },
+  { id: 'creative', label: t('solutions.tabs.creative') },
+  { id: 'service', label: t('solutions.tabs.service') },
+  { id: 'industry', label: t('solutions.tabs.industry') },
+  { id: 'gov', label: t('solutions.tabs.gov') },
+  { id: 'solo', label: t('solutions.tabs.solo') },
+])
 
 const catMap: Record<string, string[]> = {
   all: ['telecom', 'itdev', 'media', 'design', 'edu', 'psych', 'fin_ins', 'enterprise-service', 'agri', 'health', 'ecommerce', 'park_opc', 'university'],
@@ -340,10 +342,10 @@ onUnmounted(() => {
         style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(60px);" />
       <div ref="heroRef" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 class="text-4xl md:text-5xl lg:text-[64px] font-semibold text-ink-primary leading-tight tracking-tight">
-          用 AI 重新定义行业标准
+          {{ t('solutions.hero.title') }}
         </h1>
         <p class="mt-6 text-xl md:text-2xl text-ink-secondary">
-          软积木为每一个行业、每一个团队、每一个人，构建极简的智能化未来。
+          {{ t('solutions.hero.desc') }}
         </p>
       </div>
 
@@ -412,7 +414,7 @@ onUnmounted(() => {
 
             <!-- Scenes -->
             <div class="mt-8">
-              <h3 class="text-sm font-semibold text-ink-tertiary uppercase tracking-wider mb-3">适用场景</h3>
+              <h3 class="text-sm font-semibold text-ink-tertiary uppercase tracking-wider mb-3">{{ t('common.applicableScenes') }}</h3>
               <div class="flex flex-wrap gap-2">
                 <span v-for="scene in s.scenes" :key="scene"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-muted text-sm text-ink-secondary">
@@ -426,7 +428,7 @@ onUnmounted(() => {
               <div class="flex items-start gap-3">
                 <Icon icon="lucide:briefcase" class="w-5 h-5 text-brand shrink-0 mt-0.5" />
                 <div>
-                  <h3 class="text-sm font-semibold text-ink-primary mb-1">产品方案</h3>
+                  <h3 class="text-sm font-semibold text-ink-primary mb-1">{{ t('common.productScheme') }}</h3>
                   <p class="text-sm text-ink-secondary leading-relaxed">{{ s.cpsm }}</p>
                 </div>
               </div>
@@ -437,7 +439,7 @@ onUnmounted(() => {
               <div class="flex items-start gap-3">
                 <Icon icon="lucide:lightbulb" class="w-5 h-5 text-brand shrink-0 mt-0.5" />
                 <div>
-                  <h3 class="text-sm font-semibold text-ink-primary mb-1">解决痛点</h3>
+                  <h3 class="text-sm font-semibold text-ink-primary mb-1">{{ t('common.solvePainPoints') }}</h3>
                   <p class="text-sm text-ink-secondary leading-relaxed">{{ s.pain }}</p>
                 </div>
               </div>
@@ -476,17 +478,17 @@ onUnmounted(() => {
         style="background: radial-gradient(circle, rgba(85, 173, 115, 0.15) 0%, transparent 70%); filter: blur(80px);" />
       <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold text-ink-primary tracking-tight leading-tight">
-          咨询你的专属行业方案，获取一对一支持
+          {{ t('solutions.finalCta.title') }}
         </h2>
         <p class="mt-6 text-lg text-ink-secondary leading-relaxed max-w-2xl mx-auto">
-          无论身处哪个行业，软积木都能为你量身定制 AI 落地路径
+          {{ t('solutions.finalCta.desc') }}
         </p>
         <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
           <button
             class="inline-flex items-center px-6 py-3 rounded-full bg-[#55AD73] text-white font-semibold hover:bg-[#2E8B57] transition-colors"
             @click="showModal = true"
           >
-            联系我们
+            {{ t('common.contactUs') }}
           </button>
         </div>
       </div>

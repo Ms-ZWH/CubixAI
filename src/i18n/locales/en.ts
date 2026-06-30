@@ -1,0 +1,249 @@
+export default {
+  common: {
+    siteName: 'CubixAI',
+    siteTagline: 'An AI-native company, connecting the full chain of enterprise intelligence through the ChatU software platform and AgentStation hardware terminal.',
+    copyright: '© 2025 CubixAI. All rights reserved.',
+    learnMore: 'Learn More',
+    contactUs: 'Contact Us',
+    viewAll: 'View All',
+    sendEmail: 'Send Email',
+    applyCooperation: 'Apply for Cooperation',
+    viewAllSolutions: 'View All Solutions',
+    productScheme: 'Solution',
+    solvePainPoints: 'Pain Points',
+    applicableScenes: 'Use Cases',
+    caseDetails: 'Case Details',
+    customerBackground: 'Client Background',
+    corePainPoints: 'Core Pain Points',
+    schemeDetails: 'Solution Details',
+    solveProblems: 'Problems Solved',
+    effect: 'Results',
+  },
+
+  header: {
+    home: 'Home',
+    products: 'Products',
+    solutions: 'Solutions',
+    cases: 'Cases',
+    ecosystem: 'Ecosystem',
+    aiInsight: 'AI Insight',
+    aboutUs: 'About Us',
+    language: 'Language',
+    chatuName: 'ChatU',
+    chatuDesc: 'Enterprise AI Operating System',
+    agentName: 'AgentStation',
+    agentDesc: 'AI Hardware Terminal',
+    opcHubName: 'OPC Hub',
+    opcHubDesc: 'Empowering Super Individuals',
+    trainingName: 'Training',
+    trainingDesc: 'CubixAI AI Course System',
+  },
+
+  footer: {
+    products: 'Products',
+    company: 'Company',
+    resources: 'Resources',
+    chatu: 'ChatU',
+    agentStation: 'AgentStation',
+    opcHub: 'OPC Hub',
+    training: 'Training',
+    aboutUs: 'About Us',
+    customerCases: 'Case Studies',
+    contactUs: 'Contact Us',
+    solutions: 'Solutions',
+    ecosystem: 'Ecosystem',
+  },
+
+  home: {
+    hero: {
+      slide1Title: 'CubixAI',
+      slide1Sub: 'Training · Platform · Partnership',
+      slide1Desc: 'Bridging the last mile of enterprise AI adoption',
+      slide2Title: 'ChatU',
+      slide2Sub: 'Enterprise AI Operating System',
+      slide2Desc1: 'Multi-engine orchestration · Multimodal interaction · Multi-agent collaboration',
+      slide2Desc2: 'Empowering every enterprise with dedicated AI capabilities',
+      slide3Title: 'AgentStation',
+      slide3Sub: 'Intelligent Work · Secure at Home',
+      slide3Desc1: 'Plug-and-play enterprise AI workstation · Data stays on-premises',
+      slide3Desc2: 'Pre-loaded agents · HD touch display',
+    },
+    stats: {
+      customers: 'Customers',
+      industries: 'Industries',
+      satisfaction: 'Satisfaction',
+      community: 'Community',
+    },
+    products: {
+      title: 'Four Core Business Areas',
+      card1Chip: 'Software',
+      card1Title: 'ChatU',
+      card1Desc: 'An AI Agent operating system that provides enterprise clients with one-click AI access, enabling seamless intelligent transformation. With a rich library of industry agents, multi-model orchestration, and low-code workflow design, enterprises can rapidly build their own AI workflows.',
+      card1Tag1: 'AI Operating System',
+      card1Tag2: 'Agent Platform',
+      card1Tag3: 'Enterprise AI',
+      card2Chip: 'Hardware',
+      card2Title: 'AgentStation',
+      card2Desc: 'A dedicated intelligent hardware terminal with out-of-the-box local deployment ensuring data security. Equipped with the ChatU Mate system and offline models, it delivers a complete AI hardware solution from compute infrastructure to interactive terminal.',
+      card2Tag1: 'Intelligent Hardware',
+      card2Tag2: 'On-Premises Deployment',
+      card2Tag3: 'Data Security',
+      card3Chip: 'Ecosystem',
+      card3Title: 'OPC Hub',
+      card3Desc: 'A campus-grade AI infrastructure for super individuals and AI startups, providing shared computing power, office space, and ecosystem services. An AI entrepreneurship loop integrating compute, tools, training, and capital to accelerate solo businesses.',
+      card3Tag1: 'Campus AI Hub',
+      card3Tag2: 'Shared Compute',
+      card3Tag3: 'Startup Ecosystem',
+      card4Chip: 'Service',
+      card4Title: 'CubixAI · Training',
+      card4Desc: 'Centered on practical AI Agent skills, we offer full-stack training courses from fundamentals to industry deployment, complemented by real-world case studies and a certification system, helping individuals and enterprises quickly master AI implementation.',
+      card4Tag1: 'AI Hands-on Training',
+      card4Tag2: 'Prompt Engineering Certification',
+      card4Tag3: 'Enterprise AI Transformation',
+    },
+    philosophy: {
+      title: 'Solutions',
+      cta: 'View All Industry Solutions',
+    },
+    partners: {
+      title: 'Partners',
+    },
+  },
+
+  solutions: {
+    hero: {
+      title: 'Redefining Industry Standards with AI',
+      desc: 'CubixAI builds a minimalist intelligent future for every industry, every team, and every individual.',
+    },
+    tabs: {
+      all: 'All',
+      tech: 'IT & Tech',
+      creative: 'Creative',
+      service: 'Enterprise Services',
+      industry: 'Physical Industries',
+      gov: 'Government & SOE',
+      solo: 'Solo Business',
+    },
+    finalCta: {
+      title: 'Consult Your Industry Solution, Get One-on-One Support',
+      desc: 'No matter your industry, CubixAI can tailor an AI adoption path for you.',
+    },
+  },
+
+  cases: {
+    hero: {
+      title: '3,000+ Enterprises · 100+ Industries · Proven Together',
+      desc: 'From government to individual creators — AI deployment validated across the board',
+    },
+    tabs: {
+      all: 'All',
+      enterprise: 'Enterprise',
+      opc: 'OPC Ecosystem',
+      training: 'Training',
+      other: 'Other',
+    },
+    clients: {
+      title: 'Our Clients',
+      desc: 'They are all using our products and services',
+    },
+    cta: {
+      title: 'Contact Us, Build Digital Industry Benchmarks Together',
+    },
+  },
+
+  about: {
+    hero: {
+      title: 'A Native AGI Company',
+      desc: 'Born to drive enterprise AI adoption, solving the last mile of AI implementation',
+    },
+    mission: {
+      title: 'Core Philosophy',
+      item1Title: 'Mission',
+      item1Desc: 'Committed to becoming a trusted AI service partner for global enterprises, empowering digital-intelligent transformation through technological innovation and professional solutions.',
+      item2Title: 'Vision',
+      item2Desc: 'Envisioning a global business ecosystem driven by AI intelligence, providing enterprises with superior productivity tools to promote efficient and sustainable development.',
+      item3Title: 'Values',
+      item3Desc: 'Customer First · Innovation Driven · Global Vision · Win-Win Cooperation · Integrity & Responsibility',
+    },
+    timeline: {
+      title: 'Our Journey',
+      items: [
+        { year: '2023.03', title: 'ChatU Launch', desc: 'Enterprise AI Operating System' },
+        { year: '2023.06', title: 'Company Founded', desc: 'CubixAI (Beijing) Technology Co., Ltd. officially established' },
+        { year: '2023.08', title: '3,000+ Clients', desc: 'Expanding into Japan, Korea, Europe, and US markets' },
+        { year: '2025.01', title: 'International Expansion', desc: 'PEC China introduces "Prompt Engineering Conference" international brand, launches Asian market operations' },
+        { year: '2025.12', title: 'OPC Hub', desc: 'OPC Hub launched, building the OPC industry ecosystem' },
+        { year: '2026.05', title: 'AgentStation', desc: 'Official launch of "AgentStation" hardware product' },
+      ],
+    },
+    global: {
+      title: 'Going Global · Invited to Top International Tech Events',
+      desc: 'Full market presence across Europe, US, Korea, Japan, Singapore, and beyond',
+      cctv: 'CCTV-2 "Winning in AI+" Program',
+      cctvDesc: 'CubixAI CTO Zou Jian & ChatU featured on CCTV Finance Channel',
+      partners: 'Building strong partnerships with overseas enterprises',
+    },
+    honors: {
+      title: 'Corporate Honors',
+      desc: 'Authoritative Certifications · Continuous Innovation',
+    },
+    locations: {
+      title: 'Global Offices · Local Service',
+    },
+    contact: {
+      title: 'Multiple Ways · Contact Anytime',
+      desc: 'Whether for product trials, business cooperation, or technical consulting, find your answers here.',
+      contactUs: 'Contact Us',
+      contactDesc: 'Scan to start your enterprise intelligent transformation',
+      followUs: 'Follow Us',
+      followDesc: 'Stay updated on company news and AI industry trends',
+      business: 'Business Inquiries',
+    },
+  },
+
+  ecosystem: {
+    pec: {
+      formats: {
+        title: 'Event Formats',
+        desc: 'Summit · Forum · Salon · Symposium — covering the complete ecosystem chain from top decision-makers to frontline developers',
+      },
+      services: {
+        title: 'Ecosystem Services',
+        desc: 'Certification · Alliance — building a full-chain growth system for prompt engineering talents',
+      },
+      follow: {
+        title: 'Follow PEC Official Account',
+        desc: 'Get the latest event updates, industry insights, and community news',
+        cta: 'Visit PEC Official Website',
+      },
+    },
+    aiService: {
+      title: 'More Enterprise AI Service Ecosystem',
+      desc1: 'CubixAI integrates cutting-edge AI technology, personalized solutions, professional training, and community exchange to provide diverse services,',
+      desc2: 'empowering enterprises to achieve intelligent upgrades and business innovation.',
+      matrix: {
+        title: 'Service Matrix',
+        desc: 'Six core service pillars built around our clients',
+      },
+    },
+  },
+
+  training: {
+    hero: {
+      stats: [
+        { value: '89+', label: 'Core Hours' },
+        { value: '6', label: 'Industry Verticals' },
+        { value: '40+', label: 'Real-world Scenarios' },
+        { value: '16+', label: 'Flexible Modules' },
+      ],
+    },
+  },
+
+  opcHub: {
+    agentCount: 'Agent Count',
+  },
+
+  aiInsight: {
+    title: 'AI Insight',
+  },
+}

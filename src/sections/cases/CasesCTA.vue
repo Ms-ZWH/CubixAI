@@ -1,8 +1,10 @@
 ﻿<script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import BrandButton from '../../components/BrandButton.vue'
 
+const { t } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
 useScrollReveal(contentRef, { y: 30 })
 </script>
@@ -29,16 +31,16 @@ useScrollReveal(contentRef, { y: 30 })
       <h2
         class="text-3xl md:text-4xl lg:text-[48px] font-semibold text-ink-primary tracking-tight mb-10"
       >
-        联系我们，共建数字化行业范本
+        {{ t('cases.cta.title') }}
       </h2>
       <div class="flex flex-wrap items-center justify-center gap-4">
-        <BrandButton to="/contact" class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]">申请合作</BrandButton>
+        <BrandButton to="/contact" class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]">{{ t('common.applyCooperation') }}</BrandButton>
         <BrandButton
           to="/solutions"
           arrow
           class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]"
         >
-          查看所有解决方案
+          {{ t('common.viewAllSolutions') }}
         </BrandButton>
       </div>
     </div>

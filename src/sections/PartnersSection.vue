@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useScrollReveal } from '../composables/useScrollReveal'
 
+const { t } = useI18n()
 const titleRef = ref<HTMLElement | null>(null)
 useScrollReveal(titleRef, { y: 30 })
 
@@ -31,7 +33,7 @@ const partners = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div ref="titleRef" class="text-center mb-16 md:mb-24">
         <h2 class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight">
-          合作伙伴
+          {{ t('home.partners.title') }}
         </h2>
       </div>
 
