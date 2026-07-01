@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://cubixai.com/sitemap.xml
+Sitemap: https://www.cubixai.com/sitemap.xml

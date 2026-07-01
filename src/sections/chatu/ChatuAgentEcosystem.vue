@@ -36,7 +36,7 @@ const features = [
         <h2
           class="text-3xl md:text-4xl lg:text-[40px] font-semibold text-ink-primary tracking-tight"
         >
-          为企业打造专属的智能体搭建平台
+          为企业打造专属的智能体平台
         </h2>
         <p class="mt-4 text-lg text-ink-secondary">
           千余种智能体覆盖 8 大职能与业务场景

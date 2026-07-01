@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
@@ -11,6 +11,8 @@ const route = useRoute()
 const showProductMenu = ref(false)
 const showLangMenu = ref(false)
 const mobileOpen = ref(false)
+const productMenuRef = ref<HTMLElement | null>(null)
+const langMenuRef = ref<HTMLElement | null>(null)
 
 const currentLangLabel = computed(() => {
   const key = i18n.global.locale.value
@@ -57,6 +59,31 @@ function isActive(path: string): boolean {
 function isProductActive(): boolean {
   return ['/products/chatu', '/products/agentstation', '/opc-hub', '/training'].includes(route.path)
 }
+
+function toggleProductMenu() {
+  showProductMenu.value = !showProductMenu.value
+}
+
+function closeProductMenu() {
+  showProductMenu.value = false
+}
+
+function onDocumentClick(event: MouseEvent) {
+  if (productMenuRef.value && !productMenuRef.value.contains(event.target as Node)) {
+    showProductMenu.value = false
+  }
+  if (langMenuRef.value && !langMenuRef.value.contains(event.target as Node)) {
+    showLangMenu.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', onDocumentClick)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', onDocumentClick)
+})
 </script>
 
 <template>
@@ -85,14 +112,11 @@ function isProductActive(): boolean {
           </RouterLink>
 
           <!-- Products dropdown -->
-          <div
-            class="relative"
-            @mouseenter="showProductMenu = true"
-            @mouseleave="showProductMenu = false"
-          >
+          <div ref="productMenuRef" class="relative">
             <button
               class="flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors rounded-lg"
               :class="isProductActive() ? 'bg-brand-soft text-brand' : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-muted'"
+              @click.stop="toggleProductMenu"
             >
               {{ t('header.products') }}
               <Icon
@@ -108,6 +132,7 @@ function isProductActive(): boolean {
               <RouterLink
                 to="/products/chatu"
                 class="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-muted transition-colors"
+                @click="closeProductMenu"
               >
                 <div
                   class="w-10 h-10 rounded-lg bg-brand-soft flex items-center justify-center shrink-0"
@@ -124,6 +149,7 @@ function isProductActive(): boolean {
               <RouterLink
                 to="/products/agentstation"
                 class="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-muted transition-colors mt-1"
+                @click="closeProductMenu"
               >
                 <div
                   class="w-10 h-10 rounded-lg bg-brand-soft flex items-center justify-center shrink-0"
@@ -140,6 +166,7 @@ function isProductActive(): boolean {
               <RouterLink
                 to="/opc-hub"
                 class="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-muted transition-colors mt-1"
+                @click="closeProductMenu"
               >
                 <div
                   class="w-10 h-10 rounded-lg bg-brand-soft flex items-center justify-center shrink-0"
@@ -156,6 +183,7 @@ function isProductActive(): boolean {
               <RouterLink
                 to="/training"
                 class="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-muted transition-colors mt-1"
+                @click="closeProductMenu"
               >
                 <div
                   class="w-10 h-10 rounded-lg bg-brand-soft flex items-center justify-center shrink-0"
@@ -194,9 +222,10 @@ function isProductActive(): boolean {
         </nav>
 
         <!-- Language Switcher -->
-        <div class="hidden md:block relative" @mouseenter="showLangMenu = true" @mouseleave="showLangMenu = false">
+        <div ref="langMenuRef" class="hidden md:block relative" @mouseenter="showLangMenu = true" @mouseleave="showLangMenu = false">
           <button
             class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
+            @click.stop="showLangMenu = !showLangMenu"
           >
             <Icon icon="lucide:globe" class="w-4 h-4" />
             <span>{{ currentLangLabel }}</span>

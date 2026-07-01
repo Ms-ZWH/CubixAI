@@ -2,16 +2,9 @@
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import BrandButton from '../../components/BrandButton.vue'
-import EnterpriseModal from '../../components/EnterpriseModal.vue'
 
 const contentRef = ref<HTMLElement | null>(null)
 useScrollReveal(contentRef, { y: 30 })
-
-const showModal = ref(false)
-
-function openModal() {
-  showModal.value = true
-}
 </script>
 
 <template>
@@ -48,7 +41,7 @@ function openModal() {
         <BrandButton
           variant="ghost"
           class="!border-line !text-ink-primary !bg-transparent hover:!bg-surface-muted hover:!border-[#433487] hover:!text-[#433487]"
-          @click="openModal"
+          href="https://admin.chatu.pro/"
         >
           申请企业试用
         </BrandButton>
@@ -81,6 +74,4 @@ function openModal() {
       </div>
     </div>
   </section>
-
-  <EnterpriseModal v-model="showModal" />
 </template>

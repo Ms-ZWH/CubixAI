@@ -12,17 +12,17 @@ useScrollReveal(tableRef, { y: 30, delay: 0.15 })
 const rows = [
   {
     dim: '价格',
-    competitor: 'ChatGPT 企业版费用高',
+    competitor: 'Claude / ChatGPT 企业版费用高',
     chatu: '只需 1/10 费用',
   },
   {
     dim: '门槛',
-    competitor: 'Dify/扣子 要工程化能力',
+    competitor: '开源Agent工具要工程化能力',
     chatu: '真正开箱即用零门槛',
   },
   {
     dim: '场景',
-    competitor: 'HiAgent 功能发散',
+    competitor: '通用型智能Agent产品功能发散',
     chatu: '更聚焦企业高频业务',
   },
   {

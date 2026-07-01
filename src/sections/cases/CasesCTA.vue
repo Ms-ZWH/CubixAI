@@ -3,9 +3,11 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import BrandButton from '../../components/BrandButton.vue'
+import EnterpriseModal from '../../components/EnterpriseModal.vue'
 
 const { t } = useI18n()
 const contentRef = ref<HTMLElement | null>(null)
+const showEnterpriseModal = ref(false)
 useScrollReveal(contentRef, { y: 30 })
 </script>
 
@@ -34,7 +36,7 @@ useScrollReveal(contentRef, { y: 30 })
         {{ t('cases.cta.title') }}
       </h2>
       <div class="flex flex-wrap items-center justify-center gap-4">
-        <BrandButton to="/contact" class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]">{{ t('common.applyCooperation') }}</BrandButton>
+        <BrandButton to="/contact" class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]" @click="showEnterpriseModal = true">{{ t('common.applyCooperation') }}</BrandButton>
         <BrandButton
           to="/solutions"
           arrow
@@ -45,5 +47,7 @@ useScrollReveal(contentRef, { y: 30 })
       </div>
     </div>
   </section>
+
+  <EnterpriseModal v-model="showEnterpriseModal" />
 </template>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -11,26 +11,51 @@ const slides = [
 ]
 
 const current = ref(0)
-let timer: ReturnType<typeof setInterval> | null = null
+let autoTimer: ReturnType<typeof setInterval> | null = null
+let manualDelayTimer: ReturnType<typeof setTimeout> | null = null
+const AUTOPLAY_DELAY = 5000
+const AUTOPLAY_INTERVAL = 5000
+
+function startAutoplay() {
+  if (autoTimer) clearInterval(autoTimer)
+  autoTimer = setInterval(() => {
+    current.value = (current.value + 1) % slides.length
+  }, AUTOPLAY_INTERVAL)
+}
+
+function stopAutoplay() {
+  if (autoTimer) {
+    clearInterval(autoTimer)
+    autoTimer = null
+  }
+}
+
+function scheduleAutoplayAfterInteraction() {
+  if (manualDelayTimer) clearTimeout(manualDelayTimer)
+  stopAutoplay()
+  manualDelayTimer = setTimeout(() => {
+    startAutoplay()
+  }, AUTOPLAY_DELAY)
+}
 
 const go = (index: number) => {
   current.value = index
+  scheduleAutoplayAfterInteraction()
 }
 
 const next = () => {
   current.value = (current.value + 1) % slides.length
+  scheduleAutoplayAfterInteraction()
 }
 
 const prev = () => {
   current.value = (current.value - 1 + slides.length) % slides.length
+  scheduleAutoplayAfterInteraction()
 }
 
-onMounted(() => {
-  timer = setInterval(next, 5000)
-})
-
 onUnmounted(() => {
-  if (timer) clearInterval(timer)
+  stopAutoplay()
+  if (manualDelayTimer) clearTimeout(manualDelayTimer)
 })
 </script>
 

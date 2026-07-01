@@ -52,7 +52,7 @@ useScrollReveal(contentRef, { y: 30, delay: 0.2 })
           <div
             class="flex-1 p-6 rounded-2xl bg-white border border-line/50 shadow-sm hover:shadow-card hover:border-[#2DB4E6]/20 transition-all duration-300 flex flex-col justify-center"
           >
-            <h3 class="text-lg font-semibold text-ink-primary">多智能体管控</h3>
+            <h3 class="text-lg font-semibold text-ink-primary">多场景智能体</h3>
             <p class="mt-2 text-sm text-ink-secondary">
                OpenClaw + Hermes Agent 原生内置，可执行聊天、搜索、定时任务等操作，覆盖多智能体调度。
             </p>

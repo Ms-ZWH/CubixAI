@@ -13,22 +13,22 @@ useScrollReveal(cardsRef, { y: 30, delay: 0.2 })
 
 const items = [
   {
-    title: '联系我们',
+    title: '加入社群',
     desc: '加入智方体用户社区，获取最新产品动态、实战教程与同行经验交流',
     link: '/ecosystem',
     image: lxhsqImg,
+  },
+  {
+    title: '渠道合作',
+    desc: '成为智方体授权合作伙伴，共享 AI 硬件终端市场红利，共创智能未来',
+    link: '/contact',
+    image: wjhImg,
   },
   {
     title: '技术支持',
     desc: '官方售后全链路服务，7×24 小时专家响应，为您的设备稳定运行保驾护航',
     link: '/contact',
     image: jszcImg,
-  },
-  {
-    title: '渠道经销商',
-    desc: '成为智方体授权合作伙伴，共享 AI 硬件终端市场红利，共创智能未来',
-    link: '/contact',
-    image: wjhImg,
   },
 ]
 </script>
