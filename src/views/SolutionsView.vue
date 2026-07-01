@@ -6,7 +6,9 @@ import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { useRoute } from 'vue-router'
 import { useScrollReveal } from '../composables/useScrollReveal'
+import { getImageUrl } from '../utils/image'
 import EnterpriseModal from '../components/EnterpriseModal.vue'
+import AppImage from '../components/AppImage.vue'
 
 const { t } = useI18n()
 gsap.registerPlugin(ScrollTrigger)
@@ -27,23 +29,23 @@ interface Solution {
 }
 
 const jjfaImages: Record<string, string> = {
-  yq: new URL('@/assets/jjfa/tx.png', import.meta.url).href,
-  it: new URL('@/assets/jjfa/it.png', import.meta.url).href,
-  mt: new URL('@/assets/jjfa/mt.png', import.meta.url).href,
-  ggcy: new URL('@/assets/jjfa/ggcy.png', import.meta.url).href,
-  xl: new URL('@/assets/jjfa/xl.png', import.meta.url).href,
-  px: new URL('@/assets/jjfa/px.png', import.meta.url).href,
-  jr: new URL('@/assets/jjfa/jr.png', import.meta.url).href,
-  cw: new URL('@/assets/jjfa/cw.png', import.meta.url).href,
-  kj: new URL('@/assets/jjfa/kj.png', import.meta.url).href,
-  gq: new URL('@/assets/jjfa/gq.png', import.meta.url).href,
-  zy: new URL('@/assets/jjfa/zy.png', import.meta.url).href,
-  yl: new URL('@/assets/jjfa/yl.png', import.meta.url).href,
-  ds: new URL('@/assets/jjfa/ds.png', import.meta.url).href,
-  bx: new URL('@/assets/jjfa/bx.png', import.meta.url).href,
-  kcfh: new URL('@/assets/jjfa/kcfh.png', import.meta.url).href,
-  opc: new URL('@/assets/jjfa/opc.png', import.meta.url).href,
-  gxjg: new URL('@/assets/jjfa/gxjg.png', import.meta.url).href,
+  yq: getImageUrl('jjfa/tx.webp'),
+  it: getImageUrl('jjfa/it.webp'),
+  mt: getImageUrl('jjfa/mt.webp'),
+  ggcy: getImageUrl('jjfa/ggcy.webp'),
+  xl: getImageUrl('jjfa/xl.webp'),
+  px: getImageUrl('jjfa/px.webp'),
+  jr: getImageUrl('jjfa/jr.webp'),
+  cw: getImageUrl('jjfa/cw.webp'),
+  kj: getImageUrl('jjfa/kj.webp'),
+  gq: getImageUrl('jjfa/gq.webp'),
+  zy: getImageUrl('jjfa/zy.webp'),
+  yl: getImageUrl('jjfa/yl.webp'),
+  ds: getImageUrl('jjfa/ds.webp'),
+  bx: getImageUrl('jjfa/bx.webp'),
+  kcfh: getImageUrl('jjfa/kcfh.webp'),
+  opc: getImageUrl('jjfa/opc.webp'),
+  gxjg: getImageUrl('jjfa/gxjg.webp'),
 }
 
 const solutions: Solution[] = [
@@ -340,7 +342,7 @@ function switchCategory(id: string) {
 
 onMounted(() => {
   const tab = route.query.tab
-  if (tab && typeof tab === 'string' && categoryTabs.some((t) => t.id === tab)) {
+  if (tab && typeof tab === 'string' && categoryTabs.value.some((t) => t.id === tab)) {
     activeCategory.value = tab
   }
   nextTick(() => {
@@ -475,7 +477,7 @@ onUnmounted(() => {
               class="w-full max-w-lg aspect-[16/10] rounded-3xl flex items-center justify-center relative overflow-hidden"
               :class="i % 2 === 0 ? 'bg-surface-muted' : 'bg-white'">
               <template v-if="s.url">
-                <img :src="s.url" :alt="s.title" class="w-full h-full object-cover" />
+                <AppImage :src="s.url" :alt="s.title" class="w-full h-full object-cover" />
               </template>
               <template v-else>
                 <div class="absolute inset-0 opacity-30"

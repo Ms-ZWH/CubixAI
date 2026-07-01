@@ -20,10 +20,10 @@ const SITE_LOGO = `${SITE_ORIGIN}/logo.png`
 
 // 默认 SEO 回退
 const defaultSeo = {
-  title: '软积木 CubixAI | 企业级 AI 操作系统与智能体平台',
+  title: '软积木 CubixAI | 企业级AI智能体平台，解决企业AI落地最后三公里',
   description:
     '软积木（北京）科技有限公司专注于企业 AI 落地，提供 ChatU 企业大模型平台、智方体 AgentStation AI 工作站、OPC Hub 园区算力生态及 AI 咨询培训服务，助力企业实现智能化转型。',
-  ogTitle: '软积木 CubixAI | 企业级 AI 操作系统与智能体平台',
+  ogTitle: '软积木 CubixAI | 企业级AI智能体平台，解决企业AI落地最后三公里',
   ogDescription:
     '软积木专注于企业 AI 落地，提供 ChatU 大模型平台、智方体 AgentStation、OPC Hub 园区算力生态及 AI 培训服务。',
   ogImage: DEFAULT_OG_IMAGE,
@@ -65,7 +65,7 @@ const routes: RouteRecordRaw[] = [
     name: 'Home',
     component: () => import('../views/HomeView.vue'),
     meta: {
-      title: '软积木 CubixAI | 企业级 AI 操作系统与智能体平台',
+      title: '软积木 CubixAI | 企业级AI智能体平台，解决企业AI落地最后三公里',
       description:
         '软积木（北京）科技有限公司专注于企业 AI 落地，提供 ChatU 企业大模型平台、智方体 AgentStation AI 工作站、OPC Hub 园区算力生态及 AI 咨询培训服务。',
       schema: websiteSchema,

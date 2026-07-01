@@ -9,28 +9,28 @@ useScrollReveal(sectionRef, { y: 30 })
 const items = [
   {
     num: '01',
-    image: new URL('../../assets/zft/ld1.png', import.meta.url).href,
+    image: new URL('../../assets/zft/ld1.webp', import.meta.url).href,
     title: '开箱即用',
     desc: '内置专属系统ChatU Mate，预置丰富智能体，无需技术背景，开机即享强大能力。',
     tag: '节省时间 · 降低门槛',
   },
   {
     num: '02',
-    image: new URL('../../assets/zft/ld2.png', import.meta.url).href,
+    image: new URL('../../assets/zft/ld2.webp', import.meta.url).href,
     title: '本地安全',
     desc: '数据处理与模型运行均在本地完成，物理级隔离，真实保障隐私安全，满足政企要求。',
     tag: '数据主权 · 隐私无忧',
   },
   {
     num: '03',
-    image: new URL('../../assets/zft/ld3.png', import.meta.url).href,
+    image: new URL('../../assets/zft/ld3.webp', import.meta.url).href,
     title: '预置智能体',
     desc: '原生内置OpenClaw与Hermes Agent双引擎，提供高效稳定的运行环境，支持多智能体调度。',
     tag: '性能强大 · 稳定可靠',
   },
   {
     num: '04',
-    image: new URL('../../assets/zft/ld4.png', import.meta.url).href,
+    image: new URL('../../assets/zft/ld4.webp', import.meta.url).href,
     title: '高清触控可视屏',
     desc: 'AI执行全程留痕，可视化监控思考链路与执行日志，实现"黑盒变红盒"，对工作了如指掌。',
     tag: '黑盒变红盒 · 增强控制',

@@ -20,7 +20,7 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
         <div class="md:col-span-1">
           <template v-if="showLogo2">
             <img
-              src="@/assets/logo2.png"
+              src="@/assets/logo2.webp"
               alt="软积木"
               class="h-12 w-auto mb-4"
             />

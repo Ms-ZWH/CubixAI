@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import AppImage from './AppImage.vue'
+import rjmBanana from '@/assets/rjm_banana.webp'
+import chatuBanana from '@/assets/ChatU_banana.webp'
+import zftBanana from '@/assets/zft_banana1.webp'
 
 const { t } = useI18n()
 
 const slides = [
-  { src: new URL('@/assets/rjm_banana.png', import.meta.url).href, alt: '软积木' },
-  { src: new URL('@/assets/ChatU_banana.png', import.meta.url).href, alt: 'ChatU' },
-  { src: new URL('@/assets/zft_banana1.png', import.meta.url).href, alt: '智方体' },
+  { src: rjmBanana, alt: '软积木' },
+  { src: chatuBanana, alt: 'ChatU' },
+  // { src: zftBanana, alt: '智方体' },
 ]
 
 const current = ref(0)
@@ -69,10 +73,11 @@ onUnmounted(() => {
         class="absolute inset-0 transition-opacity duration-700 ease-in-out"
         :class="i === current ? 'opacity-100 z-10' : 'opacity-0 z-0'"
       >
-        <img
+        <AppImage
           :src="slide.src"
           :alt="slide.alt"
           class="w-full h-full object-cover"
+          :priority="i === 0"
         />
         <!-- Slide 1 (rjm_banana) text -->
         <div
@@ -102,7 +107,7 @@ onUnmounted(() => {
           </div>
         </div>
         <!-- Slide 3 (zft_banana1) text -->
-        <div
+        <!-- <div
           v-if="i === 2"
           class="absolute inset-0 flex items-center"
         >
@@ -114,7 +119,7 @@ onUnmounted(() => {
               <p class="mt-6 text-lg md:text-xl lg:text-2xl font-semibold text-[#1A1A1A] drop-shadow-lg tracking-wide">{{ t('home.hero.slide3Desc2') }}</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <!-- Arrow Left -->

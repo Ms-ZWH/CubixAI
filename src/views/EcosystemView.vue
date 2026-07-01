@@ -3,7 +3,10 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
+import { getImageUrl } from '../utils/image'
 import StatNumber from '../components/StatNumber.vue'
+import AppImage from '../components/AppImage.vue'
+import pecBanner from '@/assets/st/pec_banner.webp'
 
 const { t } = useI18n()
 
@@ -35,16 +38,16 @@ useScrollReveal(pecFormatsRef, { y: 30, delay: 0.1 })
 useScrollReveal(pecServicesRef, { y: 30, delay: 0.1 })
 
 const formats = [
-  { image: new URL('@/assets/st/pec/fh.png', import.meta.url).href, title: '峰会', subtitle: 'Summit', time: "一年一次", gm: "1000人以上", desc: '顶级决策者的年度盛会' },
-  { image: new URL('@/assets/st/pec/lt.png', import.meta.url).href, title: '论坛', subtitle: 'Forum', time: "一季度一次", gm: "200~300人", desc: '行业前沿的深度对话' },
-  { image: new URL('@/assets/st/pec/sl.png', import.meta.url).href, title: '沙龙', subtitle: 'Salon', time: "不定期", gm: "线上或线下", desc: '一线开发者的思想碰撞' },
-  { image: new URL('@/assets/st/pec/zt.png', import.meta.url).href, title: '座谈', subtitle: 'Symposium', time: "不定期", gm: "线上或线下", desc: '专家学者的闭门研讨' },
+  { image: getImageUrl('st/pec/fh.webp'), title: '峰会', subtitle: 'Summit', time: "一年一次", gm: "1000人以上", desc: '顶级决策者的年度盛会' },
+  { image: getImageUrl('st/pec/lt.webp'), title: '论坛', subtitle: 'Forum', time: "一季度一次", gm: "200~300人", desc: '行业前沿的深度对话' },
+  { image: getImageUrl('st/pec/sl.webp'), title: '沙龙', subtitle: 'Salon', time: "不定期", gm: "线上或线下", desc: '一线开发者的思想碰撞' },
+  { image: getImageUrl('st/pec/zt.webp'), title: '座谈', subtitle: 'Symposium', time: "不定期", gm: "线上或线下", desc: '专家学者的闭门研讨' },
 ]
 
 const services = [
   // { icon: 'lucide:graduation-cap', title: '培训', desc: 'PET 提示工程培训体系，理论 + 实战，提升企业员工 AI 应用能力。' },
-  { icon: 'lucide:award', title: '认证', desc: '官方认证 + PEC 职业资格证书。', image: new URL('@/assets/pecBaner/pec.jpeg', import.meta.url).href },
-  { icon: 'lucide:gamepad-2', title: '联盟', desc: '汇聚全球AI从业者，开放共享，颁发联盟授权认证。', image: new URL('@/assets/pecBaner/lm.png', import.meta.url).href },
+  { icon: 'lucide:award', title: '认证', desc: '官方认证 + PEC 职业资格证书。', image: getImageUrl('pecBaner/pec.webp') },
+  { icon: 'lucide:gamepad-2', title: '联盟', desc: '汇聚全球AI从业者，开放共享，颁发联盟授权认证。', image: getImageUrl('pecBaner/lm.webp') },
 ]
 
 /* ========================
@@ -59,17 +62,17 @@ useScrollReveal(matrixRef, { y: 30, delay: 0.2 })
 
 const advantages = [
   {
-    image: new URL('@/assets/st/1.png', import.meta.url).href,
+    image: getImageUrl('st/1.webp'),
     title: '全方位与多层次',
     desc: '涵盖从技术咨询、解决方案设计、系统集成到专业培训、社群交流等多个方面和层次，为企业提供全流程支持。',
   },
   {
-    image: new URL('@/assets/st/2.png', import.meta.url).href,
+    image: getImageUrl('st/2.webp'),
     title: '精准匹配需求',
     desc: '深入了解企业的具体业务场景和痛点，利用前沿的 AI 技术，为企业量身打造高效能的 AI 服务。',
   },
   {
-    image: new URL('@/assets/st/3.png', import.meta.url).href,
+    image: getImageUrl('st/3.webp'),
     title: '生态共赢持续发展',
     desc: '加强企业间知识交流、技术合作与资源共享，激发创新活力，推动 AI 技术不断突破与应用拓展。',
   },
@@ -81,10 +84,11 @@ const advantages = [
   <div>
     <!-- 顶部 Banner -->
     <section class="w-full">
-      <img
-        src="@/assets/st/pec_banner.png"
+      <AppImage
+        :src="pecBanner"
         alt="PEC Banner"
         class="w-full h-auto object-cover"
+        priority
       />
     </section>
 
@@ -95,7 +99,7 @@ const advantages = [
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-16">
           <!-- <div class="logo_imge" >
-            <img src="@/assets/pecBaner/logo.png"
+            <img src="@/assets/pecBaner/logo.webp"
             />
           </div> -->
           <!-- <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-soft text-brand mb-4">PEC 生态</span> -->
@@ -103,7 +107,7 @@ const advantages = [
             PEC · 提示工程大会
           </h2> -->
           <!-- <div class="aimge" >
-            <img src="@/assets/pecBaner/a.png"
+            <img src="@/assets/pecBaner/a.webp"
             />
           </div>
           <p class="mt-4 text-lg text-ink-secondary">
@@ -129,7 +133,7 @@ const advantages = [
           <div v-for="f in formats" :key="f.title"
             class="group p-6 md:p-8 rounded-3xl bg-surface-base border border-line/50 hover:shadow-card hover:border-brand/20 transition-all duration-300">
             <div class="aspect-video rounded-xl overflow-hidden mb-5">
-              <img :src="f.image" :alt="f.title" class="w-full h-full object-cover" />
+              <AppImage :src="f.image" :alt="f.title" class="w-full h-full object-cover" />
             </div>
             <h4 class="text-xl font-semibold text-ink-primary">{{ f.title }}</h4>
             <p class="text-sm text-ink-tertiary mt-1">{{ f.subtitle }}</p>
@@ -162,7 +166,7 @@ const advantages = [
             <h4 class="text-2xl font-bold text-ink-primary">{{ svc.title }}</h4>
             <p class="mt-4 text-base text-ink-secondary leading-relaxed">{{ svc.desc }}</p>
             <div v-if="svc.image" class="mt-6 rounded-2xl overflow-hidden border border-line/30 bg-surface-muted">
-              <img :src="svc.image" :alt="svc.title" class="w-full h-auto object-cover" />
+              <AppImage :src="svc.image" :alt="svc.title" class="w-full h-auto object-cover" />
             </div>
           </div>
         </div>
@@ -170,7 +174,7 @@ const advantages = [
         <!-- 关注公众号 + CTA -->
         <div class="mt-20 flex flex-col items-center text-center max-w-4xl mx-auto">
           <div class="w-[160px] h-[160px] rounded-2xl bg-white border-2 border-brand/20 shadow-card overflow-hidden">
-            <img src="../assets/PEC.jpg" alt="PEC 公众号二维码" class="w-full h-full object-cover" />
+            <img src="../assets/PEC.webp" alt="PEC 公众号二维码" class="w-full h-full object-cover" />
           </div>
           <h3 class="mt-5 text-xl md:text-2xl font-semibold text-ink-primary tracking-tight">
             {{ t('ecosystem.pec.follow.title') }}
@@ -215,7 +219,7 @@ const advantages = [
             <div v-for="item in advantages" :key="item.title"
               class="group p-8 rounded-3xl bg-surface-base border border-line/50 hover:shadow-card hover:border-brand/20 hover:-translate-y-1 transition-all duration-300">
               <div class="aspect-video rounded-2xl overflow-hidden mb-5">
-                <img :src="item.image" :alt="item.title" class="w-full h-full object-cover" />
+                <AppImage :src="item.image" :alt="item.title" class="w-full h-full object-cover" />
               </div>
               <h4 class="text-lg font-bold text-ink-primary mb-2">{{ item.title }}</h4>
               <p class="text-sm text-ink-secondary leading-relaxed">{{ item.desc }}</p>
@@ -229,7 +233,7 @@ const advantages = [
             <h3 class="text-2xl md:text-3xl font-semibold text-ink-primary tracking-tight">{{ t('ecosystem.aiService.matrix.title') }}</h3>
             <p class="mt-3 text-base text-ink-secondary">{{ t('ecosystem.aiService.matrix.desc') }}</p>
             <div class="mt-6 max-w-6xl mx-auto rounded-2xl overflow-hidden">
-              <img src="@/assets/st/yq.png" alt="服务矩阵" class="w-full h-auto object-contain" />
+              <AppImage :src="getImageUrl('st/yq.webp')" alt="服务矩阵" class="w-full h-auto object-contain" />
             </div>
           </div>
           <!-- <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">

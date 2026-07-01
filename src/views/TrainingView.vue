@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
+import { getImageUrl } from '../utils/image'
 import BrandButton from '../components/BrandButton.vue'
 import EnterpriseModal from '../components/EnterpriseModal.vue'
+import AppImage from '../components/AppImage.vue'
 
 const heroRef = ref<HTMLElement | null>(null)
 const problemRef = ref<HTMLElement | null>(null)
@@ -37,17 +39,17 @@ const problems = [
 const architectureCards = [
   {
     title: '三层主线',
-    image: new URL('@/assets/pxzx/1.png', import.meta.url).href,
+    image: getImageUrl('pxzx/1.webp'),
     items: ['初级 — AI副业变现入门', '中级 — API转售、短视频矩阵、自动化工作流', '高级 — SaaS产品化、政企项目交付'],
   },
   {
     title: '六大行业纵深',
-    image: new URL('@/assets/pxzx/2.png', import.meta.url).href,
+    image: getImageUrl('pxzx/2.webp'),
     items: ['电商', '教育', '医疗', '金融', '法律', '房产'],
   },
   {
     title: '五大前沿扩展',
-    image: new URL('@/assets/pxzx/3.png', import.meta.url).href,
+    image: getImageUrl('pxzx/3.webp'),
     items: ['AI+创意', 'AI+数据分析', 'AI+自动化', 'AI+出海', 'AI+企业级部署'],
   },
 ]
@@ -66,19 +68,19 @@ const paths = [
     role: '企业管理者',
     route: '初级模块 → 高级全修 → 对应行业 AI 专项实战课程',
     result: '6个月后：主导公司AI中台建设，团队效率提升3倍',
-    image: new URL('@/assets/pxzx/qy.png', import.meta.url).href,
+    image: getImageUrl('pxzx/qy.webp'),
   },
   {
     role: '业务负责人',
     route: '初级全修 → 中级模块1-3 → 所属赛道 AI 数字化运营课',
     result: '3个月后：用AI管3家店客服+营销，人力成本省40%',
-    image: new URL('@/assets/pxzx/yw.png', import.meta.url).href,
+    image: getImageUrl('pxzx/yw.webp'),
   },
   {
     role: '自由职业者/创业者',
     route: '初级全修 → 中级全修 → 垂直领域 AI 能力拓展课程',
     result: '2个月后：AI接单月入2万+，服务12个中小企业客户',
-    image: new URL('@/assets/pxzx/gr.png', import.meta.url).href,
+    image: getImageUrl('pxzx/gr.webp'),
   },
 ]
 
@@ -170,7 +172,7 @@ const consultWays = [
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div v-for="card in architectureCards" :key="card.title" class="p-6 rounded-2xl bg-white border border-line/50 shadow-sm">
             <div class="aspect-video rounded-xl overflow-hidden mb-5 bg-surface-muted">
-              <img v-if="card.image" :src="card.image" :alt="card.title" class="w-full h-full object-cover" />
+              <AppImage v-if="card.image" :src="card.image" :alt="card.title" class="w-full h-full object-cover" />
             </div>
             <h3 class="text-lg font-semibold text-ink-primary mb-4">{{ card.title }}</h3>
             <ul class="space-y-2">
@@ -219,7 +221,7 @@ const consultWays = [
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div v-for="p in paths" :key="p.role">
             <div class="aspect-video rounded-2xl overflow-hidden mb-6 bg-surface-muted">
-              <img v-if="p.image" :src="p.image" :alt="p.role" class="w-full h-full object-cover" />
+              <AppImage v-if="p.image" :src="p.image" :alt="p.role" class="w-full h-full object-cover" />
             </div>
             <h3 class="text-xl md:text-2xl font-semibold text-ink-primary mb-4">{{ p.role }}</h3>
             <div class="text-sm text-ink-secondary mb-3">

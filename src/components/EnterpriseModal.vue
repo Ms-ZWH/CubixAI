@@ -61,7 +61,7 @@ onUnmounted(() => {
             <div class="flex gap-4 items-stretch">
               <div class="w-28 shrink-0 rounded-xl overflow-hidden">
                 <img
-                  src="@/assets/kf.png"
+                  src="@/assets/kf.webp"
                   alt="客服"
                   class="w-full h-40 object-cover"
                 />
@@ -72,7 +72,7 @@ onUnmounted(() => {
                 </p>
                 <div class="rounded-xl overflow-hidden bg-surface-muted h-40 flex items-center justify-center">
                   <img
-                    src="@/assets/lxwm.png"
+                    src="@/assets/lxwm.webp"
                     alt="联系我们"
                     class="w-full h-full object-contain"
                   />

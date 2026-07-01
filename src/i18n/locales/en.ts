@@ -2,7 +2,7 @@ export default {
   common: {
     siteName: 'CubixAI',
     siteTagline: 'An AI-native company, connecting the full chain of enterprise intelligence through the ChatU software platform and AgentStation hardware terminal.',
-    copyright: '© 2025 CubixAI. All rights reserved.',
+    copyright: '© 2023-2026 CubixAI. All rights reserved.',
     learnMore: 'Learn More',
     contactUs: 'Contact Us',
     viewAll: 'View All',

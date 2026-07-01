@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
+import AppImage from '../../components/AppImage.vue'
+import workflowImg from '@/assets/workflow.webp'
 
 const leftRef = ref<HTMLElement | null>(null)
 const rightRef = ref<HTMLElement | null>(null)
@@ -47,7 +49,7 @@ const points = [
           <div
             class="rounded-2xl border border-line shadow-card overflow-hidden"
           >
-            <img src="@/assets/workflow.png" class="w-full" alt="Workflow" />
+            <AppImage :src="workflowImg" class="w-full" alt="Workflow" />
           </div>
         </div>
       </div>

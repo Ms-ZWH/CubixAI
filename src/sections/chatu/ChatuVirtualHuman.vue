@@ -31,7 +31,7 @@ const tags = ['构建智能对话', '文字互动问答', '语音互动问答']
             class="rounded-2xl border border-line shadow-card overflow-hidden"
           >
             <img
-              src="@/assets/szr.png"
+              src="@/assets/szr.webp"
               alt="虚拟数字人"
               class="w-full"
             />

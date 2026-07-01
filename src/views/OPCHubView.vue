@@ -4,12 +4,14 @@ import { Icon } from '@iconify/vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 
 import { useCountUp } from '../composables/useCountUp'
+import { getImageUrl } from '../utils/image'
 
 import Chip from '../components/Chip.vue'
 import BrandButton from '../components/BrandButton.vue'
 import EnterpriseModal from '../components/EnterpriseModal.vue'
+import AppImage from '../components/AppImage.vue'
 
-const opc1Img = new URL('@/assets/opc1.png', import.meta.url).href
+const opc1Img = getImageUrl('opc1.webp')
 
 const leftRef = ref(null)
 const rightRef = ref(null)
@@ -17,8 +19,8 @@ const rightRef = ref(null)
 const showModal = ref(false)
 
 const heroImages = [
-  { src: new URL('@/assets/opchub/opchub.png', import.meta.url).href, alt: 'OPC Hub' },
-  { src: new URL('@/assets/opchub/OPCHub1.png', import.meta.url).href, alt: 'OPC Hub 1' },
+  { src: getImageUrl('opchub/opchub.webp'), alt: 'OPC Hub' },
+  { src: getImageUrl('opchub/OPCHub1.webp'), alt: 'OPC Hub 1' },
 ]
 
 const heroIndex = ref(0)
@@ -142,28 +144,28 @@ useScrollReveal(vpColumnsRef, { y: 30, delay: 0.15 })
 useScrollReveal(vpBottomRef, { y: 30, delay: 0.25 })
 
 const kcImages = [
-  new URL('@/assets/kc/微信图片_20260602122120_485_111.png', import.meta.url).href,
-  new URL('@/assets/kc/微信图片_20260602122135_486_111.png', import.meta.url).href,
-  new URL('@/assets/kc/微信图片_20260602122148_487_111.png', import.meta.url).href,
-  new URL('@/assets/kc/微信图片_20260602122353_488_111.png', import.meta.url).href,
+  getImageUrl('kc/微信图片_20260602122120_485_111.webp'),
+  getImageUrl('kc/微信图片_20260602122135_486_111.webp'),
+  getImageUrl('kc/微信图片_20260602122148_487_111.webp'),
+  getImageUrl('kc/微信图片_20260602122353_488_111.webp'),
 ]
 
 const serviceColors = ['#F04045', '#F04045', '#F04045', '#F04045', '#F04045', '#F04045']
 
 const services = [
-  { title: 'OPC Hub 支撑平台', image: new URL('@/assets/opchub/11.png', import.meta.url).href, items: ['OPC Hub 系统', '授权账号（不超过约定数量）', '统一 AI 能力底座'] },
-  { title: '全栈 AI 课程体系', image: new URL('@/assets/opchub/22.png', import.meta.url).href, items: [ 'OPC 标准化培训体系', '初级|中级|高级 100+实战AI课程',"OPC认证证书"] },
-  { title: 'AI 训练营 & 线下活动', image: new URL('@/assets/opchub/33.png', import.meta.url).href, items: ['开展企业、行业双专场 AI 主题沙龙',  '路演 + 对接 + 转化',"AI 训练营，赋能产业落地 AI 应用"] },
-  { title: '算力调度平台', image: new URL('@/assets/opchub/44.png', import.meta.url).href, items: ['多算力源统一调度', '企业低门槛用算力', '为 AI 应用落地赋能'] },
-  { title: 'OPC 创业 & 产业导师', image: new URL('@/assets/opchub/55.png', import.meta.url).href, items: ['AI 创业导师', '行业落地导师', '企业数智化转型实战派'] },
-  { title: 'AI 运营支撑服务', image: new URL('@/assets/opchub/66.png', import.meta.url).href, items: ['社群 & 企业运营方法论', '内容、品牌、招商协同', '（可选）国际化 PEC 大会'] },
+  { title: 'OPC Hub 支撑平台', image: getImageUrl('opchub/11.webp'), items: ['OPC Hub 系统', '授权账号（不超过约定数量）', '统一 AI 能力底座'] },
+  { title: '全栈 AI 课程体系', image: getImageUrl('opchub/22.webp'), items: [ 'OPC 标准化培训体系', '初级|中级|高级 100+实战AI课程',"OPC认证证书"] },
+  { title: 'AI 训练营 & 线下活动', image: getImageUrl('opchub/33.webp'), items: ['开展企业、行业双专场 AI 主题沙龙',  '路演 + 对接 + 转化',"AI 训练营，赋能产业落地 AI 应用"] },
+  { title: '算力调度平台', image: getImageUrl('opchub/44.webp'), items: ['多算力源统一调度', '企业低门槛用算力', '为 AI 应用落地赋能'] },
+  { title: 'OPC 创业 & 产业导师', image: getImageUrl('opchub/55.webp'), items: ['AI 创业导师', '行业落地导师', '企业数智化转型实战派'] },
+  { title: 'AI 运营支撑服务', image: getImageUrl('opchub/66.webp'), items: ['社群 & 企业运营方法论', '内容、品牌、招商协同', '（可选）国际化 PEC 大会'] },
 ]
 
 const conditionGroups = [
   {
     category: '园区',
     subtitle: '搭建全域算力与 AI 基础底座，为产业创新落地提供核心支撑。',
-    image: new URL('@/assets/opchub/yq.png', import.meta.url).href,
+    image: getImageUrl('opchub/yq.webp'),
     items: [
       { title: '资源基础', items: ['可用办公面积：建议≥1,000㎡', '固定活动场地（含路演 / 培训 / 闭门会）', 'OPC 创业者社群（个人 / 小团队）'] },
       { title: '运营能力', items: ['3–5 名园区常驻运营人员（招商 / 活动 / 社群 / 对接政府 & 企业）', '有过产业园、孵化器、加速器运营经验（加分）'] },
@@ -174,7 +176,7 @@ const conditionGroups = [
   {
     category: '企业',
     subtitle: '依托 AI 赋能体系激活内部研发小组，快速落地项目、形成业务实战能力。',
-    image: new URL('@/assets/opchub/qy.png', import.meta.url).href,
+    image: getImageUrl('opchub/qy.webp'),
     items: [
       { title: '组织规模', items: ['员工规模：通常 1,000+ 人，多层级、多事业部架构', '产品线庞杂：核心大产品之外，存在大量小场景、内部工具、边缘创新需求', '创新无法靠顶层统一规划：高层难以对全部业务场景有全貌认知'] },
       { title: '创新机制', items: ['已有项目小组制运作基础：3-5人可独立成组，快速迭代验证', '内部有"让听见炮火的人做决策"的文化或成功案例（加分）', '员工具备主动发现场景、自发组队的意识和动力'] },
@@ -185,7 +187,7 @@ const conditionGroups = [
   {
     category: '高校',
     subtitle: '以 OPC+AI 创新模式，赋能在校学生开展创新创业实践。',
-    image: new URL('@/assets/opchub/gx.png', import.meta.url).href,
+    image: getImageUrl('opchub/gx.webp'),
     items: [
       { title: '学科与人才', items: ['计算机、人工智能、软件工程等相关专业支撑', '有研究生或高年级本科生可参与实际项目', '教师团队中有对 Agent、LLM、RAG 等方向有研究兴趣的骨干'] },
       { title: '科研与课题', items: ['有省部级或校企联合课题资源，能将 OPC 技术嵌入研究', '实验室或课题组有算力设备或云资源配额', '愿意将 OPC 作为教学案例或课程实践内容'] },
@@ -201,16 +203,16 @@ const patents = [
 ]
 
 const securities = [
-  { image: new URL('@/assets/opchub/1.png', import.meta.url).href, title: '私有化部署', desc: '确保平台最高控制权，数据与能力均保留在园区内部。' },
-  { image: new URL('@/assets/opchub/2.png', import.meta.url).href, title: '全程可追溯', desc: '所有操作均有日志记录，保障服务调用全程透明可追溯。' },
-  { image: new URL('@/assets/opchub/3.png', import.meta.url).href, title: '权威可审计', desc: '支持第三方机构进行安全审计，确保平台设计合规可信。' },
-  { image: new URL('@/assets/opchub/4.png', import.meta.url).href, title: '数据安全', desc: '采用高强度加密与访问控制，全方位守护核心数据资产。' },
+  { image: getImageUrl('opchub/1.webp'), title: '私有化部署', desc: '确保平台最高控制权，数据与能力均保留在园区内部。' },
+  { image: getImageUrl('opchub/2.webp'), title: '全程可追溯', desc: '所有操作均有日志记录，保障服务调用全程透明可追溯。' },
+  { image: getImageUrl('opchub/3.webp'), title: '权威可审计', desc: '支持第三方机构进行安全审计，确保平台设计合规可信。' },
+  { image: getImageUrl('opchub/4.webp'), title: '数据安全', desc: '采用高强度加密与访问控制，全方位守护核心数据资产。' },
 ]
 
-const caseImgBwsq1 = new URL('@/assets/al/bwsq1.png', import.meta.url).href
-const caseImgBwsq = new URL('@/assets/al/bwsq.png', import.meta.url).href
-const caseImgCycyy1 = new URL('@/assets/al/cycyy1.png', import.meta.url).href
-const caseImgCycyy = new URL('@/assets/al/cycyy.png', import.meta.url).href
+const caseImgBwsq1 = getImageUrl('al/bwsq1.webp')
+const caseImgBwsq = getImageUrl('al/bwsq.webp')
+const caseImgCycyy1 = getImageUrl('al/cycyy1.webp')
+const caseImgCycyy = getImageUrl('al/cycyy.webp')
 
 const cases = [
   {
@@ -286,12 +288,13 @@ const cases = [
               class="aspect-[16/10] rounded-2xl bg-[#F5F5F7] border border-[#E5E5E5] shadow-sm overflow-hidden"
             >
               <div class="flex h-full transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${heroIndex * 100}%)` }">
-                <img
-                  v-for="img in heroImages"
+                <AppImage
+                  v-for="(img, i) in heroImages"
                   :key="img.src"
                   :src="img.src"
                   :alt="img.alt"
                   class="w-full h-full flex-shrink-0 object-cover"
+                  :priority="i === 0"
                 />
               </div>
             </div>
@@ -318,7 +321,7 @@ const cases = [
           <!-- 左侧：图片 -->
           <div class="flex items-center justify-center">
             <div class="w-full rounded-2xl overflow-hidden border border-[#E5E5E5] shadow-sm">
-              <img
+              <AppImage
                 :src="opc1Img"
                 alt="OPC Hub 场景"
                 class="w-full h-auto object-contain"
@@ -443,10 +446,10 @@ const cases = [
         <!-- Screenshots -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:auto-rows-fr items-stretch">
           <div class="rounded-xl border border-[#E5E5E5] overflow-hidden aspect-[16/9]">
-            <img src="@/assets/opchub/opchub.png" class="w-full h-full object-cover" alt="OPC Hub" />
+            <AppImage :src="heroImages[0].src" class="w-full h-full object-cover" alt="OPC Hub" />
           </div>
           <div class="rounded-xl border border-[#E5E5E5] overflow-hidden aspect-[16/9]">
-            <img src="@/assets/opchub/OPCHub1.png" class="w-full h-full object-cover" alt="AIGC 中控后台" />
+            <AppImage :src="heroImages[1].src" class="w-full h-full object-cover" alt="AIGC 中控后台" />
           </div>
         </div>
 
@@ -493,7 +496,7 @@ const cases = [
           </div> -->
 
           <div class="relative mb-8 rounded-xl overflow-hidden h-[140px]">
-            <img
+            <AppImage
               v-if="group.image"
               :src="group.image"
               :alt="group.category"
@@ -572,7 +575,7 @@ const cases = [
                   {{ item }}
                 </li>
               </ul>
-              <img
+              <AppImage
                 :src="s.image"
                 :alt="s.title"
                 class="w-20 h-20 md:w-24 md:h-24 object-contain shrink-0"
@@ -617,12 +620,12 @@ const cases = [
 
             <!-- 右侧图片 -->
             <div v-if="c.images" class="relative hidden lg:block h-80">
-              <img
+              <AppImage
                 :src="c.images[0]"
                 alt=""
                 class="absolute top-0 left-0 w-64 h-48 rounded-xl shadow-lg z-10 object-cover"
               />
-              <img
+              <AppImage
                 :src="c.images[1]"
                 alt=""
                 class="absolute top-28 left-36 w-64 h-48 rounded-xl shadow-lg z-20 object-cover"
@@ -674,7 +677,7 @@ const cases = [
             class="p-6 rounded-xl bg-[#F5F5F7] text-center"
           >
             <div class="aspect-video rounded-xl overflow-hidden mb-4">
-              <img
+              <AppImage
                 :src="s.image"
                 :alt="s.title"
                 class="w-full h-full object-cover"
@@ -730,16 +733,16 @@ const cases = [
             <p class="text-sm text-[#666666] mb-3">举办峰会、论坛、沙龙等系列行业活动，搭建全球化 AI 交流合作平台。</p>
             <div class="grid grid-cols-2 gap-2">
               <div class="rounded-lg overflow-hidden aspect-[11/5]">
-                <img src="@/assets/st/hd/fh.png" class="w-full h-full object-cover" alt="" />
+                <img src="@/assets/st/hd/fh.webp" class="w-full h-full object-cover" alt="" />
               </div>
               <div class="rounded-lg overflow-hidden aspect-[11/5]">
-                <img src="@/assets/st/hd/lt.png" class="w-full h-full object-cover" alt="" />
+                <img src="@/assets/st/hd/lt.webp" class="w-full h-full object-cover" alt="" />
               </div>
               <div class="rounded-lg overflow-hidden aspect-[11/5]">
-                <img src="@/assets/st/hd/sl.png" class="w-full h-full object-cover" alt="" />
+                <img src="@/assets/st/hd/sl.webp" class="w-full h-full object-cover" alt="" />
               </div>
               <div class="rounded-lg overflow-hidden aspect-[11/5]">
-                <img src="@/assets/st/hd/zt.png" class="w-full h-full object-cover" alt="" />
+                <img src="@/assets/st/hd/zt.webp" class="w-full h-full object-cover" alt="" />
               </div>
             </div>
           </div>
@@ -751,18 +754,18 @@ const cases = [
               <!-- 左侧：3 张竖向排列 -->
               <div class="flex flex-col gap-2">
                 <div class="rounded-lg overflow-hidden h-24">
-                  <img src="@/assets/st/zxpx/px.png" class="w-full h-full object-cover" alt="" />
+                  <img src="@/assets/st/zxpx/px.webp" class="w-full h-full object-cover" alt="" />
                 </div>
                 <div class="rounded-lg overflow-hidden h-24">
-                  <img src="@/assets/st/zxpx/px1.png" class="w-full h-full object-cover" alt="" />
+                  <img src="@/assets/st/zxpx/px1.webp" class="w-full h-full object-cover" alt="" />
                 </div>
                 <div class="rounded-lg overflow-hidden h-24">
-                  <img src="@/assets/st/zxpx/px2.png" class="w-full h-full object-cover" alt="" />
+                  <img src="@/assets/st/zxpx/px2.webp" class="w-full h-full object-cover" alt="" />
                 </div>
               </div>
               <!-- 右侧：3.png -->
               <div class="rounded-lg overflow-hidden relative">
-                <img src="@/assets/st/zxpx/3.png" class="absolute inset-0 w-full h-full object-cover" alt="" />
+                <img src="@/assets/st/zxpx/3.webp" class="absolute inset-0 w-full h-full object-cover" alt="" />
               </div>
             </div>
           </div>
@@ -787,7 +790,7 @@ const cases = [
             <div class="grid grid-cols-3 gap-3 flex-1 items-center">
               <div class="text-center">
                 <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-32 md:h-36 mb-2">
-                  <img src="@/assets/st/sj/24xs.png" class="w-full h-full object-contain" alt="24 小时精通 AI Agent" />
+                  <img src="@/assets/st/sj/24xs.webp" class="w-full h-full object-contain" alt="24 小时精通 AI Agent" />
                 </div>
                 <p class="text-xs font-semibold text-[#1A1A1A]">《二十四小时 AI Agent》</p>
                 <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">机械工业出版社 出版</p>
@@ -795,7 +798,7 @@ const cases = [
               </div>
               <div class="text-center">
                 <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-32 md:h-36 mb-2">
-                  <img src="@/assets/st/sj/jsAI.png" class="w-full h-full object-contain" alt="解锁 AI 力量" />
+                  <img src="@/assets/st/sj/jsAI.webp" class="w-full h-full object-contain" alt="解锁 AI 力量" />
                 </div>
                 <p class="text-xs font-semibold text-[#1A1A1A]">《解锁 AI 力量》</p>
                 <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">中共中央党校出版社 出版</p>
@@ -803,7 +806,7 @@ const cases = [
               </div>
               <div class="text-center">
                 <div class="rounded-lg overflow-hidden bg-[#F5F5F7] h-32 md:h-36 mb-2">
-                  <img src="@/assets/st/sj/opc.png" class="w-full h-full object-contain object-bottom" alt="时代的 OPC" />
+                  <img src="@/assets/st/sj/opc.webp" class="w-full h-full object-contain object-bottom" alt="时代的 OPC" />
                 </div>
                 <p class="text-xs font-semibold text-[#1A1A1A]">《时代的 OPC 》</p>
                 <p class="text-[11px] text-[#666666] mt-1 leading-relaxed">机械工业出版社 出版</p>
@@ -857,7 +860,7 @@ const cases = [
           <p class="text-[#1A1A1A] text-lg font-bold">想要了解更多，请联系我们</p>
           <div class="mt-6 flex justify-center">
             <div class="w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
-              <img src="@/assets/lxwm.png" alt="联系我们" class="w-full h-full object-contain" />
+              <img src="@/assets/lxwm.webp" alt="联系我们" class="w-full h-full object-contain" />
             </div>
           </div>
         </div>

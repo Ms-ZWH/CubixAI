@@ -23,7 +23,7 @@ const versions = [
       '核心能力：多模型、灵活付费、一键接入',
       '无需下载安装，简单配置即可使用，支持灵活拓展',
     ],
-    image: new URL('@/assets/ChatU/bb/qj.png', import.meta.url).href,
+    image: new URL('@/assets/ChatU/bb/qj.webp', import.meta.url).href,
   },
   {
     name: '教培版',
@@ -35,7 +35,7 @@ const versions = [
       '核心角色：学员、教师、机构',
       '精准定位教育行业，提升整体教育管理水平',
     ],
-    image: new URL('@/assets/ChatU/bb/jp.png', import.meta.url).href,
+    image: new URL('@/assets/ChatU/bb/jp.webp', import.meta.url).href,
   },
   {
     name: 'OPC 平台版',
@@ -46,7 +46,7 @@ const versions = [
     features: [
       '核心能力：园区运营的智能中枢、OPC 能力的放大器、可落地的业务支撑平台',
     ],
-    image: new URL('@/assets/ChatU/bb/opc.png', import.meta.url).href,
+    image: new URL('@/assets/ChatU/bb/opc.webp', import.meta.url).href,
   },
   {
     name: '物联网版',
@@ -58,7 +58,7 @@ const versions = [
       '核心能力：智能决策、智能硬件、多模态交互',
       '让每台设备都能拥有智能决策与多模态交互能力',
     ],
-    image: new URL('@/assets/ChatU/bb/wlw.png', import.meta.url).href,
+    image: new URL('@/assets/ChatU/bb/wlw.webp', import.meta.url).href,
   },
   {
     name: '集团版',
@@ -70,7 +70,7 @@ const versions = [
       '核心能力：系统部署、模型训练、数据训练',
       '有效管控下属多个子公司，统一指挥调度，为管理者提供实时决策支持',
     ],
-    image: new URL('@/assets/ChatU/bb/jt.png', import.meta.url).href,
+    image: new URL('@/assets/ChatU/bb/jt.webp', import.meta.url).href,
   },
 ]
 </script>

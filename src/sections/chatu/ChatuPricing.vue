@@ -61,7 +61,7 @@ const cardFeatures = [
                 <p class="mt-2 text-ink-secondary">满足高并发 / 更低价 / 操作灵活</p>
               </div>
               <img
-                src="@/assets/ChatU/llb.png"
+                src="@/assets/ChatU/llb.webp"
                 alt="流量包"
                 class="w-20 md:w-24 lg:w-28 h-auto object-contain rounded-2xl shrink-0"
               />
@@ -75,12 +75,12 @@ const cardFeatures = [
             <div class="flex flex-col gap-6 h-full">
               <div class="flex flex-row gap-4 justify-start items-start">
                 <img
-                  src="@/assets/czk.png"
+                  src="@/assets/czk.webp"
                   alt="定制充值卡"
                   class="flex-1 min-w-0 h-auto object-contain rounded-3xl shadow-md"
                 />
                 <img
-                  src="@/assets/ChatU/llk2.jpg"
+                  src="@/assets/ChatU/llk2.webp"
                   alt="定制充值卡"
                   class="flex-1 min-w-0 h-auto object-contain rounded-3xl shadow-md"
                 />

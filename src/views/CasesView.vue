@@ -7,52 +7,23 @@ import CasesHero from '../sections/cases/CasesHero.vue'
 import CasesCTA from '../sections/cases/CasesCTA.vue'
 import BrandButton from '../components/BrandButton.vue'
 import CaseDetailModal from '../components/CaseDetailModal.vue'
-import { cases, categories } from '../data/cases'
-import type { CaseItem } from '../data/cases'
+import { cases } from '../data/cases'
+import type { CaseItem, Category } from '../data/cases'
 
 const { t } = useI18n()
 
 const clientLogosRow1 = [
-  'bjyz.png', 'chjh.png', 'dyck.png', 'gzlgxy.png', 'hjcm.png',
-  'jy.png', 'lseg.png', 'mbkj.png', 'mjtq.png', 'pkz.png',
+  'bjyz.webp', 'chjh.webp', 'dyck.webp', 'gzlgxy.webp', 'hjcm.webp',
+  'jy.webp', 'lseg.webp', 'mbkj.webp', 'mjtq.webp', 'pkz.webp',
 ]
 
 const clientLogosRow2 = [
-  'qhdx.png', 'qmzx.png', 'wksgj.png', 'xnsd.png', 'zgc.png',
-  'zgdx.png', 'zglt.png', 'zgyd.png', 'zjxx.png', 'zjzy.png',
+  'qhdx.webp', 'qmzx.webp', 'wksgj.webp', 'xnsd.webp', 'zgc.webp',
+  'zgdx.webp', 'zglt.webp', 'zgyd.webp', 'zjxx.webp', 'zjzy.webp',
 ]
 
 function getLogoUrl(name: string) {
   return new URL(`../assets/kh/${name}`, import.meta.url).href
-}
-
-interface Metric {
-  label: string
-  value: string
-}
-
-interface CaseItem {
-  id: string
-  title: string
-  client: string
-  pain: string[]
-  solution: string[]
-  result?: string
-  background?: string
-  solved?: string[]
-  effect?: string
-  image?: string
-  tag: string
-  category: string
-  icon: string
-  metrics: Metric[]
-  subtitle?: string
-  location?: string
-}
-
-interface Category {
-  id: string
-  label: string
 }
 
 const categories = computed<Category[]>(() => [
@@ -62,9 +33,6 @@ const categories = computed<Category[]>(() => [
   { id: 'training', label: t('cases.tabs.training') },
   { id: 'other', label: t('cases.tabs.other') },
 ])
-
-const cases: CaseItem[] = [
-  
 
 const activeCat = ref('all')
 const selectedCase = ref<CaseItem | null>(null)
@@ -416,7 +384,7 @@ nextTick(() => {
           >
             <img
               :src="getLogoUrl(logo)"
-              :alt="logo.replace('.png', '')"
+              :alt="logo.replace('.webp', '')"
               class="w-full h-8 md:h-10 object-contain transition-all duration-300"
               loading="lazy"
             />
@@ -428,7 +396,7 @@ nextTick(() => {
           >
             <img
               :src="getLogoUrl(logo)"
-              :alt="logo.replace('.png', '')"
+              :alt="logo.replace('.webp', '')"
               class="w-full h-8 md:h-10 object-contain transition-all duration-300"
               loading="lazy"
             />
@@ -455,7 +423,7 @@ nextTick(() => {
           >
             <img
               :src="getLogoUrl(logo)"
-              :alt="logo.replace('.png', '')"
+              :alt="logo.replace('.webp', '')"
               class="w-full h-8 md:h-10 object-contain transition-all duration-300"
               loading="lazy"
             />
@@ -467,7 +435,7 @@ nextTick(() => {
           >
             <img
               :src="getLogoUrl(logo)"
-              :alt="logo.replace('.png', '')"
+              :alt="logo.replace('.webp', '')"
               class="w-full h-8 md:h-10 object-contain transition-all duration-300"
               loading="lazy"
             />

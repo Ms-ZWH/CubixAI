@@ -4,8 +4,8 @@ import { useI18n } from 'vue-i18n'
 import { useScrollReveal } from '../composables/useScrollReveal'
 import { Icon } from '@iconify/vue'
 import PartnersSection from '../sections/PartnersSection.vue'
-import cctvImg1 from '@/assets/st/cctv/c1.png'
-import cctvImg2 from '@/assets/st/cctv/c2.png'
+import cctvImg1 from '@/assets/st/cctv/c1.webp'
+import cctvImg2 from '@/assets/st/cctv/c2.webp'
 
 const { t } = useI18n()
 
@@ -35,17 +35,17 @@ useScrollReveal(missionRef, { y: 30, delay: 0.1 })
 
 const missions = [
   {
-    image: new URL('@/assets/gywm/1.png', import.meta.url).href,
+    image: new URL('@/assets/gywm/1.webp', import.meta.url).href,
     title: '使命 Mission',
     desc: '致力于成为全球企业信赖的 AI 服务伙伴，通过技术创新与专业化解决方案，赋能企业数智化转型',
   },
   {
-    image: new URL('@/assets/gywm/2.png', import.meta.url).href,
+    image: new URL('@/assets/gywm/2.webp', import.meta.url).href,
     title: '愿景 Vision',
     desc: '憧憬一个由 AI 智能驱动的全球商业生态，为企业提供更优质的生产力工具，推动高效、可持续发展',
   },
   {
-    image: new URL('@/assets/gywm/3.png', import.meta.url).href,
+    image: new URL('@/assets/gywm/3.webp', import.meta.url).href,
     title: '价值观 Values',
     desc: '客户至上 · 创新驱动 · 全球视野 · 合作共赢 · 诚信责任',
   },
@@ -75,13 +75,13 @@ useScrollReveal(globalRef, { y: 30, delay: 0.1 })
 useScrollReveal(cctvRef, { y: 20, delay: 0.3 })
 
 const events = [
-  { name: '韩国 SOUTH SUMMIT 2023', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg.png' },
-  { name: '中国 香港贸发局活动 2024', location: '香港', desc: 'TODO: 活动说明占位', image: 'xg.png' },
-  { name: '美国 Microsoft MVP Global Summit 2024', location: '西雅图', desc: 'TODO: 活动说明占位', image: 'xyt.png' },
-  { name: '英国 PEC 国际 2025', location: '伦敦', desc: 'TODO: 活动说明占位', image: 'ld.png' },
-  { name: '美国 NVIDIA GTC 2026', location: '硅谷', desc: 'TODO: 活动说明占位', image: 'ywd.png', extraImage: 'ywd3.png' },
+  { name: '韩国 SOUTH SUMMIT 2023', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg.webp' },
+  { name: '中国 香港贸发局活动 2024', location: '香港', desc: 'TODO: 活动说明占位', image: 'xg.webp' },
+  { name: '美国 Microsoft MVP Global Summit 2024', location: '西雅图', desc: 'TODO: 活动说明占位', image: 'xyt.webp' },
+  { name: '英国 PEC 国际 2025', location: '伦敦', desc: 'TODO: 活动说明占位', image: 'ld.webp' },
+  { name: '美国 NVIDIA GTC 2026', location: '硅谷', desc: 'TODO: 活动说明占位', image: 'ywd.webp', extraImage: 'ywd3.webp' },
   // { name: '日本', location: '', desc: 'TODO: 活动说明占位', image: '' },
-  { name: '韩国 NextRise 2026', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg2.png' },
+  { name: '韩国 NextRise 2026', location: '首尔', desc: 'TODO: 活动说明占位', image: 'hg2.webp' },
 ]
 
 /* ========================
@@ -101,25 +101,25 @@ function resumeMarquee() {
 }
 
 const honors = [
-  { image: '111.png', title: '' },
-  { image: '222.png', title: '' },
-  { image: '333.png', title: '' },
-  { image: '444.png', title: '' },
-  { image: '555.png', title: '' },
-  { image: '666.png', title: '' },
-  { image: '777.png', title: '' },
-  { image: '888.png', title: '' },
-  { image: '999.png', title: '' },
-  { image: '101.png', title: '' },
-  { image: '102.png', title: '' },
-  { image: '103.png', title: '' },
-  { image: '104.png', title: '' },
-  { image: '105.png', title: '' },
-  { image: '106.png', title: '' },
-  { image: '107.png', title: '' },
-  { image: 'a1.jpg', title: '' },
-  { image: 'a2.png', title: '' },
-  { image: 'a3.png', title: '' },
+  { image: '111.webp', title: '' },
+  { image: '222.webp', title: '' },
+  { image: '333.webp', title: '' },
+  { image: '444.webp', title: '' },
+  { image: '555.webp', title: '' },
+  { image: '666.webp', title: '' },
+  { image: '777.webp', title: '' },
+  { image: '888.webp', title: '' },
+  { image: '999.webp', title: '' },
+  { image: '101.webp', title: '' },
+  { image: '102.webp', title: '' },
+  { image: '103.webp', title: '' },
+  { image: '104.webp', title: '' },
+  { image: '105.webp', title: '' },
+  { image: '106.webp', title: '' },
+  { image: '107.webp', title: '' },
+  { image: 'a1.webp', title: '' },
+  { image: 'a2.webp', title: '' },
+  { image: 'a3.webp', title: '' },
 ]
 
 function getHonorUrl(name: string) {
@@ -146,25 +146,25 @@ const locations = [
     city: '北京 · 中关村AI北纬社区',
     address: '北京市海淀区海淀大悦信息科技园 D2-D401',
     func: 'AI 产业生态合作、创新业务孵化、前沿技术交流',
-    image: 'bwsq1.png',
+    image: 'bwsq1.webp',
   },
   {
     city: '北京 · 清华科技园',
     address: '中关村东路 1 号清华科技园 C 座 21 层',
     func: '战略决策、产品研发、品牌运营',
-    image: 'wdk.jpeg',
+    image: 'wdk.webp',
   },
   {
     city: '无锡 · 锡山',
     address: '安镇街道丹山路 88 号锡东创融大厦 C 座 15-005',
     func: '华东客户交付、技术支持',
-    image: 'wx.jpeg',
+    image: 'wx.webp',
   },
   {
     city: '新加坡',
     address: '139 PASIR RIS GROVE, #05-43, D\'NEST',
     func: '国际市场拓展、海外客户服务',
-    image: 'xjp.png',
+    image: 'xjp.webp',
   },
 ]
 
@@ -286,7 +286,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
                   <img
                     :src="getQqUrl(e.image)"
                     class="group-hover:scale-105 transition-transform duration-500"
-                    :class="[e.image === 'ywd.png' ? 'object-cover object-top' : 'object-cover', e.extraImage ? 'w-full h-full' : 'w-full h-full']"
+                    :class="[e.image === 'ywd.webp' ? 'object-cover object-top' : 'object-cover', e.extraImage ? 'w-full h-full' : 'w-full h-full']"
                     alt=""
                   />
                 </div>
@@ -513,7 +513,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
               <h3 class="text-lg font-semibold text-ink-primary">{{ t('about.contact.contactUs') }}</h3>
               <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
                 <img
-                  src="@/assets/lxwm.png"
+                  src="@/assets/lxwm.webp"
                   alt="联系我们"
                   class="w-full h-full object-contain"
                 />
@@ -529,7 +529,7 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
             >
               <h3 class="text-lg font-semibold text-ink-primary">{{ t('about.contact.followUs') }}</h3>
               <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
-                <img src="@/assets/rjm.jpg" alt="公众号二维码" class="w-full h-full object-cover" />
+                <img src="@/assets/rjm.webp" alt="公众号二维码" class="w-full h-full object-cover" />
               </div>
               <p class="mt-5 text-sm text-ink-secondary leading-relaxed">
                 {{ t('about.contact.followDesc') }}

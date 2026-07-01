@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted, inject } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import BrandButton from '../../components/BrandButton.vue'
+import AppImage from '../../components/AppImage.vue'
 
 const openModal = inject<() => void>('agentStationOpenModal')
 
@@ -12,8 +13,8 @@ useScrollReveal(leftRef, { y: 30 })
 useScrollReveal(rightRef, { y: 30, delay: 0.15 })
 
 const heroImages = [
-  { src: new URL('@/assets/zft/hero1.png', import.meta.url).href, alt: '智方体 AgentStation' },
-  { src: new URL('@/assets/zft/hero2.png', import.meta.url).href, alt: '智方体 AgentStation' },
+  { src: new URL('@/assets/zft/hero1.webp', import.meta.url).href, alt: '智方体 AgentStation' },
+  { src: new URL('@/assets/zft/hero2.webp', import.meta.url).href, alt: '智方体 AgentStation' },
 ]
 
 const currentIndex = ref(0)
@@ -112,12 +113,13 @@ onUnmounted(stopCarousel)
             class="relative w-full max-w-md aspect-square rounded-2xl bg-surface-muted border border-line shadow-[0_20px_60px_rgba(15,31,23,0.12)] overflow-hidden"
           >
             <div class="flex h-full transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-              <img
-                v-for="img in heroImages"
+              <AppImage
+                v-for="(img, i) in heroImages"
                 :key="img.src"
                 :src="img.src"
                 :alt="img.alt"
                 class="w-full h-full flex-shrink-0 object-contain rounded-2xl"
+                :priority="i === 0"
               />
             </div>
             <!-- Dots -->

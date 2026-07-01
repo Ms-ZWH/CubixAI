@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
-import chatuMateImg from '@/assets/ChatUMate.png'
+import AppImage from '../../components/AppImage.vue'
+import chatuMateImg from '@/assets/ChatUMate.webp'
 
 const platformIcons = [
-  { name: '微信', src: new URL('@/assets/icon/wx.png', import.meta.url).href },
-  { name: '飞书', src: new URL('@/assets/icon/fs.png', import.meta.url).href },
-  { name: '钉钉', src: new URL('@/assets/icon/dd.png', import.meta.url).href },
-  { name: '企业微信', src: new URL('@/assets/icon/qywx.png', import.meta.url).href },
-  { name: 'QQ', src: new URL('@/assets/icon/QQ.png', import.meta.url).href },
-  { name: 'ChatU', src: new URL('@/assets/icon/chatu2.png', import.meta.url).href },
+  { name: '微信', src: new URL('@/assets/icon/wx.webp', import.meta.url).href },
+  { name: '飞书', src: new URL('@/assets/icon/fs.webp', import.meta.url).href },
+  { name: '钉钉', src: new URL('@/assets/icon/dd.webp', import.meta.url).href },
+  { name: '企业微信', src: new URL('@/assets/icon/qywx.webp', import.meta.url).href },
+  { name: 'QQ', src: new URL('@/assets/icon/QQ.webp', import.meta.url).href },
+  { name: 'ChatU', src: new URL('@/assets/icon/chatu2.webp', import.meta.url).href },
   { name: '更多...', icon: 'lucide:plus', color: '#9CA3AF' },
 ]
 
@@ -39,7 +40,7 @@ useScrollReveal(contentRef, { y: 30, delay: 0.2 })
             </p>
           </div>
           <div class="flex-1">
-            <img
+            <AppImage
               :src="chatuMateImg"
               alt="ChatU Mate 系统界面"
               class="w-full h-full object-contain rounded-2xl border border-line/50"
@@ -84,7 +85,7 @@ useScrollReveal(contentRef, { y: 30, delay: 0.2 })
                 :class="p.name === 'ChatU' ? 'w-14 h-14 md:w-16 md:h-16' : 'w-9 h-9 md:w-10 md:h-10'"
                 :title="p.name"
               >
-                <img
+                <AppImage
                   v-if="p.src"
                   :src="p.src"
                   :alt="p.name"

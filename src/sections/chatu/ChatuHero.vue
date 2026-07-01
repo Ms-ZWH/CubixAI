@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import Chip from '../../components/Chip.vue'
 import BrandButton from '../../components/BrandButton.vue'
+import AppImage from '../../components/AppImage.vue'
 
 const leftRef = ref<HTMLElement | null>(null)
 const rightRef = ref<HTMLElement | null>(null)
@@ -11,9 +12,9 @@ useScrollReveal(leftRef, { y: 30 })
 useScrollReveal(rightRef, { y: 30, delay: 0.15 })
 
 const images = [
-  { src: new URL('@/assets/chatUqd.png', import.meta.url).href, alt: '产品前端' },
-  { src: new URL('@/assets/zkht.png', import.meta.url).href, alt: '中控后台' },
-  { src: new URL('@/assets/ChatU/banner3.png', import.meta.url).href, alt: 'banner3' },
+  { src: new URL('@/assets/chatUqd.webp', import.meta.url).href, alt: '产品前端' },
+  { src: new URL('@/assets/zkht.webp', import.meta.url).href, alt: '中控后台' },
+  { src: new URL('@/assets/ChatU/banner3.webp', import.meta.url).href, alt: 'banner3' },
 ]
 
 const currentIndex = ref(0)
@@ -98,12 +99,13 @@ onUnmounted(stopCarousel)
             class="aspect-[2/1] rounded-2xl bg-surface-muted border border-line shadow-card overflow-hidden"
           >
             <div class="flex h-full transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-              <img
-                v-for="img in images"
+              <AppImage
+                v-for="(img, i) in images"
                 :key="img.src"
                 :src="img.src"
                 :alt="img.alt"
                 class="w-full h-full flex-shrink-0 object-contain"
+                :priority="i === 0"
               />
             </div>
           </div>

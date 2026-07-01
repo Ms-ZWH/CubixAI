@@ -2,8 +2,8 @@
 import { ref, onMounted } from 'vue'
 import { useScrollReveal } from '../composables/useScrollReveal'
 import { Icon } from '@iconify/vue'
-import cctvImg1 from '@/assets/st/cctv/c1.png'
-import cctvImg2 from '@/assets/st/cctv/c2.png'
+import cctvImg1 from '@/assets/st/cctv/c1.webp'
+import cctvImg2 from '@/assets/st/cctv/c2.webp'
 
 onMounted(() => {
   const hash = window.location.hash
@@ -31,17 +31,17 @@ useScrollReveal(missionRef, { y: 30, delay: 0.1 })
 
 const missions = [
   {
-    image: new URL('@/assets/gywm/1.png', import.meta.url).href,
+    image: new URL('@/assets/gywm/1.webp', import.meta.url).href,
     title: 'ミッション Mission',
     desc: '世界中の企業から信頼されるAIサービスパートナーとなることを目指し、技術イノベーションと専門的ソリューションを通じ、企業のデジタルインテリジェンス転換を支援する',
   },
   {
-    image: new URL('@/assets/gywm/2.png', import.meta.url).href,
+    image: new URL('@/assets/gywm/2.webp', import.meta.url).href,
     title: 'ビジョン Vision',
     desc: 'AIインテリジェンスによって駆動されるグローバルなビジネスエコシステムを構築。企業に高品質な生産性ツールを提供し、効率的かつ持続可能な発展を推進する',
   },
   {
-    image: new URL('@/assets/gywm/3.png', import.meta.url).href,
+    image: new URL('@/assets/gywm/3.webp', import.meta.url).href,
     title: 'バリュー Values',
     desc: '顧客第一主義・イノベーション主導・グローバルな視点・Win-Winの協業・誠実な責任',
   },
@@ -71,12 +71,12 @@ useScrollReveal(globalRef, { y: 30, delay: 0.1 })
 useScrollReveal(cctvRef, { y: 20, delay: 0.3 })
 
 const events = [
-  { name: '韓国 SOUTH SUMMIT', location: 'ソウル', desc: '※イベント説明仮テキスト', image: 'hg.png' },
-  { name: '香港貿発局イベント', location: '香港', desc: '※イベント説明仮テキスト', image: 'xg.png' },
-  { name: '米国 Microsoft MVP Global Summit', location: 'シアトル', desc: '※イベント説明仮テキスト', image: 'xyt.png' },
-  { name: '米国 NVIDIA GTC 2026', location: 'シリコンバレー', desc: '※イベント説明仮テキスト', image: 'ywd.png', extraImage: 'ywd3.png' },
-  { name: 'イギリス PECインターナショナル', location: 'ロンドン', desc: '※イベント説明仮テキスト', image: 'ld.png' },
-  { name: '韓国 NextRise 2026', location: 'ソウル', desc: '※イベント説明仮テキスト', image: 'hg2.png' },
+  { name: '韓国 SOUTH SUMMIT', location: 'ソウル', desc: '※イベント説明仮テキスト', image: 'hg.webp' },
+  { name: '香港貿発局イベント', location: '香港', desc: '※イベント説明仮テキスト', image: 'xg.webp' },
+  { name: '米国 Microsoft MVP Global Summit', location: 'シアトル', desc: '※イベント説明仮テキスト', image: 'xyt.webp' },
+  { name: '米国 NVIDIA GTC 2026', location: 'シリコンバレー', desc: '※イベント説明仮テキスト', image: 'ywd.webp', extraImage: 'ywd3.webp' },
+  { name: 'イギリス PECインターナショナル', location: 'ロンドン', desc: '※イベント説明仮テキスト', image: 'ld.webp' },
+  { name: '韓国 NextRise 2026', location: 'ソウル', desc: '※イベント説明仮テキスト', image: 'hg2.webp' },
 ]
 
 /* ========================
@@ -96,25 +96,25 @@ function resumeMarquee() {
 }
 
 const honors = [
-  { image: '111.png', title: '' },
-  { image: '222.png', title: '' },
-  { image: '333.png', title: '' },
-  { image: '444.png', title: '' },
-  { image: '555.png', title: '' },
-  { image: '666.png', title: '' },
-  { image: '777.png', title: '' },
-  { image: '888.png', title: '' },
-  { image: '999.png', title: '' },
-  { image: '101.png', title: '' },
-  { image: '102.png', title: '' },
-  { image: '103.png', title: '' },
-  { image: '104.png', title: '' },
-  { image: '105.png', title: '' },
-  { image: '106.png', title: '' },
-  { image: '107.png', title: '' },
-  { image: 'a1.jpg', title: '' },
-  { image: 'a2.png', title: '' },
-  { image: 'a3.png', title: '' },
+  { image: '111.webp', title: '' },
+  { image: '222.webp', title: '' },
+  { image: '333.webp', title: '' },
+  { image: '444.webp', title: '' },
+  { image: '555.webp', title: '' },
+  { image: '666.webp', title: '' },
+  { image: '777.webp', title: '' },
+  { image: '888.webp', title: '' },
+  { image: '999.webp', title: '' },
+  { image: '101.webp', title: '' },
+  { image: '102.webp', title: '' },
+  { image: '103.webp', title: '' },
+  { image: '104.webp', title: '' },
+  { image: '105.webp', title: '' },
+  { image: '106.webp', title: '' },
+  { image: '107.webp', title: '' },
+  { image: 'a1.webp', title: '' },
+  { image: 'a2.webp', title: '' },
+  { image: 'a3.webp', title: '' },
 ]
 
 function getHonorUrl(name: string) {
@@ -140,25 +140,25 @@ const locations = [
     city: '北京・中関村AI北緯コミュニティ',
     address: '北京市海淀区海淀大悦情報テクノパーク D2-D401',
     func: 'AI産業エコシステム連携・新規事業インキュベーション・先端技術交流会',
-    image: 'bwsq1.png',
+    image: 'bwsq1.webp',
   },
   {
     city: '北京・清華テクノパーク',
     address: '中関村東路1番地 清華テクノパーク C棟21階',
     func: '経営戦略・製品開発・ブランド運営',
-    image: 'wdk.jpeg',
+    image: 'wdk.webp',
   },
   {
     city: '無錫・錫山',
     address: '安鎮街道丹山路88番地 錫東創融ビル C棟15-005',
     func: '華東エリア顧客デリバリー・技術サポート',
-    image: 'wx.jpeg',
+    image: 'wx.webp',
   },
   {
     city: 'シンガポール',
     address: '139 PASIR RIS GROVE, #05-43, D\'NEST',
     func: '海外市場開拓・海外顧客対応',
-    image: 'xjp.png',
+    image: 'xjp.webp',
   },
 ]
 
@@ -179,22 +179,22 @@ useScrollReveal(titleRef, { y: 30 })
 
 const partners = [
   { name: 'Microsoft', image: new URL('@/assets/hzhb/Microsoft-logo.webp', import.meta.url).href },
-  { name: 'NVIDIA', image: new URL('@/assets/hzhb/nvidia.png', import.meta.url).href },
-  { name: 'OpenAI', image: new URL('@/assets/hzhb/OpenAI.png', import.meta.url).href },
-  { name: 'Google', image: new URL('@/assets/hzhb/Google.png', import.meta.url).href },
-  { name: 'Amazon', image: new URL('@/assets/hzhb/amazon.png', import.meta.url).href },
-  { name: 'Oracle', image: new URL('@/assets/hzhb/oracle.png', import.meta.url).href },
-  { name: 'MiniMax', image: new URL('@/assets/hzhb/minimax.png', import.meta.url).href },
-  { name: '阿里巴巴', image: new URL('@/assets/hzhb/almm.png', import.meta.url).href },
-  { name: '月之暗面', image: new URL('@/assets/hzhb/yzam.png', import.meta.url).href },
-  { name: '百度', image: new URL('@/assets/hzhb/baidu.png', import.meta.url).href },
-  // { name: '百度智能云', image: new URL('@/assets/hzhb/baidu1.png', import.meta.url).href },
-  { name: 'DeepSeek', image: new URL('@/assets/hzhb/deepseek.png', import.meta.url).href },
-  // { name: '华为', image: new URL('@/assets/hzhb/huawei.png', import.meta.url).href },
-  { name: '火山引擎', image: new URL('@/assets/hzhb/huoshan.png', import.meta.url).href },
-  { name: '京东', image: new URL('@/assets/hzhb/jd.jpg', import.meta.url).href },
-  { name: '字节跳动', image: new URL('@/assets/hzhb/zjtd.png', import.meta.url).href },
-  { name: '智谱 AI', image: new URL('@/assets/hzhb/zp.png', import.meta.url).href },
+  { name: 'NVIDIA', image: new URL('@/assets/hzhb/nvidia.webp', import.meta.url).href },
+  { name: 'OpenAI', image: new URL('@/assets/hzhb/OpenAI.webp', import.meta.url).href },
+  { name: 'Google', image: new URL('@/assets/hzhb/Google.webp', import.meta.url).href },
+  { name: 'Amazon', image: new URL('@/assets/hzhb/amazon.webp', import.meta.url).href },
+  { name: 'Oracle', image: new URL('@/assets/hzhb/oracle.webp', import.meta.url).href },
+  { name: 'MiniMax', image: new URL('@/assets/hzhb/minimax.webp', import.meta.url).href },
+  { name: '阿里巴巴', image: new URL('@/assets/hzhb/almm.webp', import.meta.url).href },
+  { name: '月之暗面', image: new URL('@/assets/hzhb/yzam.webp', import.meta.url).href },
+  { name: '百度', image: new URL('@/assets/hzhb/baidu.webp', import.meta.url).href },
+  // { name: '百度智能云', image: new URL('@/assets/hzhb/baidu1.webp', import.meta.url).href },
+  { name: 'DeepSeek', image: new URL('@/assets/hzhb/deepseek.webp', import.meta.url).href },
+  // { name: '华为', image: new URL('@/assets/hzhb/huawei.webp', import.meta.url).href },
+  { name: '火山引擎', image: new URL('@/assets/hzhb/huoshan.webp', import.meta.url).href },
+  { name: '京东', image: new URL('@/assets/hzhb/jd.webp', import.meta.url).href },
+  { name: '字节跳动', image: new URL('@/assets/hzhb/zjtd.webp', import.meta.url).href },
+  { name: '智谱 AI', image: new URL('@/assets/hzhb/zp.webp', import.meta.url).href },
 ]
 </script>
 
@@ -303,7 +303,7 @@ const partners = [
                   <img
                     :src="getQqUrl(e.image)"
                     class="group-hover:scale-105 transition-transform duration-500"
-                    :class="[e.image === 'ywd.png' ? 'object-cover object-top' : 'object-cover', e.extraImage ? 'w-full h-full' : 'w-full h-full']"
+                    :class="[e.image === 'ywd.webp' ? 'object-cover object-top' : 'object-cover', e.extraImage ? 'w-full h-full' : 'w-full h-full']"
                     alt=""
                   />
                 </div>
@@ -553,7 +553,7 @@ const partners = [
               <h3 class="text-lg font-semibold text-ink-primary">お問い合わせ</h3>
               <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
                 <img
-                  src="@/assets/lxwm.png"
+                  src="@/assets/lxwm.webp"
                   alt="お問い合わせQRコード"
                   class="w-full h-full object-contain"
                 />
@@ -569,7 +569,7 @@ const partners = [
             >
               <h3 class="text-lg font-semibold text-ink-primary">フォローする</h3>
               <div class="mt-6 w-[160px] h-[160px] rounded-xl bg-white overflow-hidden border-2 border-[#E5E5E5] flex items-center justify-center">
-                <img src="@/assets/rjm.jpg" alt="公式アカウントQRコード" class="w-full h-full object-cover" />
+                <img src="@/assets/rjm.webp" alt="公式アカウントQRコード" class="w-full h-full object-cover" />
               </div>
               <p class="mt-5 text-sm text-ink-secondary leading-relaxed">
                 会社最新情報・AI業界トレンドを配信中

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
+import AppImage from '../../components/AppImage.vue'
+import { getImageUrl } from '../../utils/image'
 
 const titleRef = ref<HTMLElement | null>(null)
 const cardsRef = ref<HTMLElement | null>(null)
@@ -25,27 +27,27 @@ const items = [
 
 const certImages = [
   {
-    src: new URL('@/assets/zz/图片1.png', import.meta.url).href,
+    src: getImageUrl('zz/图片1.webp'),
     name: 'ISO 9001 质量管理体系认证证书',
   },
   {
-    src: new URL('@/assets/zz/图片2.png', import.meta.url).href,
+    src: getImageUrl('zz/图片2.webp'),
     name: 'ChatU CE 符合性认证证书',
   },
   {
-    src: new URL('@/assets/zz/图片3.png', import.meta.url).href,
+    src: getImageUrl('zz/图片3.webp'),
     name: '发明专利公布',
   },
   {
-    src: new URL('@/assets/zz/图片4.png', import.meta.url).href,
+    src: getImageUrl('zz/图片4.webp'),
     name: 'ChatU 企业大模型生成合成调度整合算法备案',
   },
   {
-    src: new URL('@/assets/zz/CubixAI大模型调度系统证书_01.png', import.meta.url).href,
+    src: getImageUrl('zz/CubixAI大模型调度系统证书_01.webp'),
     name: 'CubixAI 大模型调度系统软著证书',
   },
   {
-    src: new URL('@/assets/zz/企业智能销售后台管理系统证书_01.png', import.meta.url).href,
+    src: getImageUrl('zz/企业智能销售后台管理系统证书_01.webp'),
     name: '企业智能销售后台管理系统软著证书',
   },
 ]
@@ -86,7 +88,7 @@ const certImages = [
           >
             <div class="w-64 md:w-80 rounded-xl overflow-hidden shadow-sm border border-line/50 bg-white p-3">
               <div class="h-48 md:h-60 flex items-center justify-center">
-                <img
+                <AppImage
                   :src="cert.src"
                   :alt="cert.name"
                   class="max-w-full max-h-full object-contain"
@@ -105,7 +107,7 @@ const certImages = [
           >
             <div class="w-64 md:w-80 rounded-xl overflow-hidden shadow-sm border border-line/50 bg-white p-3">
               <div class="h-48 md:h-60 flex items-center justify-center">
-                <img
+                <AppImage
                   :src="cert.src"
                   :alt="cert.name"
                   class="max-w-full max-h-full object-contain"

@@ -1,22 +1,48 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import i18n, { localeMap, localeLabels } from '../i18n'
 
 const { t } = useI18n()
 const route = useRoute()
+const router = useRouter()
 
 const showProductMenu = ref(false)
 const showLangMenu = ref(false)
+const showContactLangMenu = ref(false)
 const mobileOpen = ref(false)
 const productMenuRef = ref<HTMLElement | null>(null)
 const langMenuRef = ref<HTMLElement | null>(null)
+const contactLangMenuRef = ref<HTMLElement | null>(null)
+
+// 上线前将此处改为 false 即可隐藏第二个语言按钮
+const SHOW_CONTACT_LANG_SWITCHER = true
+
+// 控制左侧全局 i18n 语言切换按钮显示/隐藏
+const SHOW_GLOBAL_LANG_SWITCHER = false
+
+const contactLangRoutes: Record<string, string> = {
+  'zh-CN': '/contact',
+  'en': '/en/contact',
+  'ko': '/hg/contact',
+  'ja': '/jp/contact',
+}
+
+const contactPaths = ['/contact', '/en/contact', '/hg/contact', '/jp/contact']
+const isContactPage = computed(() => contactPaths.includes(route.path))
 
 const currentLangLabel = computed(() => {
   const key = i18n.global.locale.value
   return (localeLabels as Record<string, string>)[key] || '中文'
+})
+
+const currentContactLangLabel = computed(() => {
+  if (route.path === '/en/contact') return 'English'
+  if (route.path === '/hg/contact') return '한국어'
+  if (route.path === '/jp/contact') return '日本語'
+  return '中文'
 })
 
 const langList: string[] = ['中文', 'English', '한국어', '日本語']
@@ -28,6 +54,23 @@ function selectLang(lang: string) {
     localStorage.setItem('locale', newLocale)
   }
   showLangMenu.value = false
+  mobileOpen.value = false
+}
+
+function selectContactLang(lang: string) {
+  const newLocale = localeMap[lang]
+  if (!newLocale) return
+
+  if (isContactPage.value) {
+    // 在 Contact 系列页面时，切换路由到对应语言的完整页面
+    router.replace(contactLangRoutes[newLocale])
+  } else {
+    // 测试模式：非 Contact 页面点击后跳转到对应语言的 Contact 页面，便于测试功能
+    // TODO: 上线前改为 return 或 disabled，保持其他页面内容不变
+    router.push(contactLangRoutes[newLocale])
+  }
+
+  showContactLangMenu.value = false
   mobileOpen.value = false
 }
 
@@ -75,6 +118,9 @@ function onDocumentClick(event: MouseEvent) {
   if (langMenuRef.value && !langMenuRef.value.contains(event.target as Node)) {
     showLangMenu.value = false
   }
+  if (contactLangMenuRef.value && !contactLangMenuRef.value.contains(event.target as Node)) {
+    showContactLangMenu.value = false
+  }
 }
 
 onMounted(() => {
@@ -95,7 +141,7 @@ onUnmounted(() => {
         <!-- Logo -->
         <RouterLink to="/" class="flex items-center gap-2.5">
           <img
-            src="@/assets/logo.png"
+            src="@/assets/logo.webp"
             alt="软积木"
             class="h-[84px] w-[84px] md:h-[108px] md:w-[108px] rounded-2xl object-contain"
           />
@@ -146,7 +192,7 @@ onUnmounted(() => {
                   </div>
                 </div>
               </RouterLink>
-              <RouterLink
+              <!-- <RouterLink
                 to="/products/agentstation"
                 class="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-muted transition-colors mt-1"
                 @click="closeProductMenu"
@@ -162,7 +208,7 @@ onUnmounted(() => {
                     {{ t('header.agentDesc') }}
                   </div>
                 </div>
-              </RouterLink>
+              </RouterLink> -->
               <RouterLink
                 to="/opc-hub"
                 class="flex items-start gap-3 p-3 rounded-xl hover:bg-surface-muted transition-colors mt-1"
@@ -222,7 +268,13 @@ onUnmounted(() => {
         </nav>
 
         <!-- Language Switcher -->
-        <div ref="langMenuRef" class="hidden md:block relative" @mouseenter="showLangMenu = true" @mouseleave="showLangMenu = false">
+        <div
+          v-if="SHOW_GLOBAL_LANG_SWITCHER"
+          ref="langMenuRef"
+          class="hidden md:block relative"
+          @mouseenter="showLangMenu = true"
+          @mouseleave="showLangMenu = false"
+        >
           <button
             class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
             @click.stop="showLangMenu = !showLangMenu"
@@ -247,6 +299,43 @@ onUnmounted(() => {
               @click="selectLang(l)"
             >
               <span class="w-2 h-2 rounded-full" :class="currentLangLabel === l ? 'bg-brand' : 'bg-line'"></span>
+              {{ l }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Contact Language Switcher -->
+        <div
+          v-if="SHOW_CONTACT_LANG_SWITCHER"
+          ref="contactLangMenuRef"
+          class="hidden md:block relative"
+          @mouseenter="showContactLangMenu = true"
+          @mouseleave="showContactLangMenu = false"
+        >
+          <button
+            class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-ink-secondary hover:text-ink-primary transition-colors rounded-lg hover:bg-surface-muted"
+            @click.stop="showContactLangMenu = !showContactLangMenu"
+          >
+            <Icon icon="lucide:globe" class="w-4 h-4" />
+            <span>{{ currentContactLangLabel }}</span>
+            <Icon
+              icon="lucide:chevron-down"
+              class="w-3.5 h-3.5 transition-transform"
+              :class="showContactLangMenu && 'rotate-180'"
+            />
+          </button>
+          <div
+            v-show="showContactLangMenu"
+            class="absolute top-full right-0 mt-1 w-36 bg-surface-card rounded-2xl shadow-card border border-line/50 p-1.5"
+          >
+            <button
+              v-for="l in langList"
+              :key="l"
+              class="w-full flex items-center gap-2 px-3 py-2 text-sm rounded-xl transition-colors"
+              :class="currentContactLangLabel === l ? 'bg-brand-soft text-brand font-medium' : 'text-ink-secondary hover:bg-surface-muted'"
+              @click="selectContactLang(l)"
+            >
+              <span class="w-2 h-2 rounded-full" :class="currentContactLangLabel === l ? 'bg-brand' : 'bg-line'"></span>
               {{ l }}
             </button>
           </div>
@@ -303,21 +392,40 @@ onUnmounted(() => {
       >
         {{ item.label }}
       </RouterLink>
-      <div class="border-t border-line/50 my-2" />
-      <div class="px-3 py-2 text-xs font-semibold text-ink-tertiary uppercase tracking-wider">
-        {{ t('header.language') }}
-      </div>
-      <div class="flex gap-2 px-3 py-2">
-        <button
-          v-for="l in langList"
-          :key="l"
-          class="px-3 py-1.5 text-sm rounded-lg border transition-colors"
-          :class="currentLangLabel === l ? 'border-brand bg-brand-soft text-brand font-medium' : 'border-line text-ink-secondary hover:bg-surface-muted'"
-          @click="selectLang(l)"
-        >
-          {{ l }}
-        </button>
-      </div>
+      <template v-if="SHOW_GLOBAL_LANG_SWITCHER">
+        <div class="border-t border-line/50 my-2" />
+        <div class="px-3 py-2 text-xs font-semibold text-ink-tertiary uppercase tracking-wider">
+          {{ t('header.language') }}
+        </div>
+        <div class="flex gap-2 px-3 py-2">
+          <button
+            v-for="l in langList"
+            :key="l"
+            class="px-3 py-1.5 text-sm rounded-lg border transition-colors"
+            :class="currentLangLabel === l ? 'border-brand bg-brand-soft text-brand font-medium' : 'border-line text-ink-secondary hover:bg-surface-muted'"
+            @click="selectLang(l)"
+          >
+            {{ l }}
+          </button>
+        </div>
+      </template>
+      <template v-if="SHOW_CONTACT_LANG_SWITCHER">
+        <div class="border-t border-line/50 my-2" />
+        <div class="px-3 py-2 text-xs font-semibold text-ink-tertiary uppercase tracking-wider">
+          Contact {{ t('header.language') }}
+        </div>
+        <div class="flex gap-2 px-3 py-2">
+          <button
+            v-for="l in langList"
+            :key="l"
+            class="px-3 py-1.5 text-sm rounded-lg border transition-colors"
+            :class="currentContactLangLabel === l ? 'border-brand bg-brand-soft text-brand font-medium' : 'border-line text-ink-secondary hover:bg-surface-muted'"
+            @click="selectContactLang(l)"
+          >
+            {{ l }}
+          </button>
+        </div>
+      </template>
     </div>
   </header>
 </template>

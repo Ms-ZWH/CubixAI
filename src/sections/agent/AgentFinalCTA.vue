@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
-import jszcImg from '@/assets/jszc.jpg'
-import lxhsqImg from '@/assets/lxwm.png'
-import wjhImg from '@/assets/wjh.jpg'
+import AppImage from '../../components/AppImage.vue'
+import jszcImg from '@/assets/jszc.webp'
+import lxhsqImg from '@/assets/lxwm.webp'
+import wjhImg from '@/assets/wjh.webp'
 
 const contentRef = ref<HTMLElement | null>(null)
 const cardsRef = ref<HTMLElement | null>(null)
@@ -55,7 +56,7 @@ const items = [
         >
           <!-- 图片 -->
           <div class="w-full aspect-square bg-white flex items-center justify-center overflow-hidden p-6">
-            <img
+            <AppImage
               v-if="item.image"
               :src="item.image"
               :alt="item.title"

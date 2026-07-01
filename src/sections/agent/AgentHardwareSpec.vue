@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref, onUnmounted } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
-import hero1 from '@/assets/zft/hero1.png'
-import zft1 from '@/assets/zft/1.png'
-import zft2 from '@/assets/zft/2.png'
-import zft3 from '@/assets/zft/3.png'
+import AppImage from '../../components/AppImage.vue'
+import hero1 from '@/assets/zft/hero1.webp'
+import zft1 from '@/assets/zft/1.webp'
+import zft2 from '@/assets/zft/2.webp'
+import zft3 from '@/assets/zft/3.webp'
 
 const leftRef = ref<HTMLElement | null>(null)
 const rightRef = ref<HTMLElement | null>(null)
@@ -68,12 +69,13 @@ const ioSpecs = [
               class="flex h-full w-full transition-transform duration-500 ease-in-out"
               :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
             >
-              <img
+              <AppImage
                 v-for="(img, i) in galleryImages"
                 :key="i"
                 :src="img"
                 :alt="`角度 ${i + 1}`"
                 class="w-full h-full shrink-0 object-contain"
+                :priority="i === 0"
               />
             </div>
           </div>
@@ -86,7 +88,7 @@ const ioSpecs = [
               :class="currentIndex === i ? 'border-[#2DB4E6] ring-2 ring-[#2DB4E6]/20' : 'border-line hover:border-[#2DB4E6]/50'"
               @click="selectImage(i)"
             >
-              <img
+              <AppImage
                 :src="img"
                 :alt="`角度 ${i + 1}`"
                 class="w-full h-full object-contain"

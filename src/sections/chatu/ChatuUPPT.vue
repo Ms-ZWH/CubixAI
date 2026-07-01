@@ -56,7 +56,7 @@ const steps = ['生成大纲', '选择模板', '线上优化']
           <div
             class="rounded-2xl border border-line shadow-card overflow-hidden"
           >
-            <img src="@/assets/UPPT.png" class="w-full" alt="UPPT" />
+            <img src="@/assets/UPPT.webp" class="w-full" alt="UPPT" />
           </div>
         </div>
       </div>

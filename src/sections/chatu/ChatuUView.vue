@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import { useScrollReveal } from '../../composables/useScrollReveal'
 import Chip from '../../components/Chip.vue'
+import AppImage from '../../components/AppImage.vue'
+import uviewImg from '@/assets/UView.webp'
 
 const leftRef = ref<HTMLElement | null>(null)
 const rightRef = ref<HTMLElement | null>(null)
@@ -27,7 +29,7 @@ const points = [
           <div
             class="rounded-2xl border border-line shadow-card overflow-hidden"
           >
-            <img src="@/assets/UView.png" class="w-full" alt="UView" />
+            <AppImage :src="uviewImg" class="w-full" alt="UView" />
           </div>
         </div>
 

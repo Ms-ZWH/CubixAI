@@ -1,3 +1,5 @@
+import { getImageUrl } from '../utils/image'
+
 export interface Metric {
   label: string
   value: string
@@ -62,7 +64,7 @@ export const cases: CaseItem[] = [
     effect:
       '成功实现日常办公的降本增效目标。标书撰写、文档制作和日常事务处理效率显著提升，为公司可持续发展提供了有力支持。',
     result: '实现降本增效目标，标书撰写、文档制作、日常办公效率显著提升',
-    image: new URL('@/assets/hzqy/zyxt.jpg', import.meta.url).href,
+    image: getImageUrl('hzqy/zyxt.webp'),
     tag: '央企办公',
     category: 'enterprise',
     icon: 'lucide:building',
@@ -98,7 +100,7 @@ export const cases: CaseItem[] = [
     effect:
       '成功构建贴合工作流的 AI 助理系统，为心理咨询机构和准/非专业咨询师提供高效支持。',
     result: '构建面向个人来访者的心理智能体，提升心理咨询服务效率',
-    image: new URL('@/assets/hzqy/qh.png', import.meta.url).href,
+    image: getImageUrl('hzqy/qh.webp'),
     tag: '心理健康',
     category: 'enterprise',
     icon: 'lucide:brain',
@@ -135,7 +137,7 @@ export const cases: CaseItem[] = [
     effect:
       '实现园区企业统一 AI 能力入口。支撑多场 AI 主题沙龙与技术交流活动。验证了 OPC 在社区级载体中的可落地性。',
     result: '验证了OPC在社区级载体中的可落地性',
-    image: new URL('@/assets/hzqy/bwsq1.png', import.meta.url).href,
+    image: getImageUrl('hzqy/bwsq1.webp'),
     tag: '产业园区',
     category: 'opc',
     icon: 'lucide:building2',
@@ -173,7 +175,7 @@ export const cases: CaseItem[] = [
       '支撑园区企业 AI 应用落地与能力提升。形成可持续运转的 OPC 产业服务体系。验证了 OPC 在产业园级别的规模化可行性。',
     result:
       '显著提升园区在AI产业方向的承载能力，验证了OPC在产业园级别的规模化可行性',
-    image: new URL('@/assets/hzqy/cycyy.png', import.meta.url).href,
+    image: getImageUrl('hzqy/cycyy.webp'),
     tag: '产业园区',
     category: 'opc',
     icon: 'lucide:factory',
@@ -210,7 +212,7 @@ export const cases: CaseItem[] = [
       "在上海虹桥6个街镇成功部署。AI智能体快速上线（10分钟），极大缩短政务服务数字化改造周期。形成了'最短路径、官方授权、可复制'的微信政务社群+AI智能体模式。",
     result: '已在上海虹桥6个街镇落地',
     subtitle: '上海虹桥企政通 · 专属部署',
-    image: new URL('@/assets/hzqy/yz.png', import.meta.url).href,
+    image: getImageUrl('hzqy/yz.webp'),
     tag: '',
     category: 'enterprise',
     icon: 'lucide:landmark',
@@ -245,7 +247,7 @@ export const cases: CaseItem[] = [
       '大幅提升育种研究效率，加速新品种研发进程。展现了智能体在种业领域的强大价值。',
     result:
       '实现数据查询到知识问答的全流程智能化支持，大幅提升育种研究效率，加速新品种研发进程',
-    image: new URL('@/assets/hzqy/bay.png', import.meta.url).href,
+    image: getImageUrl('hzqy/bay.webp'),
     tag: '农业科技',
     category: 'enterprise',
     icon: 'lucide:leaf',
@@ -280,7 +282,7 @@ export const cases: CaseItem[] = [
     effect:
       '在创作、优化、运营、互动全流程实现高效赋能与创新，全面提升影响力与传播效果。',
     result: '全面提升影响力与传播效果',
-    image: new URL('@/assets/hzqy/pkz.png', import.meta.url).href,
+    image: getImageUrl('hzqy/pkz.webp'),
     tag: '内容创作',
     category: 'enterprise',
     icon: 'lucide:sparkles',
@@ -314,7 +316,7 @@ export const cases: CaseItem[] = [
       '教学建设：建成标准化财经 AI 实训课程体系，补齐经管、会计、金融专业数字化教学短板，课堂实操性与专业贴合度大幅提升；学生培养：学生掌握适配财经岗位的完整 AI 数字化能力，实习、求职核心竞争力显著增强，可独立完成企业数字化分析课题；校企协同：为合作中小微企业输出标准化数字化落地方案，企业数据分析、营销运营人力成本降低 40%；长期价值：6 个月完成校内 AI 实训中台落地，打造院校专属财经数字化教学标杆方案，可复制推广至全校所有经管类专业。',
     result:
       '6 个月完成校内 AI 实训中台落地，企业数据分析与营销运营人力成本降低 40%',
-    image: new URL('@/assets/hzqy/yndx.png', import.meta.url).href,
+    image: getImageUrl('hzqy/yndx.webp'),
     tag: '财经教育',
     category: 'training',
     icon: 'lucide:graduation-cap',
@@ -353,7 +355,7 @@ export const cases: CaseItem[] = [
       '路孚特内容团队利用AI辅助生成摘要和报告，单篇研报处理时间平均缩短约40%；成功部署内部私有化AI助手覆盖5个核心业务场景；超过80名人员完成培训，20人成为内部AI推广大使。',
     result:
       '单篇研报处理时间平均缩短约40%，成功部署覆盖5个核心业务场景的私有化AI助手，80余名员工完成培训',
-    image: new URL('@/assets/hzqy/lft.jpg', import.meta.url).href,
+    image: getImageUrl('hzqy/lft.webp'),
     tag: '金融数据',
     category: 'training',
     icon: 'lucide:landmark',
@@ -388,7 +390,7 @@ export const cases: CaseItem[] = [
     effect:
       '成功为学员提供 7×24 小时智能问答服务，显著提升机构服务能力和学员满意度。',
     result: '提供全面、准确、有趣的语言学习体验，提升教学响应效率',
-    image: new URL('@/assets/hzqy/ttay.png', import.meta.url).href,
+    image: getImageUrl('hzqy/ttay.webp'),
     tag: '教育',
     category: 'enterprise',
     icon: 'lucide:languages',

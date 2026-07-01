@@ -53,11 +53,11 @@ const platformList = [
           >
             <div class="flex flex-col items-center gap-1">
                 <Icon v-if="p.iconify" :icon="p.icon!" class="w-8 h-8" :class="p.color" />
-                <img v-else-if="p.svgId === 'feishu'" src="@/assets/icon/fs.png" class="w-8 h-8 object-contain" alt="飞书" />
-                <img v-else-if="p.svgId === 'dingtalk'" src="@/assets/icon/dd.png" class="w-8 h-8 object-contain" alt="钉钉" />
-                <img v-else-if="p.svgId === 'weixin'" src="@/assets/icon/wx.png" class="w-8 h-8 object-contain" alt="微信" />
-                <img v-else-if="p.svgId === 'weibo'" src="@/assets/icon/xhs.png" class="w-8 h-8 object-contain" alt="小红书" />
-                <img v-else-if="p.svgId === 'douyin'" src="@/assets/icon/qywx.png" class="w-8 h-8 object-contain" alt="企业微信" />
+                <img v-else-if="p.svgId === 'feishu'" src="@/assets/icon/fs.webp" class="w-8 h-8 object-contain" alt="飞书" />
+                <img v-else-if="p.svgId === 'dingtalk'" src="@/assets/icon/dd.webp" class="w-8 h-8 object-contain" alt="钉钉" />
+                <img v-else-if="p.svgId === 'weixin'" src="@/assets/icon/wx.webp" class="w-8 h-8 object-contain" alt="微信" />
+                <img v-else-if="p.svgId === 'weibo'" src="@/assets/icon/xhs.webp" class="w-8 h-8 object-contain" alt="小红书" />
+                <img v-else-if="p.svgId === 'douyin'" src="@/assets/icon/qywx.webp" class="w-8 h-8 object-contain" alt="企业微信" />
                 <span class="text-xs font-medium text-ink-secondary text-center">{{ p.name }}</span>
               </div>
           </div>

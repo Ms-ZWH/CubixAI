@@ -36,7 +36,7 @@ useScrollReveal(contentRef, { y: 30 })
         {{ t('cases.cta.title') }}
       </h2>
       <div class="flex flex-wrap items-center justify-center gap-4">
-        <BrandButton to="/contact" class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]" @click="showEnterpriseModal = true">{{ t('common.applyCooperation') }}</BrandButton>
+        <BrandButton class="!bg-[#55AD73] !text-white hover:!bg-[#2E8B57]" @click="showEnterpriseModal = true">{{ t('common.applyCooperation') }}</BrandButton>
         <BrandButton
           to="/solutions"
           arrow

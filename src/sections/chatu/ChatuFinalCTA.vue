@@ -61,7 +61,7 @@ useScrollReveal(contentRef, { y: 30 })
             class="w-[180px] h-[180px] md:w-[200px] md:h-[200px] rounded-2xl bg-white border-2 border-[#433487]/20 shadow-card overflow-hidden"
           >
             <img
-              src="@/assets/chatU.jpg"
+              src="@/assets/chatU.webp"
               alt="ChatU 公众号二维码"
               class="w-full h-full object-cover"
             />

@@ -36,7 +36,7 @@ import { Icon } from '@iconify/vue'
               获取产品更新、功能亮点与最佳实践
             </p>
             <div class="mt-5 w-[150px] h-[150px] rounded-xl bg-surface-muted overflow-hidden border border-line/50 flex items-center justify-center">
-              <img src="@/assets/chatU.jpg" alt="ChatU 公众号" class="w-full h-full object-cover" />
+              <img src="@/assets/chatU.webp" alt="ChatU 公众号" class="w-full h-full object-cover" />
             </div>
             <p class="mt-4 text-xs text-ink-tertiary">扫码关注，掌握产品动态</p>
           </div>
@@ -51,7 +51,7 @@ import { Icon } from '@iconify/vue'
               追踪前沿技术、行业趋势与深度解读
             </p>
             <div class="mt-5 w-[150px] h-[150px] rounded-xl bg-surface-muted overflow-hidden border border-line/50 flex items-center justify-center">
-              <img src="@/assets/PEC.jpg" alt="PEC 公众号" class="w-full h-full object-cover" />
+              <img src="@/assets/PEC.webp" alt="PEC 公众号" class="w-full h-full object-cover" />
             </div>
             <p class="mt-4 text-xs text-ink-tertiary">扫码关注，洞悉 AI 风向</p>
           </div>
@@ -66,7 +66,7 @@ import { Icon } from '@iconify/vue'
               了解企业新闻、活动资讯与成长故事
             </p>
             <div class="mt-5 w-[150px] h-[150px] rounded-xl bg-surface-muted overflow-hidden border border-line/50 flex items-center justify-center">
-              <img src="@/assets/rjm.jpg" alt="软积木公众号" class="w-full h-full object-cover" />
+              <img src="@/assets/rjm.webp" alt="软积木公众号" class="w-full h-full object-cover" />
             </div>
             <p class="mt-4 text-xs text-ink-tertiary">扫码关注，见证每一步成长</p>
           </div>

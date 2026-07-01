@@ -10,27 +10,27 @@ const modes = [
     icon: 'lucide:mouse',
     title: '鼠标键盘',
     desc: '桌面级操控',
-    images: [new URL('@/assets/sb/jp.png', import.meta.url).href],
+    images: [new URL('@/assets/sb/jp.webp', import.meta.url).href],
   },
   {
     icon: 'lucide:smartphone',
     title: '手机',
     desc: '便携互联',
-    images: [new URL('@/assets/sb/sj.png', import.meta.url).href],
+    images: [new URL('@/assets/sb/sj.webp', import.meta.url).href],
   },
   {
     icon: 'lucide:monitor',
     title: '显示器',
     desc: '大屏沉浸',
-    images: [new URL('@/assets/sb/显示屏.png', import.meta.url).href],
+    images: [new URL('@/assets/sb/显示屏.webp', import.meta.url).href],
   },
   {
     icon: 'lucide:pen-tool',
     title: '触控笔',
     desc: '一键直达',
     images: [
-      // new URL('@/assets/sb/lxh.png', import.meta.url).href,
-      new URL('@/assets/sb/触控笔.jpg', import.meta.url).href,
+      // new URL('@/assets/sb/lxh.webp', import.meta.url).href,
+      new URL('@/assets/sb/触控笔.webp', import.meta.url).href,
     ],
   },
 ]

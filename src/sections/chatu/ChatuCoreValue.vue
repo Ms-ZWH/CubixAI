@@ -33,7 +33,7 @@ useScrollReveal(card3Ref, { y: 30, delay: 0.3 })
         >
           <div class="aspect-video rounded-2xl overflow-hidden mb-6">
             <img
-              src="@/assets/ChatU/1.png"
+              src="@/assets/ChatU/1.webp"
               alt="多引擎・更自由"
               class="w-full h-full object-cover"
             />
@@ -64,7 +64,7 @@ useScrollReveal(card3Ref, { y: 30, delay: 0.3 })
         >
           <div class="aspect-video rounded-2xl overflow-hidden mb-6">
             <img
-              src="@/assets/ChatU/2.png"
+              src="@/assets/ChatU/2.webp"
               alt="多模态 · 全能力"
               class="w-full h-full object-cover"
             />
@@ -95,7 +95,7 @@ useScrollReveal(card3Ref, { y: 30, delay: 0.3 })
         >
           <div class="aspect-video rounded-2xl overflow-hidden mb-6">
             <img
-              src="@/assets/ChatU/3.png"
+              src="@/assets/ChatU/3.webp"
               alt="多智能体 · 可编排"
               class="w-full h-full object-cover"
             />

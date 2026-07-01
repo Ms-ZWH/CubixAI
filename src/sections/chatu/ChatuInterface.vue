@@ -57,8 +57,8 @@ const backendFeatures = [
         <div
           class="rounded-2xl border border-line shadow-card overflow-hidden"
         >
-          <img v-if="activeTab === 'backend'" src="@/assets/zkht.png" class="w-full" alt="中控后台" />
-          <img v-else src="@/assets/chatUqd.png" class="w-full" alt="产品前端" />
+          <img v-if="activeTab === 'backend'" src="@/assets/zkht.webp" class="w-full" alt="中控后台" />
+          <img v-else src="@/assets/chatUqd.webp" class="w-full" alt="产品前端" />
         </div>
 
         <!-- Features -->

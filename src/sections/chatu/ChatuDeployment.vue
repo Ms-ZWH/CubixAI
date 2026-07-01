@@ -9,12 +9,12 @@ useScrollReveal(titleRef, { y: 30 })
 useScrollReveal(gridRef, { y: 30, delay: 0.15 })
 
 const items = [
-  { image: new URL('../../assets/ChatU/12.png', import.meta.url).href, title: '源码交付', desc: '完整安全的 ChatU 源码 + 详尽文档' },
-  { image: new URL('../../assets/ChatU/13.png', import.meta.url).href, title: '私有部署', desc: '深入沟通业务与技术需求' },
-  { image: new URL('../../assets/ChatU/14.png', import.meta.url).href, title: '数据安全', desc: '本地部署 + 远程培训现场支持' },
-  { image: new URL('../../assets/ChatU/15.png', import.meta.url).href, title: 'Cloud 原生', desc: '架构稳定 + 国内合规' },
-  { image: new URL('../../assets/ChatU/16.png', import.meta.url).href, title: '技术支持', desc: '长期维护协议 + 持续服务' },
-  { image: new URL('../../assets/ChatU/17.png', import.meta.url).href, title: '灵活拓展', desc: '一站式解决方案' },
+  { image: new URL('../../assets/ChatU/12.webp', import.meta.url).href, title: '源码交付', desc: '完整安全的 ChatU 源码 + 详尽文档' },
+  { image: new URL('../../assets/ChatU/13.webp', import.meta.url).href, title: '私有部署', desc: '深入沟通业务与技术需求' },
+  { image: new URL('../../assets/ChatU/14.webp', import.meta.url).href, title: '数据安全', desc: '本地部署 + 远程培训现场支持' },
+  { image: new URL('../../assets/ChatU/15.webp', import.meta.url).href, title: 'Cloud 原生', desc: '架构稳定 + 国内合规' },
+  { image: new URL('../../assets/ChatU/16.webp', import.meta.url).href, title: '技术支持', desc: '长期维护协议 + 持续服务' },
+  { image: new URL('../../assets/ChatU/17.webp', import.meta.url).href, title: '灵活拓展', desc: '一站式解决方案' },
 ]
 </script>
 
