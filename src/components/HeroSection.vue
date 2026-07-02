@@ -4,7 +4,6 @@ import { useI18n } from 'vue-i18n'
 import AppImage from './AppImage.vue'
 import rjmBanana from '@/assets/rjm_banana.webp'
 import chatuBanana from '@/assets/ChatU_banana.webp'
-import zftBanana from '@/assets/zft_banana1.webp'
 
 const { t } = useI18n()
 

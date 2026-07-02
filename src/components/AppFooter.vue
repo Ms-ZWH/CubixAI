@@ -9,7 +9,7 @@ const route = useRoute()
 
 const greenRoutes = ['/', '/solutions', '/cases', '/ai-insight', '/contact']
 const isGreenBg = computed(() => greenRoutes.includes(route.path))
-const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chatu', '/ecosystem', '/ai-insight', '/contact', '/cases', '/solutions', '/opc-hub'].includes(route.path))
+const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chatu', '/ecosystem', '/ai-insight', '/contact', '/en/contact', '/hg/contact', '/jp/contact', '/cases', '/solutions', '/opc-hub', '/training'].includes(route.path))
 </script>
 
 <template>

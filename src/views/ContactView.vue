@@ -469,10 +469,12 @@ useScrollReveal(matrixRef, { y: 40, delay: 0.1 })
             :key="loc.city"
             class="flex flex-col p-6 md:p-8 rounded-2xl bg-surface-card border border-line shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
           >
-            <h3 class="text-xl font-semibold text-ink-primary">{{ loc.city }}</h3>
-            <p class="mt-4 text-sm text-ink-secondary leading-relaxed">{{ loc.address }}</p>
-            <p class="mt-1 text-xs text-ink-tertiary">{{ loc.func }}</p>
-            <div class="mt-6 flex-1 min-h-[120px] rounded-xl bg-surface-muted border border-line/50 overflow-hidden">
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-ink-primary">{{ loc.city }}</h3>
+              <p class="mt-4 text-sm text-ink-secondary leading-relaxed">{{ loc.address }}</p>
+              <p class="mt-1 text-xs text-ink-tertiary">{{ loc.func }}</p>
+            </div>
+            <div class="mt-6 h-[180px] rounded-xl bg-surface-muted border border-line/50 overflow-hidden">
               <img v-if="loc.image" :src="getAlUrl(loc.image)" class="w-full h-full object-cover" alt="" />
               <span v-else class="flex items-center justify-center h-full text-xs text-ink-tertiary">地图占位</span>
             </div>

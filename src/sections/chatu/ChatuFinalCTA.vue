@@ -42,6 +42,7 @@ useScrollReveal(contentRef, { y: 30 })
           variant="ghost"
           class="!border-line !text-ink-primary !bg-transparent hover:!bg-surface-muted hover:!border-[#433487] hover:!text-[#433487]"
           href="https://admin.chatu.pro/"
+          target="_blank"
         >
           申请企业试用
         </BrandButton>
