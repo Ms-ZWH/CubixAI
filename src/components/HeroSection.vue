@@ -80,7 +80,7 @@ onUnmounted(() => {
           :priority="i === 0"
         />
         <!-- Slide 1 (rjm_banana) text -->
-        <div
+        <!-- <div
           v-if="i === 0"
           class="absolute inset-0 flex items-center"
         >
@@ -91,7 +91,7 @@ onUnmounted(() => {
               <p class="mt-8 text-xl md:text-2xl lg:text-3xl font-semibold text-[#1A1A1A] drop-shadow-lg tracking-wide">{{ t('home.hero.slide1Desc') }}</p>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- Slide 2 (ChatU_banana) text -->
         <div
           v-if="i === 1"
