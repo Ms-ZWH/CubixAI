@@ -38,48 +38,32 @@ jobs:
         run: |
           coscmd upload -r dist/ / --delete --ignore "./*.map"
 
-      # 刷新 CDN 缓存
+      # 刷新 CDN 缓存（Python 签名，更可靠）
       - name: Refresh CDN
         run: |
-          # 使用腾讯云 API 刷新 CDN 目录缓存
-          TIMESTAMP=$(date +%s)
-          ACTION="PurgePathCache"
-          PAYLOAD='{"Paths":["https://${{ secrets.CDN_DOMAIN }}/"],"FlushType":"flush"}'
-          
-          # 腾讯云 API v3 签名
-          SERVICE="cdn"
-          HOST="${SERVICE}.tencentcloudapi.com"
-          ALGORITHM="TC3-HMAC-SHA256"
-          DATE=$(date -u +%Y-%m-%d)
-          
-          # 构建规范请求
-          HTTP_METHOD="POST"
-          CANONICAL_URI="/"
-          CANONICAL_QUERY=""
-          CT="application/json; charset=utf-8"
-          CANONICAL_HEADERS="content-type:${CT}\nhost:${HOST}\nx-tc-action:$(echo -n ${ACTION} | tr '[:upper:]' '[:lower:]')\n"
-          SIGNED_HEADERS="content-type;host;x-tc-action"
-          PAYLOAD_HASH=$(echo -n "${PAYLOAD}" | sha256sum | awk '{print $1}')
-          CANONICAL_REQUEST="${HTTP_METHOD}\n${CANONICAL_URI}\n${CANONICAL_QUERY}\n${CANONICAL_HEADERS}\n${SIGNED_HEADERS}\n${PAYLOAD_HASH}"
-          
-          # 构建待签名字符串
-          CREDENTIAL_SCOPE="${DATE}/${SERVICE}/tc3_request"
-          STRING_TO_SIGN="${ALGORITHM}\n${TIMESTAMP}\n${CREDENTIAL_SCOPE}\n$(echo -n ${CANONICAL_REQUEST} | sha256sum | awk '{print $1}')"
-          
-          # 计算签名
-          SECRET_DATE=$(echo -n "${DATE}" | openssl dgst -sha256 -hmac "TC3${{ secrets.TENCENT_SECRET_KEY }}" | awk '{print $2}')
-          SECRET_SERVICE=$(echo -n "${SERVICE}" | openssl dgst -sha256 -hmac "$(echo -n ${SECRET_DATE} | xxd -r -p)" | awk '{print $2}')
-          SECRET_SIGNING=$(echo -n "tc3_request" | openssl dgst -sha256 -hmac "$(echo -n ${SECRET_SERVICE} | xxd -r -p)" | awk '{print $2}')
-          SIGNATURE=$(echo -n "${STRING_TO_SIGN}" | openssl dgst -sha256 -hmac "$(echo -n ${SECRET_SIGNING} | xxd -r -p)" | awk '{print $2}')
-          
-          AUTHORIZATION="${ALGORITHM} Credential=${{ secrets.TENCENT_SECRET_ID }}/${CREDENTIAL_SCOPE}, SignedHeaders=${SIGNED_HEADERS}, Signature=${SIGNATURE}"
-          
-          curl -s -X POST "https://${HOST}" \
-            -H "Authorization: ${AUTHORIZATION}" \
-            -H "Content-Type: ${CT}" \
-            -H "Host: ${HOST}" \
-            -H "X-TC-Action: ${ACTION}" \
-            -H "X-TC-Timestamp: ${TIMESTAMP}" \
-            -H "X-TC-Version: 2018-06-06" \
-            -H "X-TC-Region: ${{ secrets.COS_REGION }}" \
-            -d "${PAYLOAD}"
+          pip install tencentcloud-sdk-python 2>/dev/null
+          python3 << 'PYEOF'
+          import json, os
+          from tencentcloud.common import credential
+          from tencentcloud.cdn.v20180606 import cdn_client, models
+
+          secret_id = os.environ["TENCENT_SECRET_ID"]
+          secret_key = os.environ["TENCENT_SECRET_KEY"]
+          domain = os.environ["CDN_DOMAIN"]
+          region = os.environ["COS_REGION"]
+
+          cred = credential.Credential(secret_id, secret_key)
+          client = cdn_client.CdnClient(cred, region)
+
+          req = models.PurgePathCacheRequest()
+          req.Paths = [f"https://{domain}/"]
+          req.FlushType = "flush"
+
+          resp = client.PurgePathCache(req)
+          print(json.dumps(json.loads(resp.to_json_string()), indent=2, ensure_ascii=False))
+          PYEOF
+        env:
+          TENCENT_SECRET_ID: ${{ secrets.TENCENT_SECRET_ID }}
+          TENCENT_SECRET_KEY: ${{ secrets.TENCENT_SECRET_KEY }}
+          CDN_DOMAIN: ${{ secrets.CDN_DOMAIN }}
+          COS_REGION: ${{ secrets.COS_REGION }}
