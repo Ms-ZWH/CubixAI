@@ -21,7 +21,7 @@ const contactLangMenuRef = ref<HTMLElement | null>(null)
 const SHOW_CONTACT_LANG_SWITCHER = true
 
 // 控制左侧全局 i18n 语言切换按钮显示/隐藏
-const SHOW_GLOBAL_LANG_SWITCHER = true
+const SHOW_GLOBAL_LANG_SWITCHER = false
 
 const contactLangRoutes: Record<string, string> = {
   'zh-CN': '/contact',
