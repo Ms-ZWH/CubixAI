@@ -3,6 +3,7 @@ import { RouterLink, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
+import beiIcon from '@/assets/icon/bei.webp'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -54,12 +55,12 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
               </RouterLink>
             </li>
             <li>
-              <RouterLink
+              <!-- <RouterLink
                 to="/products/agentstation"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
                 {{ t('footer.agentStation') }}
-              </RouterLink>
+              </RouterLink> -->
             </li>
             <li>
               <RouterLink
@@ -71,7 +72,7 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
             </li>
             <li>
               <RouterLink
-                to="/contact"
+                to="/training"
                 class="text-sm text-white/60 hover:text-white transition-colors"
               >
                 {{ t('footer.training') }}
@@ -136,8 +137,21 @@ const showLogo2 = computed(() => ['/', '/products/agentstation', '/products/chat
       <div
         class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4"
       >
-        <p class="text-sm text-white/40">
-          {{ t('common.copyright') }}
+        <p class="text-sm text-white/40 flex items-center gap-2 flex-wrap">
+          <span>{{ t('common.copyright') }}</span>
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1 text-white/40"
+          >
+            <img
+              :src="beiIcon"
+              alt="ICP备案"
+              class="w-4 h-auto"
+            />
+            <span>京ICP备2023016063号</span>
+          </a>
         </p>
       </div>
     </div>

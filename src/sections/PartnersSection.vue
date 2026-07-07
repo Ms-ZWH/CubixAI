@@ -15,16 +15,16 @@ const partners = [
   { name: 'Amazon', image: new URL('@/assets/hzhb/amazon.webp', import.meta.url).href },
   { name: 'Oracle', image: new URL('@/assets/hzhb/oracle.webp', import.meta.url).href },
   { name: 'MiniMax', image: new URL('@/assets/hzhb/minimax.webp', import.meta.url).href },
-  { name: '阿里巴巴', image: new URL('@/assets/hzhb/almm.webp', import.meta.url).href },
-  { name: '月之暗面', image: new URL('@/assets/hzhb/yzam.webp', import.meta.url).href },
-  { name: '百度', image: new URL('@/assets/hzhb/baidu.webp', import.meta.url).href },
+  { name: 'Alibaba', image: new URL('@/assets/hzhb/almm.webp', import.meta.url).href },
+  { name: 'Moonshot AI', image: new URL('@/assets/hzhb/yzam.webp', import.meta.url).href },
+  { name: 'Baidu', image: new URL('@/assets/hzhb/baidu.webp', import.meta.url).href },
   // { name: '百度智能云', image: new URL('@/assets/hzhb/baidu1.webp', import.meta.url).href },
   { name: 'DeepSeek', image: new URL('@/assets/hzhb/deepseek.webp', import.meta.url).href },
   // { name: '华为', image: new URL('@/assets/hzhb/huawei.webp', import.meta.url).href },
-  { name: '火山引擎', image: new URL('@/assets/hzhb/huoshan.webp', import.meta.url).href },
-  { name: '京东', image: new URL('@/assets/hzhb/jd.webp', import.meta.url).href },
-  { name: '字节跳动', image: new URL('@/assets/hzhb/zjtd.webp', import.meta.url).href },
-  { name: '智谱 AI', image: new URL('@/assets/hzhb/zp.webp', import.meta.url).href },
+  { name: 'Volcano Engine', image: new URL('@/assets/hzhb/huoshan.webp', import.meta.url).href },
+  { name: 'JD.com', image: new URL('@/assets/hzhb/jd.webp', import.meta.url).href },
+  { name: 'ByteDance', image: new URL('@/assets/hzhb/zjtd.webp', import.meta.url).href },
+  { name: 'Zhipu AI', image: new URL('@/assets/hzhb/zp.webp', import.meta.url).href },
 ]
 </script>
 
@@ -47,7 +47,7 @@ const partners = [
             :src="p.image"
             :alt="p.name"
             class="max-w-full max-h-full object-contain opacity-100 transition-all duration-300"
-            :class="(p.name === 'Amazon' || p.name === '京东') ? 'max-h-[70%]' : ''"
+            :class="(p.name === 'Amazon' || p.name === 'JD.com') ? 'max-h-[70%]' : ''"
           />
         </div>
       </div>

@@ -2,7 +2,7 @@ export default {
   common: {
     siteName: 'CubixAI',
     siteTagline: 'An AI-native company, connecting the full chain of enterprise intelligence through the ChatU software platform and AgentStation hardware terminal.',
-    copyright: '© 2023-2026 CubixAI. All rights reserved.',
+    copyright: '© 2023–2026 CubixAI (Beijing) Technology Co., Ltd. All rights reserved.',
     learnMore: 'Learn More',
     contactUs: 'Contact Us',
     viewAll: 'View All',
@@ -18,6 +18,7 @@ export default {
     schemeDetails: 'Solution Details',
     solveProblems: 'Problems Solved',
     effect: 'Results',
+    comingSoon: 'Coming Soon',
   },
 
   header: {
@@ -73,6 +74,10 @@ export default {
       industries: 'Industries',
       satisfaction: 'Satisfaction',
       community: 'Community',
+      customerSuffix: '+',
+      industrySuffix: '+',
+      satisfactionSuffix: '%+',
+      communitySuffix: 'M+',
     },
     products: {
       title: 'Four Core Business Areas',
@@ -104,6 +109,36 @@ export default {
     philosophy: {
       title: 'Solutions',
       cta: 'View All Industry Solutions',
+      cases: [
+        {
+          icon: 'lucide:server',
+          name: 'Telecom / Operators',
+          tags: ['Tech-intensive', 'Document-heavy', 'Many bids', 'Standardized processes', 'High compliance'],
+          pain: 'Shorten bid-writing cycles, standardize documents, and free technical staff from administrative burdens.',
+          cpsm: 'Use ChatU to quickly generate technical bids, solution proposals, and fault reports; integrate with internal OA and project management tools for automatic document archiving, version comparison, and task distribution; provide a knowledge-base Q&A assistant for frontline engineers.',
+        },
+        {
+          icon: 'lucide:building-2',
+          name: 'OPC Industrial Parks / Incubators',
+          tags: ['Park digital upgrade', 'AI computing cost reduction', 'Asset-light entrepreneurship', 'One-stop AI enablement'],
+          pain: 'Help parks break away from single rent-collection models, solve high computing costs and difficult AI tool access for enterprises and individuals, reduce information silos and isolation for solo creators, integrate policy resources to build differentiated AI ecosystems, and lower the barrier to AI use and entrepreneurship for enterprises and individuals.',
+          cpsm: 'OPC Hub deploys unified AI infrastructure and computing scheduling for industrial parks, incubators, and individual entrepreneurs, providing private deployment, one-stop AI toolchains, and community operation collaboration networks, significantly lowering computing usage and AI entrepreneurship barriers for park enterprises, independent creators, and micro-entrepreneurs.',
+        },
+        {
+          icon: 'lucide:building-2',
+          name: 'Government / State-owned Enterprises',
+          tags: ['Financial compliance efficiency', 'Internal operation automation', 'State-asset security compliance', 'Localized data control'],
+          pain: 'Solve tedious financial entry, low-efficiency office operations, and difficult data collaboration, while meeting state-owned enterprise data security, localization adaptation, and compliance audit requirements, greatly reducing labor costs and improving office and decision-making efficiency.',
+          cpsm: 'ChatU serves general enterprises with lightweight deployment of invoice OCR, financial review, document generation, and multi-source data analysis; AgentStation provides on-premises private deployment for state-owned enterprise confidential scenarios, adapted to localization requirements, enabling official documents, policy Q&A, reports, and audit trails, covering both market-oriented efficiency improvements and state-asset security compliance needs.',
+        },
+        {
+          icon: 'lucide:graduation-cap',
+          name: 'Universities / Training Institutions',
+          tags: ['University AI training', 'Practice-driven employment', 'Personalized teaching', 'Efficiency improvement'],
+          pain: 'AI teaching in institutions is heavy on theory and light on practice; instructor computing costs are high; teachers face repetitive lesson preparation and Q&A workloads; students lack round-the-clock personalized tutoring.',
+          cpsm: 'Build an intelligent teaching assistant based on ChatU to automatically generate lesson plans and exercises, and provide intelligent grading and Q&A to reduce teacher workload; provide tiered AI hands-on courses and enterprise project training, with learner certification to improve employment competitiveness.',
+        },
+      ],
     },
     partners: {
       title: 'Partners',

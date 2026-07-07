@@ -8,6 +8,7 @@ export interface CountUpOptions {
   duration?: number
   delay?: number
   start?: string
+  decimals?: number
 }
 
 export function useCountUp(
@@ -15,7 +16,7 @@ export function useCountUp(
   target: number,
   options: CountUpOptions = {}
 ) {
-  const { duration = 2, delay = 0, start = 'top 85%' } = options
+  const { duration = 2, delay = 0, start = 'top 85%', decimals = 0 } = options
 
   const displayValue = ref(0)
   let trigger: ScrollTrigger | null = null
@@ -38,7 +39,8 @@ export function useCountUp(
           delay,
           ease: 'power2.out',
           onUpdate: () => {
-            displayValue.value = Math.round(obj.value)
+            const factor = Math.pow(10, decimals)
+            displayValue.value = Math.round(obj.value * factor) / factor
           },
         })
       },

@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteLocationNormalized, RouteRecordRaw } from 'vue-router'
 
+declare const _hmt: any[]
+
 // 扩展 vue-router 的 RouteMeta 类型，支持 SEO 字段
 declare module 'vue-router' {
   interface RouteMeta {
@@ -387,6 +389,11 @@ function updateSeo(to: RouteLocationNormalized) {
 
 router.afterEach((to) => {
   updateSeo(to)
+
+  // 百度统计：SPA 路由切换后手动上报页面路径
+  if (typeof _hmt !== 'undefined') {
+    _hmt.push(['_trackPageview', to.fullPath])
+  }
 })
 
 export default router

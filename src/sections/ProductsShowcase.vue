@@ -80,7 +80,7 @@ useScrollReveal(card4Ref, { y: 30, delay: 0.25 })
                   {{ t('common.learnMore') }}
                 </BrandButton> -->
                 <BrandButton variant="ghost" size="sm" disabled class="hover:!border-[#2DB4E6] hover:!text-[#2DB4E6] disabled:opacity-50 disabled:cursor-not-allowed" arrow>
-                    敬请期待
+                    {{ t('common.comingSoon') }}
                 </BrandButton>
               </div>
             </div>

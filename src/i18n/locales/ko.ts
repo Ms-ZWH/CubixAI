@@ -2,7 +2,7 @@ export default {
   common: {
     siteName: 'CubixAI',
     siteTagline: 'AI 네이티브 기업으로서 ChatU 소프트웨어 플랫폼과 AgentStation 하드웨어 터미널을 통해 기업 인텔리전스화의 전체 체인을 연결합니다.',
-    copyright: '© 2023-2026 CubixAI. All rights reserved.',
+    copyright:  '© 2023–2026 CubixAI (Beijing) Technology Co., Ltd. All rights reserved.',
     learnMore: '자세히 보기',
     contactUs: '문의하기',
     viewAll: '전체 보기',
@@ -18,6 +18,7 @@ export default {
     schemeDetails: '솔루션 상세',
     solveProblems: '해결된 문제',
     effect: '성과',
+    comingSoon: '곧 출시 예정',
   },
 
   header: {
@@ -73,6 +74,10 @@ export default {
       industries: '산업 분야',
       satisfaction: '만족도',
       community: '커뮤니티',
+      customerSuffix: '+',
+      industrySuffix: '+',
+      satisfactionSuffix: '%+',
+      communitySuffix: 'M+',
     },
     products: {
       title: '4대 주요 사업 분야',
@@ -104,6 +109,36 @@ export default {
     philosophy: {
       title: '솔루션',
       cta: '모든 산업 솔루션 보기',
+      cases: [
+        {
+          icon: 'lucide:server',
+          name: '통신 / 통신사',
+          tags: ['기술 집약', '문서 다량', '입찰 다수', '프로세스 표준화', '높은 컴플라이언스 요구'],
+          pain: '입찰서 작성 주기를 단축하고, 문서 규격을 통일하며, 기술 인력의 행정 업무 부담을 해소합니다.',
+          cpsm: 'ChatU를 기반으로 기술 입찰서, 제안서, 장애 처리 보고서를 빠르게 생성하고; 사내 OA 및 프로젝트 관리 도구와 연계하여 문서 자동 집계, 버전 비교, 업무 배분을 구현하며; 현장 기술 엔지니어를 위한 지식베이스 Q&A 어시스턴트를 제공합니다.',
+        },
+        {
+          icon: 'lucide:building-2',
+          name: 'OPC 산업단지 / 인큐베이터',
+          tags: ['단지 디지털 업그레이드', 'AI 연산 비용 절감', '경자산 창업', '원스톱 AI 역량 강화'],
+          pain: '단지가 단일 임대 수익 모델에서 벗어나, 기업과 개인의 높은 연산 비용, AI 도구 접근 어려움, 개인 정보 사일로와 고독감 문제를 해결하고, 정책 자원을 통합하여 차별화된 AI 생태계를 구축하며, 기업과 개인의 AI 활용 및 창업 문턱을 낮춥니다.',
+          cpsm: 'OPC Hub는 산업단지, 인큐베이터, 개인 창업가를 대상으로 AI 기반과 연산 스케줄링을 통합 배포하고, 프라이빗 배포, 원스톱 AI 툴체인, 커뮤니티 운영 협업 네트워크를 제공하여 단지 기업, 독립 크리에이터, 소규모 창업자의 연산 사용 및 AI 창업 문턱을 대폭 낮춥니다.',
+        },
+        {
+          icon: 'lucide:building-2',
+          name: '정부 / 국유기업',
+          tags: ['재무 컴플라이언스 효율화', '내부 운영 자동화', '국자산 보안 컴플라이언스', '데이터 로컬라이제션 통제'],
+          pain: '기업의 재무 입력 번거로움, 사무 운영 비효율, 데이터 협업 어려움 등의 문제를 해결하면서도 국유기업의 데이터 보안, 국산화 적응, 컴플라이언스 감사 요구사항을 충족시켜 인건비를 대폭 절감하고 사무 및 의사결정 효율성을 높입니다.',
+          cpsm: 'ChatU는 일반 기업을 대상으로 영수증 OCR, 재무 심사, 문서 생성, 다중 출처 데이터 분석을 경량화하여 구현합니다; AgentStation은 국유기업 기밀 시나리오를 위해 로컬 프라이빗 배포를 제공하고 국산화에 적응하여 공문서, 정책 Q&A, 보고서, 감사 추적을 구현하며, 시장화 효율 향상과 국자산 보안 컴플라이언스 수요를 모두 커버합니다.',
+        },
+        {
+          icon: 'lucide:graduation-cap',
+          name: '대학 / 교육기관',
+          tags: ['대학 AI 실습', '실전 역량 취업', '개인화 교육', '효율성 향상'],
+          pain: '교육기관의 AI 교육은 이론 중심이고 실습이 부족하며, 강사의 연산 비용이 높고, 교사의 수업 준비 및 질의응답 반복 업무 부담이 크며, 학생에게 24시간 개인화된 튜터링이 부족합니다.',
+          cpsm: 'ChatU를 기반으로 지능형 TA를 구축하여 자동으로 교안과 연습 문제를 생성하고, 지능형 채점 및 질의응답을 제공하여 교사 부담을 줄입니다; 단계별 AI 실전 코스와 기업 프로젝트 실습을 함께 제공하고, 수강생 역량 인증을 제공하여 취업 경쟁력을 높입니다.',
+        },
+      ],
     },
     partners: {
       title: '파트너',
