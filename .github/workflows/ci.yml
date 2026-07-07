@@ -1,13 +1,11 @@
-name: CI Build
+name: Build & Deploy to Tencent COS
 
 on:
   push:
     branches: [main, master]
-  pull_request:
-    branches: [main, master]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,20 +19,66 @@ jobs:
 
       - run: npm run build
 
-      - name: Upload build artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist/
+      # 安装腾讯云 COSCMD
+      - name: Install coscmd
+        run: pip install coscmd
 
-  deploy:
-    needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/deploy-pages@v4
+      # 配置 COSCMD
+      - name: Configure coscmd
+        run: |
+          coscmd config \
+            -a ${{ secrets.TENCENT_SECRET_ID }} \
+            -s ${{ secrets.TENCENT_SECRET_KEY }} \
+            -b ${{ secrets.COS_BUCKET }} \
+            -r ${{ secrets.COS_REGION }}
+
+      # 上传到 COS
+      - name: Upload to COS
+        run: |
+          coscmd upload -r dist/ / --delete --ignore "./*.map"
+
+      # 刷新 CDN 缓存
+      - name: Refresh CDN
+        run: |
+          # 使用腾讯云 API 刷新 CDN 目录缓存
+          TIMESTAMP=$(date +%s)
+          ACTION="PurgePathCache"
+          PAYLOAD='{"Paths":["https://${{ secrets.CDN_DOMAIN }}/"],"FlushType":"flush"}'
+          
+          # 腾讯云 API v3 签名
+          SERVICE="cdn"
+          HOST="${SERVICE}.tencentcloudapi.com"
+          ALGORITHM="TC3-HMAC-SHA256"
+          DATE=$(date -u +%Y-%m-%d)
+          
+          # 构建规范请求
+          HTTP_METHOD="POST"
+          CANONICAL_URI="/"
+          CANONICAL_QUERY=""
+          CT="application/json; charset=utf-8"
+          CANONICAL_HEADERS="content-type:${CT}\nhost:${HOST}\nx-tc-action:$(echo -n ${ACTION} | tr '[:upper:]' '[:lower:]')\n"
+          SIGNED_HEADERS="content-type;host;x-tc-action"
+          PAYLOAD_HASH=$(echo -n "${PAYLOAD}" | sha256sum | awk '{print $1}')
+          CANONICAL_REQUEST="${HTTP_METHOD}\n${CANONICAL_URI}\n${CANONICAL_QUERY}\n${CANONICAL_HEADERS}\n${SIGNED_HEADERS}\n${PAYLOAD_HASH}"
+          
+          # 构建待签名字符串
+          CREDENTIAL_SCOPE="${DATE}/${SERVICE}/tc3_request"
+          STRING_TO_SIGN="${ALGORITHM}\n${TIMESTAMP}\n${CREDENTIAL_SCOPE}\n$(echo -n ${CANONICAL_REQUEST} | sha256sum | awk '{print $1}')"
+          
+          # 计算签名
+          SECRET_DATE=$(echo -n "${DATE}" | openssl dgst -sha256 -hmac "TC3${{ secrets.TENCENT_SECRET_KEY }}" | awk '{print $2}')
+          SECRET_SERVICE=$(echo -n "${SERVICE}" | openssl dgst -sha256 -hmac "$(echo -n ${SECRET_DATE} | xxd -r -p)" | awk '{print $2}')
+          SECRET_SIGNING=$(echo -n "tc3_request" | openssl dgst -sha256 -hmac "$(echo -n ${SECRET_SERVICE} | xxd -r -p)" | awk '{print $2}')
+          SIGNATURE=$(echo -n "${STRING_TO_SIGN}" | openssl dgst -sha256 -hmac "$(echo -n ${SECRET_SIGNING} | xxd -r -p)" | awk '{print $2}')
+          
+          AUTHORIZATION="${ALGORITHM} Credential=${{ secrets.TENCENT_SECRET_ID }}/${CREDENTIAL_SCOPE}, SignedHeaders=${SIGNED_HEADERS}, Signature=${SIGNATURE}"
+          
+          curl -s -X POST "https://${HOST}" \
+            -H "Authorization: ${AUTHORIZATION}" \
+            -H "Content-Type: ${CT}" \
+            -H "Host: ${HOST}" \
+            -H "X-TC-Action: ${ACTION}" \
+            -H "X-TC-Timestamp: ${TIMESTAMP}" \
+            -H "X-TC-Version: 2018-06-06" \
+            -H "X-TC-Region: ${{ secrets.COS_REGION }}" \
+            -d "${PAYLOAD}"
