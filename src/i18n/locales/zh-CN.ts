@@ -6,7 +6,7 @@ export default {
     siteName: '软积木',
     // siteTagline: 'AI 原生公司，以 ChatU 软件平台与智方体硬件终端，打通企业智能化的全链路。',
     siteTagline: '专为推动企业AI应用而生，解决企业AI落地最后三公里。',
-    copyright: '© 2023-2026 软积木(北京)科技有限公司，All rights reserved.',
+    copyright: '© 2023-2026 软积木（北京）科技有限公司，All rights reserved.',
     learnMore: '了解详情',
     contactUs: '联系我们',
     viewAll: '查看全部',
